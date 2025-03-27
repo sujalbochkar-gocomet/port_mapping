@@ -7,9 +7,12 @@ class PortMatcher {
         /**
          * Initialize the PortMatcher with a list of port data dictionaries.
          * @param {Array} portsData - List of dictionaries containing port information
+         * @throws {Error} If portsData is not an array or is empty
          */
+        if (!Array.isArray(portsData) || portsData.length === 0) {
+            throw new Error('portsData must be a non-empty array');
+        }
         this.portsData = portsData;
-
         this.portsDict = this._createPortsDict();
     }
 
@@ -21,20 +24,38 @@ class PortMatcher {
         const portsDict = {};
 
         for (const port of this.portsData) {
+            if (!port || typeof port !== 'object') {
+                console.warn('Skipping invalid port entry:', port);
+                continue;
+            }
+
             // Map main port name
-            if (port['Main Port Name']) {
-                portsDict[port['Main Port Name'].toLowerCase()] = port;
+            if (port['Main Port Name'] && typeof port['Main Port Name'] === 'string') {
+                const mainName = port['Main Port Name'].toLowerCase().trim();
+                if (mainName) {
+                    portsDict[mainName] = port;
+                }
             }
 
             // Map alternate port name if exists
-            if (port['Alternate Port Name'] && port['Alternate Port Name']) {
-                portsDict[port['Alternate Port Name'].toLowerCase()] = port;
+            if (port['Alternate Port Name'] && typeof port['Alternate Port Name'] === 'string') {
+                const altName = port['Alternate Port Name'].toLowerCase().trim();
+                if (altName) {
+                    portsDict[altName] = port;
+                }
             }
 
             // Map UN/LOCODE if exists
-            if (port['UN/LOCODE'] && port['UN/LOCODE']) {
-                portsDict[port['UN/LOCODE'].toLowerCase()] = port;
+            if (port['UN/LOCODE'] && typeof port['UN/LOCODE'] === 'string') {
+                const locode = port['UN/LOCODE'].toLowerCase().trim();
+                if (locode) {
+                    portsDict[locode] = port;
+                }
             }
+        }
+
+        if (Object.keys(portsDict).length === 0) {
+            throw new Error('No valid port entries found in the provided data');
         }
 
         return portsDict;
@@ -47,17 +68,31 @@ class PortMatcher {
          * @param {number} threshold - Minimum similarity score (0-100) for matches
          * @param {number} maxResults - Maximum number of results to return
          * @returns {Array} List of objects containing matched port data and confidence scores
+         * @throws {Error} If parameters are invalid
          */
-        if (!inputString) {
+        // Validate input parameters
+        if (typeof inputString !== 'string' || !inputString.trim()) {
             return [];
         }
 
-        inputString = inputString.toLowerCase();
+        if (typeof threshold !== 'number' || threshold < 0 || threshold > 100) {
+            throw new Error('Threshold must be a number between 0 and 100');
+        }
+
+        if (typeof maxResults !== 'number' || maxResults < 1) {
+            throw new Error('maxResults must be a positive number');
+        }
+
+        inputString = inputString.toLowerCase().trim();
         const portNames = Object.keys(this.portsDict);
+
+        if (portNames.length === 0) {
+            return [];
+        }
 
         // Get matches using fuzzy matching
         const matches = fuzz.extract(inputString, portNames, {
-            limit: maxResults,
+            limit: Math.min(maxResults, portNames.length),
             scorer: fuzz.ratio
         });
 
@@ -66,34 +101,17 @@ class PortMatcher {
         for (const [portName, score] of matches) {
             if (score >= threshold) {
                 const portData = this.portsDict[portName];
-                results.push({
-                    port_data: portData,
-                    confidence_score: score,
-                    // match_type: this._determineMatchType(portName, inputString)
-                });
+                if (portData) {
+                    results.push({
+                        port_data: portData,
+                        confidence_score: score
+                    });
+                }
             }
         }
 
         return results;
     }
-
-    // _determineMatchType(matchedName, inputString) {
-    //     /**
-    //      * Determine the type of match based on the matched name and input string.
-    //      * @param {string} matchedName - The matched port name
-    //      * @param {string} inputString - The input search string
-    //      * @returns {string} Type of match (exact, prefix, contains, or fuzzy)
-    //      */
-    //     if (matchedName === inputString) {
-    //         return "exact";
-    //     } else if (matchedName.startsWith(inputString)) {
-    //         return "prefix";
-    //     } else if (matchedName.includes(inputString)) {
-    //         return "contains";
-    //     } else {
-    //         return "fuzzy";
-    //     }
-    // }
 
     getPortByName(portName) {
         /**
@@ -101,13 +119,21 @@ class PortMatcher {
          * @param {string} portName - The exact port name to look up
          * @returns {Object|null} Port data dictionary if found, null otherwise
          */
-        return this.portsDict[portName.toLowerCase()] || null;
+        if (typeof portName !== 'string' || !portName.trim()) {
+            return null;
+        }
+        return this.portsDict[portName.toLowerCase().trim()] || null;
     }
 
     printDictionary() {
         /**
          * Print the contents of the ports dictionary in a readable format.
          */
+        if (Object.keys(this.portsDict).length === 0) {
+            console.log("\nPort Dictionary is empty");
+            return;
+        }
+
         console.log("\nPort Dictionary Contents:");
         console.log("-".repeat(50));
         
@@ -138,11 +164,7 @@ if (require.main === module) {
 
     // Example searches based on actual data
     const testCases = [
-        "Maurer",      // Exact match
-        "New Harbor",  // Exact match
-        "United States", // Region match
-        "Iharana",     // Exact match
-        "Delta"        // Partial match for "Delta Terminal"
+        "jnp", 
     ];
 
     console.log("Testing port matching with various inputs:");
