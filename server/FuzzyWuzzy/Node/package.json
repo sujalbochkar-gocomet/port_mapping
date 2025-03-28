@@ -7,6 +7,7 @@
     "test": "node port_matcher.js"
   },
   "dependencies": {
+    "fuse.js": "^7.1.0",
     "fuzzball": "^1.3.1"
   }
-} 
+}
