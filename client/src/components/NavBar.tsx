@@ -27,9 +27,6 @@ const NavBar = () => {
           Go
         </div>
       </div>
-      <div>
-        
-      </div>
     </nav>
   );
 };

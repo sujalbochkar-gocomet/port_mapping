@@ -1,39 +1,79 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const SearchInput = () => {
   const [searchInput, setSearchInput] = useState("");
   const [results, setResults] = useState<Port[]>([]);
 
-  useEffect(() => {
-    const fetchPorts = async () => {
-      try {
-        const response = await fetch("http://localhost:3000/search-ports");
-        const data = await response.json();
-        setResults(data);
-      } catch (error) {
-        console.error("Error fetching ports:", error);
-      }
-    };
+  const searchPorts = async (term: string) => {
+    if (!term.trim()) {
+      setResults([]);
+      return;
+    }
+    try {
+      const response = await fetch(
+        `http://localhost:3000/search-ports?q=${encodeURIComponent(term)}`
+      );
+      const data = await response.json();
+      setResults(data);
+    } catch (error) {
+      console.error("Error fetching ports:", error);
+      setResults([]);
+    }
+  };
 
-    fetchPorts();
-  }, [searchInput]);
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearchInput(value);
+    searchPorts(value);
+  };
+
+  const handlePortSelect = (port: Port) => {
+    setSearchInput(port.name || "");
+    setResults([]);
+  };
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-6">
+      <h1 className="text-2xl font-bold mb-4">Search Port</h1>
       <div className="relative">
         <input
           type="text"
           placeholder="Search ports..."
           value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          onChange={handleInputChange}
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
         />
-        {/* dropdown which displays below the search input for all ports */}
+
+        {/* Dropdown for search results */}
         {results.length > 0 && (
-          <div className="absolute z-10 w-full mt-1 bg-white rounded-md shadow-lg max-h-96 overflow-y-auto">
+          <div className="absolute z-10 w-full mt-1 bg-white rounded-md shadow-lg max-h-96 overflow-y-auto border border-gray-200">
             {results.map((port, index) => (
-              <PortDisplay key={index} port={port} />
+              <div
+                key={index}
+                className="px-4 py-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-0"
+                onClick={() => handlePortSelect(port)}
+              >
+                <div className="flex justify-between">
+                  <div className="flex items-center gap-3">
+                    {port.country_code && (
+                      <img
+                        src={`https://flagsapi.com/${port.country_code.toUpperCase()}/flat/64.png`}
+                        alt={`${port.country} flag`}
+                        className="w-6 h-4 object-cover rounded-sm shadow-sm mr-3"
+                      />
+                    )}
+                    <p className="text-sm text-gray-800 font-medium">
+                      {port.name ? port.name : ""}
+                      {port.city ? `, ${port.city}` : ""}
+                      {port.country ? `, ${port.country}` : ""}
+                      {port.code ? `, ${port.code}` : ""}
+                    </p>
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    Port type: {checkPortType(port.port_type)}
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         )}
@@ -42,46 +82,47 @@ const SearchInput = () => {
   );
 };
 
-export default SearchInput;
-
 interface Port {
-  name?: string;
-  country?: string;
-  code?: string;
-  countryCode?: string;
+  id: string;
+  name: string;
+  display_name: string;
+  city: string;
+  country: string;
+  country_code: string;
+  code: string;
+  port_type: string;
+  deleted: boolean;
+  client_group_id: null;
+  region: string;
+  lat_lon: { lat: number; lon: number };
+  created_at: string;
+  updated_at: string;
+  other_names: string[];
+  sort_order: number;
+  other_details: { origin: string };
+  verified: boolean;
+  sailing_schedule_available: boolean;
+  item_type: string;
+  master_port: boolean;
+  nearby_ports: string[];
+  address: string;
+  fax_number: string | null;
+  telephone_number: string | null;
+  website: string | null;
+  description: string;
+  seo_code: string | null;
+  seo_updated: boolean;
+  state_name: string;
+  is_head_port: boolean;
+  prefer_inland: boolean;
+  country_port: boolean;
 }
 
-interface PortDisplayProps {
-  port: Port;
-}
-
-const PortDisplay = ({ port }: PortDisplayProps) => {
-  return (
-    <div className="px-4 py-3 hover:bg-gray-50 cursor-pointer transition-colors border-b border-gray-100 last:border-0">
-      <div className="flex items-center">
-        {/* Country flag */}
-        <div className="w-6 h-4 flex-shrink-0 mr-3">
-          {port.countryCode && (
-            <img
-              src={`https://flagcdn.com/w20/${port.countryCode.toLowerCase()}.png`}
-              alt={`${port.country} flag`}
-              className="w-full h-full object-cover rounded-sm shadow-sm"
-            />
-          )}
-        </div>
-
-        {/* Port information */}
-        <div className="flex-1">
-          <p className="text-sm text-gray-800 font-medium">
-            {port.name && port.country
-              ? `${port.name}, ${port.country}`
-              : port.name || "Unknown Port"}
-            {port.code && (
-              <span className="ml-1 text-gray-500">{port.code}</span>
-            )}
-          </p>
-        </div>
-      </div>
-    </div>
-  );
+const checkPortType = (portType: string) => {
+  if (portType === "sea_port") return "Sea Port";
+  if (portType === "air_port") return "Air Port";
+  if (portType === "address") return "Address";
+  return portType;
 };
+
+export default SearchInput;

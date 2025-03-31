@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mongodb"
+    url      = env("DATABASE_URL")
+}
+
+model Port {
+    id                         String    @id @default(uuid()) @map("_id")
+    name                       String?
+    display_name               String?
+    city                       String?
+    country                    String?
+    country_code               String?
+    code                       String?
+    port_type                  String?
+    deleted                    Boolean?
+    client_group_id            String?
+    region                     String?
+    lat_lon                    Json?
+    created_at                 DateTime?
+    updated_at                 DateTime?
+    other_names                Json?
+    sort_order                 Int?
+    other_details              Json?
+    verified                   Boolean?
+    sailing_schedule_available Boolean?
+    item_type                  String?
+    master_port                Boolean?
+    nearby_ports               Json?
+    address                    String?
+    fax_number                 String?
+    telephone_number           String?
+    website                    String?
+    description                String?
+    seo_code                   String?
+    seo_updated                Boolean?
+    state_name                 String?
+    is_head_port               Boolean?
+    prefer_inland              Boolean?
+    country_port               Boolean?
+}
+
+model Shipment {
+    id          String           @id @default(uuid()) @map("_id")
+    pol         PortVerification
+    pod         PortVerification
+    carrierType String
+}
+
+type PortVerification {
+    portId           String
+    verified         Boolean
+    verified_message String
+}
