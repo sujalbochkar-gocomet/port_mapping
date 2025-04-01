@@ -5,7 +5,8 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-    provider = "prisma-client-js"
+    provider        = "prisma-client-js"
+    previewFeatures = ["mongodb"]
 }
 
 datasource db {
@@ -14,28 +15,32 @@ datasource db {
 }
 
 model Port {
-    id                         String    @id @default(uuid()) @map("_id")
-    name                       String?
-    display_name               String?
-    city                       String?
-    country                    String?
-    country_code               String?
-    code                       String?
-    port_type                  String?
-    deleted                    Boolean?
+    id           String   @id @default(auto()) @map("_id") @db.ObjectId
+    code         String?
+    name         String?
+    display_name String?
+    other_names  String[]
+
+    city         String?
+    state_name   String?
+    country      String?
+    country_code String?
+    region       String?
+
+    port_type     PortType
+    lat_lon       LatLon
+    nearby_ports  Json?
+    other_details Json?
+
+    deleted                    Boolean  @default(false)
     client_group_id            String?
-    region                     String?
-    lat_lon                    Json?
-    created_at                 DateTime?
-    updated_at                 DateTime?
-    other_names                Json?
-    sort_order                 Int?
-    other_details              Json?
+    created_at                 DateTime @default(now())
+    updated_at                 DateTime @updatedAt
+    sort_order                 Int      @default(0)
     verified                   Boolean?
     sailing_schedule_available Boolean?
     item_type                  String?
     master_port                Boolean?
-    nearby_ports               Json?
     address                    String?
     fax_number                 String?
     telephone_number           String?
@@ -43,21 +48,36 @@ model Port {
     description                String?
     seo_code                   String?
     seo_updated                Boolean?
-    state_name                 String?
     is_head_port               Boolean?
     prefer_inland              Boolean?
     country_port               Boolean?
+
+    @@map("ports")
 }
 
 model Shipment {
-    id          String           @id @default(uuid()) @map("_id")
+    id          String           @id @default(auto()) @map("_id") @db.ObjectId
     pol         PortVerification
     pod         PortVerification
     carrierType String
+
+    @@map("shipments")
 }
 
 type PortVerification {
     portId           String
     verified         Boolean
     verified_message String
+}
+
+enum PortType {
+    sea_port
+    inland_port
+    air_port
+    address
+}
+
+type LatLon {
+    lat Float
+    lon Float
 }

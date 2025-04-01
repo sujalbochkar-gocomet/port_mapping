@@ -1,20 +1,15 @@
 import React, { useState } from "react";
-
+import axios from "axios";
 const SearchInput = () => {
   const [searchInput, setSearchInput] = useState("");
   const [results, setResults] = useState<Port[]>([]);
 
   const searchPorts = async (term: string) => {
-    if (!term.trim()) {
-      setResults([]);
-      return;
-    }
     try {
-      const response = await fetch(
+      const response = await axios.get(
         `http://localhost:3000/search-ports?q=${encodeURIComponent(term)}`
       );
-      const data = await response.json();
-      setResults(data);
+      setResults(response.data);
     } catch (error) {
       console.error("Error fetching ports:", error);
       setResults([]);
@@ -45,7 +40,7 @@ const SearchInput = () => {
         />
 
         {/* Dropdown for search results */}
-        {results.length > 0 && (
+        {searchInput && results.length > 0 && (
           <div className="absolute z-10 w-full mt-1 bg-white rounded-md shadow-lg max-h-96 overflow-y-auto border border-gray-200">
             {results.map((port, index) => (
               <div
