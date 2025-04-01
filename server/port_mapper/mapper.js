@@ -2,6 +2,7 @@ const Fuse = require("fuse.js");
 const fs = require("fs");
 const path = require("path");
 const fsPromises = fs.promises;
+const natural = require('natural');
 
 class PortMatcher {
   constructor(portsData) {
@@ -14,7 +15,9 @@ class PortMatcher {
       throw new Error("portsData must be a non-empty array");
     }
     this.portsData = portsData;
-    this._createFuseIndex();
+    // this._createFuseIndex();
+    // Initialize searchable keys
+    this.searchableKeys = ["name", "display_name", "code"];
     // Initialize ignored keywords
     this.ignoredKeywords = new Set([
       "Harbor",
@@ -55,21 +58,46 @@ class PortMatcher {
       "Terminal",
       "Port",
     ]);
+    // Initialize phonetic matchers
+    this.metaphone = new natural.Metaphone();
+    this.soundEx = new natural.SoundEx();
   }
 
-  _createFuseIndex() {
-    /**
-     * Create the Fuse index using enhanced options.
-     */
-    const options = {
-      keys: ["Main Port Name", "Alternate Port Name", "UN/LOCODE"],
-      threshold: 0.5,
-      includeScore: true,
-      includeMatches: false, //Lets Use this if we want to understand why it matched
-      findAllMatches: false,
-    };
-    this.fuse = new Fuse(this.portsData, options);
+  // _createFuseIndex() {
+  //   /**
+  //    * Create the Fuse index using enhanced options.
+  //    */
+  //   const options = {
+  //     keys: this.searchableKeys,
+  //     threshold: 0.5,
+  //     includeScore: true,
+  //     includeMatches: false,
+  //     findAllMatches: false,
+  //   };
+  //   this.fuse = new Fuse(this.portsData, options);
+  // }
+
+  // Functions to print the database
+
+printData() {
+  /**
+   * Print the contents of the port data in a readable format.
+   */
+  if (!this.portsData.length) {
+    console.log("\nNo port data available");
+    return;
   }
+  console.log("\nPort Data Contents:");
+  console.log("-".repeat(50));
+  this.portsData.forEach(port => {
+    console.log("\nPort Data:");
+    Object.entries(port).forEach(([key, value]) => {
+      console.log(`  ${key}: ${value}`);
+    });
+  });
+  console.log("\n");
+}
+
 
   static async loadPortsData(filePath) {
     /**
@@ -88,7 +116,8 @@ class PortMatcher {
 
   normalizeString(str) {
     // Helper method for string normalization.
-    return str?.toLowerCase().trim() || "";
+    return str?.toLowerCase().trim().replace(/\s+/g, " ") || "";
+
   }
 
   calculateAccuracy(input, target) {
@@ -157,61 +186,58 @@ class PortMatcher {
     );
   }
 
-  exactFullNameSearch(inputString) {
+  completeNameSearch(inputString) {
     /**
      * Find ports where the input string exactly matches any of the searchable fields.
      * Words must be in the same order.
      * @param {string} inputString - The string to match against port names.
-     * @returns {Array} List of objects containing matched port data and confidence scores.
+     * @returns {Array} List of objects containing matched port data ,confidence scores and Match Type.
      */
     if (typeof inputString !== "string" || !inputString.trim()) {
       return [];
     }
 
     const normalizedInput = this.normalizeString(inputString);
-    const results = this.portsData
-      .filter((port) => {
-        const mainPortName = this.normalizeString(port["Main Port Name"]);
-        const alternatePortName = this.normalizeString(
-          port["Alternate Port Name"]
-        );
-        const unLocode = this.normalizeString(port["UN/LOCODE"]);
+    const results = [];
 
-        const mainMatch = mainPortName === normalizedInput;
-        const alternateMatch = alternatePortName === normalizedInput;
-        const unLocodeMatch = unLocode === normalizedInput;
+    for (const port of this.portsData) {
+      let matchType = "";
+      let matched = false;
 
-        return mainMatch || alternateMatch || unLocodeMatch;
-      })
-      .map((port) => {
-        const mainPortName = this.normalizeString(port["Main Port Name"]);
-        const alternatePortName = this.normalizeString(
-          port["Alternate Port Name"]
-        );
-        const unLocode = this.normalizeString(port["UN/LOCODE"]);
-        const normalizedInput = this.normalizeString(inputString);
+      for (const key of this.searchableKeys) {
+        const normalizedField = this.normalizeString(port[key]);
+        if (normalizedField && normalizedField === normalizedInput) {
+          matchType = `_${key.toLowerCase().replace(/\s+/g, '_')}`;
+          matched = true;
+          break;
+        }
+      }
 
-        let matchType = "";
-        if (mainPortName === normalizedInput) matchType += "_main_port";
-        else if (alternatePortName === normalizedInput)
-          matchType += "_alternate_port";
-        else if (unLocode === normalizedInput) matchType += "_unlocode";
+      for(const alt_name of port["other_names"]){
+        const normalizedField = this.normalizeString(alt_name);
+        if (normalizedField && normalizedField === normalizedInput) {
+          matchType = "other_names";
+          matched = true;
+          break;
+        }
+      }
 
-        return {
+      if (matched) {
+        results.push({
           port_data: port,
           confidence_score: 100,
-          match_type: matchType,
-        };
-      });
+          match_type: matchType
+        });
+      }
+    }
 
-    // Sort results by confidence score (highest first)
-    return results.sort((a, b) => b.confidence_score - a.confidence_score);
+    return results;
   }
 
-  fullNameSearch(inputString) {
+  jumbledNameSearch(inputString) {
     /**
      * Find ports where all words from the input string are present in any of the searchable fields,
-     * regardless of word order.
+     * regardless of word order, and no extra words are present.
      * @param {string} inputString - The string to match against port names.
      * @returns {Array} List of objects containing matched port data and confidence scores.
      */
@@ -220,56 +246,45 @@ class PortMatcher {
     }
 
     const inputWords = this.normalizeString(inputString).split(/\s+/);
+    const results = [];
 
-    const results = this.portsData
-      .filter((port) => {
-        const mainPortName = this.normalizeString(port["Main Port Name"]);
-        const alternatePortName = this.normalizeString(
-          port["Alternate Port Name"]
-        );
-        const unLocode = this.normalizeString(port["UN/LOCODE"]);
+    for (const port of this.portsData) {
+      let matchType = "";
+      let isMatch = false;
 
-        const mainMatch = inputWords.every((word) =>
-          mainPortName.includes(word)
-        );
-        const alternateMatch = inputWords.every((word) =>
-          alternatePortName.includes(word)
-        );
-        const unLocodeMatch = inputWords.every((word) =>
-          unLocode.includes(word)
-        );
+      for (const key of this.searchableKeys) {
+        const fieldValue = this.normalizeString(port[key]);
+        const fieldWords = fieldValue.split(/\s+/);
 
-        return mainMatch || alternateMatch || unLocodeMatch;
-      })
-      .map((port) => {
-        const mainPortName = this.normalizeString(port["Main Port Name"]);
-        const alternatePortName = this.normalizeString(
-          port["Alternate Port Name"]
-        );
-        const unLocode = this.normalizeString(port["UN/LOCODE"]);
-        const inputWords = this.normalizeString(inputString).split(/\s+/);
+        if (inputWords.every(word => fieldWords.includes(word)) && 
+            fieldWords.length === inputWords.length) {
+          matchType = `_${key.toLowerCase().replace(/\s+/g, '_')}`;
+          isMatch = true;
+          break;
+        }
+      }
 
-        let matchType = "";
-        if (inputWords.every((word) => mainPortName.includes(word)))
-          matchType += "_main_port";
-        else if (inputWords.every((word) => alternatePortName.includes(word)))
-          matchType += "_alternate_port";
-        else if (inputWords.every((word) => unLocode.includes(word)))
-          matchType += "_unlocode";
+      for(const alt_name of port["other_names"]){
+        const fieldValue = this.normalizeString(alt_name);
+        const fieldWords = fieldValue.split(/\s+/);
+        if (inputWords.every(word => fieldWords.includes(word)) && 
+            fieldWords.length === inputWords.length) {
+          matchType = `_other_names`;
+          isMatch = true;
+          break;
+        }
+      }
 
-        const searchableText = [mainPortName, alternatePortName, unLocode].join(
-          " "
-        );
-
-        return {
+      if (isMatch) {
+        results.push({
           port_data: port,
-          confidence_score: this.calculateAccuracy(inputString, searchableText),
-          match_type: matchType,
-        };
-      });
+          confidence_score: 99.9,
+          match_type: matchType
+        });
+      }
+    }
 
-    // Sort results by confidence score (highest first)
-    return results.sort((a, b) => b.confidence_score - a.confidence_score);
+    return results;
   }
 
   findByWordSearch(inputString) {
@@ -291,195 +306,114 @@ class PortMatcher {
       return [];
     }
 
-    // For each word, try to find matching ports
-    for (const word of inputWords) {
-      const matchingPorts = this.portsData.filter((port) => {
-        // Clean and split all searchable fields
-        const mainPortName = this.removeSpecialCharacters(
-          port["Main Port Name"]
-        );
-        const alternatePortName = this.removeSpecialCharacters(
-          port["Alternate Port Name"]
-        );
-        const unLocode = this.removeSpecialCharacters(port["UN/LOCODE"]);
+    const results = [];
+    // Process each port once
+    for (const port of this.portsData) {
+      // Clean and split all searchable fields
+      const fieldValues = this.searchableKeys.map(key => 
+        this.removeSpecialCharacters(port[key])
+      );
 
-        // Split into words and filter out ignored keywords
-        const mainWords = mainPortName
-          .split(/\s+/)
-          .filter((w) => !this.ignoredKeywords.has(w));
-        const alternateWords = alternatePortName
-          .split(/\s+/)
-          .filter((w) => !this.ignoredKeywords.has(w));
-        const unLocodeWords = unLocode
-          .split(/\s+/)
-          .filter((w) => !this.ignoredKeywords.has(w));
+      // Split into words and filter out ignored keywords
+      const fieldWords = fieldValues.map(value => 
+        value.split(/\s+/).filter(w => !this.ignoredKeywords.has(w))
+      );
 
-        // Check if the current word matches any of the searchable words
-        return (
-          mainWords.includes(word) ||
-          alternateWords.includes(word) ||
-          unLocodeWords.includes(word)
-        );
-      });
+      // Check if any input word matches
+      for (const word of inputWords) {
+        let matchType = "";
+        let matched = false;
 
-      // If we found matches for this word, return them with confidence scores
-      if (matchingPorts.length > 0) {
-        const results = matchingPorts.map((port) => {
-          const mainPortName = this.normalizeString(port["Main Port Name"]);
-          const alternatePortName = this.normalizeString(
-            port["Alternate Port Name"]
-          );
-          const unLocode = this.normalizeString(port["UN/LOCODE"]);
-          const searchableText = [
-            mainPortName,
-            alternatePortName,
-            unLocode,
-          ].join(" ");
+        for (let i = 0; i < this.searchableKeys.length; i++) {
+          if (fieldWords[i].includes(word)) {
+            matchType = `_${this.searchableKeys[i].toLowerCase().replace(/\s+/g, '_')}`;
+            matched = true;
+            break;
+          }
+        }
 
-          let matchType = "";
-          const mainWords = this.removeSpecialCharacters(port["Main Port Name"])
-            .split(/\s+/)
-            .filter((w) => !this.ignoredKeywords.has(w));
-          const alternateWords = this.removeSpecialCharacters(
-            port["Alternate Port Name"]
-          )
-            .split(/\s+/)
-            .filter((w) => !this.ignoredKeywords.has(w));
-          const unLocodeWords = this.removeSpecialCharacters(port["UN/LOCODE"])
-            .split(/\s+/)
-            .filter((w) => !this.ignoredKeywords.has(w));
-
-          if (mainWords.includes(word)) matchType += "_main_port";
-          else if (alternateWords.includes(word))
-            matchType += "_alternate_port";
-          else if (unLocodeWords.includes(word)) matchType += "_unlocode";
-
-          return {
+        if (matched) {
+          // If we found a match, calculate confidence and add to results
+          const searchableText = fieldValues.join(" ");
+          results.push({
             port_data: port,
-            confidence_score: this.calculateAccuracy(
-              inputString,
-              searchableText
-            ),
-            match_type: matchType,
-          };
-        });
-
-        // Sort results by confidence score (highest first)
-        return results.sort((a, b) => b.confidence_score - a.confidence_score);
+            confidence_score: this.calculateAccuracy(inputString, searchableText),
+            match_type: matchType
+          });
+          break; // Found a match for this port, move to next port
+        }
       }
     }
 
-    return [];
+    // Sort results by confidence score (highest first)
+    return results.sort((a, b) => b.confidence_score - a.confidence_score);
   }
 
-  fuzzySearch(inputString, threshold = 60, maxResults = 3) {
+  phoneticSearch(inputString, threshold = 60) {
     /**
-     * Find matching ports based on input string using Fuse.js fuzzy matching.
+     * Find ports using phonetic matching (sounds-like) algorithms.
      * @param {string} inputString - The string to match against port names.
      * @param {number} threshold - Minimum confidence score (0-100) for matches.
-     * @param {number} maxResults - Maximum number of results to return.
      * @returns {Array} List of objects containing matched port data and confidence scores.
-     * @throws {Error} If parameters are invalid.
      */
     if (typeof inputString !== "string" || !inputString.trim()) {
       return [];
     }
-    if (typeof threshold !== "number" || threshold < 0 || threshold > 100) {
-      throw new Error("Threshold must be a number between 0 and 100");
-    }
-    if (typeof maxResults !== "number" || maxResults < 1) {
-      throw new Error("maxResults must be a positive number");
-    }
 
-    inputString = this.normalizeString(inputString);
-    const fuseResults = this.fuse.search(inputString, { limit: maxResults });
+    const normalizedInput = this.normalizeString(inputString);
+    const results = [];
 
-    // Convert Fuse's score (0 = perfect match) to a confidence score (0-100)
-    const results = fuseResults
-      .map((result) => {
-        const matches = result.matches || [];
-        let matchType = "";
+    // Process input string phonetically
+    const inputMetaphone = this.metaphone.process(normalizedInput);
+    const inputSoundEx = this.soundEx.process(normalizedInput);
 
-        // Determine which key matched
-        if (matches.length > 0) {
-          const matchedKey = matches[0].key;
-          if (matchedKey === "Main Port Name") matchType += "_main_port";
-          else if (matchedKey === "Alternate Port Name")
-            matchType += "_alternate_port";
-          else if (matchedKey === "UN/LOCODE") matchType += "_unlocode";
+    for (const port of this.portsData) {
+      let matchType = "";
+      let matched = false;
+      let bestScore = 0;
+
+      for (const key of this.searchableKeys) {
+        const fieldValue = this.normalizeString(port[key]);
+        if (!fieldValue) continue;
+
+        // Process field value phonetically
+        const fieldMetaphone = this.metaphone.process(fieldValue);
+        const fieldSoundEx = this.soundEx.process(fieldValue);
+
+        // Calculate phonetic similarity scores
+        const metaphoneScore = fieldMetaphone === inputMetaphone ? 100 : 0;
+        const soundExScore = fieldSoundEx === inputSoundEx ? 100 : 0;
+
+        // Use the higher score between Metaphone and SoundEx
+        const phoneticScore = Math.max(metaphoneScore, soundExScore);
+
+        // If we have a good phonetic match, calculate word-level similarity
+        if (phoneticScore > 0) {
+          const wordScore = this.calculateAccuracy(normalizedInput, fieldValue);
+          const combinedScore = (phoneticScore * 0.6) + (wordScore * 0.4);
+
+          if (combinedScore > bestScore) {
+            bestScore = combinedScore;
+            matchType = `_${key.toLowerCase().replace(/\s+/g, '_')}`;
+            matched = true;
+          }
         }
+      }
 
-        return {
-          port_data: result.item,
-          confidence_score: (1 - result.score) * 100,
-          matches: matches,
-          match_type: matchType,
-        };
-      })
-      .filter((result) => result.confidence_score >= threshold);
-
-    return results;
-  }
-
-  cascadingSearch(inputString, fuzzyThreshold = 60, maxResults = 3) {
-    /**
-     * Perform a cascading search that tries different search methods in order:
-     * 1. Exact Full Name Search
-     * 2. Full Name Search (words in any order)
-     * 3. Word Search
-     * 4. Fuzzy Search
-     * @param {string} inputString - The string to match against port names.
-     * @param {number} fuzzyThreshold - Minimum confidence score (0-100) for fuzzy matches.
-     * @param {number} maxResults - Maximum number of results to return for fuzzy search.
-     * @returns {Array} List of objects containing matched port data.
-     */
-    if (typeof inputString !== "string" || !inputString.trim()) {
-      return [];
+      if (matched && bestScore >= threshold) {
+        results.push({
+          port_data: port,
+          confidence_score: bestScore,
+          match_type: matchType
+        });
+      }
     }
 
-    // Step 1: Try Exact Full Name Search
-    const exactMatches = this.exactFullNameSearch(inputString);
-    if (exactMatches.length > 0) {
-      return exactMatches.map((port) => ({
-        ...port,
-        match_algo_type: "exact",
-      }));
-    }
-
-    // Step 2: Try Full Name Search
-    const fullNameMatches = this.fullNameSearch(inputString);
-    if (fullNameMatches.length > 0) {
-      return fullNameMatches.map((port) => ({
-        ...port,
-        match_algo_type: "full_name",
-      }));
-    }
-
-    // Step 3: Try Word Search
-    const wordMatches = this.findByWordSearch(inputString);
-    if (wordMatches.length > 0) {
-      return wordMatches.map((port) => ({
-        ...port,
-        match_algo_type: "word",
-      }));
-    }
-
-    // Step 4: Try Fuzzy Search
-    const fuzzyMatches = this.fuzzySearch(
-      inputString,
-      fuzzyThreshold,
-      maxResults
-    );
-    if (fuzzyMatches.length > 0) {
-      return fuzzyMatches.map((result) => ({
-        ...result,
-        match_algo_type: "fuzzy",
-      }));
-    }
-
-    return [];
+    // Sort results by confidence score (highest first)
+    return results.sort((a, b) => b.confidence_score - a.confidence_score);
   }
 }
+// 
 
 // Example usage
 if (require.main === module) {
@@ -487,9 +421,9 @@ if (require.main === module) {
     try {
       // Get the absolute path to DummyData.json
       const currentDir = __dirname;
-      const dataDir = path.join(path.dirname(currentDir), "../Data");
-      const dummyDataPath = path.join(dataDir, "DummyData.json");
-
+      const dataDir = path.join(path.dirname(currentDir), "./Data");
+      const dummyDataPath = path.join(dataDir, "data.json");
+ 
       // Load port data asynchronously
       const portsData = await PortMatcher.loadPortsData(dummyDataPath);
 
@@ -497,14 +431,15 @@ if (require.main === module) {
       const matcher = new PortMatcher(portsData);
 
       // Example searches based on actual data
-      const testCases = ["Jebal ali", "New York"];
+      const testCases = ["Beirut International Airport, Beirut, Lebanon, BEY"];
 
       console.log("Testing port matching with various inputs:");
       console.log("-".repeat(50));
 
+      // matcher.printData();
       testCases.forEach((testInput) => {
         console.log(`\nSearching for: ${testInput}`);
-        const results = matcher.cascadingSearch(testInput, 50);
+        const results = matcher.exactFullNameSearch(testInput);
         console.log(JSON.stringify(results, null, 2));
       });
     } catch (error) {
@@ -515,26 +450,6 @@ if (require.main === module) {
 
 module.exports = PortMatcher;
 
-//Functions to print the database
-
-// printData() {
-//   /**
-//    * Print the contents of the port data in a readable format.
-//    */
-//   if (!this.portsData.length) {
-//     console.log("\nNo port data available");
-//     return;
-//   }
-//   console.log("\nPort Data Contents:");
-//   console.log("-".repeat(50));
-//   this.portsData.forEach(port => {
-//     console.log("\nPort Data:");
-//     Object.entries(port).forEach(([key, value]) => {
-//       console.log(`  ${key}: ${value}`);
-//     });
-//   });
-//   console.log("\n");
-// }
 
 //Function to update the database
 
@@ -549,3 +464,83 @@ module.exports = PortMatcher;
 //   this.portsData = newPortsData;
 //   this._createFuseIndex();
 // }
+
+
+
+// cascadingSearch(inputString, fuzzyThreshold = 60, maxResults = 3) {
+  //     /**
+  //      * Perform a cascading search that tries different search methods in order:
+  //      * 1. Exact Full Name Search
+  //      * 2. Full Name Search (words in any order)
+  //      * 3. Word Search
+  //      * 4. Phonetic Search
+  //      * 5. Fuzzy Search
+  //      * @param {string} inputString - The string to match against port names.
+  //      * @param {number} fuzzyThreshold - Minimum confidence score (0-100) for fuzzy matches.
+  //      * @param {number} maxResults - Maximum number of results to return for fuzzy search.
+  //      * @returns {Array} List of objects containing matched port data.
+  //      */
+  //     if (typeof inputString !== "string" || !inputString.trim()) {
+  //       return [];
+  //     }
+  
+  //     // Step 1: Try Exact Full Name Search
+  //     const exactMatches = this.exactFullNameSearch(inputString);
+  //     if (exactMatches.length > 0) {
+  //       const filteredMatches = exactMatches.filter(match => match.confidence_score >= fuzzyThreshold);
+  //       if (filteredMatches.length > 0) {
+  //         return filteredMatches.map((port) => ({
+  //           ...port,
+  //           match_algo_type: "exact",
+  //         }));
+  //       }
+  //     }
+  
+  //     // Step 2: Try Full Name Search
+  //     const fullNameMatches = this.fullNameSearch(inputString);
+  //     if (fullNameMatches.length > 0) {
+  //       const filteredMatches = fullNameMatches.filter(match => match.confidence_score >= fuzzyThreshold);
+  //       if (filteredMatches.length > 0) {
+  //         return filteredMatches.map((port) => ({
+  //           ...port,
+  //           match_algo_type: "full_name",
+  //         }));
+  //       }
+  //     }
+  
+  //     // Step 3: Try Word Search
+  //     const wordMatches = this.findByWordSearch(inputString);
+  //     if (wordMatches.length > 0) {
+  //       const filteredMatches = wordMatches.filter(match => match.confidence_score >= fuzzyThreshold);
+  //       if (filteredMatches.length > 0) {
+  //         return filteredMatches.map((port) => ({
+  //           ...port,
+  //           match_algo_type: "word",
+  //         }));
+  //       }
+  //     }
+  
+  //     // Step 4: Try Phonetic Search
+  //     const phoneticMatches = this.phoneticSearch(inputString, fuzzyThreshold);
+  //     if (phoneticMatches.length > 0) {
+  //       return phoneticMatches.map((port) => ({
+  //         ...port,
+  //         match_algo_type: "phonetic",
+  //       }));
+  //     }
+  
+  //     // Step 5: Try Fuzzy Search
+  //     const fuzzyMatches = this.fuzzySearch(
+  //       inputString,
+  //       fuzzyThreshold,
+  //       maxResults
+  //     );
+  //     if (fuzzyMatches.length > 0) {
+  //       return fuzzyMatches.map((result) => ({
+  //         ...result,
+  //         match_algo_type: "fuzzy",
+  //       }));
+  //     }
+  
+  //     return [];
+  //   }
