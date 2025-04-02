@@ -1,27 +1,28 @@
 import { PortVerification, Shipment } from "../types/types";
 import { useState } from "react";
 import axios from "axios";
+import { FlagIcon } from "./Mapping-Form";
+import { toast } from "react-hot-toast";
 
-const ShipmentBlock = (ship: { shipment: Shipment }) => {
+const ShipmentBlock = (shipment: Shipment) => {
   const [showPolTooltip, setShowPolTooltip] = useState(false);
   const [showPodTooltip, setShowPodTooltip] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
   const handleDelete = async () => {
-    if (!ship.shipment.id) return;
+    if (!shipment.id) return;
 
     try {
       setIsDeleting(true);
       await axios.delete(
-        `http://localhost:3000/delete-shipment/${ship.shipment.id}`
+        `http://localhost:3000/delete-shipment/${shipment.id}`
       );
-      // After successful deletion, you might want to refresh the shipments list
-      // This could be done by lifting this state up or using a context
-      alert("Shipment deleted successfully");
+      toast.success("Shipment deleted successfully");
+      window.location.reload();
     } catch (error) {
       console.error("Error deleting shipment:", error);
-      alert("Failed to delete shipment");
+      toast.error("Failed to delete shipment");
     } finally {
       setIsDeleting(false);
       setShowDropdown(false);
@@ -41,12 +42,12 @@ const ShipmentBlock = (ship: { shipment: Shipment }) => {
               </div>
               <span
                 className={`px-2 py-0.5 text-xs font-medium rounded-full border ${
-                  ship.shipment.pol.verified && ship.shipment.pod.verified
+                  shipment.pol.verified && shipment.pod.verified
                     ? "text-green-700 bg-green-50 border-green-100"
                     : "text-red-700 bg-red-50 border-red-100"
                 }`}
               >
-                {ship.shipment.pol.verified && ship.shipment.pod.verified
+                {shipment.pol.verified && shipment.pod.verified
                   ? "Verified"
                   : "Alert Unverified Port"}
               </span>
@@ -55,7 +56,7 @@ const ShipmentBlock = (ship: { shipment: Shipment }) => {
               <div className="text-sm text-gray-500 flex items-center gap-2">
                 <span>Carrier:</span>
                 <span className="font-medium text-gray-900">
-                  {ship.shipment.carrierType}
+                  {shipment.carrierType}
                 </span>
               </div>
               <div className="flex items-center gap-2">
@@ -141,14 +142,14 @@ const ShipmentBlock = (ship: { shipment: Shipment }) => {
           <div className="space-y-2 rounded-lg p-4">
             {/* POL */}
             <PortDisplay
-              portData={ship.shipment.pol}
+              portData={shipment.pol}
               showTooltip={showPolTooltip}
               onTooltipChange={setShowPolTooltip}
             />
 
             {/* POD */}
             <PortDisplay
-              portData={ship.shipment.pod}
+              portData={shipment.pod}
               showTooltip={showPodTooltip}
               onTooltipChange={setShowPodTooltip}
             />
@@ -165,11 +166,7 @@ interface PortDisplayProps {
   onTooltipChange: (show: boolean) => void;
 }
 
-const PortDisplay = ({
-  portData,
-  showTooltip,
-  onTooltipChange,
-}: PortDisplayProps) => {
+const PortDisplay = ({ portData, onTooltipChange }: PortDisplayProps) => {
   return (
     <div className="flex items-center gap-3 bg-gray-50 rounded-lg p-3">
       <div className="min-w-[24px]">
@@ -185,26 +182,11 @@ const PortDisplay = ({
               portData.verified ? "ring-green-100" : "ring-red-100"
             }`}
           />
-          {showTooltip && (
-            <div className="absolute left-5 -top-2 z-10 w-48 bg-white border border-gray-100 rounded-lg shadow-lg p-3 text-xs animate-fade-in">
-              {portData.verified ? (
-                <div className="text-green-700 space-y-1">
-                  <div className="font-medium">Verified Port</div>
-                  <div>Match Score: {portData.verified_message}</div>
-                </div>
-              ) : (
-                <div className="text-red-700 space-y-1">
-                  <div className="font-medium">Critical Unverified</div>
-                  <div>Match Score: {portData.verified_message}</div>
-                </div>
-              )}
-            </div>
-          )}
         </div>
       </div>
-      <div className="flex items-center gap-3 flex-1">
+      <div className="flex items-center justify-between gap-3 flex-1">
         <div className="flex items-center gap-2 min-w-0">
-          {portData.port?.country_code && (
+          {portData.port?.country_code ? (
             <img
               src={`https://flagsapi.com/${portData.port.country_code.toUpperCase()}/flat/64.png`}
               alt={`${portData.port.country} flag`}
@@ -213,6 +195,8 @@ const PortDisplay = ({
                 (e.target as HTMLImageElement).style.display = "none";
               }}
             />
+          ) : (
+            <FlagIcon />
           )}
           <span className="text-sm text-gray-900 truncate">
             {[
@@ -223,6 +207,23 @@ const PortDisplay = ({
             ]
               .filter(Boolean)
               .join(", ")}
+          </span>
+        </div>
+
+        {/* Verification status and match score displayed directly */}
+        <div className="flex items-center gap-2">
+          <span
+            className={`px-2 py-0.5 text-xs font-medium rounded-full ${
+              portData.verified
+                ? "text-green-700 bg-green-50 border border-green-100"
+                : "text-red-700 bg-red-50 border border-red-100"
+            }`}
+          >
+            {portData.verified ? "Verified" : "Unverified"}
+          </span>
+          <span className="text-xs text-gray-500">
+            Match Score:{" "}
+            <span className="font-medium">{portData.match_score}</span>
           </span>
         </div>
       </div>

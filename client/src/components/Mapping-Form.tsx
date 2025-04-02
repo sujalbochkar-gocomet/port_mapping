@@ -1,41 +1,68 @@
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios";
-import { Port, Shipment, tempShipmentData } from "../types/types";
+import { Shipment, statusPort } from "../types/types";
+import flagIcon from "../assets/flag.svg";
+import landIcon from "../assets/land.svg";
+import airIcon from "../assets/air.svg";
+import seaIcon from "../assets/sea.svg";
+import allIcon from "../assets/all.svg";
+import { toast } from "react-toastify";
 
 const MappingForm = () => {
   const [shipments, setShipments] = useState<Shipment[]>([]);
   const [carrierType, setCarrierType] = useState<string>("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
   // Search states for POL
   const [polSearchInput, setPolSearchInput] = useState("");
-  const [polResults, setPolResults] = useState<Port[]>([]);
-  const [selectedPol, setSelectedPol] = useState<Port | null>(null);
+  const [polResults, setPolResults] = useState<statusPort[]>([]);
+  const [selectedPol, setSelectedPol] = useState<statusPort | null>(null);
 
   // Search states for POD
   const [podSearchInput, setPodSearchInput] = useState("");
-  const [podResults, setPodResults] = useState<Port[]>([]);
-  const [selectedPod, setSelectedPod] = useState<Port | null>(null);
+  const [podResults, setPodResults] = useState<statusPort[]>([]);
+  const [selectedPod, setSelectedPod] = useState<statusPort | null>(null);
+
+  const [isPolDropdownOpen, setIsPolDropdownOpen] = useState(false);
+  const [isPodDropdownOpen, setIsPodDropdownOpen] = useState(false);
+  const polDropdownRef = useRef<HTMLDivElement>(null);
+  const podDropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setShipments(tempShipmentData);
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        polDropdownRef.current &&
+        !polDropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsPolDropdownOpen(false);
+      }
+      if (
+        podDropdownRef.current &&
+        !podDropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsPodDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   const searchPorts = async (term: string, isPol: boolean) => {
     try {
       const portType = getPortTypeFromCarrier(carrierType);
-      console.log(portType);
-
       const response = await axios.get(
         `http://localhost:3000/search-ports?q=${encodeURIComponent(
           term
         )}&type=${portType}`
       );
+      const results = response.data;
       if (isPol) {
-        setPolResults(response.data);
+        setPolResults(results);
       } else {
-        setPodResults(response.data);
+        setPodResults(results);
       }
     } catch (error) {
       console.error("Error fetching ports:", error);
@@ -46,38 +73,13 @@ const MappingForm = () => {
       }
     }
   };
-
-  const handlePolInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setPolSearchInput(value);
-    searchPorts(value, true);
-  };
-
-  const handlePodInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setPodSearchInput(value);
-    searchPorts(value, false);
-  };
-
-  const handlePolSelect = (port: Port) => {
-    setPolSearchInput(""); // Clear the search input
-    setSelectedPol(port);
-    setPolResults([]);
-  };
-
-  const handlePodSelect = (port: Port) => {
-    setPodSearchInput(""); // Clear the search input
-    setSelectedPod(port);
-    setPodResults([]);
-  };
-
   const addShipment = async () => {
+    if (loading) return;
     if (!selectedPol || !selectedPod || !carrierType) {
-      setError("Please fill in all fields and select valid ports");
+      toast.error("Please fill in all fields and select valid ports");
       return;
     }
     setLoading(true);
-    setError(null);
     try {
       const response = await axios.post("http://localhost:3000/add-shipment", {
         pol: selectedPol,
@@ -91,70 +93,56 @@ const MappingForm = () => {
       setPolSearchInput("");
       setPodSearchInput("");
     } catch (err) {
-      setError("Failed to add shipment. Please try again.");
+      toast.error("Failed to add shipment. Please try again.");
       console.error("Error adding shipment:", err);
     } finally {
       setLoading(false);
     }
   };
 
+  const handlePolInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setPolSearchInput(value);
+    setIsPolDropdownOpen(true);
+    searchPorts(value, true);
+  };
+
+  const handlePodInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setPodSearchInput(value);
+    setIsPodDropdownOpen(true);
+    searchPorts(value, false);
+  };
+  const handlePolSelect = (port: statusPort) => {
+    setPolSearchInput("");
+    setSelectedPol(port);
+    setPolResults([]);
+    setIsPolDropdownOpen(false);
+  };
+  const handlePodSelect = (port: statusPort) => {
+    setPodSearchInput("");
+    setSelectedPod(port);
+    setPodResults([]);
+    setIsPodDropdownOpen(false);
+  };
+
   return (
     <div>
-      {/* Carrier Type Block */}
+      {/* Mode Selector Block */}
       <div className="mb-6">
-        <label className="block text-lg font-bold text-gray-600 mb-1">
+        <label className="block text-lg font-bold text-gray-600 mb-2">
           Carrier Type <span className="text-red-500">*</span>
         </label>
         <div className="flex items-center gap-4">
-          <div className="w-full">
-            <select
-              value={carrierType}
-              className="w-full px-3 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              onChange={(e) => setCarrierType(e.target.value)}
-            >
-              <option value="">Select type...</option>
-              <option value="all">All</option>
-              <option value="sea_port">Sea</option>
-              <option value="air_port">Air</option>
-              <option value="address">Land</option>
-            </select>
-          </div>
-          <div className="text-nowrap flex self-end">
-            <button
-              onClick={addShipment}
-              disabled={loading}
-              className={`px-5 py-3 font-bold rounded-md transition-colors flex items-center gap-2
-                ${
-                  loading
-                    ? "bg-blue-300 cursor-not-allowed"
-                    : "bg-blue-700 hover:bg-blue-600 text-white"
-                }`}
-            >
-              {loading ? (
-                <>
-                  <span className="animate-spin">⌛</span>
-                  Adding...
-                </>
-              ) : (
-                <>
-                  Add Shipment
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 font-bold"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path d="M8.5 2a1 1 0 0 0-1 1v5h-5a1 1 0 0 0 0 2h5v5a1 1 0 0 0 2 0v-5h5a1 1 0 0 0 0-2h-5V3a1 1 0 0 0-1-1z" />
-                  </svg>
-                </>
-              )}
-            </button>
-          </div>
+          <ModeSelector
+            selectedMode={carrierType || "all"}
+            onModeSelect={setCarrierType}
+          />
         </div>
       </div>
 
       {/* POL and POD Block */}
-      <div className="flex items-center justify-center gap-4">
+      <div className="flex items-center gap-4">
         <div className="w-full relative">
           <label className="block text-lg font-bold text-gray-600 mb-1">
             Port of Loading (POL) <span className="text-red-500">*</span>
@@ -162,53 +150,103 @@ const MappingForm = () => {
 
           {selectedPol ? (
             <div className="w-full px-3 py-3 bg-white border border-gray-300 rounded-lg shadow-sm flex justify-between items-center">
-              <div className="flex items-center gap-3 w-full">
-                {selectedPol.country_code && (
+              {/* First div: logo and port name */}
+              <div className="flex items-center gap-2 max-w-[75%] min-w-[75%]">
+                {selectedPol !== null && selectedPol.port?.country_code ? (
                   <img
-                    src={`https://flagsapi.com/${selectedPol.country_code.toUpperCase()}/flat/64.png`}
-                    alt={`${selectedPol.country} flag`}
-                    className="w-6 h-4 object-cover rounded-sm shadow-sm mr-3"
+                    src={`https://flagsapi.com/${selectedPol.port.country_code.toUpperCase()}/flat/64.png`}
+                    alt={`${selectedPol.port.country} flag`}
+                    className="w-6 h-4 mr-2 object-cover rounded-sm shadow-sm"
                   />
+                ) : (
+                  <FlagIcon />
                 )}
                 <p className="text-sm text-gray-800 font-medium">
-                  {selectedPol.name}
-                  {selectedPol.city ? `, ${selectedPol.city}` : ""}
-                  {selectedPol.country ? `, ${selectedPol.country}` : ""}
-                  {selectedPol.code ? `, ${selectedPol.code}` : ""}
+                  {selectedPol.port.display_name
+                    ? selectedPol.port.display_name
+                    : selectedPol.port.name}
+                  {selectedPol.port.city ? `, ${selectedPol.port.city}` : ""}
+                  {selectedPol.port.country
+                    ? `, ${selectedPol.port.country}`
+                    : ""}
+                  {selectedPol.port.code ? `, ${selectedPol.port.code}` : ""}
                 </p>
-                <div className="ml-auto text-xs text-gray-500">
-                  Port type: {checkPortType(selectedPol.port_type)}
+              </div>
+
+              {/* Second div: type and match score */}
+              <div className="flex flex-col items-end text-xs w-full mr-1 text-gray-800">
+                <div className="font-semibold">
+                  Type: {checkPortType(selectedPol.port.port_type)}
+                </div>
+                <div
+                  className={`mt-1.5 px-2 py-1 border rounded-lg ${
+                    selectedPol.match_score >= 90
+                      ? "bg-green-100 border-green-500 text-green-600"
+                      : selectedPol.match_score >= 70
+                      ? "bg-orange-100 border-orange-500 text-orange-600"
+                      : "bg-red-100 border-red-500 text-red-600"
+                  }`}
+                >
+                  {selectedPol.match_score
+                    ? `${selectedPol.match_score}% match`
+                    : ""}
                 </div>
               </div>
-              <button
-                onClick={() => setSelectedPol(null)}
-                className="text-gray-700 hover:text-black ml-2 font-extrabold"
-              >
-                ✕
-              </button>
+
+              {/* Third div: close button */}
+              <div>
+                <button
+                  onClick={() => setSelectedPol(null)}
+                  className="text-gray-500 hover:text-gray-700 ml-2"
+                >
+                  ✕
+                </button>
+              </div>
             </div>
           ) : (
-            <input
-              type="text"
-              value={polSearchInput}
-              placeholder="Enter POL..."
-              className="w-full px-3 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              onChange={handlePolInputChange}
-            />
-          )}
+            <div ref={polDropdownRef} className="relative w-full">
+              <input
+                type="text"
+                value={polSearchInput}
+                placeholder="Enter POL..."
+                className="w-full px-3 py-3 h-[4.6rem] bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                onChange={handlePolInputChange}
+                onClick={() => setIsPolDropdownOpen(true)}
+              />
 
-          {/* POL Search Results */}
-          {polSearchInput && polResults.length > 0 && !selectedPol && (
-            <div className="absolute z-10 w-full mt-1 bg-white rounded-md shadow-lg max-h-96 overflow-y-auto border border-gray-200">
-              {polResults.map((port, index) => (
-                <div
-                  key={index}
-                  className="px-4 py-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-0"
-                  onClick={() => handlePolSelect(port)}
-                >
-                  <PortDropdownItem port={port} />
-                </div>
-              ))}
+              {/* POL Search Results */}
+              {isPolDropdownOpen &&
+                polSearchInput &&
+                polResults.length > 0 &&
+                !selectedPol && (
+                  <div className="absolute z-10 w-full mt-1 bg-white rounded-md shadow-lg max-h-96 overflow-y-auto border border-gray-200">
+                    {polResults.map((port, index) => (
+                      <div
+                        key={index}
+                        className="px-4 py-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-0"
+                        onClick={() => handlePolSelect(port)}
+                      >
+                        {port.port?.id?.startsWith("temp-") ? (
+                          <div className="flex justify-between items-center">
+                            <div className="flex items-center gap-2">
+                              <span className="w-6 h-6 flex items-center justify-center bg-gray-200 rounded-full">
+                                <span className="text-xs">+</span>
+                              </span>
+                              <span className="text-sm font-medium">
+                                Create: "{port.port.name}"
+                              </span>
+                            </div>
+                            <div className="text-xs text-gray-500">
+                              Custom Port
+                            </div>
+                          </div>
+                        ) : (
+                          <PortDropdownItem port={port} />
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
             </div>
           )}
         </div>
@@ -220,64 +258,234 @@ const MappingForm = () => {
 
           {selectedPod ? (
             <div className="w-full px-3 py-3 bg-white border border-gray-300 rounded-lg shadow-sm flex justify-between items-center">
-              <div className="flex items-center gap-3 w-full">
-                {selectedPod.country_code && (
+              {/* First div: logo and port name */}
+              <div className="flex items-center gap-2 max-w-[75%] min-w-[75%]">
+                {selectedPod !== null && selectedPod.port?.country_code ? (
                   <img
-                    src={`https://flagsapi.com/${selectedPod.country_code.toUpperCase()}/flat/64.png`}
-                    alt={`${selectedPod.country} flag`}
-                    className="w-6 h-4 object-cover rounded-sm shadow-sm mr-3"
+                    src={`https://flagsapi.com/${selectedPod.port.country_code.toUpperCase()}/flat/64.png`}
+                    alt={`${selectedPod.port.country} flag`}
+                    className="w-6 h-4 object-cover rounded-sm shadow-sm"
                   />
+                ) : (
+                  <FlagIcon />
                 )}
                 <p className="text-sm text-gray-800 font-medium">
-                  {selectedPod.name}
-                  {selectedPod.city ? `, ${selectedPod.city}` : ""}
-                  {selectedPod.country ? `, ${selectedPod.country}` : ""}
-                  {selectedPod.code ? `, ${selectedPod.code}` : ""}
+                  {selectedPod.port.display_name
+                    ? selectedPod.port.display_name
+                    : selectedPod.port.name}
+                  {selectedPod.port.city ? `, ${selectedPod.port.city}` : ""}
+                  {selectedPod.port.country
+                    ? `, ${selectedPod.port.country}`
+                    : ""}
+                  {selectedPod.port.code ? `, ${selectedPod.port.code}` : ""}
                 </p>
-                <div className="ml-auto text-xs text-gray-500">
-                  Port type: {checkPortType(selectedPod.port_type)}
+              </div>
+
+              {/* Second div: type and match score */}
+              <div className="flex flex-col items-end text-xs w-full mr-1 text-gray-800">
+                <div className="font-semibold">
+                  Type: {checkPortType(selectedPod.port.port_type)}
+                </div>
+                <div
+                  className={`mt-1.5 px-2 py-1 border rounded-lg ${
+                    selectedPod.match_score >= 90
+                      ? "bg-green-100 border-green-500 text-green-600"
+                      : selectedPod.match_score >= 70
+                      ? "bg-orange-100 border-orange-500 text-orange-600"
+                      : "bg-red-100 border-red-500 text-red-600"
+                  }`}
+                >
+                  {selectedPod.match_score
+                    ? `${selectedPod.match_score}% match`
+                    : ""}
                 </div>
               </div>
-              <button
-                onClick={() => setSelectedPod(null)}
-                className="text-gray-500 hover:text-gray-700 ml-2"
-              >
-                ✕
-              </button>
+
+              {/* Third div: close button */}
+              <div>
+                <button
+                  onClick={() => setSelectedPod(null)}
+                  className="text-gray-500 hover:text-gray-700 ml-2"
+                >
+                  ✕
+                </button>
+              </div>
             </div>
           ) : (
-            <input
-              type="text"
-              value={podSearchInput}
-              placeholder="Enter POD..."
-              className="w-full px-3 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              onChange={handlePodInputChange}
-            />
-          )}
+            <div ref={podDropdownRef} className="relative w-full">
+              <input
+                type="text"
+                value={podSearchInput}
+                placeholder="Enter POD..."
+                className="w-full px-3 py-3 h-[4.6rem] bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                onChange={handlePodInputChange}
+                onClick={() => setIsPodDropdownOpen(true)}
+              />
 
-          {/* POD Search Results */}
-          {podSearchInput && podResults.length > 0 && !selectedPod && (
-            <div className="absolute z-10 w-full mt-1 bg-white rounded-md shadow-lg max-h-96 overflow-y-auto border border-gray-200">
-              {podResults.map((port, index) => (
-                <div
-                  key={index}
-                  className="px-4 py-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-0"
-                  onClick={() => handlePodSelect(port)}
-                >
-                  <PortDropdownItem port={port} />
-                </div>
-              ))}
+              {/* POD Search Results */}
+              {isPodDropdownOpen &&
+                podSearchInput &&
+                podResults.length > 0 &&
+                !selectedPod && (
+                  <div className="absolute z-10 w-full mt-1 bg-white rounded-md shadow-lg max-h-96 overflow-y-auto border border-gray-200">
+                    {podResults.map((port, index) => (
+                      <div
+                        key={index}
+                        className="px-4 py-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-0"
+                        onClick={() => handlePodSelect(port)}
+                      >
+                        {port.port?.id?.startsWith("temp-") ? (
+                          <div className="flex justify-between items-center">
+                            <div className="flex items-center gap-2">
+                              <span className="w-6 h-6 flex items-center justify-center bg-gray-200 rounded-full">
+                                <span className="text-xs">+</span>
+                              </span>
+                              <span className="text-sm font-medium">
+                                Create: "{port.port.name}"
+                              </span>
+                            </div>
+                            <div className="text-xs text-gray-500">
+                              Custom Port
+                            </div>
+                          </div>
+                        ) : (
+                          <PortDropdownItem port={port} />
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
             </div>
           )}
         </div>
+
+        <div className="text-nowrap self-end">
+          <button
+            onClick={addShipment}
+            disabled={loading}
+            className={`px-5 py-3 h-[4.6rem] font-bold rounded-md transition-colors flex items-center gap-2
+                ${
+                  loading
+                    ? "bg-blue-300 cursor-not-allowed"
+                    : "bg-blue-700 hover:bg-blue-600 text-white"
+                }`}
+          >
+            {loading ? (
+              <>
+                <span className="animate-spin">⌛</span>
+                Adding...
+              </>
+            ) : (
+              <>
+                Add Shipment
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 font-bold"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path d="M8.5 2a1 1 0 0 0-1 1v5h-5a1 1 0 0 0 0 2h5v5a1 1 0 0 0 2 0v-5h5a1 1 0 0 0 0-2h-5V3a1 1 0 0 0-1-1z" />
+                </svg>
+              </>
+            )}
+          </button>
+        </div>
       </div>
 
-      {error && <div className="mt-1 p-1 text-red-700 rounded-md">{error}</div>}
+      {/* Add Shipment Button */}
+    </div>
+  );
+};
+const PortDropdownItem = ({ port }: { port: statusPort }) => {
+  return (
+    <div className="flex relative justify-between items-center w-full">
+      <div className="flex items-center gap-3 max-w-[75%]">
+        {port.port?.country_code && port.port?.country_code !== "" ? (
+          <img
+            src={`https://flagsapi.com/${port.port.country_code.toUpperCase()}/flat/64.png`}
+            alt={`${port.port.country} flag`}
+            className="w-6 h-4 object-cover rounded-sm shadow-sm mr-3"
+          />
+        ) : (
+          <FlagIcon />
+        )}
+        <p className="text-sm text-gray-800 font-medium">
+          {port.port.display_name ? port.port.display_name : port.port.name}
+          {port.port.city ? `, ${port.port.city}` : ""}
+          {port.port.country ? `, ${port.port.country}` : ""}
+          {port.port.code ? `, ${port.port.code}` : ""}
+        </p>
+      </div>
+      <div>
+        <div className="text-xs text-gray-500">
+          Type: {checkPortType(port.port.port_type)}
+        </div>
+        <div
+          className={`text-xs rounded-lg mt-1.5 px-2 py-1 border ${
+            port.match_score >= 90
+              ? "bg-green-100 border-green-500 text-green-600"
+              : port.match_score >= 70
+              ? "bg-orange-100 border-orange-500 text-orange-600"
+              : "bg-red-100 border-red-500 text-red-600"
+          }`}
+        >
+          {port.match_score ? `${port.match_score}% match` : ""}
+        </div>
+      </div>
     </div>
   );
 };
 
-// Helper function to map carrier types to port types
+export default MappingForm;
+
+const ModeSelector = ({
+  selectedMode,
+  onModeSelect,
+}: {
+  selectedMode: string;
+  onModeSelect: (mode: string) => void;
+}) => {
+  const modes = [
+    { id: "all", icon: allIcon, label: "ALL" },
+    { id: "sea_port", icon: seaIcon, label: "SEA" },
+    { id: "air_port", icon: airIcon, label: "AIR" },
+    { id: "address", icon: landIcon, label: "LAND" },
+  ];
+
+  return (
+    <div className="flex gap-2 w-full bg-gray-50 p-2 rounded-lg">
+      {modes.map((mode) => (
+        <button
+          key={mode.id}
+          onClick={() => onModeSelect(mode.id)}
+          className={`flex-1 flex flex-col items-center justify-center p-4 rounded-lg transition-all duration-200 ${
+            selectedMode === mode.id
+              ? "bg-blue-100 border-2 border-blue-500 shadow-md"
+              : "bg-white border-2 border-transparent hover:bg-gray-50"
+          }`}
+        >
+          <img
+            src={mode.icon}
+            alt={mode.label}
+            className={`w-8 h-8 mb-2 ${
+              selectedMode === mode.id
+                ? "[filter:invert(48%)_sepia(79%)_saturate(2476%)_hue-rotate(200deg)_brightness(118%)_contrast(119%)]"
+                : "brightness-0 opacity-50"
+            }`}
+          />
+          <span
+            className={`text-sm font-semibold ${
+              selectedMode === mode.id ? "text-blue-500" : "text-gray-600"
+            }`}
+          >
+            {mode.label}
+          </span>
+        </button>
+      ))}
+    </div>
+  );
+};
+
 const getPortTypeFromCarrier = (carrierType: string): string => {
   switch (carrierType) {
     case "sea_port":
@@ -290,37 +498,18 @@ const getPortTypeFromCarrier = (carrierType: string): string => {
       return "all";
   }
 };
-
-export default MappingForm;
-
+export const FlagIcon = () => {
+  return (
+    <img
+      src={flagIcon}
+      alt="Default flag"
+      className="w-6 h-6 object-cover rounded-sm shadow-sm mr-3"
+    />
+  );
+};
 const checkPortType = (portType: string) => {
   if (portType === "sea_port") return "Sea Port";
   if (portType === "air_port") return "Air Port";
   if (portType === "address") return "Address";
   return portType;
-};
-
-const PortDropdownItem = ({ port }: { port: Port }) => {
-  return (
-    <div className="flex justify-between items-center w-full">
-      <div className="flex items-center gap-3">
-        {port.country_code && (
-          <img
-            src={`https://flagsapi.com/${port.country_code.toUpperCase()}/flat/64.png`}
-            alt={`${port.country} flag`}
-            className="w-6 h-4 object-cover rounded-sm shadow-sm mr-3"
-          />
-        )}
-        <p className="text-sm text-gray-800 font-medium">
-          {port.name ? port.name : ""}
-          {port.city ? `, ${port.city}` : ""}
-          {port.country ? `, ${port.country}` : ""}
-          {port.code ? `, ${port.code}` : ""}
-        </p>
-      </div>
-      <div className="text-xs text-gray-500">
-        Port type: {checkPortType(port.port_type)}
-      </div>
-    </div>
-  );
 };

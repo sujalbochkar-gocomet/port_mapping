@@ -4,6 +4,7 @@ export interface LatLon {
 }
 
 export interface Port {
+  _id: string;
   id: string;
   code: string;
   name: string;
@@ -49,3 +50,8 @@ export enum PortType {
   ADDRESS = "address",
 }
 
+export interface statusPort {
+  port: Port;
+  verified: boolean;
+  match_score: number;
+}

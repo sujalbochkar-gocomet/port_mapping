@@ -16,6 +16,7 @@ datasource db {
 
 model Port {
     id           String   @id @default(auto()) @map("_id") @db.ObjectId
+    uuid         String?  @map("id")
     code         String?
     name         String?
     display_name String?
@@ -27,15 +28,15 @@ model Port {
     country_code String?
     region       String?
 
-    port_type     PortType
+    port_type     String // Changed from enum to String to match MongoDB
     lat_lon       LatLon
     nearby_ports  Json?
     other_details Json?
 
     deleted                    Boolean  @default(false)
     client_group_id            String?
-    created_at                 DateTime @default(now())
-    updated_at                 DateTime @updatedAt
+    created_at                 String? // Changed from DateTime to String
+    updated_at                 String? // Changed from DateTime to String
     sort_order                 Int      @default(0)
     verified                   Boolean?
     sailing_schedule_available Boolean?
@@ -52,7 +53,7 @@ model Port {
     prefer_inland              Boolean?
     country_port               Boolean?
 
-    @@map("ports")
+    @@map("Port")
 }
 
 model Shipment {
@@ -65,19 +66,12 @@ model Shipment {
 }
 
 type PortVerification {
-    portId           String
-    verified         Boolean
-    verified_message String
-}
-
-enum PortType {
-    sea_port
-    inland_port
-    air_port
-    address
+    portId      String
+    verified    Boolean
+    match_score Float
 }
 
 type LatLon {
-    lat Float
-    lon Float
+    lat Float?
+    lon Float?
 }

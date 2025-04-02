@@ -1,4 +1,4 @@
-import { Port, PortType } from "./types/types";
+import { Port, PortType, statusPort } from "./types/types";
 import { Request, Response } from "express";
 import cors from "cors";
 import express from "express";
@@ -22,25 +22,77 @@ app.get("/search-ports", async (req: Request, res: Response) => {
     const type = req.query.type as string;
     console.log(`Searching ports with query: "${query}" and type: "${type}"`);
 
-    // Only include port_type in where clause if type is provided
-    const whereClause: any = {
-      OR: [
-        { name: { contains: query, mode: "insensitive" } },
-        { code: { contains: query, mode: "insensitive" } },
-        { display_name: { contains: query, mode: "insensitive" } },
-        { country: { contains: query, mode: "insensitive" } },
-        { city: { contains: query, mode: "insensitive" } },
-      ],
-    };
-    if (type && type !== "all") {
-      whereClause.port_type = type;
-    }
     const ports = await prisma.port.findMany({
-      where: whereClause,
-      orderBy: [{ verified: "desc" }, { sort_order: "asc" }, { name: "asc" }],
-      take: 20,
+      where: {
+        OR: [
+          { name: { contains: query, mode: "insensitive" } },
+          { code: { contains: query, mode: "insensitive" } },
+          { display_name: { contains: query, mode: "insensitive" } },
+          { country: { contains: query, mode: "insensitive" } },
+          { city: { contains: query, mode: "insensitive" } },
+          { other_names: { has: query } },
+        ],
+        ...(type !== "all" && { AND: [{ port_type: { equals: type } }] }),
+      },
+      take: 40,
     });
-    res.status(200).json(ports);
+
+    if (ports.length === 0) {
+      console.log("No ports found");
+      const tempPort: Partial<Port> = {
+        _id: `temp-${Date.now()}`,
+        id: `temp-${Date.now()}`,
+        name: query,
+        display_name: query,
+        port_type: type as PortType,
+
+        code: "",
+        other_names: [],
+        city: "",
+        state_name: "",
+        country: "",
+        country_code: "",
+        region: "",
+
+        lat_lon: { lat: 0, lon: 0 },
+        nearby_ports: JSON.parse("{}"),
+        other_details: JSON.parse("{}"),
+
+        deleted: true,
+        client_group_id: "",
+        created_at: new Date(),
+        updated_at: new Date(),
+        sort_order: 0,
+        verified: false,
+        sailing_schedule_available: false,
+        item_type: "",
+        master_port: false,
+        address: "",
+        fax_number: "",
+        telephone_number: "",
+        website: "",
+        description: "",
+        seo_code: "",
+        seo_updated: false,
+        is_head_port: false,
+        prefer_inland: false,
+        country_port: false,
+      };
+      const statusPort: statusPort = {
+        port: tempPort as Port,
+        verified: true,
+        match_score: Math.floor(Math.random() * (100 - 90) + 90),
+      };
+      res.status(200).json(statusPort);
+      return;
+    }
+    const transformedPorts = ports.map((port) => ({
+      port: port,
+      verified: true,
+      match_score: Math.floor(Math.random() * (100 - 90) + 90),
+    }));
+    transformedPorts.sort((a, b) => b.match_score - a.match_score);
+    res.status(200).json(transformedPorts);
   } catch (error) {
     console.error("Error searching ports:", error);
     res.status(500).json({
@@ -52,15 +104,19 @@ app.get("/search-ports", async (req: Request, res: Response) => {
 
 app.post("/add-shipment", async (req: Request, res: Response) => {
   const { pol, pod, carrierType } = req.body;
-  console.log(pol, pod, carrierType);
-  //   const shipment = await prisma.shipment.create({
-  //     data: {
-  //       pol,
-  //       pod,
-  //       carrierType,
-  //     },
-  //   });
-  res.status(200).json({ message: "Shipment added successfully" });
+  const shipment = await prisma.shipment.create({
+    data: {
+      pol,
+      pod,
+      carrierType,
+    },
+  });
+  res.status(200).json({ shipment });
+});
+
+app.get("/get-shipments", async (req: Request, res: Response) => {
+  const shipments = await prisma.shipment.findMany();
+  res.status(200).json({ shipments });
 });
 
 app.listen(port, () => {
