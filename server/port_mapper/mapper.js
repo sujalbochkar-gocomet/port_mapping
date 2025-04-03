@@ -2,7 +2,7 @@ const Fuse = require("fuse.js");
 const fs = require("fs");
 const path = require("path");
 const fsPromises = fs.promises;
-// const { spawn } = require('child_process');
+const { spawn } = require('child_process');
 // const os = require('os');
 
 class PortMatcher {
@@ -191,7 +191,6 @@ class PortMatcher {
     return results;
   }
 
-
   wordSearch(inputString) {
     /**
      * Find ports by matching individual words and calculating confidence based on word overlap and order.
@@ -299,7 +298,6 @@ class PortMatcher {
     return results.sort((a, b) => b.confidence_score - a.confidence_score);
   }
 
-
   _createFuseIndex() {
     const searchableKeyConfigs = this.searchableKeys.map(key => ({
       name: key,
@@ -385,11 +383,83 @@ class PortMatcher {
     return results;
   }
 
-  
+  async rubyFuzzySearch(inputString) {
+    /**
+     * Perform fuzzy matching using Ruby's fuzzy_match gem through child process
+     * @param {string} inputString - The string to match against port names
+     * @returns {Promise<Array>} List of objects containing matched port data and confidence scores
+     */
+    if (typeof inputString !== "string" || !inputString.trim()) {
+      return [];
+    }
+
+    // Prepare search data from searchable fields
+    const searchData = this.portsData.map(port => {
+      const searchableFields = this.searchableKeys.map(key => port[key]).filter(Boolean);
+      return searchableFields.join(' ');
+    });
+
+    // Prepare input for Ruby script
+    const rubyInput = {
+      search_data: searchData,
+      query: inputString,
+      ports_data: this.portsData, // Send the full ports data
+      stop_words: Array.from(this.ignoredKeywords) // Convert Set to Array for JSON serialization
+    };
+
+    return new Promise((resolve, reject) => {
+      // Get the path to the Ruby script
+      const rubyScriptPath = path.join(__dirname, './ruby_fuzzy/fuzzy_match.rb');
+
+      // Spawn Ruby process
+      const rubyProcess = spawn('ruby', [rubyScriptPath]);
+
+      let result = '';
+      let error = '';
+
+      // Handle stdout
+      rubyProcess.stdout.on('data', (data) => {
+        result += data.toString();
+      });
+
+      // Handle stderr
+      rubyProcess.stderr.on('data', (data) => {
+        error += data.toString();
+      });
+
+      // Handle process completion
+      rubyProcess.on('close', (code) => {
+        if (code !== 0) {
+          reject(new Error(`Ruby process exited with code ${code}: ${error}`));
+          return;
+        }
+
+        try {
+          const results = JSON.parse(result.trim());
+          
+          // Map results to include the port data from Ruby
+          const mappedResults = results.map(r => ({
+            port_data: r.port_data,
+            confidence_score: r.confidence_score,
+            match_type: 'ruby_fuzzy',
+            levenshtein_score: r.levenshtein_score
+          }));
+          resolve(mappedResults);
+        } catch (err) {
+          reject(new Error(`Failed to parse Ruby output: ${err.message}`));
+        }
+      });
+
+      // Write input to Ruby process
+      rubyProcess.stdin.write(JSON.stringify(rubyInput));
+      rubyProcess.stdin.end();
+    });
+  }
+
   async cascadingSearch(inputString, portType = null) {
     /**
      * Perform a cascading search that tries different search methods in order,
-     * filtering first by port_type if specified, then by location if possible.
+     * including Ruby fuzzy matching
      * @param {string} inputString - The string to match against port names.
      * @param {string} portType - Optional port type to filter results (e.g., 'sea', 'air')
      * @returns {Array} List of objects containing matched port data.
@@ -400,12 +470,12 @@ class PortMatcher {
 
     // Store original portsData
     const originalPortsData = this.portsData;
+    const CONFIDENCE_THRESHOLD = 10;
 
     try {
       // Step 1: Filter by port_type if specified
       if (portType) {
         this.portsData = this.portsData.filter(port => port.port_type === portType);
-        // If no ports match the type, return empty results
         if (this.portsData.length === 0) {
           return [];
         }
@@ -420,31 +490,40 @@ class PortMatcher {
       // Step 3: Try Exact Full Name Search
       const completeMatches = this.completeNameSearch(inputString);
       if (completeMatches.length > 0) {
-        return completeMatches.map((port) => ({
-          ...port,
-          match_algo_type: "exact",
-        }));
+        return completeMatches
+          .filter(match => match.confidence_score >= CONFIDENCE_THRESHOLD)
+          .map((port) => ({
+            ...port,
+            match_algo_type: "exact",
+          }));
       }
 
       // Step 4: Try Word Search
       const wordMatches = this.wordSearch(inputString);
       if (wordMatches.length > 0) {
-        return wordMatches.map((port) => ({
-          ...port,
-          match_algo_type: "word",
-        }));
+        return wordMatches
+          .filter(match => match.confidence_score >= CONFIDENCE_THRESHOLD)
+          .map((port) => ({
+            ...port,
+            match_algo_type: "word",
+          }));
       }
 
-      
+      // Step 5: Try Ruby Fuzzy Search
+      try {
+        const rubyMatches = await this.rubyFuzzySearch(inputString);
 
-      // // Step 6: Try Fuzzy Search (Fuse.js)
-      // const fuzzyMatches = this.fuzzySearch(inputString);
-      // if (fuzzyMatches.length > 0) {
-      //   return fuzzyMatches.map((result) => ({
-      //     ...result,
-      //     match_algo_type: "fuzzy",
-      //   }));
-      // }
+        if (rubyMatches.length > 0) {
+          return rubyMatches
+            .filter(match => match.confidence_score >= CONFIDENCE_THRESHOLD)
+            .map((port) => ({
+              ...port,
+              match_algo_type: "ruby_fuzzy",
+            }));
+        }
+      } catch (error) {
+        console.error('Ruby fuzzy search failed:', error);
+      }
 
       return [];
     } finally {
@@ -452,10 +531,7 @@ class PortMatcher {
       this.portsData = originalPortsData;
     }
   }
-
-
 }
-// 
 
 // Example usage
 if (require.main === module) {
@@ -473,17 +549,19 @@ if (require.main === module) {
       const matcher = new PortMatcher(portsData);
 
       // Example searches based on actual data
-      const testCases = ["Port Klang"];
+      const testCases = ["kchi"];
 
-      console.log("Testing port matching with various inputs:");
-      console.log("-".repeat(50));
+      console.log("\n=== Port Search Results ===\n");
 
-      // matcher.printData();
-      testCases.forEach((testInput) => {
-        console.log(`\nSearching for: ${testInput}`);
-        const results = matcher.cascadingSearch(testInput,"air_port");
-        console.log(JSON.stringify(results[0], null, 2));
-      });
+      for (const testInput of testCases) {
+        console.log(`Search Query: "${testInput}"`);
+        console.log("=".repeat(80));
+
+        const results = await matcher.cascadingSearch(testInput, "sea_port");
+        const limitedResults = results.slice(0, 3);
+        console.log(JSON.stringify(limitedResults, null, 2));
+        
+      }
     } catch (error) {
       console.error("Error during initialization:", error);
     }
