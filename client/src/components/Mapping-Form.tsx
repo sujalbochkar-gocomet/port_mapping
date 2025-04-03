@@ -180,8 +180,8 @@ const MappingForm = () => {
                     if (country) fullText += `, ${country}`;
                     if (code) fullText += `, ${code}`;
 
-                    return fullText.length > 57
-                      ? fullText.substring(0, 45) + "..."
+                    return fullText.length > 50
+                      ? fullText.substring(0, 50) + "..."
                       : fullText;
                   })()}
                 </p>
@@ -281,8 +281,8 @@ const MappingForm = () => {
                     if (country) fullText += `, ${country}`;
                     if (code) fullText += `, ${code}`;
 
-                    return fullText.length > 57
-                      ? fullText.substring(0, 48) + "..."
+                    return fullText.length > 50
+                      ? fullText.substring(0, 50) + "..."
                       : fullText;
                   })()}
                 </p>

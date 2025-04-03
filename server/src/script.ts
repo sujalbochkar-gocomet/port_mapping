@@ -35,7 +35,9 @@ app.get("/search-ports", async (req: Request, res: Response) => {
           { city: { contains: query, mode: "insensitive" } },
           { other_names: { has: query } },
         ],
-        ...(type !== "all" && { AND: [{ port_type: { equals: type } }] }),
+        ...(type !== "all" && {
+          AND: [{ port_type: { equals: type } }, { verified: true }],
+        }),
       },
       take: 40,
     });
