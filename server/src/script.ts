@@ -19,6 +19,9 @@ app.get("/", (_req: Request, res: Response) => {
 app.get("/search-ports", async (req: Request, res: Response) => {
   try {
     const query = (req.query.q as string)?.toLowerCase() || "";
+
+    // const getcorrectword = map_port_name(query);
+
     const type = req.query.type as string;
     console.log(`Searching ports with query: "${query}" and type: "${type}"`);
 
@@ -184,10 +187,28 @@ app.post("/add-shipment", async (req: Request, res: Response) => {
   }
 });
 
-app.get("/get-shipments", async (_req: Request, res: Response) => {
+app.get("/get-shipments", async (req: Request, res: Response) => {
   try {
+    const order = (req.query.order as string) || "desc";
+    const filterType = (req.query.type as string) || "all";
+    console.log(
+      `Fetching shipments with order: ${order}, filter: ${filterType}`
+    );
+    let whereClause = {};
+    if (filterType === "verified") {
+      whereClause = {
+        AND: [{ polVerified: true }, { podVerified: true }],
+      };
+    } else if (filterType === "unverified") {
+      whereClause = {
+        OR: [{ polVerified: false }, { podVerified: false }],
+      };
+    }
     const shipments = await prisma.shipment.findMany({
-      orderBy: { createdAt: "desc" },
+      orderBy: {
+        createdAt: order === "asc" ? "asc" : "desc",
+      },
+      where: whereClause,
     });
     res.status(200).json(shipments);
   } catch (error) {

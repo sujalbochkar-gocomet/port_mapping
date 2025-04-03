@@ -99,20 +99,34 @@ const ShipmentBlock = (shipment: Shipment) => {
                 <span className="text-gray-500">RF --</span>
                 <span className="font-medium text-gray-900">TCNU4926696</span>
               </div>
-              <span
-                className={`px-2 py-0.5 text-xs font-medium rounded-full border ${
-                  shipment.polVerified && shipment.podVerified
-                    ? "text-green-700 bg-green-50 border-green-100"
-                    : "text-red-700 bg-red-50 border-red-100"
-                }`}
-              >
-                {shipment.polVerified && shipment.podVerified
-                  ? "Verified"
-                  : "Alert Unverified Port"}
+              <span>Created:</span>
+              <span className="font-medium text-gray-900">
+                {new Date(shipment.createdAt).toLocaleTimeString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}{" "}
+                {new Date(shipment.createdAt).toLocaleDateString([], {
+                  day: "2-digit",
+                  month: "2-digit",
+                  year: "2-digit",
+                })}
               </span>
             </div>
             <div className="flex items-center gap-3">
               <div className="text-sm text-gray-500 flex items-center gap-2">
+                <div className="text-sm text-gray-500 flex items-center gap-2 mr-4">
+                  <span
+                    className={`px-2 py-0.5 text-xs font-medium rounded-full border ${
+                      shipment.polVerified && shipment.podVerified
+                        ? "text-green-700 bg-green-50 border-green-100"
+                        : "text-red-700 bg-red-50 border-red-100"
+                    }`}
+                  >
+                    {shipment.polVerified && shipment.podVerified
+                      ? "Verified"
+                      : "Alert Unverified Port"}
+                  </span>
+                </div>
                 <span>Port Type:</span>
                 <span className="font-medium text-gray-900">
                   {getPortType(portType || "")}
@@ -198,7 +212,7 @@ const ShipmentBlock = (shipment: Shipment) => {
           </div>
 
           {/* Ports Section */}
-          <div className="space-y-2 rounded-lg p-4">
+          <div className="flex gap-2 rounded-lg p-4">
             {/* POL */}
             <PortDisplay
               portData={polData}
@@ -240,7 +254,7 @@ const getPortType = (portType: string) => {
 
 const PortDisplay = ({ portData, onTooltipChange }: PortDisplayProps) => {
   return (
-    <div className="flex items-center gap-3 bg-gray-50 rounded-lg p-3">
+    <div className="flex items-center w-1/2 bg-gray-50 rounded-lg p-3 mx-1">
       <div className="min-w-[24px]">
         <div
           className="relative flex items-center group/tooltip"
@@ -250,13 +264,13 @@ const PortDisplay = ({ portData, onTooltipChange }: PortDisplayProps) => {
           <div
             className={`w-3 h-3 rounded-full ${
               portData.port.verified ? "bg-green-500" : "bg-red-500"
-            } ring-4 ring-opacity-30 ${
-              portData.port.verified ? "ring-green-100" : "ring-red-100"
+            } ring-2 ring-opacity-30 ${
+              portData.port.verified ? "ring-green-200" : "ring-red-200"
             }`}
           />
         </div>
       </div>
-      <div className="flex items-center justify-between gap-3 flex-1">
+      <div className="flex items-center justify-between flex-1">
         <div className="flex items-center gap-2 min-w-0">
           {portData.port.countryCode ? (
             <img
@@ -270,15 +284,15 @@ const PortDisplay = ({ portData, onTooltipChange }: PortDisplayProps) => {
           ) : (
             <FlagIcon />
           )}
-          <span className="text-sm text-gray-900 truncate">
+          <span className="text-sm text-gray-900 font-medium truncate">
             {[portData.port?.name, portData.port?.country, portData.port?.code]
               .filter(Boolean)
               .join(", ")}
           </span>
         </div>
 
-        {/* Verification status and match score displayed directly */}
-        <div className="flex items-center gap-2">
+        {/* Verification status */}
+        <div className="flex items-center">
           <span
             className={`px-2 py-0.5 text-xs font-medium rounded-full ${
               portData.port.verified
@@ -287,10 +301,6 @@ const PortDisplay = ({ portData, onTooltipChange }: PortDisplayProps) => {
             }`}
           >
             {portData.port.verified ? "Verified" : "Unverified"}
-          </span>
-          <span className="text-xs text-gray-500">
-            Match Score:{" "}
-            <span className="font-medium">{portData.port.matchScore}</span>
           </span>
         </div>
       </div>
