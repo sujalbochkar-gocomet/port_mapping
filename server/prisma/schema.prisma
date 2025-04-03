@@ -57,19 +57,60 @@ model Port {
 }
 
 model Shipment {
-    id          String           @id @default(auto()) @map("_id") @db.ObjectId
-    pol         PortVerification
-    pod         PortVerification
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+
+    // Carrier information
     carrierType String
 
-    @@map("shipments")
+    // POL (Port of Loading) fields
+    pol_id           String
+    polId            String
+    polName          String?
+    polType          String?
+    polCountry       String?
+    polCountryCode   String?
+    polCode          String?
+    polIsCustom      Boolean  @default(false)
+    polVerified      Boolean  @default(false)
+    polMatchScore    Float?
+    polLatLon        LatLon?
+    polDisplay_name  String?
+    polOther_names   String[]
+    polCity          String?
+    polState_name    String?
+    polRegion        String?
+    polPort_type     String?
+    polLat_lon       LatLon?
+    polNearby_ports  Json?
+    polOther_details Json?
+
+    // POD (Port of Discharge) fields
+    pod_id           String
+    podId            String
+    podName          String?
+    podType          String?
+    podCountry       String?
+    podCountryCode   String?
+    podCode          String?
+    podIsCustom      Boolean  @default(false)
+    podVerified      Boolean  @default(false)
+    podMatchScore    Float?
+    podLatLon        LatLon?
+    podDisplay_name  String?
+    podOther_names   String[]
+    podCity          String?
+    podState_name    String?
+    podRegion        String?
+    podPort_type     String?
+    podLat_lon       LatLon?
+    podNearby_ports  Json?
+    podOther_details Json?
+    // Timestamps
+    createdAt        DateTime @default(now())
+    updatedAt        DateTime @updatedAt
 }
 
-type PortVerification {
-    portId      String
-    verified    Boolean
-    match_score Float
-}
+// Keep your existing Port model
 
 type LatLon {
     lat Float?

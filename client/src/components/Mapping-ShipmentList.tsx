@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import ShipmentBlock from "./Mapping-ShipmentBlock";
 import { Shipment } from "../types/types";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 
 const ShipmentList = () => {
   const [shipments, setShipments] = useState<Shipment[]>([]);
@@ -13,18 +13,17 @@ const ShipmentList = () => {
       try {
         setLoading(true);
         const response = await axios.get("http://localhost:3000/get-shipments");
-        setShipments(response.data.shipments);
+        // The API now returns the array directly, not wrapped in a shipments property
+        setShipments(response.data || []);
       } catch (err) {
         toast.error("Failed to fetch shipments");
         console.error("Error fetching shipments:", err);
+        setShipments([]); // Ensure shipments is always an array
       } finally {
         setLoading(false);
       }
     };
     fetchShipments();
-    if (shipments.length === 0) {
-      toast.error("No shipments found");
-    }
   }, []);
 
   if (loading) {
@@ -38,7 +37,7 @@ const ShipmentList = () => {
   return (
     <div className="w-full">
       <div className="flex flex-col gap-4">
-        {shipments.length > 0 ? (
+        {shipments && shipments.length > 0 ? (
           shipments.map((shipment) => (
             <ShipmentBlock key={shipment.id} {...shipment} />
           ))

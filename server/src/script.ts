@@ -80,10 +80,10 @@ app.get("/search-ports", async (req: Request, res: Response) => {
       };
       const statusPort: statusPort = {
         port: tempPort as Port,
-        verified: true,
-        match_score: Math.floor(Math.random() * (100 - 90) + 90),
+        verified: false,
+        match_score: Math.floor(Math.random() * (50 - 30) + 30),
       };
-      res.status(200).json(statusPort);
+      res.status(200).json([statusPort]);
       return;
     }
     const transformedPorts = ports.map((port) => ({
@@ -103,20 +103,106 @@ app.get("/search-ports", async (req: Request, res: Response) => {
 });
 
 app.post("/add-shipment", async (req: Request, res: Response) => {
-  const { pol, pod, carrierType } = req.body;
-  const shipment = await prisma.shipment.create({
-    data: {
-      pol,
-      pod,
-      carrierType,
-    },
-  });
-  res.status(200).json({ shipment });
+  try {
+    const { pol, pod, carrierType } = req.body;
+
+    // Create shipment with the structure matching your schema
+    const shipment = await prisma.shipment.create({
+      data: {
+        carrierType,
+
+        // POL fields
+        pol_id: pol.port._id ? pol.port._id : "",
+        polId: pol.port.id || "",
+        polName: pol.port.name || "",
+        polType: pol.port.port_type || "",
+        polCountry: pol.port.country || "",
+        polCountryCode: pol.port.country_code || "",
+        polCode: pol.port.country_code || "",
+        polIsCustom: pol.port.id?.startsWith("temp-") || false,
+        polVerified: pol.verified || false,
+        polMatchScore: pol.match_score || 0,
+        polLatLon: pol.port.lat_lon
+          ? {
+              lat: pol.port.lat_lon.lat || 0,
+              lon: pol.port.lat_lon.lon || 0,
+            }
+          : null,
+        polDisplay_name: pol.port.display_name || "",
+        polOther_names: pol.port.other_names || [],
+        polCity: pol.port.city || "",
+        polState_name: pol.port.state_name || "",
+        polRegion: pol.port.region || "",
+        polPort_type: pol.port.port_type || "",
+        polLat_lon: {
+          lat: pol.port.lat_lon?.lat || 0,
+          lon: pol.port.lat_lon?.lon || 0,
+        },
+        polNearby_ports: pol.port.nearby_ports || {},
+        polOther_details: pol.port.other_details || {},
+
+        // POD fields
+        pod_id: pod.port._id || "",
+        podId: pod.port.id || "",
+        podName: pod.port.name || "",
+        podType: pod.port.port_type || "",
+        podCountry: pod.port.country || "",
+        podCountryCode: pod.port.country_code || "",
+        podCode: pod.port.country_code || "",
+        podIsCustom: pod.port.id?.startsWith("temp-") || false,
+        podVerified: pod.verified || false,
+        podMatchScore: pod.match_score || 0,
+        podLatLon: pod.port.lat_lon
+          ? {
+              lat: pod.port.lat_lon.lat || 0,
+              lon: pod.port.lat_lon.lon || 0,
+            }
+          : null,
+        podDisplay_name: pod.port.display_name || "",
+        podOther_names: pod.port.other_names || [],
+        podCity: pod.port.city || "",
+        podState_name: pod.port.state_name || "",
+        podRegion: pod.port.region || "",
+        podPort_type: pod.port.port_type || "",
+        podLat_lon: {
+          lat: pod.port.lat_lon?.lat || 0,
+          lon: pod.port.lat_lon?.lon || 0,
+        },
+        podNearby_ports: pod.port.nearby_ports || {},
+        podOther_details: pod.port.other_details || {},
+      },
+    });
+
+    console.log("Shipment created:", shipment);
+    res.status(200).json(shipment);
+  } catch (error) {
+    console.error("Error creating shipment:", error);
+    res.status(500).json({
+      error: "Failed to create shipment",
+      details: error instanceof Error ? error.message : "Unknown error",
+    });
+  }
 });
 
-app.get("/get-shipments", async (req: Request, res: Response) => {
-  const shipments = await prisma.shipment.findMany();
-  res.status(200).json({ shipments });
+app.get("/get-shipments", async (_req: Request, res: Response) => {
+  try {
+    const shipments = await prisma.shipment.findMany({
+      orderBy: { createdAt: "desc" },
+    });
+    res.status(200).json(shipments);
+  } catch (error) {
+    console.error("Error fetching shipments:", error);
+    res.status(500).json({
+      error: "Failed to fetch shipments",
+      details: error instanceof Error ? error.message : "Unknown error",
+    });
+  }
+});
+
+app.delete("/delete-shipment/:id", async (req: Request, res: Response) => {
+  const { id } = req.params;
+  await prisma.shipment.delete({ where: { id } });
+  res.status(200).json({ message: "Shipment deleted successfully" });
 });
 
 app.listen(port, () => {

@@ -17,15 +17,14 @@ const MappingForm = () => {
   const [polSearchInput, setPolSearchInput] = useState("");
   const [polResults, setPolResults] = useState<statusPort[]>([]);
   const [selectedPol, setSelectedPol] = useState<statusPort | null>(null);
+  const [isPolDropdownOpen, setIsPolDropdownOpen] = useState(false);
+  const polDropdownRef = useRef<HTMLDivElement>(null);
 
   // Search states for POD
   const [podSearchInput, setPodSearchInput] = useState("");
   const [podResults, setPodResults] = useState<statusPort[]>([]);
   const [selectedPod, setSelectedPod] = useState<statusPort | null>(null);
-
-  const [isPolDropdownOpen, setIsPolDropdownOpen] = useState(false);
   const [isPodDropdownOpen, setIsPodDropdownOpen] = useState(false);
-  const polDropdownRef = useRef<HTMLDivElement>(null);
   const podDropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -75,7 +74,7 @@ const MappingForm = () => {
   };
   const addShipment = async () => {
     if (loading) return;
-    if (!selectedPol || !selectedPod || !carrierType) {
+    if (!selectedPol || !selectedPod) {
       toast.error("Please fill in all fields and select valid ports");
       return;
     }
@@ -86,7 +85,14 @@ const MappingForm = () => {
         pod: selectedPod,
         carrierType,
       });
+
+      // Add success toast
+      toast.success("Shipment added successfully!");
+      window.location.reload();
+      // Update shipments array with the new shipment
       setShipments([...shipments, response.data]);
+
+      // Reset form
       setCarrierType("");
       setSelectedPol(null);
       setSelectedPod(null);
@@ -131,7 +137,7 @@ const MappingForm = () => {
       {/* Mode Selector Block */}
       <div className="mb-6">
         <label className="block text-lg font-bold text-gray-600 mb-2">
-          Carrier Type <span className="text-red-500">*</span>
+          Port Type <span className="text-red-500">*</span>
         </label>
         <div className="flex items-center gap-4">
           <ModeSelector
@@ -151,7 +157,7 @@ const MappingForm = () => {
           {selectedPol ? (
             <div className="w-full px-3 py-3 bg-white border border-gray-300 rounded-lg shadow-sm flex justify-between items-center">
               {/* First div: logo and port name */}
-              <div className="flex items-center gap-2 max-w-[75%] min-w-[75%]">
+              <div className="flex items-center gap-2 max-w-[80%] min-w-[80%]">
                 {selectedPol !== null && selectedPol.port?.country_code ? (
                   <img
                     src={`https://flagsapi.com/${selectedPol.port.country_code.toUpperCase()}/flat/64.png`}
@@ -162,35 +168,28 @@ const MappingForm = () => {
                   <FlagIcon />
                 )}
                 <p className="text-sm text-gray-800 font-medium">
-                  {selectedPol.port.display_name
-                    ? selectedPol.port.display_name
-                    : selectedPol.port.name}
-                  {selectedPol.port.city ? `, ${selectedPol.port.city}` : ""}
-                  {selectedPol.port.country
-                    ? `, ${selectedPol.port.country}`
-                    : ""}
-                  {selectedPol.port.code ? `, ${selectedPol.port.code}` : ""}
+                  {(() => {
+                    const displayName =
+                      selectedPol.port.display_name || selectedPol.port.name;
+                    const city = selectedPol.port.city;
+                    const country = selectedPol.port.country;
+                    const code = selectedPol.port.code;
+
+                    let fullText = displayName;
+                    if (city) fullText += `, ${city}`;
+                    if (country) fullText += `, ${country}`;
+                    if (code) fullText += `, ${code}`;
+
+                    return fullText.length > 57
+                      ? fullText.substring(0, 45) + "..."
+                      : fullText;
+                  })()}
                 </p>
               </div>
 
               {/* Second div: type and match score */}
-              <div className="flex flex-col items-end text-xs w-full mr-1 text-gray-800">
-                <div className="font-semibold">
-                  Type: {checkPortType(selectedPol.port.port_type)}
-                </div>
-                <div
-                  className={`mt-1.5 px-2 py-1 border rounded-lg ${
-                    selectedPol.match_score >= 90
-                      ? "bg-green-100 border-green-500 text-green-600"
-                      : selectedPol.match_score >= 70
-                      ? "bg-orange-100 border-orange-500 text-orange-600"
-                      : "bg-red-100 border-red-500 text-red-600"
-                  }`}
-                >
-                  {selectedPol.match_score
-                    ? `${selectedPol.match_score}% match`
-                    : ""}
-                </div>
+              <div className="text-xs text-gray-500">
+                Type: {checkPortType(selectedPol.port.port_type)}
               </div>
 
               {/* Third div: close button */}
@@ -209,7 +208,7 @@ const MappingForm = () => {
                 type="text"
                 value={polSearchInput}
                 placeholder="Enter POL..."
-                className="w-full px-3 py-3 h-[4.6rem] bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-3 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 onChange={handlePolInputChange}
                 onClick={() => setIsPolDropdownOpen(true)}
               />
@@ -259,7 +258,7 @@ const MappingForm = () => {
           {selectedPod ? (
             <div className="w-full px-3 py-3 bg-white border border-gray-300 rounded-lg shadow-sm flex justify-between items-center">
               {/* First div: logo and port name */}
-              <div className="flex items-center gap-2 max-w-[75%] min-w-[75%]">
+              <div className="flex items-center gap-2 max-w-[80%] min-w-[80%]">
                 {selectedPod !== null && selectedPod.port?.country_code ? (
                   <img
                     src={`https://flagsapi.com/${selectedPod.port.country_code.toUpperCase()}/flat/64.png`}
@@ -270,35 +269,28 @@ const MappingForm = () => {
                   <FlagIcon />
                 )}
                 <p className="text-sm text-gray-800 font-medium">
-                  {selectedPod.port.display_name
-                    ? selectedPod.port.display_name
-                    : selectedPod.port.name}
-                  {selectedPod.port.city ? `, ${selectedPod.port.city}` : ""}
-                  {selectedPod.port.country
-                    ? `, ${selectedPod.port.country}`
-                    : ""}
-                  {selectedPod.port.code ? `, ${selectedPod.port.code}` : ""}
+                  {(() => {
+                    const displayName =
+                      selectedPod.port.display_name || selectedPod.port.name;
+                    const city = selectedPod.port.city;
+                    const country = selectedPod.port.country;
+                    const code = selectedPod.port.code;
+
+                    let fullText = displayName;
+                    if (city) fullText += `, ${city}`;
+                    if (country) fullText += `, ${country}`;
+                    if (code) fullText += `, ${code}`;
+
+                    return fullText.length > 57
+                      ? fullText.substring(0, 48) + "..."
+                      : fullText;
+                  })()}
                 </p>
               </div>
 
               {/* Second div: type and match score */}
-              <div className="flex flex-col items-end text-xs w-full mr-1 text-gray-800">
-                <div className="font-semibold">
-                  Type: {checkPortType(selectedPod.port.port_type)}
-                </div>
-                <div
-                  className={`mt-1.5 px-2 py-1 border rounded-lg ${
-                    selectedPod.match_score >= 90
-                      ? "bg-green-100 border-green-500 text-green-600"
-                      : selectedPod.match_score >= 70
-                      ? "bg-orange-100 border-orange-500 text-orange-600"
-                      : "bg-red-100 border-red-500 text-red-600"
-                  }`}
-                >
-                  {selectedPod.match_score
-                    ? `${selectedPod.match_score}% match`
-                    : ""}
-                </div>
+              <div className="text-xs text-gray-500">
+                Type: {checkPortType(selectedPod.port.port_type)}
               </div>
 
               {/* Third div: close button */}
@@ -317,7 +309,7 @@ const MappingForm = () => {
                 type="text"
                 value={podSearchInput}
                 placeholder="Enter POD..."
-                className="w-full px-3 py-3 h-[4.6rem] bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-3 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 onChange={handlePodInputChange}
                 onClick={() => setIsPodDropdownOpen(true)}
               />
@@ -363,7 +355,7 @@ const MappingForm = () => {
           <button
             onClick={addShipment}
             disabled={loading}
-            className={`px-5 py-3 h-[4.6rem] font-bold rounded-md transition-colors flex items-center gap-2
+            className={`px-5 py-3  font-bold rounded-md transition-colors flex items-center gap-2
                 ${
                   loading
                     ? "bg-blue-300 cursor-not-allowed"
@@ -377,7 +369,6 @@ const MappingForm = () => {
               </>
             ) : (
               <>
-                Add Shipment
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 font-bold"
@@ -386,6 +377,7 @@ const MappingForm = () => {
                 >
                   <path d="M8.5 2a1 1 0 0 0-1 1v5h-5a1 1 0 0 0 0 2h5v5a1 1 0 0 0 2 0v-5h5a1 1 0 0 0 0-2h-5V3a1 1 0 0 0-1-1z" />
                 </svg>
+                Add Shipment
               </>
             )}
           </button>
@@ -419,17 +411,6 @@ const PortDropdownItem = ({ port }: { port: statusPort }) => {
       <div>
         <div className="text-xs text-gray-500">
           Type: {checkPortType(port.port.port_type)}
-        </div>
-        <div
-          className={`text-xs rounded-lg mt-1.5 px-2 py-1 border ${
-            port.match_score >= 90
-              ? "bg-green-100 border-green-500 text-green-600"
-              : port.match_score >= 70
-              ? "bg-orange-100 border-orange-500 text-orange-600"
-              : "bg-red-100 border-red-500 text-red-600"
-          }`}
-        >
-          {port.match_score ? `${port.match_score}% match` : ""}
         </div>
       </div>
     </div>

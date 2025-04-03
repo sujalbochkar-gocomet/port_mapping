@@ -40,22 +40,88 @@ export interface Port {
   country_port: boolean;
 }
 
-export interface PortVerification {
-  portId: string;
-  verified: boolean;
-  match_score: number;
-  port?: Port;
-}
-
 export interface Shipment {
   id: string;
   carrierType: string;
-  pol: PortVerification;
-  pod: PortVerification;
+
+  // POL data
+  pol_id: string;
+  polId: string;
+  polName?: string;
+  polType?: string;
+  polCountry?: string;
+  polCountryCode?: string;
+  polCode?: string;
+  polIsCustom: boolean;
+  polVerified: boolean;
+  polMatchScore?: number;
+  polLatLon?: LatLon;
+  polDisplay_name?: string;
+  polOther_names: string[];
+  polCity?: string;
+  polState_name?: string;
+  polRegion?: string;
+  polPort_type?: string;
+  polLat_lon: LatLon;
+  polNearby_ports?: JSON;
+  polOther_details?: JSON;
+
+  // POD data
+  pod_id: string;
+  podId: string;
+  podName?: string;
+  podType?: string;
+  podCountry?: string;
+  podCountryCode?: string;
+  podCode?: string;
+  podIsCustom: boolean;
+  podVerified: boolean;
+  podMatchScore?: number;
+  podLatLon?: LatLon;
+  podDisplay_name?: string;
+  podOther_names: string[];
+  podCity?: string;
+  podState_name?: string;
+  podRegion?: string;
+  podPort_type?: string;
+  podLat_lon: LatLon;
+  podNearby_ports?: JSON;
+  podOther_details?: JSON;
+
+  // Timestamps
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface statusPort {
   port: Port;
   verified: boolean;
   match_score: number;
+}
+
+export interface PortDisplayData {
+  port: {
+    _id: string;
+    id: string;
+    name: string;
+    type: string;
+    country: string;
+    countryCode: string;
+    code: string;
+    isCustom: boolean;
+    verified: boolean;
+    matchScore: number;
+    latLon: LatLon;
+    display_name?: string;
+    other_names: string[];
+    city?: string;
+    state_name?: string;
+    region?: string;
+    port_type: string;
+    lat_lon: LatLon;
+    nearby_ports?: JSON;
+    other_details?: JSON;
+  };
+  carrierType: string;
+  createdAt: Date;
 }

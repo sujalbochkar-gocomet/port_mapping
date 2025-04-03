@@ -1,14 +1,72 @@
-import { PortVerification, Shipment } from "../types/types";
+import { PortDisplayData, Shipment } from "../types/types";
 import { useState } from "react";
 import axios from "axios";
 import { FlagIcon } from "./Mapping-Form";
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
+
+// Interface for the port data needed by PortDisplay
 
 const ShipmentBlock = (shipment: Shipment) => {
   const [showPolTooltip, setShowPolTooltip] = useState(false);
   const [showPodTooltip, setShowPodTooltip] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+
+  // Create POL data from the shipment properties
+  const polData: PortDisplayData = {
+    port: {
+      _id: shipment.polId || "",
+      id: shipment.polId || "",
+      name: shipment.polName || "",
+      type: shipment.polType || "",
+      country: shipment.polCountry || "",
+      countryCode: shipment.polCountryCode || "",
+      code: shipment.polCode || "",
+      isCustom: shipment.polIsCustom || false,
+      verified: shipment.polVerified || false,
+      matchScore: shipment.polMatchScore || 0,
+      latLon: shipment.polLatLon || { lat: 0, lon: 0 },
+      display_name: shipment.polDisplay_name,
+      other_names: shipment.polOther_names,
+      city: shipment.polCity,
+      state_name: shipment.polState_name,
+      region: shipment.polRegion,
+      port_type: shipment.polPort_type || "",
+      lat_lon: shipment.polLat_lon,
+      nearby_ports: shipment.polNearby_ports,
+      other_details: shipment.polOther_details,
+    },
+    carrierType: shipment.carrierType,
+    createdAt: shipment.createdAt || new Date(),
+  };
+
+  // Create POD data from the shipment properties
+  const podData: PortDisplayData = {
+    port: {
+      _id: shipment.podId || "",
+      id: shipment.podId || "",
+      name: shipment.podName || "",
+      type: shipment.podType || "",
+      country: shipment.podCountry || "",
+      countryCode: shipment.podCountryCode || "",
+      code: shipment.podCode || "",
+      isCustom: shipment.podIsCustom || false,
+      verified: shipment.podVerified || false,
+      matchScore: shipment.podMatchScore || 0,
+      latLon: shipment.podLatLon || { lat: 0, lon: 0 },
+      display_name: shipment.podDisplay_name,
+      other_names: shipment.podOther_names,
+      city: shipment.podCity,
+      state_name: shipment.podState_name,
+      region: shipment.podRegion,
+      port_type: shipment.podPort_type || "",
+      lat_lon: shipment.podLat_lon,
+      nearby_ports: shipment.podNearby_ports,
+      other_details: shipment.podOther_details,
+    },
+    carrierType: shipment.carrierType,
+    createdAt: shipment.createdAt || new Date(),
+  };
 
   const handleDelete = async () => {
     if (!shipment.id) return;
@@ -28,7 +86,8 @@ const ShipmentBlock = (shipment: Shipment) => {
       setShowDropdown(false);
     }
   };
-
+  const portType =
+    shipment.podPort_type || shipment.polPort_type || shipment.carrierType;
   return (
     <div className="w-full bg-white rounded-xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-all duration-200 group">
       <div className="flex items-start justify-between gap-4">
@@ -42,21 +101,21 @@ const ShipmentBlock = (shipment: Shipment) => {
               </div>
               <span
                 className={`px-2 py-0.5 text-xs font-medium rounded-full border ${
-                  shipment.pol.verified && shipment.pod.verified
+                  shipment.polVerified && shipment.podVerified
                     ? "text-green-700 bg-green-50 border-green-100"
                     : "text-red-700 bg-red-50 border-red-100"
                 }`}
               >
-                {shipment.pol.verified && shipment.pod.verified
+                {shipment.polVerified && shipment.podVerified
                   ? "Verified"
                   : "Alert Unverified Port"}
               </span>
             </div>
             <div className="flex items-center gap-3">
               <div className="text-sm text-gray-500 flex items-center gap-2">
-                <span>Carrier:</span>
+                <span>Port Type:</span>
                 <span className="font-medium text-gray-900">
-                  {shipment.carrierType}
+                  {getPortType(portType || "")}
                 </span>
               </div>
               <div className="flex items-center gap-2">
@@ -142,14 +201,14 @@ const ShipmentBlock = (shipment: Shipment) => {
           <div className="space-y-2 rounded-lg p-4">
             {/* POL */}
             <PortDisplay
-              portData={shipment.pol}
+              portData={polData}
               showTooltip={showPolTooltip}
               onTooltipChange={setShowPolTooltip}
             />
 
             {/* POD */}
             <PortDisplay
-              portData={shipment.pod}
+              portData={podData}
               showTooltip={showPodTooltip}
               onTooltipChange={setShowPodTooltip}
             />
@@ -161,10 +220,23 @@ const ShipmentBlock = (shipment: Shipment) => {
 };
 
 interface PortDisplayProps {
-  portData: PortVerification;
+  portData: PortDisplayData;
   showTooltip: boolean;
   onTooltipChange: (show: boolean) => void;
 }
+
+const getPortType = (portType: string) => {
+  switch (portType) {
+    case "sea_port":
+      return "SEA";
+    case "address":
+      return "LAND";
+    case "air_port":
+      return "AIR";
+    default:
+      return "NA";
+  }
+};
 
 const PortDisplay = ({ portData, onTooltipChange }: PortDisplayProps) => {
   return (
@@ -177,18 +249,18 @@ const PortDisplay = ({ portData, onTooltipChange }: PortDisplayProps) => {
         >
           <div
             className={`w-3 h-3 rounded-full ${
-              portData.verified ? "bg-green-500" : "bg-red-500"
+              portData.port.verified ? "bg-green-500" : "bg-red-500"
             } ring-4 ring-opacity-30 ${
-              portData.verified ? "ring-green-100" : "ring-red-100"
+              portData.port.verified ? "ring-green-100" : "ring-red-100"
             }`}
           />
         </div>
       </div>
       <div className="flex items-center justify-between gap-3 flex-1">
         <div className="flex items-center gap-2 min-w-0">
-          {portData.port?.country_code ? (
+          {portData.port.countryCode ? (
             <img
-              src={`https://flagsapi.com/${portData.port.country_code.toUpperCase()}/flat/64.png`}
+              src={`https://flagsapi.com/${portData.port.countryCode.toUpperCase()}/flat/64.png`}
               alt={`${portData.port.country} flag`}
               className="w-6 h-4 object-cover rounded-sm shadow-sm flex-shrink-0"
               onError={(e) => {
@@ -199,12 +271,7 @@ const PortDisplay = ({ portData, onTooltipChange }: PortDisplayProps) => {
             <FlagIcon />
           )}
           <span className="text-sm text-gray-900 truncate">
-            {[
-              portData.port?.name,
-              portData.port?.city,
-              portData.port?.country,
-              portData.port?.code,
-            ]
+            {[portData.port?.name, portData.port?.country, portData.port?.code]
               .filter(Boolean)
               .join(", ")}
           </span>
@@ -214,16 +281,16 @@ const PortDisplay = ({ portData, onTooltipChange }: PortDisplayProps) => {
         <div className="flex items-center gap-2">
           <span
             className={`px-2 py-0.5 text-xs font-medium rounded-full ${
-              portData.verified
+              portData.port.verified
                 ? "text-green-700 bg-green-50 border border-green-100"
                 : "text-red-700 bg-red-50 border border-red-100"
             }`}
           >
-            {portData.verified ? "Verified" : "Unverified"}
+            {portData.port.verified ? "Verified" : "Unverified"}
           </span>
           <span className="text-xs text-gray-500">
             Match Score:{" "}
-            <span className="font-medium">{portData.match_score}</span>
+            <span className="font-medium">{portData.port.matchScore}</span>
           </span>
         </div>
       </div>

@@ -1,4 +1,3 @@
-import React from "react";
 import NavBar from "../components/NavBar";
 import MapInput from "../components/Mapping-Main";
 
