@@ -1,0 +1,118 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+    provider        = "prisma-client-js"
+    previewFeatures = ["mongodb"]
+}
+
+datasource db {
+    provider = "mongodb"
+    url      = env("DATABASE_URL")
+}
+
+model Port {
+    id           String   @id @default(auto()) @map("_id") @db.ObjectId
+    uuid         String?  @map("id")
+    code         String?
+    name         String?
+    display_name String?
+    other_names  String[]
+
+    city         String?
+    state_name   String?
+    country      String?
+    country_code String?
+    region       String?
+
+    port_type     String // Changed from enum to String to match MongoDB
+    lat_lon       LatLon
+    nearby_ports  Json?
+    other_details Json?
+
+    deleted                    Boolean  @default(false)
+    client_group_id            String?
+    created_at                 String? // Changed from DateTime to String
+    updated_at                 String? // Changed from DateTime to String
+    sort_order                 Int      @default(0)
+    verified                   Boolean?
+    sailing_schedule_available Boolean?
+    item_type                  String?
+    master_port                Boolean?
+    address                    String?
+    fax_number                 String?
+    telephone_number           String?
+    website                    String?
+    description                String?
+    seo_code                   String?
+    seo_updated                Boolean?
+    is_head_port               Boolean?
+    prefer_inland              Boolean?
+    country_port               Boolean?
+
+    @@map("Port")
+}
+
+model Shipment {
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+
+    // Carrier information
+    carrierType String
+
+    // POL (Port of Loading) fields
+    pol_id           String
+    polId            String
+    polName          String?
+    polType          String?
+    polCountry       String?
+    polCountryCode   String?
+    polCode          String?
+    polIsCustom      Boolean  @default(false)
+    polVerified      Boolean  @default(false)
+    polMatchScore    Float?
+    polLatLon        LatLon?
+    polDisplay_name  String?
+    polOther_names   String[]
+    polCity          String?
+    polState_name    String?
+    polRegion        String?
+    polPort_type     String?
+    polLat_lon       LatLon?
+    polNearby_ports  Json?
+    polOther_details Json?
+
+    // POD (Port of Discharge) fields
+    pod_id           String
+    podId            String
+    podName          String?
+    podType          String?
+    podCountry       String?
+    podCountryCode   String?
+    podCode          String?
+    podIsCustom      Boolean  @default(false)
+    podVerified      Boolean  @default(false)
+    podMatchScore    Float?
+    podLatLon        LatLon?
+    podDisplay_name  String?
+    podOther_names   String[]
+    podCity          String?
+    podState_name    String?
+    podRegion        String?
+    podPort_type     String?
+    podLat_lon       LatLon?
+    podNearby_ports  Json?
+    podOther_details Json?
+    // Timestamps
+    createdAt        DateTime @default(now())
+    updatedAt        DateTime @updatedAt
+}
+
+// Keep your existing Port model
+
+type LatLon {
+    lat Float?
+    lon Float?
+}
