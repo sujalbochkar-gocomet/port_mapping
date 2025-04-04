@@ -2,7 +2,7 @@ import { Port } from "../src/types/types";
 import { Groq } from 'groq-sdk';
 import { spawn } from 'child_process';
 import { join } from 'path';
-import Fuse from 'fuse.js';
+// import Fuse from 'fuse.js';
 import connectDB = require('../lib/db');
 import PortModel = require('../models/Port');
 import mongoose from 'mongoose';
@@ -21,20 +21,20 @@ interface CascadingResult {
   match_algo_type: string;
 }
 
-interface FuseKey {
-  name: string;
-  getFn: (port: Port) => string | string[];
-}
+// interface FuseKey {
+//   name: string;
+//   getFn: (port: Port) => string | string[];
+// }
 
-interface FuseOptions {
-  keys: FuseKey[];
-  threshold: number;
-  includeScore: boolean;
-  findAllMatches: boolean;
-  includeMatches: boolean;
-  tokenize: boolean;
-  tokenSeparator: RegExp;
-}
+// interface FuseOptions {
+//   keys: FuseKey[];
+//   threshold: number;
+//   includeScore: boolean;
+//   findAllMatches: boolean;
+//   includeMatches: boolean;
+//   tokenize: boolean;
+//   tokenSeparator: RegExp;
+// }
 
 class PortMatcher {
   private portsData: Port[];
@@ -42,7 +42,7 @@ class PortMatcher {
   private locationSearchableKeys: string[];
   private ignoredKeywords: Set<string>;
   private groq: Groq;
-  private fuse!: Fuse<Port>;
+//   private fuse!: Fuse<Port>;
 
   constructor(portsData: Port[]) {
     if (!Array.isArray(portsData) || portsData.length === 0) {
@@ -99,7 +99,7 @@ class PortMatcher {
       dangerouslyAllowBrowser: true,
     });
 
-    this._createFuseIndex();
+    // this._createFuseIndex();
   }
 
   static async loadPortsData(): Promise<Port[]> {
@@ -324,90 +324,90 @@ class PortMatcher {
     return results.sort((a, b) => b.confidence_score - a.confidence_score);
   }
 
-  private _createFuseIndex(): void {
-    const searchableKeyConfigs: FuseKey[] = this.searchableKeys.map(key => ({
-      name: key,
-      getFn: (port: Port) => {
-        const value = port[key as keyof Port] as string;
-        return value ? this.normalizeString(value).split(/\s+/)
-          .filter(word => !this.ignoredKeywords.has(word))
-          .join(" ") : '';
-      }
-    }));
+//   private _createFuseIndex(): void {
+//     const searchableKeyConfigs: FuseKey[] = this.searchableKeys.map(key => ({
+//       name: key,
+//       getFn: (port: Port) => {
+//         const value = port[key as keyof Port] as string;
+//         return value ? this.normalizeString(value).split(/\s+/)
+//           .filter(word => !this.ignoredKeywords.has(word))
+//           .join(" ") : '';
+//       }
+//     }));
 
-    const otherNamesConfig: FuseKey = {
-      name: 'other_names',
-      getFn: (port: Port) => {
-        if (!Array.isArray(port.other_names)) return [];
-        return port.other_names
-          .map(name => {
-            const normalized = this.normalizeString(name);
-            return normalized
-              .split(/\s+/)
-              .filter(word => !this.ignoredKeywords.has(word))
-              .join(" ");
-          })
-          .filter(name => name.trim() !== "");
-      }
-    };
+//     const otherNamesConfig: FuseKey = {
+//       name: 'other_names',
+//       getFn: (port: Port) => {
+//         if (!Array.isArray(port.other_names)) return [];
+//         return port.other_names
+//           .map(name => {
+//             const normalized = this.normalizeString(name);
+//             return normalized
+//               .split(/\s+/)
+//               .filter(word => !this.ignoredKeywords.has(word))
+//               .join(" ");
+//           })
+//           .filter(name => name.trim() !== "");
+//       }
+//     };
 
-    const options: FuseOptions = {
-      keys: [...searchableKeyConfigs, otherNamesConfig],
-      threshold: 0.4,
-      includeScore: true,
-      findAllMatches: true,
-      includeMatches: true,
-      tokenize: true,
-      tokenSeparator: / +/
-    };
+//     const options: FuseOptions = {
+//       keys: [...searchableKeyConfigs, otherNamesConfig],
+//       threshold: 0.4,
+//       includeScore: true,
+//       findAllMatches: true,
+//       includeMatches: true,
+//       tokenize: true,
+//       tokenSeparator: / +/
+//     };
 
-    this.fuse = new Fuse(this.portsData, options);
-  }
+//     this.fuse = new Fuse(this.portsData, options);
+//   }
 
-  private fuzzySearch(inputString: string): CascadingResult[] {
-    if (typeof inputString !== "string" || !inputString.trim()) {
-      return [];
-    }
+//   private fuzzySearch(inputString: string): CascadingResult[] {
+//     if (typeof inputString !== "string" || !inputString.trim()) {
+//       return [];
+//     }
 
-    inputString = this.normalizeString(inputString)
-      .split(/\s+/)
-      .filter(word => !this.ignoredKeywords.has(word))
-      .join(" ");
+//     inputString = this.normalizeString(inputString)
+//       .split(/\s+/)
+//       .filter(word => !this.ignoredKeywords.has(word))
+//       .join(" ");
 
-    const fuseResults = this.fuse.search(inputString, { limit: 10 });
+//     const fuseResults = this.fuse.search(inputString, { limit: 10 });
 
-    return fuseResults.map((result) => {
-      const matches = result.matches || [];
-      const match = matches[0];
+//     return fuseResults.map((result) => {
+//       const matches = result.matches || [];
+//       const match = matches[0];
       
-      if (!match) {
-        return {
-          port_data: result.item,
-          confidence_score: (1 - (result.score || 0)) * 100,
-          match_type: 'unknown',
-          match_algo_type: "fuzzy"
-        };
-      }
+//       if (!match) {
+//         return {
+//           port_data: result.item,
+//           confidence_score: (1 - (result.score || 0)) * 100,
+//           match_type: 'unknown',
+//           match_algo_type: "fuzzy"
+//         };
+//       }
 
-      let matchType = match.key || 'unknown';
-      if (matchType === 'other_names') {
-        const matchedName = match.value;
-        const matchedOtherName = result.item.other_names?.find(
-          name => this.normalizeString(name) === matchedName
-        );
-        if (matchedOtherName) {
-          matchType = `other_names:${matchedOtherName}`;
-        }
-      }
+//       let matchType = match.key || 'unknown';
+//       if (matchType === 'other_names') {
+//         const matchedName = match.value;
+//         const matchedOtherName = result.item.other_names?.find(
+//           name => this.normalizeString(name) === matchedName
+//         );
+//         if (matchedOtherName) {
+//           matchType = `other_names:${matchedOtherName}`;
+//         }
+//       }
 
-      return {
-        port_data: result.item,
-        confidence_score: (1 - (result.score || 0)) * 100,
-        match_type: matchType,
-        match_algo_type: "fuzzy"
-      };
-    });
-  }
+//       return {
+//         port_data: result.item,
+//         confidence_score: (1 - (result.score || 0)) * 100,
+//         match_type: matchType,
+//         match_algo_type: "fuzzy"
+//       };
+//     });
+//   }
 
   private async rubyFuzzySearch(inputString: string): Promise<CascadingResult[]> {
     if (typeof inputString !== "string" || !inputString.trim()) {

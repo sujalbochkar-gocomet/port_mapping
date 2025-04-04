@@ -48,7 +48,9 @@ app.get("/search-ports", async (req: Request, res: Response) => {
     const type = req.query.type as string;
     console.log(`Searching ports with query: "${query}" and type: "${type}"`);
 
-    const results = await portMatcher.aggregatedResults(query, type);
+    let results = [];
+    if (type === "all") results = await portMatcher.aggregatedResults(query, null);
+    else results = await portMatcher.aggregatedResults(query, type);
     
     if (results.length === 0) {
       console.log("No ports found");

@@ -4,8 +4,8 @@ const path = require("path");
 const fsPromises = fs.promises;
 const { spawn } = require('child_process');
 const { Groq } = require('groq-sdk');
-const Port = require('../models/Port');
-const connectDB = require('../lib/db');
+const Port = require('../../models/Port');
+const connectDB = require('../../lib/db');
 const mongoose = require('mongoose');
 
 // Update the path to .env file

@@ -1,4 +1,4 @@
-const PortMatcher = require('./mapper');
+const PortMatcher = require('../mapper');
 const path = require('path');
 
 let matcher = null;

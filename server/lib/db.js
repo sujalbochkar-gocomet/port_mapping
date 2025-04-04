@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 
 const connectDB = async () => {
   try {
-    if (!process.env.MONGODB_URI) {
-      throw new Error('MONGODB_URI environment variable is not defined');
+    if (!process.env.MONGODB_URL) {
+      throw new Error('MONGODB_URL environment variable is not defined');
     }
 
     // MongoDB connection options - removed deprecated options
@@ -13,7 +14,7 @@ const connectDB = async () => {
       serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds
     };
 
-    const conn = await mongoose.connect(process.env.MONGODB_URI, options);
+    const conn = await mongoose.connect(process.env.MONGODB_URL, options);
     console.log(`MongoDB Connected: ${conn.connection.host}`);
     return conn;
   } catch (error) {

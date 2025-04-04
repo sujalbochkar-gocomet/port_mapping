@@ -1,10 +1,30 @@
-const fs = require("fs").promises;
-const map_port = require("../portMapper");
+import PortMatcher = require("../mapper");
+import { promises as fs } from 'fs';
+import connectDB = require('../../lib/db');
 
-async function main() {
+interface TestPort {
+    Keyword: string;
+    "Port Type": string;
+    "Mapped Port ID": string;
+}
+
+
+
+async function main(): Promise<void> {
     try {
+        // First connect to MongoDB
+        console.log("Connecting to MongoDB...");
+        await connectDB();
+        console.log("MongoDB connection established successfully");
+
         const portsFilePath = "./ports.json";
-        const ports = JSON.parse(await fs.readFile(portsFilePath, "utf-8"));
+        const ports: TestPort[] = JSON.parse(await fs.readFile(portsFilePath, "utf-8"));
+
+        // Initialize PortMatcher
+        console.log("Initializing PortMatcher...");
+        const portsData = await PortMatcher.loadPortsData();
+        const portMatcher = new PortMatcher(portsData);
+        console.log("PortMatcher initialized successfully");
 
         let matchedCount = 0;
         let unmatchedCount = 0;
@@ -17,26 +37,26 @@ async function main() {
 
         for (const port of ports) {
             const startTime = performance.now();
-            const result = await map_port(port["Keyword"], port["Port Type"]);
+            const results = await portMatcher.aggregatedResults(port["Keyword"], port["Port Type"]);
             const endTime = performance.now();
             const timeTaken = endTime - startTime;
             totalTime += timeTaken;
 
-            if (!result || result.length === 0) {
+            if (!results || results.length === 0) {
                 emptyResultsCount++;
                 console.log(`❌ Empty Results: "${port["Keyword"]}" (${port["Port Type"]}) - ${timeTaken.toFixed(2)}ms`);
                 console.log(`   Expected: ${port["Mapped Port ID"]}`);
 
-            } else if (result[0]?.port_data?.id === port["Mapped Port ID"]) {
+            } else if (results[0]?.port_data?.id === port["Mapped Port ID"]) {
                 matchedCount++;
-                console.log(`✅ Matched: "${port["Keyword"]}" -> ${result[0].port_data.name} (${timeTaken.toFixed(2)}ms)`);
+                console.log(`✅ Matched: "${port["Keyword"]}" -> ${results[0].port_data.name} (${timeTaken.toFixed(2)}ms)`);
             } else {
                 unmatchedCount++;
                 console.log(`❌ Unmatched: "${port["Keyword"]}"`);
                 console.log(`   Expected: ${port["Mapped Port ID"]}`);
-                console.log(`   Got: ${result[0]?.port_data?.id || 'No ID'}`);
+                console.log(`   Got: ${results[0]?.port_data?.id || 'No ID'}`);
                 console.log(`   Time: ${timeTaken.toFixed(2)}ms`);
-                console.log(`   Matched using ${result[0].match_type} and sources are ${result[0].sources.join(', ')}`);
+                console.log(`   Matched using ${results[0].match_type} and sources are ${results[0].sources.join(', ')}`);
             }
 
             processedCount++;
@@ -56,7 +76,7 @@ async function main() {
         }
 
         console.log("\n=== Final Test Results ===");
-        console.log(`Total Test Cases: ${ports.length}`);t
+        console.log(`Total Test Cases: ${ports.length}`);
         console.log(`✅ Matched: ${matchedCount}`);
         console.log(`❌ Unmatched: ${unmatchedCount}`);
         console.log(`⚠️ Empty Results: ${emptyResultsCount}`);
@@ -67,8 +87,9 @@ async function main() {
 
     } catch (error) {
         console.error("Error:", error);
-        console.error("Stack trace:", error.stack);
+        console.error("Stack trace:", error instanceof Error ? error.stack : 'No stack trace');
+        process.exit(1);
     }
 }
 
-main();
+main(); 
