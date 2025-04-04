@@ -3,7 +3,10 @@ const fs = require("fs");
 const path = require("path");
 const fsPromises = fs.promises;
 const { spawn } = require('child_process');
-// const os = require('os');
+const { Groq } = require('groq-sdk');
+
+// Update the path to .env file
+require("dotenv").config({ path: path.join(__dirname, '../.env') });
 
 class PortMatcher {
   constructor(portsData) {
@@ -15,10 +18,11 @@ class PortMatcher {
     if (!Array.isArray(portsData) || portsData.length === 0) {
       throw new Error("portsData must be a non-empty array");
     }
+
     this.portsData = portsData;
     // this._createFuseIndex();
     // Initialize searchable keys
-    this.searchableKeys = ["name", "code","display_name"];
+    this.searchableKeys = ["name", "code", "display_name"];
     // Initialize Location searchable keys
     this.locationSearchableKeys = ["country", "region", "city", "state_name"];
     // Initialize ignored keywords
@@ -64,11 +68,16 @@ class PortMatcher {
       "airport",
     ]);
 
+    this.groq = new Groq({
+      apiKey: process.env.GROQ_API_KEY,
+      dangerouslyAllowBrowser: true,
+    });
+
     this._createFuseIndex();
 
   }
 
-  
+
 
   static async loadPortsData(filePath) {
     /**
@@ -94,8 +103,6 @@ class PortMatcher {
       throw error;
     }
   }
-
-
 
   normalizeString(str) {
     /**
@@ -202,7 +209,7 @@ class PortMatcher {
       return [];
     }
 
-    // Pre-process input words once
+    // Pre-process input words once and cache the result
     const inputWords = this.normalizeString(inputString)
       .split(/\s+/)
       .filter(word => !this.ignoredKeywords.has(word));
@@ -213,38 +220,19 @@ class PortMatcher {
 
     const inputWordsSet = new Set(inputWords);
     const results = [];
+    const MIN_CONFIDENCE = 10;
 
-    // Helper function to calculate word overlap score
-    const calculateOverlapScore = (fieldWordsSet) => {
-      const commonWords = [...inputWordsSet].filter(word => fieldWordsSet.has(word)).length;
-      const totalWords = inputWordsSet.size + fieldWordsSet.size;
-      return totalWords === 0 ? 0 : (2 * commonWords * 100) / totalWords;
-    };
+    // Cache for normalized field values to avoid repeated processing
+    const fieldCache = new Map();
 
-    // Helper function to calculate word order score
-    const calculateOrderScore = (fieldWords) => {
-      if (fieldWords.length === 0) return 0;
-
-      let maxConsecutiveMatches = 0;
-      const minLength = Math.min(inputWords.length, fieldWords.length);
-
-      // Optimize order score calculation with a single pass
-      for (let i = 0; i <= inputWords.length - minLength; i++) {
-        for (let j = 0; j <= fieldWords.length - minLength; j++) {
-          let matches = 0;
-          while (matches < minLength && inputWords[i + matches] === fieldWords[j + matches]) {
-            matches++;
-          }
-          maxConsecutiveMatches = Math.max(maxConsecutiveMatches, matches);
-        }
-      }
-
-      return (maxConsecutiveMatches / minLength) * 100;
-    };
-
-    // Helper function to process a field value
-    const processField = (value, fieldType) => {
+    // Helper function to get normalized words for a field value
+    const getNormalizedWords = (value, fieldType) => {
       if (!value) return null;
+      
+      const cacheKey = `${fieldType}:${value}`;
+      if (fieldCache.has(cacheKey)) {
+        return fieldCache.get(cacheKey);
+      }
 
       const fieldWords = this.normalizeString(value)
         .split(/\s+/)
@@ -252,41 +240,97 @@ class PortMatcher {
 
       if (fieldWords.length === 0) return null;
 
-      const fieldWordsSet = new Set(fieldWords);
-      const overlapScore = calculateOverlapScore(fieldWordsSet);
-      const orderScore = calculateOrderScore(fieldWords);
-      const confidence = (overlapScore * 0.6) + (orderScore * 0.4);
-
-      return confidence > 10 ? {
-        confidence,
-        matchType: fieldType
-      } : null;
+      const result = {
+        words: fieldWords,
+        set: new Set(fieldWords)
+      };
+      
+      fieldCache.set(cacheKey, result);
+      return result;
     };
 
-    // Process each port
+    // Optimized overlap score calculation
+    const calculateOverlapScore = (fieldWordsSet) => {
+      let commonWords = 0;
+      for (const word of inputWordsSet) {
+        if (fieldWordsSet.has(word)) commonWords++;
+      }
+      const totalWords = inputWordsSet.size + fieldWordsSet.size;
+      return totalWords === 0 ? 0 : (2 * commonWords * 100) / totalWords;
+    };
+
+    // Optimized order score calculation using sliding window
+    const calculateOrderScore = (fieldWords) => {
+      if (fieldWords.length === 0) return 0;
+
+      const minLength = Math.min(inputWords.length, fieldWords.length);
+      let maxConsecutiveMatches = 0;
+      
+      // Use sliding window approach for better performance
+      for (let i = 0; i <= fieldWords.length - minLength; i++) {
+        let matches = 0;
+        for (let j = 0; j < minLength; j++) {
+          if (fieldWords[i + j] === inputWords[j]) {
+            matches++;
+          } else {
+            break;
+          }
+        }
+        maxConsecutiveMatches = Math.max(maxConsecutiveMatches, matches);
+      }
+
+      return (maxConsecutiveMatches / minLength) * 100;
+    };
+
+    // Process each port with early exit conditions
     for (const port of this.portsData) {
       let bestMatch = { confidence: 0, matchType: "" };
 
       // Check searchable fields
       for (const key of this.searchableKeys) {
-        const match = processField(port[key], key.toLowerCase().replace(/\s+/g, '_'));
-        if (match && match.confidence > bestMatch.confidence) {
-          bestMatch = match;
+        const normalized = getNormalizedWords(port[key], key);
+        if (!normalized) continue;
+
+        const overlapScore = calculateOverlapScore(normalized.set);
+        // Early exit if overlap score is too low
+        if (overlapScore < MIN_CONFIDENCE) continue;
+
+        const orderScore = calculateOrderScore(normalized.words);
+        const confidence = (overlapScore * 0.6) + (orderScore * 0.4);
+
+        if (confidence > bestMatch.confidence) {
+          bestMatch = { confidence, matchType: key.toLowerCase().replace(/\s+/g, '_') };
         }
+
       }
 
+      // Early exit if we already have a good match
+      if (bestMatch.confidence > 80) {
+        results.push({
+          port_data: port,
+          confidence_score: parseFloat(bestMatch.confidence.toFixed(2)),
+          match_type: bestMatch.matchType
+        });
+        continue;
+      }
 
-
-
-      // Check other names
+      // Check other names only if we don't have a good match
       for (const altName of port.other_names) {
-        const match = processField(altName, "other_names");
-        if (match && match.confidence > bestMatch.confidence) {
-          bestMatch = match;
+        const normalized = getNormalizedWords(altName, 'other_names');
+        if (!normalized) continue;
+
+        const overlapScore = calculateOverlapScore(normalized.set);
+        if (overlapScore < MIN_CONFIDENCE) continue;
+
+        const orderScore = calculateOrderScore(normalized.words);
+        const confidence = (overlapScore * 0.6) + (orderScore * 0.4);
+
+        if (confidence > bestMatch.confidence) {
+          bestMatch = { confidence, matchType: 'other_names' };
         }
       }
 
-      if (bestMatch.confidence > 10) {
+      if (bestMatch.confidence > MIN_CONFIDENCE) {
         results.push({
           port_data: port,
           confidence_score: parseFloat(bestMatch.confidence.toFixed(2)),
@@ -304,11 +348,11 @@ class PortMatcher {
       getFn: (port) => {
         const value = port[key];
         return value ? this.normalizeString(value).split(/\s+/)
-        .filter(word => !this.ignoredKeywords.has(word))
-        .join(" ") : '';
+          .filter(word => !this.ignoredKeywords.has(word))
+          .join(" ") : '';
       }
     }));
-  
+
     const otherNamesConfig = {
       name: 'other_names',
       getFn: (port) => {
@@ -317,14 +361,14 @@ class PortMatcher {
           .map(name => {
             const normalized = this.normalizeString(name);
             return normalized
-              .split(/\s+/)                    
-              .filter(word => !this.ignoredKeywords.has(word)) 
-              .join(" ");                      
+              .split(/\s+/)
+              .filter(word => !this.ignoredKeywords.has(word))
+              .join(" ");
           })
           .filter(name => name.trim() !== "");  // Remove empty entries
       }
     };
-  
+
     const options = {
       keys: [...searchableKeyConfigs, otherNamesConfig],
       threshold: 0.4,
@@ -334,7 +378,7 @@ class PortMatcher {
       tokenize: true,
       tokenSeparator: / +/
     };
-  
+
     this.fuse = new Fuse(this.portsData, options);
   }
 
@@ -383,6 +427,7 @@ class PortMatcher {
     return results;
   }
 
+  // Ruby Fuzzy Search
   async rubyFuzzySearch(inputString) {
     /**
      * Perform fuzzy matching using Ruby's fuzzy_match gem through child process
@@ -404,7 +449,8 @@ class PortMatcher {
       search_data: searchData,
       query: inputString,
       ports_data: this.portsData, // Send the full ports data
-      stop_words: Array.from(this.ignoredKeywords) // Convert Set to Array for JSON serialization
+      stop_words: Array.from(this.ignoredKeywords), // Convert Set to Array for JSON serialization
+      searchable_fields: this.searchableKeys
     };
 
     return new Promise((resolve, reject) => {
@@ -430,23 +476,21 @@ class PortMatcher {
       // Handle process completion
       rubyProcess.on('close', (code) => {
         if (code !== 0) {
-          reject(new Error(`Ruby process exited with code ${code}: ${error}`));
+          reject(new Error(`Ruby process exited with code ${code}: ${error} `));
           return;
         }
 
         try {
           const results = JSON.parse(result.trim());
-          
+
           // Map results to include the port data from Ruby
-          const mappedResults = results.map(r => ({
-            port_data: r.port_data,
-            confidence_score: r.confidence_score,
-            match_type: 'ruby_fuzzy',
-            levenshtein_score: r.levenshtein_score
-          }));
-          resolve(mappedResults);
+          // const mappedResults = results.map(r => ({
+          //   port_data: r.port_data,
+          //   confidence_score: r.confidence_score,
+          // }));
+          resolve(results);
         } catch (err) {
-          reject(new Error(`Failed to parse Ruby output: ${err.message}`));
+          reject(new Error(`Failed to parse Ruby output: ${err.message} `));
         }
       });
 
@@ -454,6 +498,139 @@ class PortMatcher {
       rubyProcess.stdin.write(JSON.stringify(rubyInput));
       rubyProcess.stdin.end();
     });
+  }
+
+  async getGroqResponse(keyword, portType) {
+    try {
+      const query = `User Prompt Format:
+                      Input Keyword is ${keyword} and Port Type is ${portType}.
+
+                      Identify and return an array of multiple valid ports that match the given keyword and port type.
+
+                      Ensure the output follows exactly this JSON format:
+
+                      [
+                        {
+                          "name": "<Port Name>",
+                          "alternative_names": [
+                            "<Alternative Name 1>",
+                            "<Alternative Name 2>",
+                            "<Alternative Name 3>"
+                            ...lot and lots of alternative names
+                          ],
+                          "port_code": "<Official Port Code>",
+                          "confidence_score": <Confidence Score between 0 and 100>
+                        }
+                      ]
+
+                      Rules:
+                      - Return multiple valid matches whenever possible
+                      - Return as many alternative names and commonly used names as possible
+                      - Ensure the port name is correct and not a misspelling
+                      - Do not return explanations or alternative suggestions if no match is found. Instead, return exactly: []
+                      - The confidence_score must be between 0 - 100, reflecting the match accuracy
+                      - Strictly follow this JSON structure—any deviation is incorrect`;
+
+      const completion = await this.groq.chat.completions.create({
+        messages: [
+          { role: "system", content: process.env.GROQ_SYSTEM_PROMPT },
+          { role: "user", content: query },
+        ],
+        model: "qwen-2.5-32b",
+        response_format: {
+          type: "json_object",
+        },
+        temperature: 0.1,
+        max_completion_tokens: 8192,
+      });
+
+      return completion.choices[0].message.content;
+    } catch (error) {
+      console.error("GroqService :: getResponse :: error", error);
+      throw error;
+    }
+  }
+
+  validateLLMResponse(data) {
+    if (!data || typeof data !== 'object' || !Array.isArray(data.ports)) {
+      return false;
+    }
+
+    for (const port of data.ports) {
+      if (typeof port !== 'object') return false;
+
+      if (
+        !port.hasOwnProperty('name') || typeof port.name !== 'string' ||
+        !port.hasOwnProperty('alternative_names') || !Array.isArray(port.alternative_names) ||
+        port.alternative_names.some(name => typeof name !== 'string') ||
+        !port.hasOwnProperty('port_code') || typeof port.port_code !== 'string' ||
+        !port.hasOwnProperty('confidence_score') || typeof port.confidence_score !== 'number' ||
+        port.confidence_score < 0 || port.confidence_score > 100
+      ) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  async getLLMResponse(keyword, portType) {
+    try {
+      // Get the raw response from getResponse
+      const rawResponse = await this.getGroqResponse(keyword, portType);
+      console.log("rawResponse", rawResponse);
+      // Parse the response
+      let parsedResponse;
+      try {
+        parsedResponse = JSON.parse(rawResponse);
+      } catch (error) {
+        console.error("Failed to parse LLM response:", error);
+        return [];
+      }
+
+      if (!this.validateLLMResponse(parsedResponse)) {
+        return [];
+      }
+
+      // Process each port from LLM response
+      const matchedPorts = parsedResponse.ports.map(llmPort => {
+        // Find matching ports in our database
+        const matches = this.portsData.filter(dbPort => {
+          // Check if names match
+          const nameMatch = dbPort.name?.toLowerCase() === llmPort.name?.toLowerCase() ||
+            dbPort.display_name?.toLowerCase() === llmPort.name?.toLowerCase();
+
+          // Check if port codes match
+          const codeMatch = dbPort.code?.toLowerCase() === llmPort.port_code?.toLowerCase();
+
+          // Check if any alternative names match
+          const altNameMatch = llmPort.alternative_names?.some(altName =>
+            dbPort.other_names?.some(dbAltName =>
+              dbAltName.toLowerCase() === altName.toLowerCase()
+            )
+          );
+
+          return nameMatch || codeMatch || altNameMatch;
+        });
+
+        // If we found matches, return the database port with confidence score
+        if (matches.length > 0) {
+          const dbPort = matches[0];
+          return {
+            port_data: dbPort,
+            confidence_score: llmPort.confidence_score,
+            match_type: "llm"
+          };
+        }
+
+        return null;
+      }).filter(port => port !== null); // Remove any null entries
+
+      return matchedPorts;
+    } catch (error) {
+      console.error("Error in getLLMResponse:", error);
+      return { ports: [] };
+    }
   }
 
   async cascadingSearch(inputString, portType = null) {
@@ -470,7 +647,7 @@ class PortMatcher {
 
     // Store original portsData
     const originalPortsData = this.portsData;
-    const CONFIDENCE_THRESHOLD = 10;
+    const CONFIDENCE_THRESHOLD = 50;
 
     try {
       // Step 1: Filter by port_type if specified
@@ -518,7 +695,7 @@ class PortMatcher {
             .filter(match => match.confidence_score >= CONFIDENCE_THRESHOLD)
             .map((port) => ({
               ...port,
-              match_algo_type: "ruby_fuzzy",
+              match_algo_type: "fuzzy",
             }));
         }
       } catch (error) {
@@ -531,7 +708,11 @@ class PortMatcher {
       this.portsData = originalPortsData;
     }
   }
+
+  
 }
+
+
 
 // Example usage
 if (require.main === module) {
@@ -549,7 +730,7 @@ if (require.main === module) {
       const matcher = new PortMatcher(portsData);
 
       // Example searches based on actual data
-      const testCases = ["kchi"];
+      const testCases = [""];
 
       console.log("\n=== Port Search Results ===\n");
 
@@ -558,9 +739,13 @@ if (require.main === module) {
         console.log("=".repeat(80));
 
         const results = await matcher.cascadingSearch(testInput, "sea_port");
-        const limitedResults = results.slice(0, 3);
-        console.log(JSON.stringify(limitedResults, null, 2));
-        
+        console.log(JSON.stringify(results.slice(0, 3), null, 2));
+
+
+        console.log("=".repeat(80));
+
+        const llmresults = await matcher.getLLMResponse(testInput, "sea_port");
+        console.log(JSON.stringify(llmresults.slice(0, 3), null, 2));
       }
     } catch (error) {
       console.error("Error during initialization:", error);
@@ -569,27 +754,3 @@ if (require.main === module) {
 }
 
 module.exports = PortMatcher;
-
-
-
-
-// Functions to print the database
-
-// printData() {
-// /**
-//  * Print the contents of the port data in a readable format.
-//  */
-// if (!this.portsData.length) {
-//   console.log("\nNo port data available");
-//   return;
-// }
-// console.log("\nPort Data Contents:");
-// console.log("-".repeat(50));
-// this.portsData.forEach(port => {
-//   console.log("\nPort Data:");
-//   Object.entries(port).forEach(([key, value]) => {
-//     console.log(`  ${key}: ${value}`);
-//   });
-// });
-// console.log("\n");
-// }
