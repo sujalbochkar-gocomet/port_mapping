@@ -801,14 +801,36 @@ class PortMatcher {
 
   async aggregatedResults(keyword, portType = null) {
     try {
-      // Run both searches in parallel for better performance
-      const [llmResults, cascadingResults] = await Promise.all([
+      // First try exact and word matching
+      const cascadingResults = await this.cascadingSearch(keyword, portType);
+      
+      // Check for high confidence matches (above 80%)
+      const highConfidenceMatches = cascadingResults.filter(result => 
+        result.confidence_score >= 80 && 
+        (result.match_algo_type === "exact" || result.match_algo_type === "word")
+      );
+
+      // If we have high confidence matches, return them immediately
+      if (highConfidenceMatches.length > 0) {
+        return highConfidenceMatches.map(result => ({
+          port_data: result.port_data,
+          confidence_score: result.confidence_score,
+          match_type: result.match_algo_type,
+          sources: ['cascading']
+        }));
+      }
+
+      // If no high confidence matches, proceed with full search
+      const [llmResults, remainingCascadingResults] = await Promise.all([
         this.getLLMResponse(keyword, portType),
-        this.cascadingSearch(keyword, portType)
+        Promise.resolve(cascadingResults.filter(result => 
+          result.confidence_score < 80 || 
+          (result.match_algo_type !== "exact" && result.match_algo_type !== "word")
+        ))
       ]);
 
       // If both results are empty, return empty array
-      if (llmResults.length === 0 && cascadingResults.length === 0) {
+      if (llmResults.length === 0 && remainingCascadingResults.length === 0) {
         return [];
       }
 
@@ -827,8 +849,8 @@ class PortMatcher {
         });
       }
 
-      // Process cascading results (weight: 0.4)
-      for (const result of cascadingResults) {
+      // Process remaining cascading results (weight: 0.4)
+      for (const result of remainingCascadingResults) {
         const portId = result.port_data.id;
         if (portMap.has(portId)) {
           // Port exists in both results - increase confidence
@@ -909,7 +931,7 @@ if (require.main === module) {
       const matcher = new PortMatcher(portsData);
 
       // Example searches based on actual data
-      const testCases = ["Mutsuo"];
+      const testCases = ["hamad, qatar, qahmd"];
 
       console.log("\n=== Port Search Results ===\n");
 
