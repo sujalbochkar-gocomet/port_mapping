@@ -20,7 +20,7 @@ app.get("/search-ports", async (req: Request, res: Response) => {
   try {
     const query = (req.query.q as string)?.toLowerCase() || "";
 
-    // const getcorrectword = map_port_name(query);
+    // const results = map_port_name(query);
 
     const type = req.query.type as string;
     console.log(`Searching ports with query: "${query}" and type: "${type}"`);
