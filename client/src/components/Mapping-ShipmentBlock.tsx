@@ -286,6 +286,13 @@ const getPortType = (portType: string) => {
 };
 
 const PortDisplay = ({ portData, onTooltipChange }: PortDisplayProps) => {
+  // Function to get match score color
+  const getMatchScoreColor = (score: number) => {
+    if (score > 90) return "bg-green-50 text-green-800 border-green-200";
+    if (score >= 70) return "bg-yellow-50 text-yellow-800 border-yellow-200";
+    return "bg-red-50 text-red-800 border-red-200";
+  };
+
   return (
     <div className="flex items-center w-1/2 bg-gray-50 rounded-lg p-3 mx-1">
       <div className="min-w-[24px]">
@@ -317,24 +324,47 @@ const PortDisplay = ({ portData, onTooltipChange }: PortDisplayProps) => {
           ) : (
             <FlagIcon />
           )}
-          <span className="text-sm text-gray-900 font-medium truncate">
-            {[portData.port?.name, portData.port?.country, portData.port?.code]
-              .filter(Boolean)
-              .join(", ")}
-          </span>
+          <div className="flex flex-col">
+            <span className="text-sm text-gray-900 font-medium truncate">
+              {(() => {
+                const displayName =
+                  portData.port.display_name || portData.port.name;
+                const city = portData.port.city;
+                const country = portData.port.country;
+                const code = portData.port.code;
+                let fullText = displayName;
+                if (city) fullText += `, ${city}`;
+                if (country) fullText += `, ${country.toUpperCase()}`;
+                if (code) fullText += `, ${code.toUpperCase()}`;
+                return fullText.length > 60
+                  ? fullText.substring(0, 60) + "..."
+                  : fullText;
+              })()}
+            </span>
+          </div>
         </div>
 
         {/* Verification status */}
-        <div className="flex items-center">
+        <div className="flex flex-col gap-1 items-center">
           <span
-            className={`px-2 py-0.5 text-xs font-medium rounded-full ${
+            className={`px-2 py-0.5 text-xs font-medium border rounded-full ${
               portData.port.verified
-                ? "text-green-700 bg-green-50 border border-green-100"
-                : "text-red-700 bg-red-50 border border-red-100"
+                ? "text-green-700 bg-green-50 border-green-100"
+                : "text-red-700 bg-red-50 border-red-100"
             }`}
           >
             {portData.port.verified ? "Verified" : "Unverified"}
           </span>
+          {/* Match score indicator */}
+          {portData.port.matchScore > 0 && (
+            <span
+              className={`px-1.5 py-0.5 text-xs font-medium rounded-full inline-flex items-center border ${getMatchScoreColor(
+                portData.port.matchScore
+              )} mt-1 w-fit`}
+            >
+              Match: {Math.round(portData.port.matchScore)}%
+            </span>
+          )}
         </div>
       </div>
     </div>

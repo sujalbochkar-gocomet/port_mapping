@@ -196,7 +196,7 @@ const MappingForm = () => {
               <div>
                 <button
                   onClick={() => setSelectedPol(null)}
-                  className="text-gray-500 hover:text-gray-700 ml-2"
+                  className="text-gray-500 hover:text-gray-700 ml-2 hover:cursor-pointer"
                 >
                   ✕
                 </button>
@@ -281,8 +281,8 @@ const MappingForm = () => {
                     if (country) fullText += `, ${country}`;
                     if (code) fullText += `, ${code}`;
 
-                    return fullText.length > 50
-                      ? fullText.substring(0, 50) + "..."
+                    return fullText.length > 45
+                      ? fullText.substring(0, 45) + "..."
                       : fullText;
                   })()}
                 </p>
@@ -297,7 +297,7 @@ const MappingForm = () => {
               <div>
                 <button
                   onClick={() => setSelectedPod(null)}
-                  className="text-gray-500 hover:text-gray-700 ml-2"
+                  className="text-gray-500 hover:text-gray-700 ml-2 hover:cursor-pointer"
                 >
                   ✕
                 </button>
