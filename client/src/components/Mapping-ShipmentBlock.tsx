@@ -336,8 +336,8 @@ const PortDisplay = ({ portData, onTooltipChange }: PortDisplayProps) => {
                 if (city) fullText += `, ${city}`;
                 if (country) fullText += `, ${country.toUpperCase()}`;
                 if (code) fullText += `, ${code.toUpperCase()}`;
-                return fullText.length > 60
-                  ? fullText.substring(0, 60) + "..."
+                return fullText.length > 55
+                  ? fullText.substring(0, 55) + "..."
                   : fullText;
               })()}
             </span>

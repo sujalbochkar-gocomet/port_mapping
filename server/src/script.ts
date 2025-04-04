@@ -1,4 +1,4 @@
-import { Port, PortType, statusPort } from "./types/types";
+import { MappedPort, Port, PortType, statusPort } from "./types/types";
 import { Request, Response } from "express";
 import cors from "cors";
 import express from "express";
@@ -20,27 +20,29 @@ app.get("/search-ports", async (req: Request, res: Response) => {
   try {
     const query = (req.query.q as string)?.toLowerCase() || "";
 
-    // const results = map_port_name(query);
-
     const type = req.query.type as string;
     console.log(`Searching ports with query: "${query}" and type: "${type}"`);
 
-    const ports = await prisma.port.findMany({
-      where: {
-        OR: [
-          { name: { contains: query, mode: "insensitive" } },
-          { code: { contains: query, mode: "insensitive" } },
-          { display_name: { contains: query, mode: "insensitive" } },
-          { country: { contains: query, mode: "insensitive" } },
-          { city: { contains: query, mode: "insensitive" } },
-          { other_names: { has: query } },
-        ],
-        ...(type !== "all" && {
-          AND: [{ port_type: { equals: type } }, { verified: true }],
-        }),
-      },
-      take: 40,
-    });
+    // const ports = await prisma.port.findMany({
+    //   where: {
+    //     OR: [
+    //       { name: { contains: query, mode: "insensitive" } },
+    //       { code: { contains: query, mode: "insensitive" } },
+    //       { display_name: { contains: query, mode: "insensitive" } },
+    //       { country: { contains: query, mode: "insensitive" } },
+    //       { city: { contains: query, mode: "insensitive" } },
+    //       { other_names: { has: query } },
+    //     ],
+    //     ...(type !== "all" && {
+    //       AND: [{ port_type: { equals: type } }, { verified: true }],
+    //     }),
+    //   },
+    //   take: 40,
+    // });
+
+    const ports: MappedPort[] = [];
+    
+    // const ports = map_port_name(query);
 
     if (ports.length === 0) {
       console.log("No ports found");
@@ -91,10 +93,15 @@ app.get("/search-ports", async (req: Request, res: Response) => {
       res.status(200).json([statusPort]);
       return;
     }
+    // const transformedPorts = ports.map((port) => ({
+    //   port: port,
+    //   verified: true,
+    //   match_score: Math.floor(Math.random() * (100 - 90) + 90),
+    // }));
     const transformedPorts = ports.map((port) => ({
-      port: port,
+      port: port.port_data,
       verified: true,
-      match_score: Math.floor(Math.random() * (100 - 90) + 90),
+      match_score: port.confidence_score,
     }));
     transformedPorts.sort((a, b) => b.match_score - a.match_score);
     res.status(200).json(transformedPorts);

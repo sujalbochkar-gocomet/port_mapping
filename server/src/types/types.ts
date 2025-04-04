@@ -55,3 +55,10 @@ export interface statusPort {
   verified: boolean;
   match_score: number;
 }
+
+export interface MappedPort {
+  port_data: Port;
+  confidence_score: number;
+  match_type: string;
+  sources: string[];
+}
