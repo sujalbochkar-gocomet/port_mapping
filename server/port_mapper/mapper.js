@@ -519,12 +519,15 @@ class PortMatcher {
                             ...lot and lots of alternative names
                           ],
                           "port_code": "<Official Port Code>",
+                          "latitude": "<Latitude>",
+                          "longitude": "<Longitude>",
                           "confidence_score": <Confidence Score between 0 and 100>
                         }
                       ]
 
                       Rules:
                       - Return multiple valid matches whenever possible
+                      - return latitude and longitude accurately
                       - Return as many alternative names and commonly used names as possible
                       - Ensure the port name is correct and not a misspelling
                       - Do not return explanations or alternative suggestions if no match is found. Instead, return exactly: []
@@ -536,7 +539,7 @@ class PortMatcher {
           { role: "system", content: process.env.GROQ_SYSTEM_PROMPT },
           { role: "user", content: query },
         ],
-        model: "qwen-2.5-32b",
+        model: "llama3-70b-8192",
         response_format: {
           type: "json_object",
         },
@@ -574,11 +577,84 @@ class PortMatcher {
     return true;
   }
 
-  async getLLMResponse(keyword, portType) {
+  async getLLMResponse(keyword, portType = null) {
     try {
+      if (keyword === "") {
+        return [];
+      }
+
+      // Helper function to calculate distance between two points using Haversine formula
+      const calculateDistance = (lat1, lon1, lat2, lon2) => {
+        const R = 6371; // Earth's radius in kilometers
+        const dLat = (lat2 - lat1) * Math.PI / 180;
+        const dLon = (lon2 - lon1) * Math.PI / 180;
+        const a = 
+          Math.sin(dLat/2) * Math.sin(dLat/2) +
+          Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+          Math.sin(dLon/2) * Math.sin(dLon/2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        return R * c;
+      };
+
+      // Helper function to find matching database ports
+      const findMatchingPort = (llmPort) => {
+        // Combine all possible names into a single array and convert to lowercase
+        const llmNames = [
+          llmPort.name,
+          ...llmPort.alternative_names
+        ].filter(Boolean).map(name => name.toLowerCase());
+
+        const fileteredPorts = portType ? this.portsData.filter(port => port.port_type === portType) : this.portsData;
+        
+        // Find matching ports in our database
+        const matches = fileteredPorts.filter(dbPort => {
+          // Get all possible names from the database port
+          const dbNames = [
+            dbPort.name,
+            dbPort.display_name,
+            ...dbPort.other_names
+          ].filter(Boolean).map(name => name.toLowerCase());
+
+          // Check if any name matches
+          const nameMatch = llmNames.some(llmName => 
+            dbNames.some(dbName => dbName === llmName)
+          );
+
+          // Check if port codes match
+          const codeMatch = dbPort.code?.toLowerCase() === llmPort.port_code?.toLowerCase();
+
+          // Check geographical proximity if both have coordinates
+          let locationMatch = false;
+          if (llmPort.latitude && llmPort.longitude && 
+              dbPort.lat_lon?.lat && dbPort.lat_lon?.lon) {
+            const distance = calculateDistance(
+              parseFloat(llmPort.latitude),
+              parseFloat(llmPort.longitude),
+              dbPort.lat_lon.lat,
+              dbPort.lat_lon.lon
+            );
+            // Consider ports within 50km as potential matches
+            locationMatch = distance <= 50;
+          }
+
+          // Store the match type if any match is found
+          if (nameMatch || codeMatch || locationMatch) {
+            const matchTypes = [];
+            if (nameMatch) matchTypes.push('name');
+            if (codeMatch) matchTypes.push('code');
+            if (locationMatch) matchTypes.push('location');
+            dbPort.match_criteria = matchTypes;
+          }
+
+          return nameMatch || codeMatch || locationMatch;
+        });
+
+        return matches.length > 0 ? matches : null;
+      };
+
       // Get the raw response from getResponse
       const rawResponse = await this.getGroqResponse(keyword, portType);
-      console.log("rawResponse", rawResponse);
+      
       // Parse the response
       let parsedResponse;
       try {
@@ -592,44 +668,58 @@ class PortMatcher {
         return [];
       }
 
-      // Process each port from LLM response
-      const matchedPorts = parsedResponse.ports.map(llmPort => {
-        // Find matching ports in our database
-        const matches = this.portsData.filter(dbPort => {
-          // Check if names match
-          const nameMatch = dbPort.name?.toLowerCase() === llmPort.name?.toLowerCase() ||
-            dbPort.display_name?.toLowerCase() === llmPort.name?.toLowerCase();
+      // Process each port from LLM response using the helper function
+      const matchedPorts = parsedResponse.ports.flatMap(llmPort => {
+        const matchedPorts = findMatchingPort(llmPort);
+        
+        return matchedPorts ? matchedPorts.map(port => {
+          // Calculate distance-based confidence adjustment
+          let confidenceAdjustment = 0;
+          if (llmPort.latitude && llmPort.longitude && 
+              port.lat_lon?.lat && port.lat_lon?.lon) {
+            const distance = calculateDistance(
+              parseFloat(llmPort.latitude),
+              parseFloat(llmPort.longitude),
+              port.lat_lon.lat,
+              port.lat_lon.lon
+            );
+            
+            // Linear adjustment: -1% for every 4km of distance
+            // For example:
+            // 4km = -1%
+            // 8km = -2%
+            // 12km = -3%
+            // etc.
+            confidenceAdjustment = -(Math.floor(distance / 5));
+          }
 
-          // Check if port codes match
-          const codeMatch = dbPort.code?.toLowerCase() === llmPort.port_code?.toLowerCase();
+          // Calculate multi-criteria bonus
+          let multiCriteriaBonus = 0;
+          const matchCount = port.match_criteria.length;
+          if (matchCount > 1) {
+            // Add bonus for multiple matching criteria:
+            // 2 criteria = +5%
+            // 3 criteria = +10%
+            multiCriteriaBonus = (matchCount - 1) * 5;
+          }
 
-          // Check if any alternative names match
-          const altNameMatch = llmPort.alternative_names?.some(altName =>
-            dbPort.other_names?.some(dbAltName =>
-              dbAltName.toLowerCase() === altName.toLowerCase()
-            )
-          );
+          // Ensure confidence score stays within 0-100 range
+          let adjustedConfidence = llmPort.confidence_score + confidenceAdjustment + multiCriteriaBonus;
+          adjustedConfidence = Math.max(0, Math.min(100, adjustedConfidence));
 
-          return nameMatch || codeMatch || altNameMatch;
-        });
-
-        // If we found matches, return the database port with confidence score
-        if (matches.length > 0) {
-          const dbPort = matches[0];
           return {
-            port_data: dbPort,
-            confidence_score: llmPort.confidence_score,
-            match_type: "llm"
+            port_data: port,
+            confidence_score: parseFloat(adjustedConfidence.toFixed(2)),
+            match_type: `llm:${port.match_criteria.join('+')}`
           };
-        }
+        }) : [];
+      });
 
-        return null;
-      }).filter(port => port !== null); // Remove any null entries
-
-      return matchedPorts;
+      // Sort matched ports by confidence score in descending order
+      return matchedPorts.sort((a, b) => b.confidence_score - a.confidence_score);
     } catch (error) {
       console.error("Error in getLLMResponse:", error);
-      return { ports: [] };
+      return [];
     }
   }
 
@@ -709,7 +799,93 @@ class PortMatcher {
     }
   }
 
-  
+  async aggregatedResults(keyword, portType = null) {
+    try {
+      // Run both searches in parallel for better performance
+      const [llmResults, cascadingResults] = await Promise.all([
+        this.getLLMResponse(keyword, portType),
+        this.cascadingSearch(keyword, portType)
+      ]);
+
+      // If both results are empty, return empty array
+      if (llmResults.length === 0 && cascadingResults.length === 0) {
+        return [];
+      }
+
+      // Create a map to track ports and their sources
+      const portMap = new Map();
+
+      // Process LLM results first (weight: 0.6)
+      for (const result of llmResults) {
+        const portId = result.port_data.id; // Assuming each port has a unique ID
+        portMap.set(portId, {
+          port_data: result.port_data,
+          llm_score: result.confidence_score,
+          cascading_score: 0,
+          match_type: result.match_type,
+          sources: ['llm']
+        });
+      }
+
+      // Process cascading results (weight: 0.4)
+      for (const result of cascadingResults) {
+        const portId = result.port_data.id;
+        if (portMap.has(portId)) {
+          // Port exists in both results - increase confidence
+          const existingEntry = portMap.get(portId);
+          existingEntry.cascading_score = result.confidence_score;
+          existingEntry.sources.push('cascading');
+          existingEntry.match_type = `${existingEntry.match_type}+${result.match_algo_type}`;
+        } else {
+          // Port only in cascading results
+          portMap.set(portId, {
+            port_data: result.port_data,
+            llm_score: 0,
+            cascading_score: result.confidence_score,
+            match_type: `cascading:${result.match_algo_type}`,
+            sources: ['cascading']
+          });
+        }
+      }
+
+      // Calculate final confidence scores with adjustments
+      const finalResults = Array.from(portMap.values()).map(entry => {
+        let finalScore;
+
+        if (entry.sources.length === 2) {
+          // Port found in both sources - weighted average with bonus
+          finalScore = (
+            (entry.llm_score * 0.6) +      // LLM weight: 60%
+            (entry.cascading_score * 0.4) + // Cascading weight: 40%
+            10                              // Bonus for appearing in both sources
+          );
+        } else if (entry.sources[0] === 'llm') {
+          // Port only in LLM results - slight penalty
+          finalScore = entry.llm_score * 0.9; // 10% penalty
+        } else {
+          // Port only in cascading results - larger penalty
+          finalScore = entry.cascading_score * 0.8; // 20% penalty
+        }
+
+        // Ensure score stays within 0-100 range
+        finalScore = Math.max(0, Math.min(100, finalScore));
+
+        return {
+          port_data: entry.port_data,
+          confidence_score: parseFloat(finalScore.toFixed(2)),
+          match_type: entry.match_type,
+          sources: entry.sources
+        };
+      });
+
+      // Sort by final confidence score in descending order
+      return finalResults.sort((a, b) => b.confidence_score - a.confidence_score);
+
+    } catch (error) {
+      console.error("Error in aggregatedResults:", error);
+      return [];
+    }
+  }
 }
 
 
@@ -723,14 +899,17 @@ if (require.main === module) {
       const dataDir = path.join(path.dirname(currentDir), "./Data");
       const dummyDataPath = path.join(dataDir, "data.json");
 
-      // Load port data asynchronously
+      console.log("Loading port data...");
+      const loadStart = performance.now();
       const portsData = await PortMatcher.loadPortsData(dummyDataPath);
+      const loadEnd = performance.now();
+      console.log(`Port data loaded in ${(loadEnd - loadStart).toFixed(2)}ms`);
 
       // Initialize matcher
       const matcher = new PortMatcher(portsData);
 
       // Example searches based on actual data
-      const testCases = [""];
+      const testCases = ["Mutsuo"];
 
       console.log("\n=== Port Search Results ===\n");
 
@@ -738,14 +917,13 @@ if (require.main === module) {
         console.log(`Search Query: "${testInput}"`);
         console.log("=".repeat(80));
 
-        const results = await matcher.cascadingSearch(testInput, "sea_port");
+        // Measure score aggregator (which includes both cascading and LLM searches)
+        const startTime = performance.now();
+        const results = await matcher.aggregatedResults(testInput, "sea_port");
+        const endTime = performance.now();
+        
+        console.log(`Search completed in ${(endTime - startTime).toFixed(2)}ms`);
         console.log(JSON.stringify(results.slice(0, 3), null, 2));
-
-
-        console.log("=".repeat(80));
-
-        const llmresults = await matcher.getLLMResponse(testInput, "sea_port");
-        console.log(JSON.stringify(llmresults.slice(0, 3), null, 2));
       }
     } catch (error) {
       console.error("Error during initialization:", error);

@@ -32,7 +32,7 @@ async function map_port(inputQuery, portType = null) {
     await initializeMatcher();
     
     try {
-        const results = await matcher.cascadingSearch(inputQuery, portType);
+        const results = await matcher.scoreAggregator(inputQuery, portType);
         return results;
     } catch (error) {
         console.error("Error searching ports:", error);
