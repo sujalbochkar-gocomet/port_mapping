@@ -6,12 +6,12 @@ let matcher = null;
 // Initialize the matcher
 async function initializeMatcher() {
     if (matcher) return; // Already initialized
-    
+
     try {
         // Get the path to data.json
         const dataDir = path.join(__dirname, "../Data");
         const dataPath = path.join(dataDir, "data.json");
-        
+
         // Load port data and initialize matcher
         const portsData = await PortMatcher.loadPortsData(dataPath);
         matcher = new PortMatcher(portsData);
@@ -24,13 +24,14 @@ async function initializeMatcher() {
 /**
  * Search for ports matching the input query
  * @param {string} inputQuery - The search query string
- * @param {string} portType - Optional port type ('sea' or 'air')
+ * @param {string} portType - Optional port type ('sea_port' or 'air_port' or 'inland_port' or 'address')
  * @returns {Promise<Array>} Array of matching ports with confidence scores
+ *
  */
 async function map_port(inputQuery, portType = null) {
     // Initialize matcher if not already done
     await initializeMatcher();
-    
+
     try {
         const results = await matcher.aggregatedResults(inputQuery, portType);
         return results;
@@ -40,4 +41,4 @@ async function map_port(inputQuery, portType = null) {
     }
 }
 
-module.exports = map_port; 
+module.exports = map_port;

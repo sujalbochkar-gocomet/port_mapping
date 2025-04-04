@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import cors from "cors";
 import express from "express";
 import { prisma } from "./lib/prisma";
+const map_port = require("../port_mapper/portMapper.js");
 
 const app = express();
 const port = 3000;
@@ -39,11 +40,11 @@ app.get("/search-ports", async (req: Request, res: Response) => {
     //   },
     //   take: 40,
     // });
+    let ports: MappedPort[] = [];
+    if (type === "all") ports = await map_port(query, null);
+    else ports = await map_port(query, type);
 
-    const ports: MappedPort[] = [];
-    
     // const ports = map_port_name(query);
-
     if (ports.length === 0) {
       console.log("No ports found");
       const tempPort: Partial<Port> = {
