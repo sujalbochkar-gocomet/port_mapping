@@ -4,12 +4,9 @@ const map_port = require('./portMapper');
 async function example() {
     try {
         // Search for ports
-        const results = await map_port("jfk", "sea_port");
-        console.log(results);
+        const results = await map_port("jfk", "air_port");
+        console.log(results.slice(0, 3));
         
-        // Search without port type
-        const allResults = await map_port("jfk");
-        console.log(allResults);
     } catch (error) {
         console.error("Error:", error);
     }
