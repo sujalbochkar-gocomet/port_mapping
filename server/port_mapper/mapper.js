@@ -4,6 +4,9 @@ const path = require("path");
 const fsPromises = fs.promises;
 const { spawn } = require('child_process');
 const { Groq } = require('groq-sdk');
+const Port = require('../models/Port');
+const connectDB = require('../lib/db');
+const mongoose = require('mongoose');
 
 // Update the path to .env file
 require("dotenv").config({ path: path.join(__dirname, '../.env') });
@@ -74,32 +77,27 @@ class PortMatcher {
     });
 
     this._createFuseIndex();
-
   }
 
-
-
-  static async loadPortsData(filePath) {
+  static async loadPortsData() {
     /**
-     * Asynchronously load port data from a JSON file and filter out unverified ports.
-     * @param {string} filePath - The path to the JSON file.
+     * Asynchronously load port data from MongoDB and filter out unverified ports.
      * @returns {Promise<Array>} Parsed array of verified port data.
      */
     try {
-      const data = await fsPromises.readFile(filePath, "utf8");
-      const allPorts = JSON.parse(data);
+      // Connect to MongoDB if not already connected
+      await connectDB();
 
-      // Filter out unverified ports
-      const verifiedPorts = allPorts.filter(port => {
-        // Check if verification_status exists and is true
-        // Also ensure the port has required fields
-        return port.verified === true &&
-          port.display_name;
-      });
-
-      return verifiedPorts;
+      // Fetch all ports from MongoDB using Mongoose
+      const allPorts = await Port.find({
+        deleted: false,
+        verified: true,
+      }).lean();
+      
+      console.log(`Loaded ${allPorts.length} verified ports from MongoDB`);
+      return allPorts;
     } catch (error) {
-      console.error(`Error loading port data from ${filePath}:`, error);
+      console.error('Error loading port data from MongoDB:', error);
       throw error;
     }
   }
@@ -166,12 +164,14 @@ class PortMatcher {
     for (const port of this.portsData) {
       let matchType = "";
       let matched = false;
+      let confidenceScore = 0;
 
       for (const key of this.searchableKeys) {
         const normalizedField = this.normalizeString(port[key]);
         if (normalizedField && normalizedField === normalizedInput) {
           matchType = `_${key.toLowerCase().replace(/\s+/g, '_')}`;
           matched = true;
+          confidenceScore = 100;
           break;
         }
       }
@@ -181,6 +181,7 @@ class PortMatcher {
         if (normalizedField && normalizedField === normalizedInput) {
           matchType = "other_names";
           matched = true;
+          confidenceScore = 99;
           break;
         }
       }
@@ -188,7 +189,7 @@ class PortMatcher {
       if (matched) {
         results.push({
           port_data: port,
-          confidence_score: 100,
+          confidence_score : confidenceScore,
           match_type: matchType,
           matching_algo: "complete_name"
         });
@@ -547,6 +548,7 @@ class PortMatcher {
         max_completion_tokens: 8192,
       });
 
+      console.log(process.env.GROQ_SYSTEM_PROMPT);
       return completion.choices[0].message.content;
     } catch (error) {
       console.error("GroqService :: getResponse :: error", error);
@@ -910,20 +912,13 @@ class PortMatcher {
   }
 }
 
-
-
 // Example usage
 if (require.main === module) {
   (async () => {
     try {
-      // Get the absolute path to DummyData.json
-      const currentDir = __dirname;
-      const dataDir = path.join(path.dirname(currentDir), "./Data");
-      const dummyDataPath = path.join(dataDir, "data.json");
-
-      console.log("Loading port data...");
+      console.log("Loading port data from MongoDB...");
       const loadStart = performance.now();
-      const portsData = await PortMatcher.loadPortsData(dummyDataPath);
+      const portsData = await PortMatcher.loadPortsData();
       const loadEnd = performance.now();
       console.log(`Port data loaded in ${(loadEnd - loadStart).toFixed(2)}ms`);
 
@@ -931,7 +926,7 @@ if (require.main === module) {
       const matcher = new PortMatcher(portsData);
 
       // Example searches based on actual data
-      const testCases = ["hamad, qatar, qahmd"];
+      const testCases = ["bhava sheva"];
 
       console.log("\n=== Port Search Results ===\n");
 
@@ -947,8 +942,13 @@ if (require.main === module) {
         console.log(`Search completed in ${(endTime - startTime).toFixed(2)}ms`);
         console.log(JSON.stringify(results.slice(0, 3), null, 2));
       }
+
+      // Disconnect from MongoDB
+      await mongoose.disconnect();
     } catch (error) {
       console.error("Error during initialization:", error);
+      await mongoose.disconnect();
+      process.exit(1);
     }
   })();
 }

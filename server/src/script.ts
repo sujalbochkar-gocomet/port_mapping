@@ -1,14 +1,36 @@
 import { Port, PortType, statusPort } from "./types/types";
 import { Request, Response } from "express";
 import cors from "cors";
-import express from "express";
+const express = require('express');
 import { prisma } from "./lib/prisma";
+import PortMatcher = require("../port_mapper/mapper");
+
+interface PortMatcherResult {
+  port_data: Port;
+  confidence_score: number;
+  match_type: string;
+  sources: string[];
+}
 
 const app = express();
 const port = 3000;
+let portMatcher: PortMatcher | null = null;
 
 app.use(cors());
 app.use(express.json());
+
+// Initialize database and PortMatcher
+const initializePortMatcher = async () => {
+  try {
+    console.log("Initializing PortMatcher...");
+    const portsData = await PortMatcher.loadPortsData();
+    portMatcher = new PortMatcher(portsData);
+    console.log("PortMatcher initialized successfully");
+  } catch (error) {
+    console.error("Failed to initialize PortMatcher:", error);
+    throw error;
+  }
+};
 
 app.get("/", (_req: Request, res: Response) => {
   res
@@ -18,29 +40,17 @@ app.get("/", (_req: Request, res: Response) => {
 
 app.get("/search-ports", async (req: Request, res: Response) => {
   try {
+    if (!portMatcher) {
+      throw new Error("PortMatcher not initialized");
+    }
+
     const query = (req.query.q as string)?.toLowerCase() || "";
-
-    // const getcorrectword = map_port_name(query);
-
     const type = req.query.type as string;
     console.log(`Searching ports with query: "${query}" and type: "${type}"`);
 
-    const ports = await prisma.port.findMany({
-      where: {
-        OR: [
-          { name: { contains: query, mode: "insensitive" } },
-          { code: { contains: query, mode: "insensitive" } },
-          { display_name: { contains: query, mode: "insensitive" } },
-          { country: { contains: query, mode: "insensitive" } },
-          { city: { contains: query, mode: "insensitive" } },
-          { other_names: { has: query } },
-        ],
-        ...(type !== "all" && { AND: [{ port_type: { equals: type } }] }),
-      },
-      take: 40,
-    });
-
-    if (ports.length === 0) {
+    const results = await portMatcher.aggregatedResults(query, type);
+    
+    if (results.length === 0) {
       console.log("No ports found");
       const tempPort: Partial<Port> = {
         _id: `temp-${Date.now()}`,
@@ -48,7 +58,6 @@ app.get("/search-ports", async (req: Request, res: Response) => {
         name: query,
         display_name: query,
         port_type: type as PortType,
-
         code: "",
         other_names: [],
         city: "",
@@ -56,11 +65,9 @@ app.get("/search-ports", async (req: Request, res: Response) => {
         country: "",
         country_code: "",
         region: "",
-
         lat_lon: { lat: 0, lon: 0 },
         nearby_ports: JSON.parse("{}"),
         other_details: JSON.parse("{}"),
-
         deleted: true,
         client_group_id: "",
         created_at: new Date(),
@@ -89,12 +96,14 @@ app.get("/search-ports", async (req: Request, res: Response) => {
       res.status(200).json([statusPort]);
       return;
     }
-    const transformedPorts = ports.map((port) => ({
-      port: port,
+
+    const transformedPorts = results.map((result: PortMatcherResult) => ({
+      port: result.port_data,
       verified: true,
-      match_score: Math.floor(Math.random() * (100 - 90) + 90),
+      match_score: result.confidence_score,
     }));
-    transformedPorts.sort((a, b) => b.match_score - a.match_score);
+
+
     res.status(200).json(transformedPorts);
   } catch (error) {
     console.error("Error searching ports:", error);
@@ -226,6 +235,17 @@ app.delete("/delete-shipment/:id", async (req: Request, res: Response) => {
   res.status(200).json({ message: "Shipment deleted successfully" });
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
+// Initialize server
+const startServer = async () => {
+  try {
+    await initializePortMatcher();
+    app.listen(port, () => {
+      console.log(`Server is running on http://localhost:${port}`);
+    });
+  } catch (error) {
+    console.error("Failed to start server:", error);
+    process.exit(1);
+  }
+};
+
+startServer();

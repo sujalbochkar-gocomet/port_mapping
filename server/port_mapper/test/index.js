@@ -25,6 +25,8 @@ async function main() {
             if (!result || result.length === 0) {
                 emptyResultsCount++;
                 console.log(`❌ Empty Results: "${port["Keyword"]}" (${port["Port Type"]}) - ${timeTaken.toFixed(2)}ms`);
+                console.log(`   Expected: ${port["Mapped Port ID"]}`);
+
             } else if (result[0]?.port_data?.id === port["Mapped Port ID"]) {
                 matchedCount++;
                 console.log(`✅ Matched: "${port["Keyword"]}" -> ${result[0].port_data.name} (${timeTaken.toFixed(2)}ms)`);
@@ -34,6 +36,7 @@ async function main() {
                 console.log(`   Expected: ${port["Mapped Port ID"]}`);
                 console.log(`   Got: ${result[0]?.port_data?.id || 'No ID'}`);
                 console.log(`   Time: ${timeTaken.toFixed(2)}ms`);
+                console.log(`   Matched using ${result[0].match_type} and sources are ${result[0].sources.join(', ')}`);
             }
 
             processedCount++;
