@@ -1,5 +1,6 @@
 import { Port } from "../src/types/types";
-import { Groq } from 'groq-sdk';
+// import { Groq } from 'groq-sdk';
+import OpenAI from 'openai';
 import { spawn } from 'child_process';
 import { join } from 'path';
 // import Fuse from 'fuse.js';
@@ -41,7 +42,8 @@ class PortMatcher {
   private searchableKeys: string[];
   private locationSearchableKeys: string[];
   private ignoredKeywords: Set<string>;
-  private groq: Groq;
+  // private groq: Groq;
+  private openai: OpenAI;
 //   private fuse!: Fuse<Port>;
 
   constructor(portsData: Port[]) {
@@ -94,9 +96,13 @@ class PortMatcher {
       "airport",
     ]);
 
-    this.groq = new Groq({
-      apiKey: process.env.GROQ_API_KEY || "",
-      dangerouslyAllowBrowser: true,
+    // this.groq = new Groq({
+    //   apiKey: process.env.GROQ_API_KEY || "",
+    //   dangerouslyAllowBrowser: true,
+    // });
+
+    this.openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY || "",
     });
 
     // this._createFuseIndex();
@@ -324,90 +330,6 @@ class PortMatcher {
     return results.sort((a, b) => b.confidence_score - a.confidence_score);
   }
 
-//   private _createFuseIndex(): void {
-//     const searchableKeyConfigs: FuseKey[] = this.searchableKeys.map(key => ({
-//       name: key,
-//       getFn: (port: Port) => {
-//         const value = port[key as keyof Port] as string;
-//         return value ? this.normalizeString(value).split(/\s+/)
-//           .filter(word => !this.ignoredKeywords.has(word))
-//           .join(" ") : '';
-//       }
-//     }));
-
-//     const otherNamesConfig: FuseKey = {
-//       name: 'other_names',
-//       getFn: (port: Port) => {
-//         if (!Array.isArray(port.other_names)) return [];
-//         return port.other_names
-//           .map(name => {
-//             const normalized = this.normalizeString(name);
-//             return normalized
-//               .split(/\s+/)
-//               .filter(word => !this.ignoredKeywords.has(word))
-//               .join(" ");
-//           })
-//           .filter(name => name.trim() !== "");
-//       }
-//     };
-
-//     const options: FuseOptions = {
-//       keys: [...searchableKeyConfigs, otherNamesConfig],
-//       threshold: 0.4,
-//       includeScore: true,
-//       findAllMatches: true,
-//       includeMatches: true,
-//       tokenize: true,
-//       tokenSeparator: / +/
-//     };
-
-//     this.fuse = new Fuse(this.portsData, options);
-//   }
-
-//   private fuzzySearch(inputString: string): CascadingResult[] {
-//     if (typeof inputString !== "string" || !inputString.trim()) {
-//       return [];
-//     }
-
-//     inputString = this.normalizeString(inputString)
-//       .split(/\s+/)
-//       .filter(word => !this.ignoredKeywords.has(word))
-//       .join(" ");
-
-//     const fuseResults = this.fuse.search(inputString, { limit: 10 });
-
-//     return fuseResults.map((result) => {
-//       const matches = result.matches || [];
-//       const match = matches[0];
-      
-//       if (!match) {
-//         return {
-//           port_data: result.item,
-//           confidence_score: (1 - (result.score || 0)) * 100,
-//           match_type: 'unknown',
-//           match_algo_type: "fuzzy"
-//         };
-//       }
-
-//       let matchType = match.key || 'unknown';
-//       if (matchType === 'other_names') {
-//         const matchedName = match.value;
-//         const matchedOtherName = result.item.other_names?.find(
-//           name => this.normalizeString(name) === matchedName
-//         );
-//         if (matchedOtherName) {
-//           matchType = `other_names:${matchedOtherName}`;
-//         }
-//       }
-
-//       return {
-//         port_data: result.item,
-//         confidence_score: (1 - (result.score || 0)) * 100,
-//         match_type: matchType,
-//         match_algo_type: "fuzzy"
-//       };
-//     });
-//   }
 
   private async rubyFuzzySearch(inputString: string): Promise<CascadingResult[]> {
     if (typeof inputString !== "string" || !inputString.trim()) {
@@ -463,7 +385,88 @@ class PortMatcher {
     });
   }
 
-  private async getGroqResponse(keyword: string, portType: string | null): Promise<string> {
+  // private async getGroqResponse(keyword: string, portType: string | null): Promise<string> {
+  //   try {
+  //     const query = `User Prompt Format:
+  //                     Input Keyword is ${keyword} and Port Type is ${portType || 'any'}.
+
+  //                     Identify and return an array of multiple valid ports that match the given keyword and port type.
+
+  //                     Ensure the output follows exactly this JSON format:
+
+  //                     [
+  //                       {
+  //                         "name": "<Port Name>",
+  //                         "alternative_names": [
+  //                           "<Alternative Name 1>",
+  //                           "<Alternative Name 2>",
+  //                           "<Alternative Name 3>"
+  //                           ...lot and lots of alternative names
+  //                         ],
+  //                         "port_code": "<Official Port Code>",
+  //                         "latitude": "<Latitude>",
+  //                         "longitude": "<Longitude>",
+  //                         "confidence_score": <Confidence Score between 0 and 100>
+  //                       }
+  //                     ]
+
+  //                     Rules:
+  //                     - Return multiple valid matches whenever possible
+  //                     - return latitude and longitude accurately
+  //                     - Return as many alternative names and commonly used names as possible
+  //                     - Ensure the port name is correct and not a misspelling
+  //                     - Do not return explanations or alternative suggestions if no match is found. Instead, return exactly: []
+  //                     - The confidence_score must be between 0 - 100, reflecting the match accuracy
+  //                     - Strictly follow this JSON structure—any deviation is incorrect`;
+
+  //     const completion = await this.groq.chat.completions.create({
+  //       messages: [
+  //         { role: "system", content: process.env.SYSTEM_PROMPT || "" },
+  //         { role: "user", content: query },
+  //       ],
+  //       model: "llama3-70b-8192",
+  //       response_format: {
+  //         type: "json_object",
+  //       },
+  //       temperature: 0.1,
+  //       max_completion_tokens: 8192,
+  //     });
+
+  //     const content = completion.choices[0].message.content;
+  //     if (!content) {
+  //       throw new Error("No content in response");
+  //     }
+  //     return content;
+  //   } catch (error) {
+  //     console.error("GroqService :: getResponse :: error", error);
+  //     throw error;
+  //   }
+  // }
+
+  private validateLLMResponse(data: any): boolean {
+    if (!data || typeof data !== 'object' || !Array.isArray(data.ports)) {
+      return false;
+    }
+
+    for (const port of data.ports) {
+      if (typeof port !== 'object') return false;
+
+      if (
+        !port.hasOwnProperty('name') || typeof port.name !== 'string' ||
+        !port.hasOwnProperty('alternative_names') || !Array.isArray(port.alternative_names) ||
+        port.alternative_names.some((name: any) => typeof name !== 'string') ||
+        !port.hasOwnProperty('port_code') || typeof port.port_code !== 'string' ||
+        !port.hasOwnProperty('confidence_score') || typeof port.confidence_score !== 'number' ||
+        port.confidence_score < 0 || port.confidence_score > 100
+      ) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  private async getChatGPTResponse(keyword: string, portType: string | null): Promise<string> {
     try {
       const query = `User Prompt Format:
                       Input Keyword is ${keyword} and Port Type is ${portType || 'any'}.
@@ -497,17 +500,15 @@ class PortMatcher {
                       - The confidence_score must be between 0 - 100, reflecting the match accuracy
                       - Strictly follow this JSON structure—any deviation is incorrect`;
 
-      const completion = await this.groq.chat.completions.create({
+      const completion = await this.openai.chat.completions.create({
         messages: [
-          { role: "system", content: process.env.GROQ_SYSTEM_PROMPT || "" },
+          { role: "system", content: process.env.SYSTEM_PROMPT || "" },
           { role: "user", content: query },
         ],
-        model: "llama3-70b-8192",
-        response_format: {
-          type: "json_object",
-        },
+        model: "gpt-4-turbo-preview",
+        response_format: { type: "json_object" },
         temperature: 0.1,
-        max_completion_tokens: 8192,
+        max_tokens: 4096,
       });
 
       const content = completion.choices[0].message.content;
@@ -516,32 +517,9 @@ class PortMatcher {
       }
       return content;
     } catch (error) {
-      console.error("GroqService :: getResponse :: error", error);
+      console.error("ChatGPTService :: getResponse :: error", error);
       throw error;
     }
-  }
-
-  private validateLLMResponse(data: any): boolean {
-    if (!data || typeof data !== 'object' || !Array.isArray(data.ports)) {
-      return false;
-    }
-
-    for (const port of data.ports) {
-      if (typeof port !== 'object') return false;
-
-      if (
-        !port.hasOwnProperty('name') || typeof port.name !== 'string' ||
-        !port.hasOwnProperty('alternative_names') || !Array.isArray(port.alternative_names) ||
-        port.alternative_names.some((name: any) => typeof name !== 'string') ||
-        !port.hasOwnProperty('port_code') || typeof port.port_code !== 'string' ||
-        !port.hasOwnProperty('confidence_score') || typeof port.confidence_score !== 'number' ||
-        port.confidence_score < 0 || port.confidence_score > 100
-      ) {
-        return false;
-      }
-    }
-
-    return true;
   }
 
   private async getLLMResponse(keyword: string, portType: string | null = null): Promise<PortMatcherResult[]> {
@@ -609,7 +587,7 @@ class PortMatcher {
         return matches.length > 0 ? matches : null;
       };
 
-      const rawResponse = await this.getGroqResponse(keyword, portType);
+      const rawResponse = await this.getChatGPTResponse(keyword, portType);
       console.log("rawResponse", rawResponse);
       
       let parsedResponse;
@@ -620,7 +598,7 @@ class PortMatcher {
         return [];
       }
 
-      if (!this.validateLLMResponse(parsedResponse)) {
+      if (!parsedResponse || !this.validateLLMResponse(parsedResponse)) {
         return [];
       }
 
@@ -656,6 +634,8 @@ class PortMatcher {
           };
         }) : [];
       });
+
+      console.log("matchedPorts", matchedPorts);
 
       return matchedPorts.sort((a: PortMatcherResult, b: PortMatcherResult) => b.confidence_score - a.confidence_score);
     } catch (error) {
@@ -840,7 +820,7 @@ if (require.main === module) {
       const matcher = new PortMatcher(portsData);
 
       // Example searches based on actual data
-      const testCases = ["bhava sheva"];
+      const testCases = ["laem chabang, thailand, thlch"];
 
       console.log("\n=== Port Search Results ===\n");
 
