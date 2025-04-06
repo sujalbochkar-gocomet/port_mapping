@@ -6,7 +6,6 @@ import { join } from 'path';
 import connectDB = require('../lib/db');
 import PortModel = require('../models/Port');
 import mongoose from 'mongoose';
-import NodeCache from 'node-cache';
 
 interface PortMatcherResult {
   port_data: Port;
@@ -30,8 +29,6 @@ class PortMatcher {
   private ignoredKeywords: Set<string>;
   // private groq: Groq;
   private openai: OpenAI;
-  private cache: NodeCache;
-  private llmCache: NodeCache;
 
   constructor(portsData: Port[]) {
     if (!Array.isArray(portsData) || portsData.length === 0) {
@@ -92,9 +89,6 @@ class PortMatcher {
       apiKey: process.env.OPENAI_API_KEY || "",
     });
 
-    // Initialize caches with 1 hour TTL
-    this.cache = new NodeCache({ stdTTL: 3600 });
-    this.llmCache = new NodeCache({ stdTTL: 3600 });
   }
 
   static async loadPortsData(): Promise<Port[]> {
@@ -208,15 +202,9 @@ class PortMatcher {
     const results: CascadingResult[] = [];
     const MIN_CONFIDENCE = 10;
 
-    const fieldCache = new Map<string, { words: string[]; set: Set<string> }>();
 
-    const getNormalizedWords = (value: string | undefined, fieldType: string) => {
+    const getNormalizedWords = (value: string | undefined) => {
       if (!value) return null;
-      
-      const cacheKey = `${fieldType}:${value}`;
-      if (fieldCache.has(cacheKey)) {
-        return fieldCache.get(cacheKey)!;
-      }
 
       const fieldWords = this.normalizeString(value)
         .split(/\s+/)
@@ -229,7 +217,6 @@ class PortMatcher {
         set: new Set(fieldWords)
       };
       
-      fieldCache.set(cacheKey, result);
       return result;
     };
 
@@ -267,7 +254,7 @@ class PortMatcher {
       let bestMatch = { confidence: 0, matchType: "" };
 
       for (const key of this.searchableKeys) {
-        const normalized = getNormalizedWords(port[key as keyof Port] as string, key);
+        const normalized = getNormalizedWords(port[key as keyof Port] as string );
         if (!normalized) continue;
 
         const overlapScore = calculateOverlapScore(normalized.set);
@@ -292,7 +279,7 @@ class PortMatcher {
       }
 
       for (const altName of port.other_names || []) {
-        const normalized = getNormalizedWords(altName, 'other_names');
+        const normalized = getNormalizedWords(altName );
         if (!normalized) continue;
 
         const overlapScore = calculateOverlapScore(normalized.set);
@@ -374,64 +361,7 @@ class PortMatcher {
     });
   }
 
-  // private async getGroqResponse(keyword: string, portType: string | null): Promise<string> {
-  //   try {
-  //     const query = `User Prompt Format:
-  //                     Input Keyword is ${keyword} and Port Type is ${portType || 'any'}.
-
-  //                     Identify and return an array of multiple valid ports that match the given keyword and port type.
-
-  //                     Ensure the output follows exactly this JSON format:
-
-  //                     [
-  //                       {
-  //                         "name": "<Port Name>",
-  //                         "alternative_names": [
-  //                           "<Alternative Name 1>",
-  //                           "<Alternative Name 2>",
-  //                           "<Alternative Name 3>"
-  //                           ...lot and lots of alternative names
-  //                         ],
-  //                         "port_code": "<Official Port Code>",
-  //                         "latitude": "<Latitude>",
-  //                         "longitude": "<Longitude>",
-  //                         "confidence_score": <Confidence Score between 0 and 100>
-  //                       }
-  //                     ]
-
-  //                     Rules:
-  //                     - Return multiple valid matches whenever possible
-  //                     - return latitude and longitude accurately
-  //                     - Return as many alternative names and commonly used names as possible
-  //                     - Ensure the port name is correct and not a misspelling
-  //                     - Do not return explanations or alternative suggestions if no match is found. Instead, return exactly: []
-  //                     - The confidence_score must be between 0 - 100, reflecting the match accuracy
-  //                     - Strictly follow this JSON structure—any deviation is incorrect`;
-
-  //     const completion = await this.groq.chat.completions.create({
-  //       messages: [
-  //         { role: "system", content: process.env.SYSTEM_PROMPT || "" },
-  //         { role: "user", content: query },
-  //       ],
-  //       model: "llama3-70b-8192",
-  //       response_format: {
-  //         type: "json_object",
-  //       },
-  //       temperature: 0.1,
-  //       max_completion_tokens: 8192,
-  //     });
-
-  //     const content = completion.choices[0].message.content;
-  //     if (!content) {
-  //       throw new Error("No content in response");
-  //     }
-  //     return content;
-  //   } catch (error) {
-  //     console.error("GroqService :: getResponse :: error", error);
-  //     throw error;
-  //   }
-  // }
-
+ 
   private validateLLMResponse(data: any): boolean {
     if (!data || typeof data !== 'object' || !Array.isArray(data.ports)) {
       return false;
@@ -456,11 +386,7 @@ class PortMatcher {
   }
 
   private async getChatGPTResponse(keyword: string, portType: string | null): Promise<string> {
-    const cacheKey = `llm:${keyword}:${portType || 'all'}`;
-    const cachedResponse = this.llmCache.get<string>(cacheKey);
-    if (cachedResponse) {
-      return cachedResponse;
-    }
+
 
     try {
       const query = `User Prompt Format:
@@ -511,7 +437,7 @@ class PortMatcher {
         throw new Error("No content in response");
       }
 
-      this.llmCache.set(cacheKey, content);
+
       return content;
     } catch (error) {
       console.error("ChatGPTService :: getResponse :: error", error);
@@ -567,7 +493,7 @@ class PortMatcher {
               dbPort.lat_lon.lat,
               dbPort.lat_lon.lon
             );
-            locationMatch = distance <= 50;
+            locationMatch = distance <= 100;
           }
 
           if (nameMatch || codeMatch || locationMatch) {
@@ -585,7 +511,6 @@ class PortMatcher {
       };
 
       const rawResponse = await this.getChatGPTResponse(keyword, portType);
-      console.log("rawResponse", rawResponse);
       
       let parsedResponse;
       try {
@@ -646,23 +571,55 @@ class PortMatcher {
       return [];
     }
 
-    const cacheKey = `cascading:${inputString}:${portType || 'all'}`;
-    const cachedResult = this.cache.get<CascadingResult[]>(cacheKey);
-    if (cachedResult) {
-      return cachedResult;
-    }
-
     const originalPortsData = this.portsData;
     const CONFIDENCE_THRESHOLD = 50;
 
     try {
       if (portType) {
         this.portsData = this.portsData.filter(port => port.port_type === portType);
-        if (this.portsData.length === 0) {
-          return [];
-        }
       }
 
+      const exactResults = this.completeNameSearch(inputString);
+      if (exactResults.length > 0) {
+        this.portsData = originalPortsData;
+        return exactResults.map(result => ({
+          ...result,
+          match_algo_type: "exact"
+        }));
+      }
+
+      const wordResults = this.wordSearch(inputString);
+      if (wordResults.length > 0) {
+        this.portsData = originalPortsData;
+        return wordResults.map(result => ({
+          ...result,
+          match_algo_type: "word"
+        }));
+      }
+
+      const rubyResults = await this.rubyFuzzySearch(inputString);
+      if (rubyResults.length > 0) {
+        this.portsData = originalPortsData;
+        return rubyResults.map(result => ({
+          ...result,
+          match_algo_type: "fuzzy"
+        }));
+      }
+
+      const llmResults = await this.getLLMResponse(inputString, portType);
+      if (llmResults.length > 0) {
+        this.portsData = originalPortsData;
+        return llmResults.map(result => ({
+          ...result,
+          match_algo_type: "llm"
+        }));
+      }
+
+      this.portsData = originalPortsData;
+      return [];
+    } catch (error) {
+      console.error("Error in cascadingSearch:", error);
+      this.portsData = originalPortsData;
       // 1. Try complete name search first
       const completeMatches = this.completeNameSearch(inputString);
       if (completeMatches.length > 0) {
@@ -672,7 +629,7 @@ class PortMatcher {
             ...port,
             match_algo_type: "exact",
           }));
-        this.cache.set(cacheKey, results);
+
         return results;
       }
 
@@ -691,7 +648,6 @@ class PortMatcher {
             ...port,
             match_algo_type: "word",
           }));
-        this.cache.set(cacheKey, results);
         return results;
       }
 
@@ -705,7 +661,7 @@ class PortMatcher {
               ...port,
               match_algo_type: "fuzzy",
             }));
-          this.cache.set(cacheKey, results);
+
           return results;
         }
       } catch (error) {
@@ -723,7 +679,7 @@ class PortMatcher {
             ...port,
             match_algo_type: "word",
           }));
-        this.cache.set(cacheKey, results);
+
         return results;
       }
 
@@ -735,8 +691,14 @@ class PortMatcher {
 
   async aggregatedResults(keyword: string, portType: string | null = null): Promise<PortMatcherResult[]> {
     try {
+
+      console.log("keyword", keyword);
+      console.log("portType", portType);
+
+      console.log("=".repeat(80));
       const cascadingResults = await this.cascadingSearch(keyword, portType);
-      
+      console.log("cascadingResults", cascadingResults);
+      console.log("=".repeat(80));
       const highConfidenceMatches = cascadingResults.filter(result => 
         result.confidence_score >= 80 && 
         (result.match_algo_type === "exact" || result.match_algo_type === "word")
@@ -758,6 +720,10 @@ class PortMatcher {
           (result.match_algo_type !== "exact" && result.match_algo_type !== "word")
         ))
       ]);
+
+      console.log("llmResults", llmResults);
+      console.log("=".repeat(80));
+      console.log("=".repeat(80));
 
       if (llmResults.length === 0 && remainingCascadingResults.length === 0) {
         return [];
@@ -875,3 +841,63 @@ if (require.main === module) {
 }
 
 export = PortMatcher; 
+
+
+
+ // private async getGroqResponse(keyword: string, portType: string | null): Promise<string> {
+  //   try {
+  //     const query = `User Prompt Format:
+  //                     Input Keyword is ${keyword} and Port Type is ${portType || 'any'}.
+
+  //                     Identify and return an array of multiple valid ports that match the given keyword and port type.
+
+  //                     Ensure the output follows exactly this JSON format:
+
+  //                     [
+  //                       {
+  //                         "name": "<Port Name>",
+  //                         "alternative_names": [
+  //                           "<Alternative Name 1>",
+  //                           "<Alternative Name 2>",
+  //                           "<Alternative Name 3>"
+  //                           ...lot and lots of alternative names
+  //                         ],
+  //                         "port_code": "<Official Port Code>",
+  //                         "latitude": "<Latitude>",
+  //                         "longitude": "<Longitude>",
+  //                         "confidence_score": <Confidence Score between 0 and 100>
+  //                       }
+  //                     ]
+
+  //                     Rules:
+  //                     - Return multiple valid matches whenever possible
+  //                     - return latitude and longitude accurately
+  //                     - Return as many alternative names and commonly used names as possible
+  //                     - Ensure the port name is correct and not a misspelling
+  //                     - Do not return explanations or alternative suggestions if no match is found. Instead, return exactly: []
+  //                     - The confidence_score must be between 0 - 100, reflecting the match accuracy
+  //                     - Strictly follow this JSON structure—any deviation is incorrect`;
+
+  //     const completion = await this.groq.chat.completions.create({
+  //       messages: [
+  //         { role: "system", content: process.env.SYSTEM_PROMPT || "" },
+  //         { role: "user", content: query },
+  //       ],
+  //       model: "llama3-70b-8192",
+  //       response_format: {
+  //         type: "json_object",
+  //       },
+  //       temperature: 0.1,
+  //       max_completion_tokens: 8192,
+  //     });
+
+  //     const content = completion.choices[0].message.content;
+  //     if (!content) {
+  //       throw new Error("No content in response");
+  //     }
+  //     return content;
+  //   } catch (error) {
+  //     console.error("GroqService :: getResponse :: error", error);
+  //     throw error;
+  //   }
+  // }

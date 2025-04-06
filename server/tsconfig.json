@@ -109,6 +109,14 @@
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
     "esModuleInterop": true
   },
-  "include": ["./src/**/*.ts", "./port_mapper/**/*.ts", "./lib/**/*.ts", "./models/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "./src/**/*.ts",
+    "./port_mapper/**/*.ts",
+    "./lib/**/*.ts",
+    "./models/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
