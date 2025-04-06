@@ -103,6 +103,8 @@ app.get("/search-ports", async (req: Request, res: Response) => {
       port: result.port_data,
       verified: true,
       match_score: result.confidence_score,
+      match_type: result.match_type,
+      sources: result.sources
     }));
 
 

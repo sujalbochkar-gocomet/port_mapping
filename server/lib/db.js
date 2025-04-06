@@ -10,7 +10,7 @@ const connectDB = async () => {
 
     // MongoDB connection options - removed deprecated options
     const options = {
-      dbName: 'ports_database', // Match the database name from your MongoDB Atlas cluster
+      dbName: 'Ports', // Match the database name from your MongoDB Atlas cluster
       serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds
     };
 

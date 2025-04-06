@@ -8,8 +8,6 @@ interface TestPort {
     "Mapped Port ID": string;
 }
 
-
-
 async function main(): Promise<void> {
     try {
         // First connect to MongoDB
@@ -17,7 +15,7 @@ async function main(): Promise<void> {
         await connectDB();
         console.log("MongoDB connection established successfully");
 
-        const portsFilePath = "./ports.json";
+        const portsFilePath = "./tests_json/test1.json";
         const ports: TestPort[] = JSON.parse(await fs.readFile(portsFilePath, "utf-8"));
 
         // Initialize PortMatcher
@@ -32,8 +30,13 @@ async function main(): Promise<void> {
         let totalTime = 0;
         let processedCount = 0;
         const BATCH_SIZE = 500;
+        let currentBatchContent = "# Port Mapping Test Results\n\n";
+        let batchNumber = 1;
+        let batchStartTime = performance.now();
 
         console.log(`\nStarting port mapping test with ${ports.length} test cases...\n`);
+        currentBatchContent += `## Test Summary\n\n`;
+        currentBatchContent += `- Total Test Cases: ${ports.length}\n\n`;
 
         for (const port of ports) {
             const startTime = performance.now();
@@ -46,10 +49,19 @@ async function main(): Promise<void> {
                 emptyResultsCount++;
                 console.log(`❌ Empty Results: "${port["Keyword"]}" (${port["Port Type"]}) - ${timeTaken.toFixed(2)}ms`);
                 console.log(`   Expected: ${port["Mapped Port ID"]}`);
+                currentBatchContent += `### ❌ Empty Results\n`;
+                currentBatchContent += `- Keyword: "${port["Keyword"]}"\n`;
+                currentBatchContent += `- Port Type: ${port["Port Type"]}\n`;
+                currentBatchContent += `- Expected: ${port["Mapped Port ID"]}\n`;
+                currentBatchContent += `- Time: ${timeTaken.toFixed(2)}ms\n\n`;
 
             } else if (results[0]?.port_data?.id === port["Mapped Port ID"]) {
                 matchedCount++;
                 console.log(`✅ Matched: "${port["Keyword"]}" -> ${results[0].port_data.name} (${timeTaken.toFixed(2)}ms)`);
+                currentBatchContent += `### ✅ Matched\n`;
+                currentBatchContent += `- Keyword: "${port["Keyword"]}"\n`;
+                currentBatchContent += `- Mapped To: ${results[0].port_data.name}\n`;
+                currentBatchContent += `- Time: ${timeTaken.toFixed(2)}ms\n\n`;
             } else {
                 unmatchedCount++;
                 console.log(`❌ Unmatched: "${port["Keyword"]}"`);
@@ -57,23 +69,66 @@ async function main(): Promise<void> {
                 console.log(`   Got: ${results[0]?.port_data?.id || 'No ID'}`);
                 console.log(`   Time: ${timeTaken.toFixed(2)}ms`);
                 console.log(`   Matched using ${results[0].match_type} and sources are ${results[0].sources.join(', ')}`);
+                currentBatchContent += `### ❌ Unmatched\n`;
+                currentBatchContent += `- Keyword: "${port["Keyword"]}"\n`;
+                currentBatchContent += `- Expected: ${port["Mapped Port ID"]}\n`;
+                currentBatchContent += `- Got: ${results[0]?.port_data?.id || 'No ID'}\n`;
+                currentBatchContent += `- Time: ${timeTaken.toFixed(2)}ms\n`;
+                currentBatchContent += `- Match Type: ${results[0].match_type}\n`;
+                currentBatchContent += `- Sources: ${results[0].sources.join(', ')}\n\n`;
             }
 
             processedCount++;
 
-            // Show intermediate results after every BATCH_SIZE test cases
+            // Save batch results and start new batch after every BATCH_SIZE test cases
             if (processedCount % BATCH_SIZE === 0 || processedCount === ports.length) {
-                console.log("\n=== Intermediate Results ===");
-                console.log(`Processed ${processedCount} out of ${ports.length} test cases`);
-                console.log(`Current Batch Accuracy: ${((matchedCount / processedCount) * 100).toFixed(2)}%`);
-                console.log(`Current Batch Stats:`);
-                console.log(`  ✅ Matched: ${matchedCount}`);
-                console.log(`  ❌ Unmatched: ${unmatchedCount}`);
-                console.log(`  ⚠️ Empty Results: ${emptyResultsCount}`);
-                console.log(`  Average Time per Query: ${(totalTime / processedCount).toFixed(2)}ms`);
-                console.log("=".repeat(50));
+                const batchEndTime = performance.now();
+                const batchTotalTime = batchEndTime - batchStartTime;
+
+                // Add batch summary to current batch content
+                currentBatchContent += `## Batch ${batchNumber} Summary\n\n`;
+                currentBatchContent += `- Processed: ${processedCount}/${ports.length}\n`;
+                currentBatchContent += `- Batch Accuracy: ${((matchedCount / processedCount) * 100).toFixed(2)}%\n`;
+                currentBatchContent += `- Matched: ${matchedCount}\n`;
+                currentBatchContent += `- Unmatched: ${unmatchedCount}\n`;
+                currentBatchContent += `- Empty Results: ${emptyResultsCount}\n`;
+                currentBatchContent += `- Batch Time: ${batchTotalTime.toFixed(2)}ms\n`;
+                currentBatchContent += `- Average Time per Query: ${(batchTotalTime / (processedCount % BATCH_SIZE || BATCH_SIZE)).toFixed(2)}ms\n\n`;
+
+                // Save current batch to file
+                await fs.writeFile(`portsFilePath_batch_${batchNumber}.md`, currentBatchContent);
+                console.log(`\nBatch ${batchNumber} results saved to portsFilePath_batchRandom_${batchNumber}.md`);
+
+                // Reset for next batch
+                if (processedCount < ports.length) {
+                    batchNumber++;
+                    currentBatchContent = "# Port Mapping Test Results\n\n";
+                    currentBatchContent += `## Test Summary (Batch ${batchNumber})\n\n`;
+                    currentBatchContent += `- Total Test Cases: ${ports.length}\n`;
+                    currentBatchContent += `- Starting from: ${processedCount + 1}\n\n`;
+                    batchStartTime = performance.now();
+                }
             }
         }
+
+        // Create final summary file
+        let summaryContent = `# Port Mapping Test Final Summary\n\n`;
+        summaryContent += `## Overall Statistics\n\n`;
+        summaryContent += `- Total Test Cases: ${ports.length}\n`;
+        summaryContent += `- ✅ Matched: ${matchedCount}\n`;
+        summaryContent += `- ❌ Unmatched: ${unmatchedCount}\n`;
+        summaryContent += `- ⚠️ Empty Results: ${emptyResultsCount}\n`;
+        summaryContent += `- Total Time: ${totalTime.toFixed(2)}ms\n`;
+        summaryContent += `- Average Time per Query: ${(totalTime / ports.length).toFixed(2)}ms\n`;
+        summaryContent += `- Final Success Rate: ${((matchedCount / ports.length) * 100).toFixed(2)}%\n\n`;
+        summaryContent += `## Batch Files\n\n`;
+        for (let i = 1; i <= batchNumber; i++) {
+            summaryContent += `- [Batch ${i} Results](./portsFilePath_batchRandom_${i}.md)\n`;
+        }
+
+        // Save final summary
+        await fs.writeFile('portsFilePath_summary.md', summaryContent);
+        console.log("\nFinal summary saved to portsFilePath_ssummary.md");
 
         console.log("\n=== Final Test Results ===");
         console.log(`Total Test Cases: ${ports.length}`);

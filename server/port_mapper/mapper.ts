@@ -3,10 +3,10 @@ import { Port } from "../src/types/types";
 import OpenAI from 'openai';
 import { spawn } from 'child_process';
 import { join } from 'path';
-// import Fuse from 'fuse.js';
 import connectDB = require('../lib/db');
 import PortModel = require('../models/Port');
 import mongoose from 'mongoose';
+import NodeCache from 'node-cache';
 
 interface PortMatcherResult {
   port_data: Port;
@@ -22,20 +22,6 @@ interface CascadingResult {
   match_algo_type: string;
 }
 
-// interface FuseKey {
-//   name: string;
-//   getFn: (port: Port) => string | string[];
-// }
-
-// interface FuseOptions {
-//   keys: FuseKey[];
-//   threshold: number;
-//   includeScore: boolean;
-//   findAllMatches: boolean;
-//   includeMatches: boolean;
-//   tokenize: boolean;
-//   tokenSeparator: RegExp;
-// }
 
 class PortMatcher {
   private portsData: Port[];
@@ -44,7 +30,8 @@ class PortMatcher {
   private ignoredKeywords: Set<string>;
   // private groq: Groq;
   private openai: OpenAI;
-//   private fuse!: Fuse<Port>;
+  private cache: NodeCache;
+  private llmCache: NodeCache;
 
   constructor(portsData: Port[]) {
     if (!Array.isArray(portsData) || portsData.length === 0) {
@@ -105,7 +92,9 @@ class PortMatcher {
       apiKey: process.env.OPENAI_API_KEY || "",
     });
 
-    // this._createFuseIndex();
+    // Initialize caches with 1 hour TTL
+    this.cache = new NodeCache({ stdTTL: 3600 });
+    this.llmCache = new NodeCache({ stdTTL: 3600 });
   }
 
   static async loadPortsData(): Promise<Port[]> {
@@ -171,7 +160,7 @@ class PortMatcher {
 
       for (const key of this.searchableKeys) {
         const normalizedField = this.normalizeString(port[key as keyof Port] as string);
-        if (normalizedField && normalizedField === normalizedInput) {
+        if (normalizedField && normalizedField == normalizedInput) {
           matchType = `_${key.toLowerCase().replace(/\s+/g, '_')}`;
           matched = true;
           confidenceScore = 100;
@@ -199,7 +188,7 @@ class PortMatcher {
       }
     }
 
-    return results;
+    return results.sort((a, b) => b.confidence_score - a.confidence_score);
   }
 
   private wordSearch(inputString: string): CascadingResult[] {
@@ -467,6 +456,12 @@ class PortMatcher {
   }
 
   private async getChatGPTResponse(keyword: string, portType: string | null): Promise<string> {
+    const cacheKey = `llm:${keyword}:${portType || 'all'}`;
+    const cachedResponse = this.llmCache.get<string>(cacheKey);
+    if (cachedResponse) {
+      return cachedResponse;
+    }
+
     try {
       const query = `User Prompt Format:
                       Input Keyword is ${keyword} and Port Type is ${portType || 'any'}.
@@ -515,6 +510,8 @@ class PortMatcher {
       if (!content) {
         throw new Error("No content in response");
       }
+
+      this.llmCache.set(cacheKey, content);
       return content;
     } catch (error) {
       console.error("ChatGPTService :: getResponse :: error", error);
@@ -649,6 +646,12 @@ class PortMatcher {
       return [];
     }
 
+    const cacheKey = `cascading:${inputString}:${portType || 'all'}`;
+    const cachedResult = this.cache.get<CascadingResult[]>(cacheKey);
+    if (cachedResult) {
+      return cachedResult;
+    }
+
     const originalPortsData = this.portsData;
     const CONFIDENCE_THRESHOLD = 50;
 
@@ -660,44 +663,68 @@ class PortMatcher {
         }
       }
 
-      const locationMatches = this.filterByLocation(inputString);
-      if (locationMatches.length > 0) {
-        this.portsData = locationMatches;
-      }
-
+      // 1. Try complete name search first
       const completeMatches = this.completeNameSearch(inputString);
       if (completeMatches.length > 0) {
-        return completeMatches
+        const results = completeMatches
           .filter(match => match.confidence_score >= CONFIDENCE_THRESHOLD)
           .map((port) => ({
             ...port,
             match_algo_type: "exact",
           }));
+        this.cache.set(cacheKey, results);
+        return results;
       }
 
+      // 2. Apply location filtering if no exact matches found
+      const locationMatches = this.filterByLocation(inputString);
+      if (locationMatches.length > 0) {
+        this.portsData = locationMatches;
+      }
+
+      // 3. Try word search on filtered data
       const wordMatches = this.wordSearch(inputString);
       if (wordMatches.length > 0) {
-        return wordMatches
+        const results = wordMatches
           .filter(match => match.confidence_score >= CONFIDENCE_THRESHOLD)
           .map((port) => ({
             ...port,
             match_algo_type: "word",
           }));
+        this.cache.set(cacheKey, results);
+        return results;
       }
 
+      // 4. Try fuzzy search only if word search fails
       try {
         const rubyMatches = await this.rubyFuzzySearch(inputString);
-
         if (rubyMatches.length > 0) {
-          return rubyMatches
+          const results = rubyMatches
             .filter(match => match.confidence_score >= CONFIDENCE_THRESHOLD)
             .map((port) => ({
               ...port,
               match_algo_type: "fuzzy",
             }));
+          this.cache.set(cacheKey, results);
+          return results;
         }
       } catch (error) {
         console.error('Ruby fuzzy search failed:', error);
+      }
+
+      // 5. If all else fails, try word search on all data
+      this.portsData = originalPortsData;
+      const wordMatchesAll = this.wordSearch(inputString);
+      
+      if (wordMatchesAll.length > 0) {
+        const results = wordMatchesAll
+          .filter(match => match.confidence_score >= CONFIDENCE_THRESHOLD)
+          .map((port) => ({
+            ...port,
+            match_algo_type: "word",
+          }));
+        this.cache.set(cacheKey, results);
+        return results;
       }
 
       return [];
@@ -820,7 +847,7 @@ if (require.main === module) {
       const matcher = new PortMatcher(portsData);
 
       // Example searches based on actual data
-      const testCases = ["laem chabang, thailand, thlch"];
+      const testCases = ["southampton united kingdom gbsou"];
 
       console.log("\n=== Port Search Results ===\n");
 
