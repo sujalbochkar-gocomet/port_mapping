@@ -1,11 +1,9 @@
 import { Port } from "../src/types/types";
-// import { Groq } from 'groq-sdk';
 import OpenAI from 'openai';
 import { spawn } from 'child_process';
 import { join } from 'path';
 import connectDB = require('../lib/db');
 import PortModel = require('../models/Port');
-import mongoose from 'mongoose';
 
 interface PortMatcherResult {
   port_data: Port;
@@ -27,7 +25,6 @@ class PortMatcher {
   private searchableKeys: string[];
   private locationSearchableKeys: string[];
   private ignoredKeywords: Set<string>;
-  // private groq: Groq;
   private openai: OpenAI;
 
   constructor(portsData: Port[]) {
@@ -78,13 +75,14 @@ class PortMatcher {
       "port",
       "international",
       "airport",
+      "of",
+      "the",
+      "and",
+      "in",
+      "at",
+      "by",
+      "on",
     ]);
-
-    // this.groq = new Groq({
-    //   apiKey: process.env.GROQ_API_KEY || "",
-    //   dangerouslyAllowBrowser: true,
-    // });
-
     this.openai = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY || "",
     });
@@ -98,11 +96,19 @@ class PortMatcher {
         deleted: false,
         verified: true,
       }).lean();
-      
-      console.log(`Loaded ${allPorts.length} verified ports from MongoDB`);
       return allPorts as unknown as Port[];
     } catch (error) {
       console.error('Error loading port data from MongoDB:', error);
+      throw error;
+    }
+  }
+
+  public async refreshData(): Promise<void> {
+    try {
+      const freshData = await PortMatcher.loadPortsData();
+      this.portsData = freshData;
+    } catch (error) {
+      console.error("Error refreshing port data:", error);
       throw error;
     }
   }
@@ -117,7 +123,7 @@ class PortMatcher {
     );
   }
 
-  private filterByLocation(inputString: string): Port[] {
+  private filterByLocation(inputString: string, portsData: Port[] = this.portsData): Port[] {
     if (typeof inputString !== "string" || !inputString.trim()) {
       return [];
     }
@@ -126,7 +132,7 @@ class PortMatcher {
       .split(/\s+/)
       .filter(word => !this.ignoredKeywords.has(word));
 
-    return this.portsData.filter(port => {
+    return portsData.filter(port => {
       const locationWords = this.locationSearchableKeys
         .map(key => this.normalizeString(port[key as keyof Port] as string))
         .join(' ')
@@ -139,7 +145,7 @@ class PortMatcher {
     });
   }
 
-  private completeNameSearch(inputString: string): CascadingResult[] {
+  private completeNameSearch(inputString: string, portsData: Port[] = this.portsData): CascadingResult[] {
     if (typeof inputString !== "string" || !inputString.trim()) {
       return [];
     }
@@ -147,7 +153,7 @@ class PortMatcher {
     const normalizedInput = this.normalizeString(inputString);
     const results: CascadingResult[] = [];
 
-    for (const port of this.portsData) {
+    for (const port of portsData) {
       let matchType = "";
       let matched = false;
       let confidenceScore = 0;
@@ -185,7 +191,7 @@ class PortMatcher {
     return results.sort((a, b) => b.confidence_score - a.confidence_score);
   }
 
-  private wordSearch(inputString: string): CascadingResult[] {
+  private wordSearch(inputString: string, portsData: Port[] = this.portsData): CascadingResult[] {
     if (typeof inputString !== "string" || !inputString.trim()) {
       return [];
     }
@@ -202,8 +208,7 @@ class PortMatcher {
     const results: CascadingResult[] = [];
     const MIN_CONFIDENCE = 10;
 
-
-    const getNormalizedWords = (value: string | undefined) => {
+    const getNormalizedWords = (value: string | undefined): { words: string[], set: Set<string> } | null => {
       if (!value) return null;
 
       const fieldWords = this.normalizeString(value)
@@ -212,12 +217,10 @@ class PortMatcher {
 
       if (fieldWords.length === 0) return null;
 
-      const result = {
+      return {
         words: fieldWords,
         set: new Set(fieldWords)
       };
-      
-      return result;
     };
 
     const calculateOverlapScore = (fieldWordsSet: Set<string>): number => {
@@ -250,7 +253,7 @@ class PortMatcher {
       return (maxConsecutiveMatches / minLength) * 100;
     };
 
-    for (const port of this.portsData) {
+    for (const port of portsData) {
       let bestMatch = { confidence: 0, matchType: "" };
 
       for (const key of this.searchableKeys) {
@@ -286,7 +289,7 @@ class PortMatcher {
         if (overlapScore < MIN_CONFIDENCE) continue;
 
         const orderScore = calculateOrderScore(normalized.words);
-        const confidence = (overlapScore * 0.6) + (orderScore * 0.4);
+        const confidence = (overlapScore * 0.7) + (orderScore * 0.3);
 
         if (confidence > bestMatch.confidence) {
           bestMatch = { confidence, matchType: 'other_names' };
@@ -307,12 +310,12 @@ class PortMatcher {
   }
 
 
-  private async rubyFuzzySearch(inputString: string): Promise<CascadingResult[]> {
+  private async rubyFuzzySearch(inputString: string, portsData: Port[] = this.portsData): Promise<CascadingResult[]> {
     if (typeof inputString !== "string" || !inputString.trim()) {
       return [];
     }
 
-    const searchData = this.portsData.map(port => {
+    const searchData = portsData.map(port => {
       const searchableFields = this.searchableKeys
         .map(key => port[key as keyof Port] as string)
         .filter(Boolean);
@@ -322,7 +325,7 @@ class PortMatcher {
     const rubyInput = {
       search_data: searchData,
       query: inputString,
-      ports_data: this.portsData,
+      ports_data: portsData,
       stop_words: Array.from(this.ignoredKeywords),
       searchable_fields: this.searchableKeys
     };
@@ -557,8 +560,6 @@ class PortMatcher {
         }) : [];
       });
 
-      console.log("matchedPorts", matchedPorts);
-
       return matchedPorts.sort((a: PortMatcherResult, b: PortMatcherResult) => b.confidence_score - a.confidence_score);
     } catch (error) {
       console.error("Error in getLLMResponse:", error);
@@ -571,35 +572,34 @@ class PortMatcher {
       return [];
     }
 
-    const originalPortsData = this.portsData;
-    const CONFIDENCE_THRESHOLD = 50;
+    // Create a copy of portsData to work with
+    let workingPortsData = [...this.portsData];
 
     try {
       if (portType) {
-        this.portsData = this.portsData.filter(port => port.port_type === portType);
+        workingPortsData = workingPortsData.filter(port => port.port_type === portType);
       }
 
-      const exactResults = this.completeNameSearch(inputString);
+      const exactResults = this.completeNameSearch(inputString, workingPortsData);
       if (exactResults.length > 0) {
-        this.portsData = originalPortsData;
         return exactResults.map(result => ({
           ...result,
           match_algo_type: "exact"
         }));
       }
 
-      const wordResults = this.wordSearch(inputString);
+      workingPortsData = this.filterByLocation(inputString, workingPortsData);
+
+      const wordResults = this.wordSearch(inputString, workingPortsData);
       if (wordResults.length > 0) {
-        this.portsData = originalPortsData;
         return wordResults.map(result => ({
           ...result,
           match_algo_type: "word"
         }));
       }
 
-      const rubyResults = await this.rubyFuzzySearch(inputString);
+      const rubyResults = await this.rubyFuzzySearch(inputString, workingPortsData);
       if (rubyResults.length > 0) {
-        this.portsData = originalPortsData;
         return rubyResults.map(result => ({
           ...result,
           match_algo_type: "fuzzy"
@@ -608,97 +608,22 @@ class PortMatcher {
 
       const llmResults = await this.getLLMResponse(inputString, portType);
       if (llmResults.length > 0) {
-        this.portsData = originalPortsData;
         return llmResults.map(result => ({
           ...result,
           match_algo_type: "llm"
         }));
       }
 
-      this.portsData = originalPortsData;
       return [];
     } catch (error) {
       console.error("Error in cascadingSearch:", error);
-      this.portsData = originalPortsData;
-      // 1. Try complete name search first
-      const completeMatches = this.completeNameSearch(inputString);
-      if (completeMatches.length > 0) {
-        const results = completeMatches
-          .filter(match => match.confidence_score >= CONFIDENCE_THRESHOLD)
-          .map((port) => ({
-            ...port,
-            match_algo_type: "exact",
-          }));
-
-        return results;
-      }
-
-      // 2. Apply location filtering if no exact matches found
-      const locationMatches = this.filterByLocation(inputString);
-      if (locationMatches.length > 0) {
-        this.portsData = locationMatches;
-      }
-
-      // 3. Try word search on filtered data
-      const wordMatches = this.wordSearch(inputString);
-      if (wordMatches.length > 0) {
-        const results = wordMatches
-          .filter(match => match.confidence_score >= CONFIDENCE_THRESHOLD)
-          .map((port) => ({
-            ...port,
-            match_algo_type: "word",
-          }));
-        return results;
-      }
-
-      // 4. Try fuzzy search only if word search fails
-      try {
-        const rubyMatches = await this.rubyFuzzySearch(inputString);
-        if (rubyMatches.length > 0) {
-          const results = rubyMatches
-            .filter(match => match.confidence_score >= CONFIDENCE_THRESHOLD)
-            .map((port) => ({
-              ...port,
-              match_algo_type: "fuzzy",
-            }));
-
-          return results;
-        }
-      } catch (error) {
-        console.error('Ruby fuzzy search failed:', error);
-      }
-
-      // 5. If all else fails, try word search on all data
-      this.portsData = originalPortsData;
-      const wordMatchesAll = this.wordSearch(inputString);
-      
-      if (wordMatchesAll.length > 0) {
-        const results = wordMatchesAll
-          .filter(match => match.confidence_score >= CONFIDENCE_THRESHOLD)
-          .map((port) => ({
-            ...port,
-            match_algo_type: "word",
-          }));
-
-        return results;
-      }
-
       return [];
-    } finally {
-      this.portsData = originalPortsData;
     }
   }
 
   async aggregatedResults(keyword: string, portType: string | null = null): Promise<PortMatcherResult[]> {
     try {
-
-      console.log("keyword", keyword);
-      console.log("portType", portType);
-
-      console.log("=".repeat(80));
       const cascadingResults = await this.cascadingSearch(keyword, portType);
-      console.log("cascadingResults", cascadingResults);
-      console.log("=".repeat(80));
       const highConfidenceMatches = cascadingResults.filter(result => 
         result.confidence_score >= 80 && 
         (result.match_algo_type === "exact" || result.match_algo_type === "word")
@@ -720,10 +645,6 @@ class PortMatcher {
           (result.match_algo_type !== "exact" && result.match_algo_type !== "word")
         ))
       ]);
-
-      console.log("llmResults", llmResults);
-      console.log("=".repeat(80));
-      console.log("=".repeat(80));
 
       if (llmResults.length === 0 && remainingCascadingResults.length === 0) {
         return [];
@@ -799,105 +720,6 @@ class PortMatcher {
   }
 }
 
-// Example usage
-if (require.main === module) {
-  (async () => {
-    try {
-      console.log("Loading port data from MongoDB...");
-      const loadStart = performance.now();
-      const portsData = await PortMatcher.loadPortsData();
-      const loadEnd = performance.now();
-      console.log(`Port data loaded in ${(loadEnd - loadStart).toFixed(2)}ms`);
-
-      // Initialize matcher
-      const matcher = new PortMatcher(portsData);
-
-      // Example searches based on actual data
-      const testCases = ["southampton united kingdom gbsou"];
-
-      console.log("\n=== Port Search Results ===\n");
-
-      for (const testInput of testCases) {
-        console.log(`Search Query: "${testInput}"`);
-        console.log("=".repeat(80));
-
-        // Measure score aggregator (which includes both cascading and LLM searches)
-        const startTime = performance.now();
-        const results = await matcher.aggregatedResults(testInput, "sea_port");
-        const endTime = performance.now();
-        
-        console.log(`Search completed in ${(endTime - startTime).toFixed(2)}ms`);
-        console.log(JSON.stringify(results.slice(0, 3), null, 2));
-      }
-
-      // Disconnect from MongoDB
-      await mongoose.disconnect();
-    } catch (error) {
-      console.error("Error during initialization:", error);
-      await mongoose.disconnect();
-      process.exit(1);
-    }
-  })();
-}
-
 export = PortMatcher; 
 
 
-
- // private async getGroqResponse(keyword: string, portType: string | null): Promise<string> {
-  //   try {
-  //     const query = `User Prompt Format:
-  //                     Input Keyword is ${keyword} and Port Type is ${portType || 'any'}.
-
-  //                     Identify and return an array of multiple valid ports that match the given keyword and port type.
-
-  //                     Ensure the output follows exactly this JSON format:
-
-  //                     [
-  //                       {
-  //                         "name": "<Port Name>",
-  //                         "alternative_names": [
-  //                           "<Alternative Name 1>",
-  //                           "<Alternative Name 2>",
-  //                           "<Alternative Name 3>"
-  //                           ...lot and lots of alternative names
-  //                         ],
-  //                         "port_code": "<Official Port Code>",
-  //                         "latitude": "<Latitude>",
-  //                         "longitude": "<Longitude>",
-  //                         "confidence_score": <Confidence Score between 0 and 100>
-  //                       }
-  //                     ]
-
-  //                     Rules:
-  //                     - Return multiple valid matches whenever possible
-  //                     - return latitude and longitude accurately
-  //                     - Return as many alternative names and commonly used names as possible
-  //                     - Ensure the port name is correct and not a misspelling
-  //                     - Do not return explanations or alternative suggestions if no match is found. Instead, return exactly: []
-  //                     - The confidence_score must be between 0 - 100, reflecting the match accuracy
-  //                     - Strictly follow this JSON structure—any deviation is incorrect`;
-
-  //     const completion = await this.groq.chat.completions.create({
-  //       messages: [
-  //         { role: "system", content: process.env.SYSTEM_PROMPT || "" },
-  //         { role: "user", content: query },
-  //       ],
-  //       model: "llama3-70b-8192",
-  //       response_format: {
-  //         type: "json_object",
-  //       },
-  //       temperature: 0.1,
-  //       max_completion_tokens: 8192,
-  //     });
-
-  //     const content = completion.choices[0].message.content;
-  //     if (!content) {
-  //       throw new Error("No content in response");
-  //     }
-  //     return content;
-  //   } catch (error) {
-  //     console.error("GroqService :: getResponse :: error", error);
-  //     throw error;
-  //   }
-  // }

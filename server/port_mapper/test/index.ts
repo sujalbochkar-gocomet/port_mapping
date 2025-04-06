@@ -15,7 +15,7 @@ async function main(): Promise<void> {
         await connectDB();
         console.log("MongoDB connection established successfully");
 
-        const portsFilePath = "./tests_json/test1.json";
+        const portsFilePath = "ports.json";
         const ports: TestPort[] = JSON.parse(await fs.readFile(portsFilePath, "utf-8"));
 
         // Initialize PortMatcher
@@ -97,7 +97,7 @@ async function main(): Promise<void> {
 
                 // Save current batch to file
                 await fs.writeFile(`portsFilePath_batch_${batchNumber}.md`, currentBatchContent);
-                console.log(`\nBatch ${batchNumber} results saved to portsFilePath_batchRandom_${batchNumber}.md`);
+                console.log(`\nBatch ${batchNumber} results saved to portsFilePath_batch_${batchNumber}.md`);
 
                 // Reset for next batch
                 if (processedCount < ports.length) {
@@ -123,7 +123,7 @@ async function main(): Promise<void> {
         summaryContent += `- Final Success Rate: ${((matchedCount / ports.length) * 100).toFixed(2)}%\n\n`;
         summaryContent += `## Batch Files\n\n`;
         for (let i = 1; i <= batchNumber; i++) {
-            summaryContent += `- [Batch ${i} Results](./portsFilePath_batchRandom_${i}.md)\n`;
+            summaryContent += `- [Batch ${i} Results](./portsFilePath_batch_${i}.md)\n`;
         }
 
         // Save final summary

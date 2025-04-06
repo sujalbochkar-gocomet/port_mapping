@@ -4,6 +4,80 @@ import cors from "cors";
 const express = require('express');
 import { prisma } from "./lib/prisma";
 import PortMatcher = require("../port_mapper/mapper");
+import mongoose from 'mongoose';
+import connectDB = require('../lib/db');
+import swaggerUi from 'swagger-ui-express';
+import swaggerJsdoc from 'swagger-jsdoc';
+
+// Swagger configuration
+const swaggerOptions = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'Port Mapping API',
+      version: '1.0.0',
+      description: 'API for port mapping and shipment management',
+    },
+    servers: [
+      {
+        url: 'http://localhost:3000',
+        description: 'Development server',
+      },
+    ],
+    components: {
+      schemas: {
+        Port: {
+          type: 'object',
+          properties: {
+            _id: { type: 'string' },
+            id: { type: 'string' },
+            name: { type: 'string' },
+            display_name: { type: 'string' },
+            port_type: { type: 'string' },
+            code: { type: 'string' },
+            other_names: { type: 'array', items: { type: 'string' } },
+            city: { type: 'string' },
+            state_name: { type: 'string' },
+            country: { type: 'string' },
+            country_code: { type: 'string' },
+            region: { type: 'string' },
+            lat_lon: {
+              type: 'object',
+              properties: {
+                lat: { type: 'number' },
+                lon: { type: 'number' }
+              }
+            }
+          }
+        },
+        PortSearchResult: {
+          type: 'object',
+          properties: {
+            port: { $ref: '#/components/schemas/Port' },
+            verified: { type: 'boolean' },
+            match_score: { type: 'number' },
+            match_type: { type: 'string' },
+            sources: { type: 'array', items: { type: 'string' } }
+          }
+        },
+        Shipment: {
+          type: 'object',
+          properties: {
+            id: { type: 'string' },
+            carrierType: { type: 'string' },
+            pol: { $ref: '#/components/schemas/Port' },
+            pod: { $ref: '#/components/schemas/Port' },
+            createdAt: { type: 'string', format: 'date-time' },
+            updatedAt: { type: 'string', format: 'date-time' }
+          }
+        }
+      }
+    }
+  },
+  apis: ['./src/script.ts'], // Path to the API docs
+};
+
+const swaggerDocs = swaggerJsdoc(swaggerOptions);
 
 interface PortMatcherResult {
   port_data: Port;
@@ -15,29 +89,139 @@ interface PortMatcherResult {
 const app = express();
 const port = 3000;
 let portMatcher: PortMatcher | null = null;
+let isReconnecting = false;
+let refreshInterval: NodeJS.Timeout | null = null;
+
+// MongoDB connection monitoring
+mongoose.connection.on('disconnected', () => {
+  if (!isReconnecting) {
+    reconnectMongoDB();
+  }
+});
+
+mongoose.connection.on('error', (err) => {
+  console.error('MongoDB connection error:', err);
+  if (!isReconnecting) {
+    reconnectMongoDB();
+  }
+});
+
+async function reconnectMongoDB() {
+  if (isReconnecting) return;
+  
+  isReconnecting = true;
+  
+  try {
+    await mongoose.disconnect();
+    await connectDB();
+    
+    // Reinitialize PortMatcher with fresh data
+    await initializePortMatcher();
+  } catch (error) {
+    console.error('Failed to reconnect to MongoDB:', error);
+  } finally {
+    isReconnecting = false;
+  }
+}
 
 app.use(cors());
 app.use(express.json());
 
-// Initialize database and PortMatcher
+// Serve Swagger UI
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+// Add the refresh function
+async function refreshPortData() {
+  try {
+    if (portMatcher) {
+      await portMatcher.refreshData();
+    }
+  } catch (error) {
+    console.error('Failed to refresh port data:', error);
+    // If refresh fails, try to reinitialize the PortMatcher
+    try {
+      await initializePortMatcher();
+    } catch (reinitError) {
+      console.error('Failed to reinitialize PortMatcher:', reinitError);
+    }
+  }
+}
+
+// Modify the initializePortMatcher function to set up the refresh interval
 const initializePortMatcher = async () => {
   try {
-    console.log("Initializing PortMatcher...");
     const portsData = await PortMatcher.loadPortsData();
     portMatcher = new PortMatcher(portsData);
-    console.log("PortMatcher initialized successfully");
+
+    // Clear any existing refresh interval
+    if (refreshInterval) {
+      clearInterval(refreshInterval);
+    }
+
+    // Set up hourly refresh (3600000 ms = 1 hour)
+    refreshInterval = setInterval(refreshPortData, 3600000);
   } catch (error) {
     console.error("Failed to initialize PortMatcher:", error);
     throw error;
   }
 };
 
+/**
+ * @swagger
+ * /:
+ *   get:
+ *     summary: Health check endpoint
+ *     description: Returns the health status of the API
+ *     responses:
+ *       200:
+ *         description: API is healthy
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: healthy
+ *                 message:
+ *                   type: string
+ *                   example: Port Mapping API is running
+ */
 app.get("/", (_req: Request, res: Response) => {
   res
     .status(200)
     .json({ status: "healthy", message: "Port Mapping API is running" });
 });
 
+/**
+ * @swagger
+ * /search-ports:
+ *   get:
+ *     summary: Search for ports
+ *     description: Search for ports based on query and type
+ *     parameters:
+ *       - in: query
+ *         name: q
+ *         schema:
+ *           type: string
+ *         description: Search query
+ *       - in: query
+ *         name: type
+ *         schema:
+ *           type: string
+ *         description: Port type filter
+ *     responses:
+ *       200:
+ *         description: List of matching ports
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/PortSearchResult'
+ *       500:
+ *         description: Server error
+ */
 app.get("/search-ports", async (req: Request, res: Response) => {
   try {
     if (!portMatcher) {
@@ -52,7 +236,6 @@ app.get("/search-ports", async (req: Request, res: Response) => {
     else results = await portMatcher.aggregatedResults(query, type);
     
     if (results.length === 0) {
-      console.log("No ports found");
       const tempPort: Partial<Port> = {
         _id: `temp-${Date.now()}`,
         id: `temp-${Date.now()}`,
@@ -106,7 +289,6 @@ app.get("/search-ports", async (req: Request, res: Response) => {
       sources: result.sources
     }));
 
-
     res.status(200).json(transformedPorts);
   } catch (error) {
     console.error("Error searching ports:", error);
@@ -117,6 +299,53 @@ app.get("/search-ports", async (req: Request, res: Response) => {
   }
 });
 
+/**
+ * @swagger
+ * /add-shipment:
+ *   post:
+ *     summary: Add a new shipment
+ *     description: Create a new shipment with POL and POD information
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - pol
+ *               - pod
+ *               - carrierType
+ *             properties:
+ *               pol:
+ *                 type: object
+ *                 properties:
+ *                   port:
+ *                     $ref: '#/components/schemas/Port'
+ *                   verified:
+ *                     type: boolean
+ *                   match_score:
+ *                     type: number
+ *               pod:
+ *                 type: object
+ *                 properties:
+ *                   port:
+ *                     $ref: '#/components/schemas/Port'
+ *                   verified:
+ *                     type: boolean
+ *                   match_score:
+ *                     type: number
+ *               carrierType:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Shipment created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Shipment'
+ *       500:
+ *         description: Server error
+ */
 app.post("/add-shipment", async (req: Request, res: Response) => {
   try {
     const { pol, pod, carrierType } = req.body;
@@ -188,7 +417,6 @@ app.post("/add-shipment", async (req: Request, res: Response) => {
       },
     });
 
-    console.log("Shipment created:", shipment);
     res.status(200).json(shipment);
   } catch (error) {
     console.error("Error creating shipment:", error);
@@ -199,13 +427,42 @@ app.post("/add-shipment", async (req: Request, res: Response) => {
   }
 });
 
+/**
+ * @swagger
+ * /get-shipments:
+ *   get:
+ *     summary: Get all shipments
+ *     description: Retrieve all shipments with optional filtering and sorting
+ *     parameters:
+ *       - in: query
+ *         name: order
+ *         schema:
+ *           type: string
+ *           enum: [asc, desc]
+ *         description: Sort order
+ *       - in: query
+ *         name: type
+ *         schema:
+ *           type: string
+ *           enum: [all, verified, unverified]
+ *         description: Filter type
+ *     responses:
+ *       200:
+ *         description: List of shipments
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Shipment'
+ *       500:
+ *         description: Server error
+ */
 app.get("/get-shipments", async (req: Request, res: Response) => {
   try {
     const order = (req.query.order as string) || "desc";
     const filterType = (req.query.type as string) || "all";
-    console.log(
-      `Fetching shipments with order: ${order}, filter: ${filterType}`
-    );
+    
     let whereClause = {};
     if (filterType === "verified") {
       whereClause = {
@@ -216,6 +473,7 @@ app.get("/get-shipments", async (req: Request, res: Response) => {
         OR: [{ polVerified: false }, { podVerified: false }],
       };
     }
+    
     const shipments = await prisma.shipment.findMany({
       orderBy: {
         createdAt: order === "asc" ? "asc" : "desc",
@@ -232,10 +490,45 @@ app.get("/get-shipments", async (req: Request, res: Response) => {
   }
 });
 
+/**
+ * @swagger
+ * /delete-shipment/{id}:
+ *   delete:
+ *     summary: Delete a shipment
+ *     description: Delete a shipment by its ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Shipment ID
+ *     responses:
+ *       200:
+ *         description: Shipment deleted successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Shipment deleted successfully
+ *       500:
+ *         description: Server error
+ */
 app.delete("/delete-shipment/:id", async (req: Request, res: Response) => {
-  const { id } = req.params;
-  await prisma.shipment.delete({ where: { id } });
-  res.status(200).json({ message: "Shipment deleted successfully" });
+  try {
+    const { id } = req.params;
+    await prisma.shipment.delete({ where: { id } });
+    res.status(200).json({ message: "Shipment deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting shipment:", error);
+    res.status(500).json({
+      error: "Failed to delete shipment",
+      details: error instanceof Error ? error.message : "Unknown error",
+    });
+  }
 });
 
 // Initialize server
@@ -244,6 +537,7 @@ const startServer = async () => {
     await initializePortMatcher();
     app.listen(port, () => {
       console.log(`Server is running on http://localhost:${port}`);
+      console.log(`API documentation available at http://localhost:${port}/api-docs`);
     });
   } catch (error) {
     console.error("Failed to start server:", error);

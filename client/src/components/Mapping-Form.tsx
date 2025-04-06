@@ -55,12 +55,14 @@ const MappingForm = () => {
   const podAbortController = useRef<AbortController | null>(null);
 
   const handlePolSelect = (port: statusPort) => {
+    setPolSearchInput("");
     setSelectedPol(port);
     setPolResults([]);
     setIsPolDropdownOpen(false);
   };
 
   const handlePodSelect = (port: statusPort) => {
+    setPodSearchInput("");
     setSelectedPod(port);
     setPodResults([]);
     setIsPodDropdownOpen(false);
@@ -133,24 +135,12 @@ const MappingForm = () => {
           setPolResults(results);
           setLastPolResults(results);
           setIsPolSearching(false);
-          
-          // Use setTimeout to ensure state updates are complete
-          setTimeout(() => {
-            if (!isPolDropdownOpen && results.length > 0 && !selectedPol) {
-              handlePolSelect(results[0]);
-            }
-          }, 0);
+          autoSelectFirstResult(true);
         } else {
           setPodResults(results);
           setLastPodResults(results);
           setIsPodSearching(false);
-          
-          // Use setTimeout to ensure state updates are complete
-          setTimeout(() => {
-            if (!isPodDropdownOpen && results.length > 0 && !selectedPod) {
-              handlePodSelect(results[0]);
-            }
-          }, 0);
+          autoSelectFirstResult(false);
         }
       } catch (error) {
         // Ignore errors from aborted requests
