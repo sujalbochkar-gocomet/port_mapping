@@ -1,5 +1,6 @@
 import { Port } from "../src/types/types";
-import OpenAI from 'openai';
+import { Groq } from 'groq-sdk';
+// import OpenAI from 'openai';
 import { spawn } from 'child_process';
 import { join } from 'path';
 import connectDB = require('../lib/db');
@@ -25,7 +26,8 @@ class PortMatcher {
   private searchableKeys: string[];
   private locationSearchableKeys: string[];
   private ignoredKeywords: Set<string>;
-  private openai: OpenAI;
+  private groq: Groq;
+  // private openai: OpenAI;
 
   constructor(portsData: Port[]) {
     if (!Array.isArray(portsData) || portsData.length === 0) {
@@ -83,9 +85,15 @@ class PortMatcher {
       "by",
       "on",
     ]);
-    this.openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY || "",
+
+    this.groq = new Groq({
+      apiKey: process.env.GROQ_API_KEY || "",
+      dangerouslyAllowBrowser: true,
     });
+
+    // this.openai = new OpenAI({
+    //   apiKey: process.env.OPENAI_API_KEY || "",
+    // });
 
   }
 
@@ -388,66 +396,65 @@ class PortMatcher {
     return true;
   }
 
-  private async getChatGPTResponse(keyword: string, portType: string | null): Promise<string> {
 
-
-    try {
-      const query = `User Prompt Format:
-                      Input Keyword is ${keyword} and Port Type is ${portType || 'any'}.
-
-                      Identify and return an array of multiple valid ports that match the given keyword and port type.
-
-                      Ensure the output follows exactly this JSON format:
-
-                      [
-                        {
-                          "name": "<Port Name>",
-                          "alternative_names": [
-                            "<Alternative Name 1>",
-                            "<Alternative Name 2>",
-                            "<Alternative Name 3>"
-                            ...lot and lots of alternative names
-                          ],
-                          "port_code": "<Official Port Code>",
-                          "latitude": "<Latitude>",
-                          "longitude": "<Longitude>",
-                          "confidence_score": <Confidence Score between 0 and 100>
-                        }
-                      ]
-
-                      Rules:
-                      - Return multiple valid matches whenever possible
-                      - return latitude and longitude accurately
-                      - Return as many alternative names and commonly used names as possible
-                      - Ensure the port name is correct and not a misspelling
-                      - Do not return explanations or alternative suggestions if no match is found. Instead, return exactly: []
-                      - The confidence_score must be between 0 - 100, reflecting the match accuracy
-                      - Strictly follow this JSON structure—any deviation is incorrect`;
-
-      const completion = await this.openai.chat.completions.create({
-        messages: [
-          { role: "system", content: process.env.SYSTEM_PROMPT || "" },
-          { role: "user", content: query },
-        ],
-        model: "gpt-4-turbo-preview",
-        response_format: { type: "json_object" },
-        temperature: 0.1,
-        max_tokens: 4096,
-      });
-
-      const content = completion.choices[0].message.content;
-      if (!content) {
-        throw new Error("No content in response");
-      }
-
-
-      return content;
-    } catch (error) {
-      console.error("ChatGPTService :: getResponse :: error", error);
-      throw error;
-    }
-  }
-
+  private async getGroqResponse(keyword: string, portType: string | null): Promise<string> {
+     try {
+       const query = `User Prompt Format:
+                       Input Keyword is ${keyword} and Port Type is ${portType || 'any'}.
+ 
+                       Identify and return an array of multiple valid ports that match the given keyword and port type.
+ 
+                       Ensure the output follows exactly this JSON format:
+ 
+                       [
+                         {
+                           "name": "<Port Name>",
+                           "alternative_names": [
+                             "<Alternative Name 1>",
+                             "<Alternative Name 2>",
+                             "<Alternative Name 3>"
+                             ...lot and lots of alternative names
+                           ],
+                           "port_code": "<Official Port Code>",
+                           "latitude": "<Latitude>",
+                           "longitude": "<Longitude>",
+                           "confidence_score": <Confidence Score between 0 and 100>
+                         }
+                       ]
+ 
+                       Rules:
+                       - Return multiple valid matches whenever possible
+                       - return latitude and longitude accurately
+                       - Return as many alternative names and commonly used names as possible
+                       - Ensure the port name is correct and not a misspelling
+                       - Do not return explanations or alternative suggestions if no match is found. Instead, return exactly: []
+                       - The confidence_score must be between 0 - 100, reflecting the match accuracy
+                       - Strictly follow this JSON structure—any deviation is incorrect`;
+ 
+       const completion = await this.groq.chat.completions.create({
+         messages: [
+           { role: "system", content: process.env.SYSTEM_PROMPT || "" },
+           { role: "user", content: query },
+         ],
+         model: "llama3-70b-8192",
+         response_format: {
+           type: "json_object",
+         },
+         temperature: 0.1,
+         max_completion_tokens: 8192,
+       });
+ 
+       const content = completion.choices[0].message.content;
+       if (!content) {
+         throw new Error("No content in response");
+       }
+       return content;
+     } catch (error) {
+       console.error("GroqService :: getResponse :: error", error);
+       throw error;
+     }
+   }
+  
   private async getLLMResponse(keyword: string, portType: string | null = null): Promise<PortMatcherResult[]> {
     try {
       if (keyword === "") {
@@ -513,7 +520,7 @@ class PortMatcher {
         return matches.length > 0 ? matches : null;
       };
 
-      const rawResponse = await this.getChatGPTResponse(keyword, portType);
+      const rawResponse = await this.getGroqResponse(keyword, portType);
       
       let parsedResponse;
       try {
@@ -720,6 +727,69 @@ class PortMatcher {
   }
 }
 
+
+
 export = PortMatcher; 
 
 
+
+
+  // private async getChatGPTResponse(keyword: string, portType: string | null): Promise<string> {
+
+
+  //   try {
+  //     const query = `User Prompt Format:
+  //                     Input Keyword is ${keyword} and Port Type is ${portType || 'any'}.
+
+  //                     Identify and return an array of multiple valid ports that match the given keyword and port type.
+
+  //                     Ensure the output follows exactly this JSON format:
+
+  //                     [
+  //                       {
+  //                         "name": "<Port Name>",
+  //                         "alternative_names": [
+  //                           "<Alternative Name 1>",
+  //                           "<Alternative Name 2>",
+  //                           "<Alternative Name 3>"
+  //                           ...lot and lots of alternative names
+  //                         ],
+  //                         "port_code": "<Official Port Code>",
+  //                         "latitude": "<Latitude>",
+  //                         "longitude": "<Longitude>",
+  //                         "confidence_score": <Confidence Score between 0 and 100>
+  //                       }
+  //                     ]
+
+  //                     Rules:
+  //                     - Return multiple valid matches whenever possible
+  //                     - return latitude and longitude accurately
+  //                     - Return as many alternative names and commonly used names as possible
+  //                     - Ensure the port name is correct and not a misspelling
+  //                     - Do not return explanations or alternative suggestions if no match is found. Instead, return exactly: []
+  //                     - The confidence_score must be between 0 - 100, reflecting the match accuracy
+  //                     - Strictly follow this JSON structure—any deviation is incorrect`;
+
+  //     const completion = await this.openai.chat.completions.create({
+  //       messages: [
+  //         { role: "system", content: process.env.SYSTEM_PROMPT || "" },
+  //         { role: "user", content: query },
+  //       ],
+  //       model: "gpt-4-turbo-preview",
+  //       response_format: { type: "json_object" },
+  //       temperature: 0.1,
+  //       max_tokens: 4096,
+  //     });
+
+  //     const content = completion.choices[0].message.content;
+  //     if (!content) {
+  //       throw new Error("No content in response");
+  //     }
+
+
+  //     return content;
+  //   } catch (error) {
+  //     console.error("ChatGPTService :: getResponse :: error", error);
+  //     throw error;
+  //   }
+  // }
