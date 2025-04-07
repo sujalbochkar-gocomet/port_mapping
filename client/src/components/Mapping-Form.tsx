@@ -46,108 +46,72 @@ const MappingForm = () => {
   const [selectedPod, setSelectedPod] = useState<statusPort | null>(null);
   const [isPodDropdownOpen, setIsPodDropdownOpen] = useState(false);
   const podDropdownRef = useRef<HTMLDivElement>(null);
-
   // Add debounce timer refs
-  const polDebounceTimer = useRef<NodeJS.Timeout | null>(null);
-  const podDebounceTimer = useRef<NodeJS.Timeout | null>(null);
+  const polDebounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const podDebounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const polAbortController = useRef<AbortController | null>(null);
   const podAbortController = useRef<AbortController | null>(null);
 
-  const handlePolSelect = (port: statusPort) => {
+  const handlePolSelect = useCallback((port: statusPort) => {
     setPolSearchInput("");
     setSelectedPol(port);
     setPolResults([]);
     setIsPolDropdownOpen(false);
-  };
+  }, []);
 
-  const handlePodSelect = (port: statusPort) => {
+  const handlePodSelect = useCallback((port: statusPort) => {
     setPodSearchInput("");
     setSelectedPod(port);
     setPodResults([]);
     setIsPodDropdownOpen(false);
-  };
+  }, []);
 
   // Auto-select first result function
-  const autoSelectFirstResult = useCallback((isPol: boolean) => {
-    const results = isPol ? lastPolResults : lastPodResults;
-    const isSearching = isPol ? isPolSearching : isPodSearching;
-    const isDropdownOpen = isPol ? isPolDropdownOpen : isPodDropdownOpen;
-    const selected = isPol ? selectedPol : selectedPod;
-    const handleSelect = isPol ? handlePolSelect : handlePodSelect;
+  const autoSelectFirstResult = useCallback(
+    (isPol: boolean) => {
+      const results = isPol ? lastPolResults : lastPodResults;
+      const isSearching = isPol ? isPolSearching : isPodSearching;
+      const isDropdownOpen = isPol ? isPolDropdownOpen : isPodDropdownOpen;
+      const selected = isPol ? selectedPol : selectedPod;
+      const handleSelect = isPol ? handlePolSelect : handlePodSelect;
 
-    if (!isSearching && results.length > 0 && !selected && !isDropdownOpen) {
-      handleSelect(results[0]);
-    }
-  }, [lastPolResults, lastPodResults, isPolSearching, isPodSearching, isPolDropdownOpen, isPodDropdownOpen, selectedPol, selectedPod, handlePolSelect, handlePodSelect]);
+      if (!isSearching && results.length > 0 && !selected && !isDropdownOpen) {
+        handleSelect(results[0]);
+      }
+    },
+    [
+      lastPolResults,
+      lastPodResults,
+      isPolSearching,
+      isPodSearching,
+      isPolDropdownOpen,
+      isPodDropdownOpen,
+      selectedPol,
+      selectedPod,
+      handlePolSelect,
+      handlePodSelect,
+    ]
+  );
 
   // Debounced search function
-  const debouncedSearch = useCallback((term: string, isPol: boolean) => {
-    // Clear existing timer
-    const timerRef = isPol ? polDebounceTimer : podDebounceTimer;
-    if (timerRef.current) {
-      clearTimeout(timerRef.current);
-    }
-
-    // Abort previous request if it exists
-    const abortControllerRef = isPol ? polAbortController : podAbortController;
-    if (abortControllerRef.current) {
-      abortControllerRef.current.abort();
-    }
-
-    if(!term.trim()){
-      if(isPol){
-        setPolResults([]);
-        setLastPolResults([]);
-        setIsPolSearching(false);
-      }else{
-        setPodResults([]);
-        setLastPodResults([]);
-        setIsPodSearching(false);
+  const debouncedSearch = useCallback(
+    (term: string, isPol: boolean) => {
+      // Clear existing timer
+      const timerRef = isPol ? polDebounceTimer : podDebounceTimer;
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
       }
-      return;
-    }
 
-    // Set loading state
-    if (isPol) {
-      setIsPolSearching(true);
-    } else {
-      setIsPodSearching(true);
-    }
+      // Abort previous request if it exists
+      const abortControllerRef = isPol
+        ? polAbortController
+        : podAbortController;
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
 
-    abortControllerRef.current = new AbortController();
-
-    // Set new timer
-    timerRef.current = setTimeout(async () => {
-      try {
-        const portType = getPortTypeFromCarrier(carrierType);
-        const response = await axios.get(
-          `http://localhost:3000/search-ports?q=${encodeURIComponent(
-            term
-          )}&type=${portType}`,
-          {
-            signal: abortControllerRef.current?.signal
-          }
-        );
-        const results = response.data;
-
-        if (isPol) {
-          setPolResults(results);
-          setLastPolResults(results);
-          setIsPolSearching(false);
-          autoSelectFirstResult(true);
-        } else {
-          setPodResults(results);
-          setLastPodResults(results);
-          setIsPodSearching(false);
-          autoSelectFirstResult(false);
-        }
-      } catch (error) {
-        // Ignore errors from aborted requests
-        if (axios.isCancel(error)) {
-          return;
-        }
-        console.error("Error fetching ports:", error);
+      if (!term.trim()) {
         if (isPol) {
           setPolResults([]);
           setLastPolResults([]);
@@ -157,45 +121,117 @@ const MappingForm = () => {
           setLastPodResults([]);
           setIsPodSearching(false);
         }
+        return;
       }
-    }, 300); // 300ms delay
-  }, [carrierType, isPolDropdownOpen, isPodDropdownOpen, selectedPol, selectedPod]);
+
+      // Set loading state
+      if (isPol) {
+        setIsPolSearching(true);
+      } else {
+        setIsPodSearching(true);
+      }
+
+      abortControllerRef.current = new AbortController();
+
+      // Set new timer
+      timerRef.current = setTimeout(async () => {
+        try {
+          const portType = getPortTypeFromCarrier(carrierType);
+          const response = await axios.get(
+            `http://localhost:3000/search-ports?q=${encodeURIComponent(
+              term
+            )}&type=${portType}`,
+            {
+              signal: abortControllerRef.current?.signal,
+            }
+          );
+          const results = response.data;
+
+          if (isPol) {
+            setPolResults(results);
+            setLastPolResults(results);
+            setIsPolSearching(false);
+            autoSelectFirstResult(true);
+          } else {
+            setPodResults(results);
+            setLastPodResults(results);
+            setIsPodSearching(false);
+            autoSelectFirstResult(false);
+          }
+        } catch (error) {
+          // Ignore errors from aborted requests
+          if (axios.isCancel(error)) {
+            return;
+          }
+          console.error("Error fetching ports:", error);
+          if (isPol) {
+            setPolResults([]);
+            setLastPolResults([]);
+            setIsPolSearching(false);
+          } else {
+            setPodResults([]);
+            setLastPodResults([]);
+            setIsPodSearching(false);
+          }
+        }
+      }, 300); // 300ms delay
+    },
+    [
+      carrierType,
+      isPolDropdownOpen,
+      isPodDropdownOpen,
+      selectedPol,
+      selectedPod,
+    ]
+  );
 
   // Cleanup on unmount
   useEffect(() => {
+    // Store current ref values in variables inside effect
+    const polController = polAbortController.current;
+    const podController = podAbortController.current;
+    const polTimer = polDebounceTimer.current;
+    const podTimer = podDebounceTimer.current;
     return () => {
-      if (polAbortController.current) {
-        polAbortController.current.abort();
+      if (polController) {
+        polController.abort();
       }
-      if (podAbortController.current) {
-        podAbortController.current.abort();
+      if (podController) {
+        podController.abort();
       }
-      if (polDebounceTimer.current) {
-        clearTimeout(polDebounceTimer.current);
+      if (polTimer) {
+        clearTimeout(polTimer);
       }
-      if (podDebounceTimer.current) {
-        clearTimeout(podDebounceTimer.current);
+      if (podTimer) {
+        clearTimeout(podTimer);
       }
     };
   }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      // Check if click is outside POL input and dropdown
       if (
         polDropdownRef.current &&
         !polDropdownRef.current.contains(event.target as Node)
       ) {
         setIsPolDropdownOpen(false);
-        // Auto-select first result when clicking outside
-        autoSelectFirstResult(true);
+        // Only auto-select if no manual selection was made
+        if (polResults.length > 0 && !selectedPol && !isPolDropdownOpen) {
+          handlePolSelect(polResults[0]);
+        }
       }
+
+      // Check if click is outside POD input and dropdown
       if (
         podDropdownRef.current &&
         !podDropdownRef.current.contains(event.target as Node)
       ) {
         setIsPodDropdownOpen(false);
-        // Auto-select first result when clicking outside
-        autoSelectFirstResult(false);
+        // Only auto-select if no manual selection was made
+        if (podResults.length > 0 && !selectedPod && !isPodDropdownOpen) {
+          handlePodSelect(podResults[0]);
+        }
       }
     };
 
@@ -203,7 +239,48 @@ const MappingForm = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [autoSelectFirstResult]);
+  }, [
+    polResults,
+    podResults,
+    selectedPol,
+    selectedPod,
+    handlePolSelect,
+    handlePodSelect,
+    isPolDropdownOpen,
+    isPodDropdownOpen,
+  ]);
+
+  // Add blur handlers for the inputs
+  const handlePolBlur = () => {
+    // Small delay to allow click events to fire first
+    setTimeout(() => {
+      // Only auto-select if dropdown is closed (meaning no click was made)
+      if (polResults.length > 0 && !selectedPol && !isPolDropdownOpen) {
+        handlePolSelect(polResults[0]);
+      }
+    }, 200);
+  };
+
+  const handlePodBlur = () => {
+    // Small delay to allow click events to fire first
+    setTimeout(() => {
+      // Only auto-select if dropdown is closed (meaning no click was made)
+      if (podResults.length > 0 && !selectedPod && !isPodDropdownOpen) {
+        handlePodSelect(podResults[0]);
+      }
+    }, 200);
+  };
+
+  // Modify the click handlers for dropdown items
+  const handlePolItemClick = (port: statusPort) => {
+    setIsPolDropdownOpen(false);
+    handlePolSelect(port);
+  };
+
+  const handlePodItemClick = (port: statusPort) => {
+    setIsPodDropdownOpen(false);
+    handlePodSelect(port);
+  };
 
   const addShipment = async () => {
     if (loading) return;
@@ -310,7 +387,6 @@ const MappingForm = () => {
                     const displayName =
                       selectedPol.port.display_name || selectedPol.port.name;
 
-
                     return displayName.length > 50
                       ? displayName.substring(0, 50) + "..."
                       : displayName;
@@ -347,6 +423,7 @@ const MappingForm = () => {
                   className="w-full px-3 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pr-10"
                   onChange={handlePolInputChange}
                   onClick={() => setIsPolDropdownOpen(true)}
+                  onBlur={handlePolBlur}
                 />
                 {isPolSearching && (
                   <div className="absolute right-3 top-1/2 -translate-y-1/2">
@@ -365,7 +442,7 @@ const MappingForm = () => {
                       <div
                         key={index}
                         className="px-4 py-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-0"
-                        onClick={() => handlePolSelect(port)}
+                        onClick={() => handlePolItemClick(port)}
                       >
                         {port.port?.id?.startsWith("temp-") ? (
                           <div className="flex justify-between items-center">
@@ -451,6 +528,7 @@ const MappingForm = () => {
                   className="w-full px-3 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pr-10"
                   onChange={handlePodInputChange}
                   onClick={() => setIsPodDropdownOpen(true)}
+                  onBlur={handlePodBlur}
                 />
                 {isPodSearching && (
                   <div className="absolute right-3 top-1/2 -translate-y-1/2">
@@ -469,7 +547,7 @@ const MappingForm = () => {
                       <div
                         key={index}
                         className="px-4 py-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-0"
-                        onClick={() => handlePodSelect(port)}
+                        onClick={() => handlePodItemClick(port)}
                       >
                         {port.port?.id?.startsWith("temp-") ? (
                           <div className="flex justify-between items-center">
