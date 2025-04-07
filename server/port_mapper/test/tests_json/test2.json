@@ -1,0 +1,5002 @@
+[
+    {
+        "Keyword": "amsterdam, netherlands",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b985a538-137a-cc90-be7c-d7dbd142ce55"
+    },
+    {
+        "Keyword": "fort de france, martinique",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b1c6e0b9-d7cf-83d5-5037-c939279cf934"
+    },
+    {
+        "Keyword": "chittagong, bangladesh",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5cee9607-704c-43cb-8106-eb5cdf63ac16"
+    },
+    {
+        "Keyword": "honiara, solomon islands",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "44d7d4ee-3809-4f06-8875-b2654567d896"
+    },
+    {
+        "Keyword": "wilhelmshaven, germany",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9b22fc23-14e3-0cc6-8d5b-8be7940f02a6"
+    },
+    {
+        "Keyword": "nouakchott, mauritania",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7c51edb3-039c-932d-d279-8695aef27411"
+    },
+    {
+        "Keyword": "nouadhibou, mauritania",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "cb9ed743-7ae9-56da-db18-f67c5175b7c6"
+    },
+    {
+        "Keyword": "port chalmers, new zealand",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "103126a4-2ace-4213-942e-d7f6db259015"
+    },
+    {
+        "Keyword": "pointe a pitre, guadeloupe",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "aca07bc7-dba8-fbc6-6c46-caf7e1c48798"
+    },
+    {
+        "Keyword": "chittagong, bangladesh",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "5cee9607-704c-43cb-8106-eb5cdf63ac16"
+    },
+    {
+        "Keyword": "banjarmasin, indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ffb3f07a-a573-4092-a9c8-3b02a758f4d3"
+    },
+    {
+        "Keyword": "honiara, solomon islands",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "44d7d4ee-3809-4f06-8875-b2654567d896"
+    },
+    {
+        "Keyword": "zamboanga, philippines",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8b20db2f-7269-415c-882c-c3c8adccc0d1"
+    },
+    {
+        "Keyword": "gelsenkirchen, germany",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b53e66f6-2cd5-44af-a90a-11e120c47e79"
+    },
+    {
+        "Keyword": "noumea (ncnou)new caledonia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "46d0f78b-2fdb-0d55-3864-4793c63fa5a2"
+    },
+    {
+        "Keyword": "brisbane (aubne)australia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "467d5af2-d939-cba1-2951-fa929a10375f"
+    },
+    {
+        "Keyword": "dagenham, united kingdom",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5ff1debe-deb0-40a5-8dad-ca204e15a3f9"
+    },
+    {
+        "Keyword": "bury lancs, united kingdom",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f9545fc0-fb18-481b-97d5-474fb0d958d2"
+    },
+    {
+        "Keyword": "hyderabad,telangana in",
+        "Port Type": "address",
+        "Mapped Port ID": "e1ea3b49-57a6-438b-8d3a-28cf462f29bc"
+    },
+    {
+        "Keyword": "diego suarez, madagascar",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0c46617f-dfd1-a16b-1e72-ac0213974760"
+    },
+    {
+        "Keyword": "pointe a pitre, guadeloupe",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "aca07bc7-dba8-fbc6-6c46-caf7e1c48798"
+    },
+    {
+        "Keyword": "philadelphia usphl",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d3134405-646d-49b4-a8e5-e382449dbb26"
+    },
+    {
+        "Keyword": "jacksonville usjax",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "38158147-4a48-47a0-a935-e194c2c2bf8f"
+    },
+    {
+        "Keyword": "varna, varna, bulgaria",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "2fd4c9e5-49d7-775b-bc0f-a19e55c832c8"
+    },
+    {
+        "Keyword": "usjax - jacksonville",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "38158147-4a48-47a0-a935-e194c2c2bf8f"
+    },
+    {
+        "Keyword": "jebel ali,united arab emirates",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fbeff16d-5465-4e5c-ad3b-55e0f8c666b7"
+    },
+    {
+        "Keyword": "abu dhabi,united arab emirates",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "eb267e64-658e-4761-6514-c6a39dd261a5"
+    },
+    {
+        "Keyword": "caucedo,dominican republic",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "849f8870-72a2-d612-4700-8143dcce71d4"
+    },
+    {
+        "Keyword": "honolulu ushnl",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fbb65321-ae33-45ed-41b5-8cd9a4786fd1"
+    },
+    {
+        "Keyword": "tema, tema, ghana",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b3efa3cb-f5db-e9a2-63ae-149c043cc0f4"
+    },
+    {
+        "Keyword": "sharjah,united arab emirates",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "61a05ec3-8793-d586-733b-20d65dec19b8"
+    },
+    {
+        "Keyword": "rio haina,dominican republic",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ba345e22-89cb-e4dd-7d35-95aba7f78ce4"
+    },
+    {
+        "Keyword": "chicago, uschi",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "395707c6-acdf-423b-a506-62031e14b8b2"
+    },
+    {
+        "Keyword": "houston, ushou",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "242ba837-4d31-f522-2c24-16abc8d7d45d"
+    },
+    {
+        "Keyword": "seattle, ussea",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0a5e5cce-5842-147b-c40f-797357dc8806"
+    },
+    {
+        "Keyword": "buenos aires, argentina",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6f4b0bc4-5ea5-5361-4efb-e074c7477cf5"
+    },
+    {
+        "Keyword": "buenos aires, argentina",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "6f4b0bc4-5ea5-5361-4efb-e074c7477cf5"
+    },
+    {
+        "Keyword": "batangas, philippines",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e309162c-b0a0-8ae3-6635-de7a4abd0ba8"
+    },
+    {
+        "Keyword": "wellington, new zealand",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "22ee18bb-a868-2555-b574-dc5805d0bb94"
+    },
+    {
+        "Keyword": "belfast, united kingdom",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "92bb6c89-0bd6-4adc-6d12-179ea826efe2"
+    },
+    {
+        "Keyword": "puerto cortes, honduras",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "41e9cd96-448e-d639-4f71-ee4bd5a66da3"
+    },
+    {
+        "Keyword": "kota kinabalu, malaysia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "495ab04c-8e0c-ba30-f1f8-d877a3dfc72d"
+    },
+    {
+        "Keyword": "tilbury, united kingdom",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b31029da-27f0-175c-8d77-083d2a795aa7"
+    },
+    {
+        "Keyword": "busan, busan, south korea",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "80595cf1-a59f-2cf7-a29a-622faf40c2f8"
+    },
+    {
+        "Keyword": "townsville, australia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "65467e6e-1c86-45a9-8c77-532cfa215682"
+    },
+    {
+        "Keyword": "lazaro cardenas, mexico",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "084e8f5f-ac54-602b-e0c8-05a6803c0c07"
+    },
+    {
+        "Keyword": "bata, equatorial guinea",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3b88a366-c102-3157-ab10-e32456552262"
+    },
+    {
+        "Keyword": "cardiff, united kingdom",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "85e4eaf2-21ee-434c-890c-a7c6b8f05bfa"
+    },
+    {
+        "Keyword": "balikpapan, indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "00b0f544-7070-4bab-b207-72744d197680"
+    },
+    {
+        "Keyword": "fremantle, wa, australia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fb4e3874-8c83-a24b-386a-494d12bf0787"
+    },
+    {
+        "Keyword": "moerdijk, netherlands",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3eb75307-028d-4cf4-9431-e0e01ee70ae5"
+    },
+    {
+        "Keyword": "bissau, guinea-bissau",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c069db40-85ab-2907-e6cd-470de128f9bf"
+    },
+    {
+        "Keyword": "umm qasr, al-basrah, iraq",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fc6b39b4-6f81-0371-d9ba-5e75a8469cc2"
+    },
+    {
+        "Keyword": "pago pago, american samoa",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0c4df661-a81c-4901-8278-3f788a7773bf"
+    },
+    {
+        "Keyword": "lazaro cardenas, mexico",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "084e8f5f-ac54-602b-e0c8-05a6803c0c07"
+    },
+    {
+        "Keyword": "puerto cortes, honduras",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "41e9cd96-448e-d639-4f71-ee4bd5a66da3"
+    },
+    {
+        "Keyword": "kota kinabalu, malaysia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "495ab04c-8e0c-ba30-f1f8-d877a3dfc72d"
+    },
+    {
+        "Keyword": "nijmegen, netherlands",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e42d8af5-30e5-464c-ae44-766a2cb7b914"
+    },
+    {
+        "Keyword": "batam island, indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "04a86451-62bd-450c-9985-cc305d24fd2e"
+    },
+    {
+        "Keyword": "east london, south africa",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d9ecf485-f972-70c1-1f84-b05f4ba7681a"
+    },
+    {
+        "Keyword": "tegucigalpa, honduras",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "6a0eb6d7-c353-7c88-77e0-0dd48536c89b"
+    },
+    {
+        "Keyword": "ludwigshafen, germany",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "cf6fe313-179b-4e63-b8c4-2f5daa3a8b0c"
+    },
+    {
+        "Keyword": "tegucigalpa, honduras",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "6a0eb6d7-c353-7c88-77e0-0dd48536c89b"
+    },
+    {
+        "Keyword": "ulaanbaatar, mongolia",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "d899c7c1-e076-7654-8d46-0d00570ec55a"
+    },
+    {
+        "Keyword": "ulaanbaatar, mongolia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "d899c7c1-e076-7654-8d46-0d00570ec55a"
+    },
+    {
+        "Keyword": "giurgiulesti, moldova",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "865edc0b-d97e-41a2-9a43-4aba6d5b7bae"
+    },
+    {
+        "Keyword": "belawan (idblw)indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f60380de-6878-aa73-6818-21689c08bb69"
+    },
+    {
+        "Keyword": "ijmuiden, netherlands",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b2954797-7157-49cd-9b29-4bf0561d181e"
+    },
+    {
+        "Keyword": "pyeongtaek, south korea",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8e63e07b-a0e2-4ec9-abef-290539349b64"
+    },
+    {
+        "Keyword": "glasgow, united kingdom",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6baf6632-b160-4f1b-b14c-337432b862a5"
+    },
+    {
+        "Keyword": "silloth, united kingdom",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "96423861-2f8f-4d1d-a30d-813d15553e48"
+    },
+    {
+        "Keyword": "lelystad, netherlands",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "089c257a-251d-ba1a-cd6f-a2843c4c8372"
+    },
+    {
+        "Keyword": "runcorn, united kingdom",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f76586b0-acda-46e8-a7a5-cb54e2788ccb"
+    },
+    {
+        "Keyword": "bahia blanca, argentina",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "65f0c042-c24a-495a-b505-97fead5d7136"
+    },
+    {
+        "Keyword": "coatzacoalcos, mexico",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "03580ddb-92df-44eb-b9b0-32cead908a04"
+    },
+    {
+        "Keyword": "grimsby, united kingdom",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b5615b1d-74eb-40f8-885d-f98e6f132638"
+    },
+    {
+        "Keyword": "mia miami international airport us",
+        "Port Type": "air_port",
+        "Mapped Port ID": "771f5e4f-a77c-4e83-8c77-aab4ab9211e3"
+    },
+    {
+        "Keyword": "felixstowe,united kingdom",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d6ff98d3-b550-afde-5cb1-b29070f8b493"
+    },
+    {
+        "Keyword": "tanjung pelepas, malaysia (my)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "55d1fea4-353c-8f91-b705-09543a17b67d"
+    },
+    {
+        "Keyword": "nairobi, kenya, kenya",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "d814c6bf-5000-5c66-8ee3-ae79e7421fed"
+    },
+    {
+        "Keyword": "nairobi, kenya, kenya",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "d814c6bf-5000-5c66-8ee3-ae79e7421fed"
+    },
+    {
+        "Keyword": "port moresby,papua new guinea",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1ffb776f-c586-13fc-48d0-754c66a10a7b"
+    },
+    {
+        "Keyword": "united arab emirates abu dhabi",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "eb267e64-658e-4761-6514-c6a39dd261a5"
+    },
+    {
+        "Keyword": "port elizabeth,south africa",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "61668630-9036-7d32-c09b-3e9c6726cf3a"
+    },
+    {
+        "Keyword": "pudong/shanghai",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d6c3b8dc-3fda-40ce-b1ce-d1793391a17c"
+    },
+    {
+        "Keyword": "charleston, sc uschs",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "362ccec1-89f6-4f1b-7c64-cd1016c1ba76"
+    },
+    {
+        "Keyword": "hamburg, germany,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3ebde357-59ac-40e5-9697-79e16a4d9e9e"
+    },
+    {
+        "Keyword": "antwerp, belgium,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "28f18263-b309-4a4b-b02d-ff4564f69dda"
+    },
+    {
+        "Keyword": "ras al khaimah, united arab emirated",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0fe10cb6-8fd9-813f-f3b2-af4991160a75"
+    },
+    {
+        "Keyword": "laem chabang, thailand",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e8ce4073-c739-4637-b7f5-e97f9d8b9963"
+    },
+    {
+        "Keyword": "pasir gudang, malaysia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e519d450-e90d-4da8-9d60-fd9f0f8d1f23"
+    },
+    {
+        "Keyword": "singapore, singapore",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a822e173-18b9-408c-8836-5c86c4b2f47c"
+    },
+    {
+        "Keyword": "novorossiysk, russia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a2b04d36-7866-473a-e0d3-550b483af4a5"
+    },
+    {
+        "Keyword": "bremerhaven, germany",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "82e9a2a6-64b7-060d-ac82-4c7f57f39c37"
+    },
+    {
+        "Keyword": "lyttelton, new zealand",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "db16066b-e744-cadf-4fae-1ca544574bbd"
+    },
+    {
+        "Keyword": "fremantle, australia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fb4e3874-8c83-a24b-386a-494d12bf0787"
+    },
+    {
+        "Keyword": "melbourne, australia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0dd0799f-2a64-ddca-2171-636b84a2a570"
+    },
+    {
+        "Keyword": "kristiansand, norway",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0caa7f47-3e4c-3a2e-6530-f69c5b71fba1"
+    },
+    {
+        "Keyword": "visakhapatnam, india",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3c6e4a1e-2cd9-0c7c-3b06-0c70a3d887ea"
+    },
+    {
+        "Keyword": "subic bay, philippines",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "dfea3e9d-db31-1415-70b2-48118757c399"
+    },
+    {
+        "Keyword": "san pedro sula, honduras",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5e76f88c-9385-42df-9f9e-dce5a59dc7aa"
+    },
+    {
+        "Keyword": "pasir gudang, malaysia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "e519d450-e90d-4da8-9d60-fd9f0f8d1f23"
+    },
+    {
+        "Keyword": "paramaribo, suriname",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "61df07ff-f6be-fd33-708e-a00bf1180f01"
+    },
+    {
+        "Keyword": "st. petersburg, russia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "64c00bb8-2586-836e-bfd5-6bcd3e3d2ba4"
+    },
+    {
+        "Keyword": "chornomorsk, ukraine",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9c3102f3-bbf8-d0e7-7cb0-0935378a23b5"
+    },
+    {
+        "Keyword": "singapore, singapore",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a822e173-18b9-408c-8836-5c86c4b2f47c"
+    },
+    {
+        "Keyword": "pontianak, indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3460b795-322a-40ff-b541-8539fca7a1f3"
+    },
+    {
+        "Keyword": "port harcourt, nigeria",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "85ca5d6e-50f8-4a4e-94f1-60b59bbb668f"
+    },
+    {
+        "Keyword": "tilburg, netherlands",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7dab0ba9-a31e-4e10-a9a1-f46762247a1b"
+    },
+    {
+        "Keyword": "laem chabang, thailand",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "e8ce4073-c739-4637-b7f5-e97f9d8b9963"
+    },
+    {
+        "Keyword": "freetown, sierra leone",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b16afdb3-fef1-db58-0441-8f597a20263b"
+    },
+    {
+        "Keyword": "pekanbaru, indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5a7835a2-4f09-498f-8224-ad7e5c556258"
+    },
+    {
+        "Keyword": "bratislava, slovakia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a938d2a4-bdfc-cf55-172f-1b35f6ab55c3"
+    },
+    {
+        "Keyword": "maracaibo, venezuela",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "977bcb00-3f3f-cf9a-0b79-8f073501484b"
+    },
+    {
+        "Keyword": "adelaide, sa, australia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7e2ef365-1c6b-6bdc-f4bc-32de0bd951e8"
+    },
+    {
+        "Keyword": "samarinda, indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0eb430d9-b872-4940-b5b0-da97be77498f"
+    },
+    {
+        "Keyword": "koper, koper, slovenia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0d7f41d6-9ee2-a2dc-faa0-61ac5d33b7d7"
+    },
+    {
+        "Keyword": "london, united kingdom",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d33d7a86-27ec-96db-3e82-bafdefd251c0"
+    },
+    {
+        "Keyword": "tincan, lagos, nigeria",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "04f7fea9-918b-46e6-8334-2fa7a5949db8"
+    },
+    {
+        "Keyword": "san pedro sula, honduras",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "5e76f88c-9385-42df-9f9e-dce5a59dc7aa"
+    },
+    {
+        "Keyword": "subic bay, philippines",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "dfea3e9d-db31-1415-70b2-48118757c399"
+    },
+    {
+        "Keyword": "london, united kingdom",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "d33d7a86-27ec-96db-3e82-bafdefd251c0"
+    },
+    {
+        "Keyword": "hengelo, netherlands",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0ae9489c-9ae0-4d98-b678-b73de5cfc688"
+    },
+    {
+        "Keyword": "tincan, lagos, nigeria",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "04f7fea9-918b-46e6-8334-2fa7a5949db8"
+    },
+    {
+        "Keyword": "zaandam, netherlands",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6aacae81-5a6d-4ca2-b87f-23d10088c88a"
+    },
+    {
+        "Keyword": "naha, naha, okinawa, japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4d4a33b1-7041-d9b1-0036-3581bf8c02ce"
+    },
+    {
+        "Keyword": "paskov, czech republic",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "b31aaaf5-1858-4bf2-96d5-c480f98b380a"
+    },
+    {
+        "Keyword": "paskov, czech republic",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "b31aaaf5-1858-4bf2-96d5-c480f98b380a"
+    },
+    {
+        "Keyword": "madang, papua new guinea",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ce9fde4c-aac5-4ada-99e9-886efd6d7a9c"
+    },
+    {
+        "Keyword": "bridgetown, barbados",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e89cfc54-b4d5-3b32-e3b2-4efb1fbb5849"
+    },
+    {
+        "Keyword": "mar del plata, argentina",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "3a6e62e2-d197-41b0-ac55-0e7a36803de5"
+    },
+    {
+        "Keyword": "mar del plata, argentina",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3a6e62e2-d197-41b0-ac55-0e7a36803de5"
+    },
+    {
+        "Keyword": "civitavecchia, italy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "36861a83-a9a8-4057-a370-ea9d26dd49a3"
+    },
+    {
+        "Keyword": "germersheim, germany",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ad498598-ecde-4e81-b84b-c8273c05d1c8"
+    },
+    {
+        "Keyword": "dundee, united kingdom",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6ee8bb70-c0cd-4e9f-ae16-77a4a00f67df"
+    },
+    {
+        "Keyword": "bacolod, philippines",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c0f9ed57-4636-4129-b55c-4f3382b79662"
+    },
+    {
+        "Keyword": "puntarenas, costa rica",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f1731cb6-5099-42b8-9689-1b040800c067"
+    },
+    {
+        "Keyword": "gladstone, australia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "cc448189-4793-4ba9-bbff-0c3a20fd70fc"
+    },
+    {
+        "Keyword": "rabaul, papua new guinea",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a2ca658c-5818-4d1e-b216-d4d202504ab2"
+    },
+    {
+        "Keyword": "wanssum, netherlands",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "229215f1-86ed-4c06-ac2c-a1c23468837c"
+    },
+    {
+        "Keyword": "boston, united kingdom",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "54525a54-694f-40ba-a15f-f8a2f1b727ce"
+    },
+    {
+        "Keyword": "utrecht, netherlands",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d2416ba2-c1b8-41a5-92d4-0a21733068c2"
+    },
+    {
+        "Keyword": "little bay, montserrat",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4b1ede04-8ab6-2bc5-7902-a762369b92cb"
+    },
+    {
+        "Keyword": "civitavecchia, italy",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "36861a83-a9a8-4057-a370-ea9d26dd49a3"
+    },
+    {
+        "Keyword": "little bay, montserrat",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "4b1ede04-8ab6-2bc5-7902-a762369b92cb"
+    },
+    {
+        "Keyword": "tashkent, uzbekistan",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "2776858c-70e3-cf81-6a5f-3569116ab714"
+    },
+    {
+        "Keyword": "tashkent, uzbekistan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "2776858c-70e3-cf81-6a5f-3569116ab714"
+    },
+    {
+        "Keyword": "puerto quetzal,guatemala",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f0fb45cf-652f-9f0e-947a-b7a128c9fbf9"
+    },
+    {
+        "Keyword": "tanjung pelepas,malaysia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "55d1fea4-353c-8f91-b705-09543a17b67d"
+    },
+    {
+        "Keyword": "sihanoukville,cambodia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d7b1aeab-c7a9-401d-8004-c55cebd7a3ca"
+    },
+    {
+        "Keyword": "liverpool,united kingdom",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "45e5acc2-fea1-dddf-2feb-643e1e3996ad"
+    },
+    {
+        "Keyword": "new york, usnyc",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "99def56e-b1fb-4265-8f44-69c45aa7d1a3"
+    },
+    {
+        "Keyword": "puerto barrios,guatemala",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "29652dac-a103-4f5e-bdd1-b6ac6fa7077d"
+    },
+    {
+        "Keyword": "ajman,united arab emirates",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ea64127f-a6e6-e91e-91d4-c217698c9827"
+    },
+    {
+        "Keyword": "malabo,equatorial guinea",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f64ce128-4217-8069-c339-239179af6280"
+    },
+    {
+        "Keyword": "felipe \u00e1ngeles international airport",
+        "Port Type": "air_port",
+        "Mapped Port ID": "5064a930-4f9d-45c7-8b94-2f00767ac631"
+    },
+    {
+        "Keyword": "liverpool, united kingdo, gb",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "45e5acc2-fea1-dddf-2feb-643e1e3996ad"
+    },
+    {
+        "Keyword": "puerto cabello, venezuel, ve",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "298e908e-5b11-a2c9-a2e8-b3df7cee4b4b"
+    },
+    {
+        "Keyword": "saurashtra containers pvt ltd, mundra, gujarat, india",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "9f39e6c5-b8b6-43fa-901a-2991a61c381f"
+    },
+    {
+        "Keyword": "saurashtra containers pvt ltd, mundra, gujarat, india",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "9f39e6c5-b8b6-43fa-901a-2991a61c381f"
+    },
+    {
+        "Keyword": "charleston uschs",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "362ccec1-89f6-4f1b-7c64-cd1016c1ba76"
+    },
+    {
+        "Keyword": "dutch harbor usdut",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "2034b623-003f-4f64-aec1-c12a9d87e6d3"
+    },
+    {
+        "Keyword": "wilmington usilg",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "11df24cd-399c-4237-b7c7-4854970d8a20"
+    },
+    {
+        "Keyword": "providence uspvd",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "eda5a08f-3faa-b764-3bba-180c78f6ec4f"
+    },
+    {
+        "Keyword": "los angeles, ca uslax",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4f864caf-e69c-4fb9-b2fe-6d4cd73fb72c"
+    },
+    {
+        "Keyword": "baltimore, md usbal",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0163e18d-4024-9930-60ae-f4fc230f62e0"
+    },
+    {
+        "Keyword": "las palmas spain, es",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fc8ede5c-0348-4167-aa02-251db75fe28f"
+    },
+    {
+        "Keyword": "icd kanakpura, jaipur, rajasthan, india",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "cd576432-ccfd-b4f8-1ed3-b5e78e723025"
+    },
+    {
+        "Keyword": "icd kanakpura, jaipur, rajasthan, india",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "cd576432-ccfd-b4f8-1ed3-b5e78e723025"
+    },
+    {
+        "Keyword": "surabaya, indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5f8617ad-f14d-d51d-eb5c-ffaf8bc5fe49"
+    },
+    {
+        "Keyword": "fredericia, denmark",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0d27a37e-84d1-38d7-c5af-3300e0daaaf0"
+    },
+    {
+        "Keyword": "semarang, indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c9575f17-1fca-41c3-a6c9-b6866ee6bcc7"
+    },
+    {
+        "Keyword": "dar es salaam, tanzania",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "28a58bd2-6422-476a-91b1-ef65a8445feb"
+    },
+    {
+        "Keyword": "montevideo, uruguay",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d4879110-d386-732a-851a-47a3b6bd97dc"
+    },
+    {
+        "Keyword": "manila, philippines",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "100649ec-6566-0c5f-c79c-a81fdabb4852"
+    },
+    {
+        "Keyword": "vladivostok, russia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f996d0ea-7199-be5b-a218-705996e0c9b7"
+    },
+    {
+        "Keyword": "casablanca, morocco",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b6f9597e-dec0-4509-a1e0-98b185ee2782"
+    },
+    {
+        "Keyword": "adelaide, australia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7e2ef365-1c6b-6bdc-f4bc-32de0bd951e8"
+    },
+    {
+        "Keyword": "brisbane, australia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "467d5af2-d939-cba1-2951-fa929a10375f"
+    },
+    {
+        "Keyword": "malta freeport, malta",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f2cfe5b2-95f0-492b-953e-db259987ccfd"
+    },
+    {
+        "Keyword": "cape town, south africa",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5013a2ca-73e1-f6e0-1751-b590cc298799"
+    },
+    {
+        "Keyword": "helsingborg, sweden",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7dca2945-b680-32de-46f3-4d3557f3d847"
+    },
+    {
+        "Keyword": "acajutla, el salvador",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4a9c710c-f131-1a33-b2e5-cc771a1da63c"
+    },
+    {
+        "Keyword": "auckland, new zealand",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "aa833199-1ec7-941f-018b-786e88e90ec5"
+    },
+    {
+        "Keyword": "port louis, mauritius",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c2ff9903-e21f-b2fa-d6f8-10216841f15f"
+    },
+    {
+        "Keyword": "tauranga, new zealand",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "cdac4e2a-ed51-7f10-3d80-8a83f18b3e20"
+    },
+    {
+        "Keyword": "port louis, mauritius",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c2ff9903-e21f-b2fa-d6f8-10216841f15f"
+    },
+    {
+        "Keyword": "noumea, new caledonia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "46d0f78b-2fdb-0d55-3864-4793c63fa5a2"
+    },
+    {
+        "Keyword": "prince rupert, canada",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "55f25474-af7c-49aa-9605-c3a4becc59cc"
+    },
+    {
+        "Keyword": "santa marta, colombia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ad756675-ce3c-1f93-4b29-5225b65dffd0"
+    },
+    {
+        "Keyword": "cebu, cebu, philippines",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6ec2bcba-ec25-e439-471a-9bff96ece285"
+    },
+    {
+        "Keyword": "zhangjiagang, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b1aebf00-ec65-0e9f-e1fc-f1af00d1bfb7"
+    },
+    {
+        "Keyword": "fredrikstad, norway",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "60401f41-9fce-1786-a876-28e4146a1fc8"
+    },
+    {
+        "Keyword": "willemstad, curacao",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3d902c4c-5446-2b30-bb8c-bd627f3c91e0"
+    },
+    {
+        "Keyword": "guadalajara, mexico",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "96d0bc4a-b112-4d80-a193-fdd8f04ffde3"
+    },
+    {
+        "Keyword": "willemstad, curacao",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "3d902c4c-5446-2b30-bb8c-bd627f3c91e0"
+    },
+    {
+        "Keyword": "wewak, papua new guinea",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "345f7c81-5a2c-4206-b3c0-84d5b8e3afe5"
+    },
+    {
+        "Keyword": "kalundborg, denmark",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4dc38fb2-52c6-4c1a-9904-e64f55083251"
+    },
+    {
+        "Keyword": "copenhagen, denmark",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5421a404-05e2-4354-f7ad-e23b28f642a4"
+    },
+    {
+        "Keyword": "puerto angamos, chile",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "dead9606-7dd6-4492-a8b3-4e11bdc3dedb"
+    },
+    {
+        "Keyword": "makassar, indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1cb96767-ccea-683a-95a5-2bf98030c008"
+    },
+    {
+        "Keyword": "perawang, indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ac31bfc7-f543-48ab-9dbf-0a1215b48312"
+    },
+    {
+        "Keyword": "san lorenzo, honduras",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a0944f07-0969-240c-f8ca-3838a37e74fa"
+    },
+    {
+        "Keyword": "acajutla, el salvador",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "4a9c710c-f131-1a33-b2e5-cc771a1da63c"
+    },
+    {
+        "Keyword": "san lorenzo, honduras",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a0944f07-0969-240c-f8ca-3838a37e74fa"
+    },
+    {
+        "Keyword": "meppel, netherlands",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4b963900-4ab0-4f0b-860b-1edbaf131a7a"
+    },
+    {
+        "Keyword": "guadalajara, mexico",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "96d0bc4a-b112-4d80-a193-fdd8f04ffde3"
+    },
+    {
+        "Keyword": "toyamashinko, japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e814e674-19b7-77f1-95a7-f2b11a6e696d"
+    },
+    {
+        "Keyword": "toyamashinko, japan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "e814e674-19b7-77f1-95a7-f2b11a6e696d"
+    },
+    {
+        "Keyword": "erith, united kingdom",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b200bbbd-7792-48fd-803d-b4c153b53499"
+    },
+    {
+        "Keyword": "prince rupert, canada",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "55f25474-af7c-49aa-9605-c3a4becc59cc"
+    },
+    {
+        "Keyword": "iloilo, philippines",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e6beb053-a470-4390-88e1-7ef11e76eef0"
+    },
+    {
+        "Keyword": "vila do conde, portugal",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "def76232-512d-4b21-b514-f323bff872b0"
+    },
+    {
+        "Keyword": "vila do conde, portugal",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "def76232-512d-4b21-b514-f323bff872b0"
+    },
+    {
+        "Keyword": "ziguinchor, senegal",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "29d1c600-efe3-4452-a864-63c90f6d9400"
+    },
+    {
+        "Keyword": "port vila (vuvli)vanuatu",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fe7de015-6b1c-4414-a0e1-ba12426df3a7"
+    },
+    {
+        "Keyword": "hong kong (hkhkg)hong kong",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "2a42a8db-b6e5-8a2e-5498-90f8b01bb8c8"
+    },
+    {
+        "Keyword": "mostaganem, algeria",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "69de389f-66f0-078e-6c49-54d28bdac3e0"
+    },
+    {
+        "Keyword": "castries, saint lucia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fadb4f48-b140-e8ad-142a-5f1fa727abe1"
+    },
+    {
+        "Keyword": "kimbe, papua new guinea",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "2eb94606-7a03-407b-9e3c-9360ba04bb04"
+    },
+    {
+        "Keyword": "itacoatiara, brazil",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b3330fa6-f9bc-4b3a-9887-873c748a0b34"
+    },
+    {
+        "Keyword": "pengerang, malaysia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "109ace45-7d5e-4bb7-8d8e-6c6940b63b10"
+    },
+    {
+        "Keyword": "backa palanka, serbia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "be0f6e5a-a5dd-4e17-adad-41d429016d9c"
+    },
+    {
+        "Keyword": "ljubljana, slovenia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "64bd892d-f826-6faf-a98f-b540479fb2a2"
+    },
+    {
+        "Keyword": "ljubljana, slovenia",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "64bd892d-f826-6faf-a98f-b540479fb2a2"
+    },
+    {
+        "Keyword": "irthlingborough, gb",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "4a5ac08a-d27c-1c4f-5e81-a30902abd930"
+    },
+    {
+        "Keyword": "irthlingborough, gb",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "4a5ac08a-d27c-1c4f-5e81-a30902abd930"
+    },
+    {
+        "Keyword": "buenaventura,colombia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "113a9d33-b651-e027-2c53-755314fb55dc"
+    },
+    {
+        "Keyword": "chicago rockford airport",
+        "Port Type": "air_port",
+        "Mapped Port ID": "7160924c-a404-474d-b6d6-3fa869203cd2"
+    },
+    {
+        "Keyword": "chittagong,bangladesh",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5cee9607-704c-43cb-8106-eb5cdf63ac16"
+    },
+    {
+        "Keyword": "barranquilla,colombia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5245f0dd-b9aa-f3b8-58be-535223becf6c"
+    },
+    {
+        "Keyword": "banjarmasin,indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ffb3f07a-a573-4092-a9c8-3b02a758f4d3"
+    },
+    {
+        "Keyword": "riyadh dry port, saudi arabia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "71ac2d91-8dca-93bd-abc0-98a59b0899bb"
+    },
+    {
+        "Keyword": "riyadh dry port, saudi arabia",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "71ac2d91-8dca-93bd-abc0-98a59b0899bb"
+    },
+    {
+        "Keyword": "kualatanjung, indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a517f7a1-dfce-4f0f-a561-0f0812525686"
+    },
+    {
+        "Keyword": "kualatanjung, indonesia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a517f7a1-dfce-4f0f-a561-0f0812525686"
+    },
+    {
+        "Keyword": "shanghai, shanghai cnsha",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3f1e0e96-f90e-4593-8a99-e381d100cd9e"
+    },
+    {
+        "Keyword": "puerto cabello, venezuel",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "298e908e-5b11-a2c9-a2e8-b3df7cee4b4b"
+    },
+    {
+        "Keyword": "liverpool, united kingdo",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "45e5acc2-fea1-dddf-2feb-643e1e3996ad"
+    },
+    {
+        "Keyword": "barcelona,barcelona,spain",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3ec3a022-7275-809f-b037-8bb69f204486"
+    },
+    {
+        "Keyword": "icd phuoc long 3, ho chi minh, vietnam",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "0ede2b79-1b5e-4b6b-9190-1b871e2a00bf"
+    },
+    {
+        "Keyword": "belawan, indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f60380de-6878-aa73-6818-21689c08bb69"
+    },
+    {
+        "Keyword": "buenos aires,argentina",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6f4b0bc4-5ea5-5361-4efb-e074c7477cf5"
+    },
+    {
+        "Keyword": "jakarta, indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b4a682f5-745e-7eae-9e38-98757dba1a50"
+    },
+    {
+        "Keyword": "dammam, saudi arabia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e6b38f93-a99e-00a3-791f-6af095d212f7"
+    },
+    {
+        "Keyword": "port klang, malaysia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c78f16f5-b8e0-a2de-72dc-85d403b0d9f7"
+    },
+    {
+        "Keyword": "pasir gudang, malaysia (my)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e519d450-e90d-4da8-9d60-fd9f0f8d1f23"
+    },
+    {
+        "Keyword": "durban, south africa",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f106ea67-b12c-c8c0-ef66-91ee024f1390"
+    },
+    {
+        "Keyword": "baltimore usbal",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0163e18d-4024-9930-60ae-f4fc230f62e0"
+    },
+    {
+        "Keyword": "asuncion, paraguay",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "54500cdb-3039-3198-af4b-6a0e6a01607a"
+    },
+    {
+        "Keyword": "jeddah, saudi arabia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a99ce448-c4ea-4ef8-894d-7ca1cac1c52f"
+    },
+    {
+        "Keyword": "navegantes, brazil",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "063c4200-67f8-ce8f-1334-0235de3d405b"
+    },
+    {
+        "Keyword": "rio de janeiro, brazil",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7953f069-9c18-4ea7-a398-56c46179b2d4"
+    },
+    {
+        "Keyword": "constanta, romania",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ad72f57e-734c-ce09-7a28-d851ac9e94a0"
+    },
+    {
+        "Keyword": "durban, south africa",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "f106ea67-b12c-c8c0-ef66-91ee024f1390"
+    },
+    {
+        "Keyword": "incheon, south korea",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "30271445-d995-c8b2-4dd8-7d49736e1a7a"
+    },
+    {
+        "Keyword": "rosario, argentina",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "38101d79-3a7f-4599-ab0a-0027a5b45979"
+    },
+    {
+        "Keyword": "navegantes, brazil",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "063c4200-67f8-ce8f-1334-0235de3d405b"
+    },
+    {
+        "Keyword": "iskenderun, turkey",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c71bf269-3d3a-eb5a-5f71-2fc010792f8a"
+    },
+    {
+        "Keyword": "puerto cortes,honduras",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "41e9cd96-448e-d639-4f71-ee4bd5a66da3"
+    },
+    {
+        "Keyword": "songkhla, thailand",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c3bc4e48-d852-d755-4edf-e976d35e0298"
+    },
+    {
+        "Keyword": "port qasim, pakistan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a9e7cef2-c23e-8cb2-950f-679a278ecc92"
+    },
+    {
+        "Keyword": "abu dhabi ,united arab emirates",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "eb267e64-658e-4761-6514-c6a39dd261a5"
+    },
+    {
+        "Keyword": "djibouti, djibouti",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6d983d0a-99a1-f69f-c998-b00fe5a32891"
+    },
+    {
+        "Keyword": "dongguan, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "67127204-c559-734f-f234-4844ac504e80"
+    },
+    {
+        "Keyword": "jakarta, indonesia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "b4a682f5-745e-7eae-9e38-98757dba1a50"
+    },
+    {
+        "Keyword": "phnom penh, cambodia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "440f2ff2-0e81-b1a9-4d0c-0ef63231b556"
+    },
+    {
+        "Keyword": "zeebrugge, belgium",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b5e8ca4c-1979-cc78-0e8e-ca9010f144ba"
+    },
+    {
+        "Keyword": "strasbourg, france",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e5a0b227-4ee6-2c6d-fd65-946fcb3c8d1c"
+    },
+    {
+        "Keyword": "panjang, indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5e4beed1-004b-49a1-a41d-2e38943d79ce"
+    },
+    {
+        "Keyword": "rio grande, rio grande do sul, brazil",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a1daa6c1-63ce-495e-8e55-2c2f1fb81c2d"
+    },
+    {
+        "Keyword": "corinto, nicaragua",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c6bd1d7c-914d-ca18-64ea-b987c6c716e7"
+    },
+    {
+        "Keyword": "los angeles uslax",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4f864caf-e69c-4fb9-b2fe-6d4cd73fb72c"
+    },
+    {
+        "Keyword": "lianyungang, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c3360e50-09c4-bf46-c7cb-592858033d22"
+    },
+    {
+        "Keyword": "antofagasta, chile",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "89dbce82-1efb-6ad8-daf6-e84d617bc966"
+    },
+    {
+        "Keyword": "maputo, mozambique",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "61c7c781-4e1c-946d-8fba-58144e981e4b"
+    },
+    {
+        "Keyword": "sakaiminato, japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "32fda1f5-a2c8-4361-8c52-90882206fc3d"
+    },
+    {
+        "Keyword": "davao, philippines",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "62606f52-f5e7-b215-5490-e088d97bdfb2"
+    },
+    {
+        "Keyword": "nacala, mozambique",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ee6eea2b-38fc-3cb7-6ce1-dfc0d4b615ef"
+    },
+    {
+        "Keyword": "la guaira, venezuela",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e9c5910f-6424-f9cc-64d5-4bae56e764e3"
+    },
+    {
+        "Keyword": "point lisas, trinidad and tobago",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "73289586-89c4-91d6-7cd4-717c3565e03a"
+    },
+    {
+        "Keyword": "zanzibar, tanzania",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "99be9a48-fd81-4962-b309-4ccbbef7bb94"
+    },
+    {
+        "Keyword": "ushuaia, argentina",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "465b9cc5-d726-455a-8c48-542a48239717"
+    },
+    {
+        "Keyword": "sandakan, malaysia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5d380f7c-d5af-027d-8ab3-d1851bb7d79e"
+    },
+    {
+        "Keyword": "mongla, bangladesh",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7fdea268-bb2b-6302-ab4f-87c7ad70191f"
+    },
+    {
+        "Keyword": "port of spain, trinidad and tobago",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8789ca31-75b2-666d-cbca-e70c598b6d34"
+    },
+    {
+        "Keyword": "norrkoping, sweden",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "913d45ae-0208-bcea-7f34-7c842f8531f2"
+    },
+    {
+        "Keyword": "sodertalje, sweden",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "bc10b12e-f45d-4a1e-9845-57d4dd640556"
+    },
+    {
+        "Keyword": "montego bay, jamaica",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "81f1e597-fd99-4350-94a0-a81f470a4330"
+    },
+    {
+        "Keyword": "basel, switzerland",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c8d6779e-51f9-cd01-878b-384bd5e504f5"
+    },
+    {
+        "Keyword": "mogadishu, somalia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e6ad0cc2-9833-7e29-8005-ed79da457926"
+    },
+    {
+        "Keyword": "naha, okinawa, japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4d4a33b1-7041-d9b1-0036-3581bf8c02ce"
+    },
+    {
+        "Keyword": "port of aqaba, aqaba, jordan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "745132c2-28a7-472b-804d-d248aab8ed43"
+    },
+    {
+        "Keyword": "barcadera - aruba, aruba",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "25c66291-2b7d-cdd1-b8ed-eea3b8c5e5f9"
+    },
+    {
+        "Keyword": "port of spain, trinidad and tobago",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "8789ca31-75b2-666d-cbca-e70c598b6d34"
+    },
+    {
+        "Keyword": "iskenderun, turkey",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c71bf269-3d3a-eb5a-5f71-2fc010792f8a"
+    },
+    {
+        "Keyword": "barcadera - aruba, aruba",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "25c66291-2b7d-cdd1-b8ed-eea3b8c5e5f9"
+    },
+    {
+        "Keyword": "corinto, nicaragua",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c6bd1d7c-914d-ca18-64ea-b987c6c716e7"
+    },
+    {
+        "Keyword": "panjang, indonesia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "5e4beed1-004b-49a1-a41d-2e38943d79ce"
+    },
+    {
+        "Keyword": "naha, okinawa, japan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "4d4a33b1-7041-d9b1-0036-3581bf8c02ce"
+    },
+    {
+        "Keyword": "managua, nicaragua",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "202bfe5e-d0e5-c641-3370-07c4627b713d"
+    },
+    {
+        "Keyword": "rosario, argentina",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "38101d79-3a7f-4599-ab0a-0027a5b45979"
+    },
+    {
+        "Keyword": "venlo, netherlands",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1afb7683-c1d5-4a3d-846c-f5e30a2f0853"
+    },
+    {
+        "Keyword": "rio de janeiro, brazil",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "7953f069-9c18-4ea7-a398-56c46179b2d4"
+    },
+    {
+        "Keyword": "sharjah ,united arab emirates",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "61a05ec3-8793-d586-733b-20d65dec19b8"
+    },
+    {
+        "Keyword": "kpa icd embakasi, nairobi, kenya",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "12949e4d-2bca-4ccc-9769-5cb4a128dc2a"
+    },
+    {
+        "Keyword": "durban, south africa",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "19005bc1-2ea0-40ad-aacc-2e4deaac27d3"
+    },
+    {
+        "Keyword": "kansas city usmkc",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "eda7310c-74fa-0306-e5dd-21446f6db5b3"
+    },
+    {
+        "Keyword": "kpa icd embakasi, nairobi, kenya",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "12949e4d-2bca-4ccc-9769-5cb4a128dc2a"
+    },
+    {
+        "Keyword": "bangkok, bangkok, thailand",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0871f1e3-eb67-41e3-a905-193b8f75ab9a"
+    },
+    {
+        "Keyword": "hull, united kingdom",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "70c7c2b7-6351-4992-9297-0c3c4386b762"
+    },
+    {
+        "Keyword": "tegucigalpa,honduras",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "6a0eb6d7-c353-7c88-77e0-0dd48536c89b"
+    },
+    {
+        "Keyword": "tegucigalpa,honduras",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "6a0eb6d7-c353-7c88-77e0-0dd48536c89b"
+    },
+    {
+        "Keyword": "kota kinabalu,malaysia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "495ab04c-8e0c-ba30-f1f8-d877a3dfc72d"
+    },
+    {
+        "Keyword": "wellington,new zealand",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "22ee18bb-a868-2555-b574-dc5805d0bb94"
+    },
+    {
+        "Keyword": "miami, usmia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3b875054-a3ea-e010-c1d4-81f2146f1126"
+    },
+    {
+        "Keyword": "rotterdam, netherland",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d501115d-6d73-8fea-f34d-75c6c74c31db"
+    },
+    {
+        "Keyword": "hitachinaka, japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "520b84ec-d0eb-49a0-9401-f1a1631e5a72"
+    },
+    {
+        "Keyword": "hitachinaka, japan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "520b84ec-d0eb-49a0-9401-f1a1631e5a72"
+    },
+    {
+        "Keyword": "santa ana, el salvador",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "cf67876a-9da9-4842-af40-6708a3acd205"
+    },
+    {
+        "Keyword": "santa ana, el salvador",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "cf67876a-9da9-4842-af40-6708a3acd205"
+    },
+    {
+        "Keyword": "belfast,united kingdom",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "92bb6c89-0bd6-4adc-6d12-179ea826efe2"
+    },
+    {
+        "Keyword": "belfast,united kingdom",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "92bb6c89-0bd6-4adc-6d12-179ea826efe2"
+    },
+    {
+        "Keyword": "miami international airport | usa",
+        "Port Type": "air_port",
+        "Mapped Port ID": "771f5e4f-a77c-4e83-8c77-aab4ab9211e3"
+    },
+    {
+        "Keyword": "bucharest, romania",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "dba42469-83a3-d0a9-fc34-edbec7a3b47a"
+    },
+    {
+        "Keyword": "rio grande, rio grande do sul, brazil",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a1daa6c1-63ce-495e-8e55-2c2f1fb81c2d"
+    },
+    {
+        "Keyword": "vilnius, lithuania",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e83f3652-ecce-9650-0e86-79300700f9ef"
+    },
+    {
+        "Keyword": "bobadela, portugal",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "f04f3d07-be3d-4d73-a574-f9c5483a73c1"
+    },
+    {
+        "Keyword": "montego bay, jamaica",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "81f1e597-fd99-4350-94a0-a81f470a4330"
+    },
+    {
+        "Keyword": "managua, nicaragua",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "202bfe5e-d0e5-c641-3370-07c4627b713d"
+    },
+    {
+        "Keyword": "bressolles, france",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "a676891e-8815-4d23-87c6-d340301e518b"
+    },
+    {
+        "Keyword": "bressolles, france",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a676891e-8815-4d23-87c6-d340301e518b"
+    },
+    {
+        "Keyword": "kano, nigeria",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "fa3dc0e6-dbe8-4f0b-840c-ecac0dbf1541"
+    },
+    {
+        "Keyword": "kano, nigeria",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "fa3dc0e6-dbe8-4f0b-840c-ecac0dbf1541"
+    },
+    {
+        "Keyword": "qinhuangdao, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a8e9a73a-d5df-435e-8e84-208304cb4020"
+    },
+    {
+        "Keyword": "bucharest, romania",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "dba42469-83a3-d0a9-fc34-edbec7a3b47a"
+    },
+    {
+        "Keyword": "tarakan, indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1b89015c-a2e4-44c4-82c4-202e29adcb85"
+    },
+    {
+        "Keyword": "bayamon, puerto rico",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "327124a0-0be3-4211-9f48-2348d4c09138"
+    },
+    {
+        "Keyword": "bayamon, puerto rico",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "327124a0-0be3-4211-9f48-2348d4c09138"
+    },
+    {
+        "Keyword": "southampton ,united kingdom",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9141cb38-d659-c923-b50c-64d8065d7a4a"
+    },
+    {
+        "Keyword": "bobadela, portugal",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "f04f3d07-be3d-4d73-a574-f9c5483a73c1"
+    },
+    {
+        "Keyword": "balikpapan,indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "00b0f544-7070-4bab-b207-72744d197680"
+    },
+    {
+        "Keyword": "pondicherry, india",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f61794b9-8c9d-4a1d-8168-5364c1d56f05"
+    },
+    {
+        "Keyword": "santiago de cuba cuscu",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "25af5fd4-26f3-a7b4-8fbc-800dd5d87409"
+    },
+    {
+        "Keyword": "buenaventura - colombia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "113a9d33-b651-e027-2c53-755314fb55dc"
+    },
+    {
+        "Keyword": "buenaventura - colombia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "113a9d33-b651-e027-2c53-755314fb55dc"
+    },
+    {
+        "Keyword": "buenaventura / colombia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "113a9d33-b651-e027-2c53-755314fb55dc"
+    },
+    {
+        "Keyword": "buenaventura / colombia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "113a9d33-b651-e027-2c53-755314fb55dc"
+    },
+    {
+        "Keyword": "pensacola uspns",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "75f67ef0-6146-4a31-b9df-f297b1fab0a2"
+    },
+    {
+        "Keyword": "saipan (northern mariana islands)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e7d5b8c2-06b5-48d7-a41d-829319e37259"
+    },
+    {
+        "Keyword": "jebel ali, united arab emirated",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fbeff16d-5465-4e5c-ad3b-55e0f8c666b7"
+    },
+    {
+        "Keyword": "sharjah, united arab emirated",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "61a05ec3-8793-d586-733b-20d65dec19b8"
+    },
+    {
+        "Keyword": "reykjavik, iceland",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e93557d0-0920-46bf-b6d0-9a9afa327626"
+    },
+    {
+        "Keyword": "santiago de cuba, cuba",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "25af5fd4-26f3-a7b4-8fbc-800dd5d87409"
+    },
+    {
+        "Keyword": "ghazaouet, algeria",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "dda9abe4-990d-7a4b-e723-ecf2dabd44a6"
+    },
+    {
+        "Keyword": "mutsamudu, comoros",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "640322f5-48c1-cd2b-2340-11eda81ddb94"
+    },
+    {
+        "Keyword": "tulear, madagascar",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3a923ff7-8d0a-fe30-7364-482f4905216c"
+    },
+    {
+        "Keyword": "bell bay, ta, australia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "670f1744-8560-5312-ec41-cacb27bfe6e9"
+    },
+    {
+        "Keyword": "gaborone, botswana",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "8406400c-0b79-13bd-5a0f-126e048e2031"
+    },
+    {
+        "Keyword": "gaborone, botswana",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "8406400c-0b79-13bd-5a0f-126e048e2031"
+    },
+    {
+        "Keyword": "landskrona, sweden",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c9bb21c1-6ec8-431d-87a0-3d39f5071992"
+    },
+    {
+        "Keyword": "mina sulman, bahrain",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9b32949a-dea8-4698-b781-fd4ff908f6a3"
+    },
+    {
+        "Keyword": "anchorage usanc",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d554c1d6-6d62-4406-9347-5faa12327ca6"
+    },
+    {
+        "Keyword": "bobo dioulasso, burkina faso",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "b65d2a22-069c-268a-c4a7-b5a5ecd56aa9"
+    },
+    {
+        "Keyword": "bobo dioulasso, burkina faso",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "b65d2a22-069c-268a-c4a7-b5a5ecd56aa9"
+    },
+    {
+        "Keyword": "dampier, australia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "57987e64-389b-419b-9e0a-c2d236ab2676"
+    },
+    {
+        "Keyword": "savannah, ga ussav",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "22b41ff1-e649-07c3-fb46-d2cb2c08d538"
+    },
+    {
+        "Keyword": "long beach, ca uslgb",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0083d603-dc8d-430a-ae02-26de7fa3c042"
+    },
+    {
+        "Keyword": "japan-kansai",
+        "Port Type": "address",
+        "Mapped Port ID": "f1da4b8c-5ca0-4912-b20e-5f87ef0965b9"
+    },
+    {
+        "Keyword": "pyeongtaek,korea krptk",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8e63e07b-a0e2-4ec9-abef-290539349b64"
+    },
+    {
+        "Keyword": "bell bay, ta, australia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "670f1744-8560-5312-ec41-cacb27bfe6e9"
+    },
+    {
+        "Keyword": "kpa icd embakasi, nairobi, , kenya",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "12949e4d-2bca-4ccc-9769-5cb4a128dc2a"
+    },
+    {
+        "Keyword": "kpa icd embakasi, nairobi, , kenya",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "12949e4d-2bca-4ccc-9769-5cb4a128dc2a"
+    },
+    {
+        "Keyword": "burnie, ta, australia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "e560ff02-addb-319a-667a-763ecc76756f"
+    },
+    {
+        "Keyword": "qingdao, china,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8b4727c3-fd1d-4d87-a369-fc4a25b16ff4"
+    },
+    {
+        "Keyword": "dakar, senegal,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "95cfd2ba-531e-563c-dd22-17c76b9482fc"
+    },
+    {
+        "Keyword": "cotonou, benin,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3d57f2cb-d146-444a-6c42-bea68c59e255"
+    },
+    {
+        "Keyword": "iquique, chile,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "efc18399-e270-4c05-445c-8189b6c99039"
+    },
+    {
+        "Keyword": "mombasa, kenya,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b07b5b45-4dd2-46ca-8854-0b49f7524c0f"
+    },
+    {
+        "Keyword": "uslax - los angeles",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4f864caf-e69c-4fb9-b2fe-6d4cd73fb72c"
+    },
+    {
+        "Keyword": "khor fakkan-united arab emirates",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a3bb95bc-0229-84d3-e187-ee8852f7367a"
+    },
+    {
+        "Keyword": "felixstowe ,united kingdom",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d6ff98d3-b550-afde-5cb1-b29070f8b493"
+    },
+    {
+        "Keyword": "velsen noord, nh, netherlands",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "7500c9d4-6f63-41e0-a9e5-4ee37f99e716"
+    },
+    {
+        "Keyword": "felixstowe, united kingd, gb",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d6ff98d3-b550-afde-5cb1-b29070f8b493"
+    },
+    {
+        "Keyword": "singapore,singapore",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a822e173-18b9-408c-8836-5c86c4b2f47c"
+    },
+    {
+        "Keyword": "laem chabang,thailand",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e8ce4073-c739-4637-b7f5-e97f9d8b9963"
+    },
+    {
+        "Keyword": "lyttelton,new zealand",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "db16066b-e744-cadf-4fae-1ca544574bbd"
+    },
+    {
+        "Keyword": "paramaribo,suriname",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "61df07ff-f6be-fd33-708e-a00bf1180f01"
+    },
+    {
+        "Keyword": "laem chabang,thailand",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "e8ce4073-c739-4637-b7f5-e97f9d8b9963"
+    },
+    {
+        "Keyword": "melbourne,australia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0dd0799f-2a64-ddca-2171-636b84a2a570"
+    },
+    {
+        "Keyword": "puerto limon, costa rica",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "85e0ff87-4454-4306-8d36-3dee9be19f1f"
+    },
+    {
+        "Keyword": "buenos aires - argentina",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6f4b0bc4-5ea5-5361-4efb-e074c7477cf5"
+    },
+    {
+        "Keyword": "pasir gudang,malaysia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e519d450-e90d-4da8-9d60-fd9f0f8d1f23"
+    },
+    {
+        "Keyword": "pasir gudang,malaysia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "e519d450-e90d-4da8-9d60-fd9f0f8d1f23"
+    },
+    {
+        "Keyword": "visakhapatnam,india",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3c6e4a1e-2cd9-0c7c-3b06-0c70a3d887ea"
+    },
+    {
+        "Keyword": "visakhapatnam,india",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "3c6e4a1e-2cd9-0c7c-3b06-0c70a3d887ea"
+    },
+    {
+        "Keyword": "pontianak,indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3460b795-322a-40ff-b541-8539fca7a1f3"
+    },
+    {
+        "Keyword": "san pedro sula,honduras",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5e76f88c-9385-42df-9f9e-dce5a59dc7aa"
+    },
+    {
+        "Keyword": "buenos aires / argentina",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "6f4b0bc4-5ea5-5361-4efb-e074c7477cf5"
+    },
+    {
+        "Keyword": "buenos aires / argentina",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6f4b0bc4-5ea5-5361-4efb-e074c7477cf5"
+    },
+    {
+        "Keyword": "puerto limon, costa rica",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "85e0ff87-4454-4306-8d36-3dee9be19f1f"
+    },
+    {
+        "Keyword": "port noro, solomon islands",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "028efc9d-1a12-4b45-a6f7-8323e808cf09"
+    },
+    {
+        "Keyword": "buenos aires  / argentina",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "6f4b0bc4-5ea5-5361-4efb-e074c7477cf5"
+    },
+    {
+        "Keyword": "buenos aires  / argentina",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6f4b0bc4-5ea5-5361-4efb-e074c7477cf5"
+    },
+    {
+        "Keyword": "st. petersburg,russia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "64c00bb8-2586-836e-bfd5-6bcd3e3d2ba4"
+    },
+    {
+        "Keyword": "elland, united kingdom",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a097df4b-42c2-457e-8816-74e53ee7cb01"
+    },
+    {
+        "Keyword": "port noro, solomon islands",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "028efc9d-1a12-4b45-a6f7-8323e808cf09"
+    },
+    {
+        "Keyword": "kaohsiung, taiwan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "2fe3b18c-b871-6195-53e6-e0d6329ed04c"
+    },
+    {
+        "Keyword": "karachi, pakistan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "77d1e0c6-c5bc-ce8d-92f3-6ea30db8c872"
+    },
+    {
+        "Keyword": "walvis bay, namibia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a1d8e93f-2684-6f9b-0d0e-4ca1288f94d7"
+    },
+    {
+        "Keyword": "paranagua, brazil",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3924f710-c097-46cb-888c-72d3bef77d95"
+    },
+    {
+        "Keyword": "freeport, bahamas",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5ec22882-48a8-037e-81e3-949b6f184160"
+    },
+    {
+        "Keyword": "coega, south africa",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4a8f65a6-86e1-7471-ca2c-ac154031310d"
+    },
+    {
+        "Keyword": "tanger med, morocco",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ed742f11-90a6-4c49-b3f6-78ed04f1a1df"
+    },
+    {
+        "Keyword": "mexico city, mexico",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "58130b1d-4681-cf31-8e70-56171a730f0e"
+    },
+    {
+        "Keyword": "kingston, jamaica",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "08aa5253-8ba5-b65d-6478-11dcc3cfda28"
+    },
+    {
+        "Keyword": "beira, mozambique",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "413f6827-dbfb-7196-3154-d15c3ede549c"
+    },
+    {
+        "Keyword": "burnie, australia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e560ff02-addb-319a-667a-763ecc76756f"
+    },
+    {
+        "Keyword": "villeta, paraguay",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0087097f-24b7-302b-88d4-f8753ed2ddff"
+    },
+    {
+        "Keyword": "stockholm, sweden",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0e1659c5-104f-475b-8cee-fb6223baeea3"
+    },
+    {
+        "Keyword": "port said east, egypt",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6a90ff2d-88bd-4853-9d19-beb11df250e7"
+    },
+    {
+        "Keyword": "kattupalli, india",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0a174633-57b3-460b-85f9-5f96a1436e0c"
+    },
+    {
+        "Keyword": "helsinki, finland",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4f0d3c38-0b0b-2eed-bb4d-e4f37fcc76ef"
+    },
+    {
+        "Keyword": "belize city, belize",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f067f540-5f92-d117-71ad-7e2e901554f0"
+    },
+    {
+        "Keyword": "cristobal, panama",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "803be1f3-c0d3-9697-0646-af67ecc84d4e"
+    },
+    {
+        "Keyword": "valparaiso, chile",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1e7d4757-d786-24ad-8d1d-53ee0b8d7096"
+    },
+    {
+        "Keyword": "libreville, gabon",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3328d232-5ab2-448c-91cc-6737da69c25f"
+    },
+    {
+        "Keyword": "mannheim, germany",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "de87f24f-650b-4ae0-943c-fc41bbca4baf"
+    },
+    {
+        "Keyword": "duisburg, germany",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f5018391-245d-465d-b46e-b5a436564a94"
+    },
+    {
+        "Keyword": "burnie, australia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "e560ff02-addb-319a-667a-763ecc76756f"
+    },
+    {
+        "Keyword": "napier, new zealand",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7895c7ae-ed42-4ab8-a166-a4f7222a40a8"
+    },
+    {
+        "Keyword": "kaohsiung, taiwan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "2fe3b18c-b871-6195-53e6-e0d6329ed04c"
+    },
+    {
+        "Keyword": "saskatoon, canada",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "5cb26804-f6ba-4f58-b62a-9fe5a67f306e"
+    },
+    {
+        "Keyword": "kuantan, malaysia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5d2bce37-5317-4492-8832-3623efddd774"
+    },
+    {
+        "Keyword": "kuching, malaysia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f31d0bf7-6f0e-2707-92ed-cc1a76f5eff0"
+    },
+    {
+        "Keyword": "pointe noire, congo",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ef07f0ac-36e0-4466-7567-7623ff2b3aab"
+    },
+    {
+        "Keyword": "monrovia, liberia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "cbc6af2f-b275-1a6a-f288-27be027b9207"
+    },
+    {
+        "Keyword": "zarate, argentina",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1ba512e6-2f5c-4470-abfc-86384e6d19d5"
+    },
+    {
+        "Keyword": "marsaxlokk, malta",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "92997e3d-36cf-4196-a335-36d40d9c4a7e"
+    },
+    {
+        "Keyword": "trondheim, norway",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ac1097a7-7b38-4b57-8bf2-306314872cb6"
+    },
+    {
+        "Keyword": "lae, papua new guinea",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a627cae5-439d-4ece-a86c-0cc1d5a492f8"
+    },
+    {
+        "Keyword": "oranjestad, aruba",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a6d57e03-6581-00c8-e2eb-889151bc984b"
+    },
+    {
+        "Keyword": "port said west, egypt",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "cff35aab-b202-4d9c-8000-088da04103ee"
+    },
+    {
+        "Keyword": "busan new port, korea",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d047f9e0-a657-4b4e-80e3-c479992a1e7e"
+    },
+    {
+        "Keyword": "cebu, philippines",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6ec2bcba-ec25-e439-471a-9bff96ece285"
+    },
+    {
+        "Keyword": "fortaleza, brazil",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b714ce48-f237-1a97-4b86-834650b30ac1"
+    },
+    {
+        "Keyword": "mejillones, chile",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5a7ec15e-2a80-4c14-876b-46d8ec81ebd4"
+    },
+    {
+        "Keyword": "bintulu, malaysia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "173d7ff5-4e0f-98ee-de0e-110c1dd67f7a"
+    },
+    {
+        "Keyword": "timaru, new zealand",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5e531b06-1e4a-422a-97ac-908c3939fd2c"
+    },
+    {
+        "Keyword": "nelson, new zealand",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9f46999d-d204-1221-b472-ff19beccaf7e"
+    },
+    {
+        "Keyword": "binh duong, vietnam",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "50bbb2e6-4520-77c6-6c88-39ebe8858e51"
+    },
+    {
+        "Keyword": "yanbu, saudi arabia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4c0d0c41-67d6-4b9a-85f2-7731229f12fd"
+    },
+    {
+        "Keyword": "guanta, venezuela",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b9e58d80-daec-d2da-831f-dc43a737d5fe"
+    },
+    {
+        "Keyword": "porto velho, brazil",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0223bbad-d859-4118-be8f-ae3319d87679"
+    },
+    {
+        "Keyword": "vila do conde, brazil",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0ef99037-ad88-42d7-9b8f-aee9fcff0665"
+    },
+    {
+        "Keyword": "marsaxlokk, malta",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "92997e3d-36cf-4196-a335-36d40d9c4a7e"
+    },
+    {
+        "Keyword": "budapest, hungary",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "661aff82-d36a-01f6-86c4-25b50e5e4e89"
+    },
+    {
+        "Keyword": "walvis bay, namibia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a1d8e93f-2684-6f9b-0d0e-4ca1288f94d7"
+    },
+    {
+        "Keyword": "oranjestad, aruba",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a6d57e03-6581-00c8-e2eb-889151bc984b"
+    },
+    {
+        "Keyword": "punta arenas, chile",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "43a2848d-6d5b-4ad9-b552-b234c82ebab8"
+    },
+    {
+        "Keyword": "mexico city, mexico",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "58130b1d-4681-cf31-8e70-56171a730f0e"
+    },
+    {
+        "Keyword": "budapest, hungary",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "661aff82-d36a-01f6-86c4-25b50e5e4e89"
+    },
+    {
+        "Keyword": "valparaiso, clvap",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1e7d4757-d786-24ad-8d1d-53ee0b8d7096"
+    },
+    {
+        "Keyword": "busan new port, korea",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "d047f9e0-a657-4b4e-80e3-c479992a1e7e"
+    },
+    {
+        "Keyword": "yatsushiro, japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f9e061b8-d86f-4ba0-8738-b9ff3f1f86c4"
+    },
+    {
+        "Keyword": "setubal, portugal",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9cb45b4c-fef1-fa6c-5004-78f0c027b192"
+    },
+    {
+        "Keyword": "stavanger, norway",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4df9968b-1c00-44c9-a305-8827c7222f0d"
+    },
+    {
+        "Keyword": "bitung, indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "801385d5-cd70-4037-b320-b196ad84b2dd"
+    },
+    {
+        "Keyword": "freeport, bahamas",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "5ec22882-48a8-037e-81e3-949b6f184160"
+    },
+    {
+        "Keyword": "dortmund, germany",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "cb3111a2-92b1-4a56-9d7a-37e99b1d78a8"
+    },
+    {
+        "Keyword": "valladolid, spain",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "9857df5b-258f-51ce-d3b2-7b06931eb2c7"
+    },
+    {
+        "Keyword": "haugesund, norway",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4a78d224-9813-4917-bc89-82bea2b649a8"
+    },
+    {
+        "Keyword": "zakroczym, poland",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "65aa46ee-244a-452d-9f98-12fccc743f42"
+    },
+    {
+        "Keyword": "zakroczym, poland",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "65aa46ee-244a-452d-9f98-12fccc743f42"
+    },
+    {
+        "Keyword": "gangavaram, india",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "04f268fe-8c10-4d86-8723-3e057a51a538"
+    },
+    {
+        "Keyword": "tomakomai, japan, cy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1c62d888-4493-412a-a593-60ba1830428d"
+    },
+    {
+        "Keyword": "marseille, france",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1564e93a-b518-fc65-9d58-79d13d4ee71e"
+    },
+    {
+        "Keyword": "darwin, australia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7a2b770d-1f87-4188-9154-14a3f84287cd"
+    },
+    {
+        "Keyword": "saskatoon, canada",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "5cb26804-f6ba-4f58-b62a-9fe5a67f306e"
+    },
+    {
+        "Keyword": "dili, timor-leste",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3b87da23-0bd0-4d97-a83b-5c43705469ae"
+    },
+    {
+        "Keyword": "ventspils, latvia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "730d9742-a549-42a0-a2c6-d7387540d497"
+    },
+    {
+        "Keyword": "almirante, panama",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3481a509-e200-4f2c-b67b-6d6e521e2e8e"
+    },
+    {
+        "Keyword": "altamira, tm, mexico",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e495b779-5e2a-4aea-a3c4-550ead396a6e"
+    },
+    {
+        "Keyword": "chongqing, cq, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ea168629-332e-205f-8e29-35bf42d3626a"
+    },
+    {
+        "Keyword": "port au prince, haiti",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "cbadeabd-36b6-4ec4-9035-a271ece9d37b"
+    },
+    {
+        "Keyword": "valladolid, spain",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "9857df5b-258f-51ce-d3b2-7b06931eb2c7"
+    },
+    {
+        "Keyword": "sortland, no, norway",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9e987c3b-b501-4f4f-b053-edec8a049c3a"
+    },
+    {
+        "Keyword": "barcarena, brazil",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "71ee95de-e5c6-46f6-b61f-66f810437a9a"
+    },
+    {
+        "Keyword": "bedford heights, oh",
+        "Port Type": "address",
+        "Mapped Port ID": "9b2b5ca9-47ce-485f-845d-7d3363aa8fac"
+    },
+    {
+        "Keyword": "chongqing, cq, china",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "ea168629-332e-205f-8e29-35bf42d3626a"
+    },
+    {
+        "Keyword": "chihuahua, mexico",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fd8fbcf4-2836-44e6-b5b8-1b8cb7805223"
+    },
+    {
+        "Keyword": "kwai chung, n.t. hong kong, hk",
+        "Port Type": "address",
+        "Mapped Port ID": "8296a7bc-a0d8-44da-9a54-8611f8ae5729"
+    },
+    {
+        "Keyword": "wilmington, nc usilm",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a78ea88c-9387-4258-adbb-1080888a5ab8"
+    },
+    {
+        "Keyword": "hph - haiphong vietnam",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "15cbcd35-d23f-fe00-4f87-40615e54d45c"
+    },
+    {
+        "Keyword": "mindelo, cape verde",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "30ea6cad-f68f-49df-900d-6cd5e76751d4"
+    },
+    {
+        "Keyword": "mindelo, cape verde",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "30ea6cad-f68f-49df-900d-6cd5e76751d4"
+    },
+    {
+        "Keyword": "doh hamad international airport qa",
+        "Port Type": "air_port",
+        "Mapped Port ID": "4e43ec9c-55c8-b0ab-a4a5-e60864b991bf"
+    },
+    {
+        "Keyword": "st. pete\u2013clearwater international airport",
+        "Port Type": "air_port",
+        "Mapped Port ID": "b3db3a40-5963-4727-bf03-50a15bb8f4f2"
+    },
+    {
+        "Keyword": "long beach uslgb",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0083d603-dc8d-430a-ae02-26de7fa3c042"
+    },
+    {
+        "Keyword": "savannah ussav",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "22b41ff1-e649-07c3-fb46-d2cb2c08d538"
+    },
+    {
+        "Keyword": "port klang northport, malaysia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "908e466a-d7a7-4a39-98a6-56afded2b9bf"
+    },
+    {
+        "Keyword": "port klang northport, malaysia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "908e466a-d7a7-4a39-98a6-56afded2b9bf"
+    },
+    {
+        "Keyword": "palm beach uspab",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "99a38951-8d1d-44d6-b1f3-00ca77634402"
+    },
+    {
+        "Keyword": "houston, tx ushou",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "242ba837-4d31-f522-2c24-16abc8d7d45d"
+    },
+    {
+        "Keyword": "norfolk, va usorf",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "256b341f-08b4-eab8-0e51-4cf7fb76d731"
+    },
+    {
+        "Keyword": "cork, ireland,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "be76da87-31f8-7276-1f36-ce5dbf26040a"
+    },
+    {
+        "Keyword": "ningbo, china,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "83980fdc-fdd9-e4fa-200b-dd55611264b8"
+    },
+    {
+        "Keyword": "ussav - savannah",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "22b41ff1-e649-07c3-fb46-d2cb2c08d538"
+    },
+    {
+        "Keyword": "uslgb - long beach",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0083d603-dc8d-430a-ae02-26de7fa3c042"
+    },
+    {
+        "Keyword": "sihanoukville ,cambodia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d7b1aeab-c7a9-401d-8004-c55cebd7a3ca"
+    },
+    {
+        "Keyword": "rotterdam, the netherlands",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d501115d-6d73-8fea-f34d-75c6c74c31db"
+    },
+    {
+        "Keyword": "wilhelmshaven, ni, germany",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9b22fc23-14e3-0cc6-8d5b-8be7940f02a6"
+    },
+    {
+        "Keyword": "rotterdam, zh, netherlands",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d501115d-6d73-8fea-f34d-75c6c74c31db"
+    },
+    {
+        "Keyword": "mandsaur, madhya pradesh",
+        "Port Type": "address",
+        "Mapped Port ID": "9c903508-eee8-4ec4-aa16-f5ded730a6bd"
+    },
+    {
+        "Keyword": "liverpool, united kingdon",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "45e5acc2-fea1-dddf-2feb-643e1e3996ad"
+    },
+    {
+        "Keyword": "ajman, united arab emirated",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ea64127f-a6e6-e91e-91d4-c217698c9827"
+    },
+    {
+        "Keyword": "immingham ,united kingdom",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4fc0baae-f255-103a-4085-23efad8c68fd"
+    },
+    {
+        "Keyword": "liverpool, united kingdo,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "45e5acc2-fea1-dddf-2feb-643e1e3996ad"
+    },
+    {
+        "Keyword": "liverpool, united kingdo,",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "45e5acc2-fea1-dddf-2feb-643e1e3996ad"
+    },
+    {
+        "Keyword": "felixstowe, united kingd",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d6ff98d3-b550-afde-5cb1-b29070f8b493"
+    },
+    {
+        "Keyword": "auh abu dhabi international airport ae",
+        "Port Type": "air_port",
+        "Mapped Port ID": "b59cb6fa-8530-59e4-21a5-fc82779240eb"
+    },
+    {
+        "Keyword": "yekaterinburg (ekaterinburg), ru",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "ba28487a-02c3-75da-b409-68d373ab5208"
+    },
+    {
+        "Keyword": "laem chabang , thailand",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e8ce4073-c739-4637-b7f5-e97f9d8b9963"
+    },
+    {
+        "Keyword": "dar es salaam,tanzania",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "28a58bd2-6422-476a-91b1-ef65a8445feb"
+    },
+    {
+        "Keyword": "surabaya,indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5f8617ad-f14d-d51d-eb5c-ffaf8bc5fe49"
+    },
+    {
+        "Keyword": "semarang,indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c9575f17-1fca-41c3-a6c9-b6866ee6bcc7"
+    },
+    {
+        "Keyword": "port louis,mauritius",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c2ff9903-e21f-b2fa-d6f8-10216841f15f"
+    },
+    {
+        "Keyword": "montevideo,uruguay",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d4879110-d386-732a-851a-47a3b6bd97dc"
+    },
+    {
+        "Keyword": "tauranga,new zealand",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "cdac4e2a-ed51-7f10-3d80-8a83f18b3e20"
+    },
+    {
+        "Keyword": "casablanca,morocco",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b6f9597e-dec0-4509-a1e0-98b185ee2782"
+    },
+    {
+        "Keyword": "copenhagen,denmark",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5421a404-05e2-4354-f7ad-e23b28f642a4"
+    },
+    {
+        "Keyword": "acajutla,el salvador",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4a9c710c-f131-1a33-b2e5-cc771a1da63c"
+    },
+    {
+        "Keyword": "st petersburg, russia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "64c00bb8-2586-836e-bfd5-6bcd3e3d2ba4"
+    },
+    {
+        "Keyword": "civitavecchia itcvv",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "36861a83-a9a8-4057-a370-ea9d26dd49a3"
+    },
+    {
+        "Keyword": "jacksonville, fl (usjax)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "38158147-4a48-47a0-a935-e194c2c2bf8f"
+    },
+    {
+        "Keyword": "philadelphia, pa (usphl)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d3134405-646d-49b4-a8e5-e382449dbb26"
+    },
+    {
+        "Keyword": "cape town,south africa",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5013a2ca-73e1-f6e0-1751-b590cc298799"
+    },
+    {
+        "Keyword": "fredericia,denmark",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0d27a37e-84d1-38d7-c5af-3300e0daaaf0"
+    },
+    {
+        "Keyword": "auckland,new zealand",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "aa833199-1ec7-941f-018b-786e88e90ec5"
+    },
+    {
+        "Keyword": "san lorenzo,honduras",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a0944f07-0969-240c-f8ca-3838a37e74fa"
+    },
+    {
+        "Keyword": "perawang,indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ac31bfc7-f543-48ab-9dbf-0a1215b48312"
+    },
+    {
+        "Keyword": "singapore singapore",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a822e173-18b9-408c-8836-5c86c4b2f47c"
+    },
+    {
+        "Keyword": "port louis,mauritius",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c2ff9903-e21f-b2fa-d6f8-10216841f15f"
+    },
+    {
+        "Keyword": "melbourne australia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0dd0799f-2a64-ddca-2171-636b84a2a570"
+    },
+    {
+        "Keyword": "cnzjg,zhangjiagang",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b1aebf00-ec65-0e9f-e1fc-f1af00d1bfb7"
+    },
+    {
+        "Keyword": "thailand laem chabang",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e8ce4073-c739-4637-b7f5-e97f9d8b9963"
+    },
+    {
+        "Keyword": "visakhapatnam invtz",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3c6e4a1e-2cd9-0c7c-3b06-0c70a3d887ea"
+    },
+    {
+        "Keyword": "krishnapatnam inkri",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "aecfd1cb-73e2-4592-153d-e430437bd8bb"
+    },
+    {
+        "Keyword": "singapore , singapore",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a822e173-18b9-408c-8836-5c86c4b2f47c"
+    },
+    {
+        "Keyword": "singapore , singapore",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a822e173-18b9-408c-8836-5c86c4b2f47c"
+    },
+    {
+        "Keyword": "vila do conde,portugal",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "def76232-512d-4b21-b514-f323bff872b0"
+    },
+    {
+        "Keyword": "vila do conde,portugal",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "def76232-512d-4b21-b514-f323bff872b0"
+    },
+    {
+        "Keyword": "makassar,indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1cb96767-ccea-683a-95a5-2bf98030c008"
+    },
+    {
+        "Keyword": "invtz - visakhapatnam",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3c6e4a1e-2cd9-0c7c-3b06-0c70a3d887ea"
+    },
+    {
+        "Keyword": "pengerang,malaysia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "109ace45-7d5e-4bb7-8d8e-6c6940b63b10"
+    },
+    {
+        "Keyword": "kaliningrad,russia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "20206865-385a-2b4a-3795-1b52543b4580"
+    },
+    {
+        "Keyword": "helsingborg, m, sweden",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7dca2945-b680-32de-46f3-4d3557f3d847"
+    },
+    {
+        "Keyword": "dallas/fort worth international airport",
+        "Port Type": "air_port",
+        "Mapped Port ID": "70b83cf4-de4c-49ea-9cca-bdce9f0d61dc"
+    },
+    {
+        "Keyword": "pacheco, ca",
+        "Port Type": "address",
+        "Mapped Port ID": "a620debb-2027-40c3-95f7-56654fd9f80f"
+    },
+    {
+        "Keyword": "menands, ny",
+        "Port Type": "address",
+        "Mapped Port ID": "141ce359-ee76-4f4b-8ab0-107360d72dab"
+    },
+    {
+        "Keyword": "bangkok modern terminals/bangkok, th",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "05d7873e-7b70-4ac8-b102-1d7ffbe4eea8"
+    },
+    {
+        "Keyword": "port of spain,trinidad and tobago",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8789ca31-75b2-666d-cbca-e70c598b6d34"
+    },
+    {
+        "Keyword": "shanghai,sh,shanghai,china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3f1e0e96-f90e-4593-8a99-e381d100cd9e"
+    },
+    {
+        "Keyword": "shanghai,sh,shanghai,china",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "3f1e0e96-f90e-4593-8a99-e381d100cd9e"
+    },
+    {
+        "Keyword": "southampton (united kingdom)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9141cb38-d659-c923-b50c-64d8065d7a4a"
+    },
+    {
+        "Keyword": "jebel ali (united arab emirates)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fbeff16d-5465-4e5c-ad3b-55e0f8c666b7"
+    },
+    {
+        "Keyword": "caucedo (dominican republic)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "849f8870-72a2-d612-4700-8143dcce71d4"
+    },
+    {
+        "Keyword": "sharjah (united arab emirates)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "61a05ec3-8793-d586-733b-20d65dec19b8"
+    },
+    {
+        "Keyword": "grangemouth (united kingdom)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "25d8d529-e94f-9b24-61ad-525db73938f1"
+    },
+    {
+        "Keyword": "general santos (philippines)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "aaef9f2e-76ab-b742-8334-cdd7f990a38b"
+    },
+    {
+        "Keyword": "jebel ali-united arab emirates",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fbeff16d-5465-4e5c-ad3b-55e0f8c666b7"
+    },
+    {
+        "Keyword": "sharjah-united arab emirates",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "61a05ec3-8793-d586-733b-20d65dec19b8"
+    },
+    {
+        "Keyword": "palembang, indonesia idplm",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "bf841c22-6240-4fe8-a125-4e08975bf363"
+    },
+    {
+        "Keyword": "colombo, sri lanka",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "74c27a0a-c586-45bd-bb76-b0dad1e276d9"
+    },
+    {
+        "Keyword": "antwerp, belgium",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "28f18263-b309-4a4b-b02d-ff4564f69dda"
+    },
+    {
+        "Keyword": "mizushima, japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6dbfd248-1b4f-498d-b623-388edcd065ac"
+    },
+    {
+        "Keyword": "tuticorin, india",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "20873cad-47a8-507f-07af-a780bd1c4c1e"
+    },
+    {
+        "Keyword": "hamburg, germany",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3ebde357-59ac-40e5-9697-79e16a4d9e9e"
+    },
+    {
+        "Keyword": "gioia tauro, italy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9a9b785b-24be-e352-1b5e-4407360b5742"
+    },
+    {
+        "Keyword": "hai phong, vietnam",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "15cbcd35-d23f-fe00-4f87-40615e54d45c"
+    },
+    {
+        "Keyword": "takamatsu, japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "df18bf85-c8fb-444b-66f1-70322df37267"
+    },
+    {
+        "Keyword": "kokkola, finland",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "54170f2a-2edf-4d4c-b2d3-e000804031a9"
+    },
+    {
+        "Keyword": "tekirdag, turkey",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "181a5013-284e-6a6b-10ce-e5f72f248662"
+    },
+    {
+        "Keyword": "hong kong, hong kong",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "2a42a8db-b6e5-8a2e-5498-90f8b01bb8c8"
+    },
+    {
+        "Keyword": "altamira, mexico",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e495b779-5e2a-4aea-a3c4-550ead396a6e"
+    },
+    {
+        "Keyword": "burgas, bulgaria",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "08dae394-c46c-b614-3534-531667b3709d"
+    },
+    {
+        "Keyword": "montreal, canada",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "aa4508d0-6ff4-b7bb-1617-6863964eeddb"
+    },
+    {
+        "Keyword": "algeciras, spain",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0208808b-fae0-e20c-15f7-eae790c7b404"
+    },
+    {
+        "Keyword": "orkanger, norway",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4726a0e3-982c-6929-0083-762a28b3c56b"
+    },
+    {
+        "Keyword": "gioia tauro, italy",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "9a9b785b-24be-e352-1b5e-4407360b5742"
+    },
+    {
+        "Keyword": "taichung, taiwan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f1490878-3bfa-9c95-6f9e-d7da6fdd0b24"
+    },
+    {
+        "Keyword": "penang, malaysia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d60293c0-ee36-3570-1915-a88ac5057115"
+    },
+    {
+        "Keyword": "salvador, brazil",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6044f730-f5d7-800e-37dc-c5493dfc968e"
+    },
+    {
+        "Keyword": "colombo, sri lanka",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "74c27a0a-c586-45bd-bb76-b0dad1e276d9"
+    },
+    {
+        "Keyword": "altamira, mexico",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "e495b779-5e2a-4aea-a3c4-550ead396a6e"
+    },
+    {
+        "Keyword": "limassol, cyprus",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3242d20d-b8a3-4121-ab2d-0d45f789877b"
+    },
+    {
+        "Keyword": "bordeaux, france",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "89333b99-ddd2-5a52-6464-cb375f6a47af"
+    },
+    {
+        "Keyword": "tomakomai, japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1c62d888-4493-412a-a593-60ba1830428d"
+    },
+    {
+        "Keyword": "taichung, taiwan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "f1490878-3bfa-9c95-6f9e-d7da6fdd0b24"
+    },
+    {
+        "Keyword": "el dekheila, egypt",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "865ee322-9ba2-0a29-d834-c21d1820d00e"
+    },
+    {
+        "Keyword": "leipzig, germany",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c2239feb-5d1e-e2c6-feb1-21356ba27547"
+    },
+    {
+        "Keyword": "algeciras, spain",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "0208808b-fae0-e20c-15f7-eae790c7b404"
+    },
+    {
+        "Keyword": "massawa, eritrea",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b32a1182-56e0-1f24-8549-ba13d59938a8"
+    },
+    {
+        "Keyword": "san antonio, chile",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "07284360-7559-49d8-b940-faccccbd4c97"
+    },
+    {
+        "Keyword": "tomakomai, japan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "1c62d888-4493-412a-a593-60ba1830428d"
+    },
+    {
+        "Keyword": "hachinohe, japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4f7269d1-1fb7-4611-8cb9-1246ad8522e7"
+    },
+    {
+        "Keyword": "yokkaichi, japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3b05e32a-ad88-4d7e-a2ee-3e6b3acecb81"
+    },
+    {
+        "Keyword": "bizerte, tunisia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1fb82fff-f32a-aea4-a5e2-50e0ae1d17bb"
+    },
+    {
+        "Keyword": "tananger, norway",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ac3dee68-3dad-4c1e-8046-1f7e3e90c8e3"
+    },
+    {
+        "Keyword": "posorja, ecuador",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0a47b099-ce6d-4e48-92cf-6c940d40449a"
+    },
+    {
+        "Keyword": "hososhima, japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5f85dc1f-69b3-47b6-a1ab-6f7ec285787c"
+    },
+    {
+        "Keyword": "chongqing, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ea168629-332e-205f-8e29-35bf42d3626a"
+    },
+    {
+        "Keyword": "tangier, morocco",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "607fb564-8949-e318-e2eb-b5ff8f6fb470"
+    },
+    {
+        "Keyword": "zhanjiang, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fd93b323-bd3c-21ad-3563-d93ef2b9fa60"
+    },
+    {
+        "Keyword": "mangalore, india",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "850ea521-3a70-4838-9a3b-50a2a13d8f20"
+    },
+    {
+        "Keyword": "hiroshima, japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fc3e3f17-a813-6028-4cd0-150c64f9cb04"
+    },
+    {
+        "Keyword": "san antonio, chile",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "07284360-7559-49d8-b940-faccccbd4c97"
+    },
+    {
+        "Keyword": "szczecin, poland",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "787b1eaa-f116-11e7-d377-5a790380e509"
+    },
+    {
+        "Keyword": "ensenada, mexico",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b3571c1e-d8f7-1733-75fc-f12d7342dc99"
+    },
+    {
+        "Keyword": "san vicente, chile",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "72443d75-47c8-018c-f2f3-76c4d3344cde"
+    },
+    {
+        "Keyword": "edmonton, canada",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "505b977d-28ab-75ba-ea19-343e78bb40bd"
+    },
+    {
+        "Keyword": "changzhou, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "bbc76ff4-7abf-4692-84b3-27ce4d5c61f2"
+    },
+    {
+        "Keyword": "zhenjiang, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "71296817-9610-db9e-c10c-5ad2e91df8a2"
+    },
+    {
+        "Keyword": "tarragona, spain",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0e84488b-0f37-435b-a9cf-4e26fd91e789"
+    },
+    {
+        "Keyword": "vado ligure, italy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "af79d5fc-f65c-4759-bf67-413dce329dd0"
+    },
+    {
+        "Keyword": "avelgem, belgium",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7009f846-84da-4af6-b855-0b921d069a31"
+    },
+    {
+        "Keyword": "port vila, vanuatu",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fe7de015-6b1c-4414-a0e1-ba12426df3a7"
+    },
+    {
+        "Keyword": "progreso, mexico",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "cb256299-4cf6-2179-56be-a0b00d82070c"
+    },
+    {
+        "Keyword": "jambi, indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "680a9350-5700-47a2-bb2c-a83c3e88f1a3"
+    },
+    {
+        "Keyword": "mangalore, india",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "850ea521-3a70-4838-9a3b-50a2a13d8f20"
+    },
+    {
+        "Keyword": "icd birgunj, nepal",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c757aaed-9d4a-4f3f-99f9-97288d12d88a"
+    },
+    {
+        "Keyword": "tuticorin, india",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "20873cad-47a8-507f-07af-a780bd1c4c1e"
+    },
+    {
+        "Keyword": "antwerp, belgium",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "28f18263-b309-4a4b-b02d-ff4564f69dda"
+    },
+    {
+        "Keyword": "hai phong, vietnam",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "15cbcd35-d23f-fe00-4f87-40615e54d45c"
+    },
+    {
+        "Keyword": "vado ligure, italy",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "af79d5fc-f65c-4759-bf67-413dce329dd0"
+    },
+    {
+        "Keyword": "mizushima, japan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "6dbfd248-1b4f-498d-b623-388edcd065ac"
+    },
+    {
+        "Keyword": "port vila, vanuatu",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "fe7de015-6b1c-4414-a0e1-ba12426df3a7"
+    },
+    {
+        "Keyword": "tarragona, spain",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "0e84488b-0f37-435b-a9cf-4e26fd91e789"
+    },
+    {
+        "Keyword": "fangcheng, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "baad3821-c4ec-95c6-64dd-6c87bd639064"
+    },
+    {
+        "Keyword": "wilmington usilm",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a78ea88c-9387-4258-adbb-1080888a5ab8"
+    },
+    {
+        "Keyword": "harare, zimbabwe",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "0645703e-d603-48ce-8e2b-18e1c6a7ffa9"
+    },
+    {
+        "Keyword": "san antonio, clsai",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "07284360-7559-49d8-b940-faccccbd4c97"
+    },
+    {
+        "Keyword": "hiroshima, japan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "fc3e3f17-a813-6028-4cd0-150c64f9cb04"
+    },
+    {
+        "Keyword": "takamatsu, japan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "df18bf85-c8fb-444b-66f1-70322df37267"
+    },
+    {
+        "Keyword": "icd birgunj, nepal",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "c757aaed-9d4a-4f3f-99f9-97288d12d88a"
+    },
+    {
+        "Keyword": "harare, zimbabwe",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "0645703e-d603-48ce-8e2b-18e1c6a7ffa9"
+    },
+    {
+        "Keyword": "tuticorin, intut",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "20873cad-47a8-507f-07af-a780bd1c4c1e"
+    },
+    {
+        "Keyword": "penang,  malaysia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d60293c0-ee36-3570-1915-a88ac5057115"
+    },
+    {
+        "Keyword": "esbjerg, denmark",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "066f1404-e0bb-08ae-5521-b78c49578099"
+    },
+    {
+        "Keyword": "yokkaichi, japan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "3b05e32a-ad88-4d7e-a2ee-3e6b3acecb81"
+    },
+    {
+        "Keyword": "charleston, sc, usa",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "362ccec1-89f6-4f1b-7c64-cd1016c1ba76"
+    },
+    {
+        "Keyword": "matsuyama, japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "390c9b59-957a-f461-e03d-358c96d898d8"
+    },
+    {
+        "Keyword": "matsuyama, japan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "390c9b59-957a-f461-e03d-358c96d898d8"
+    },
+    {
+        "Keyword": "cartagena, spain",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "251d02d4-c136-6385-e510-454915c5945f"
+    },
+    {
+        "Keyword": "san vicente, chile",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "72443d75-47c8-018c-f2f3-76c4d3344cde"
+    },
+    {
+        "Keyword": "blantyre, malawi",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "ec073919-18ec-23cf-7187-4f4e3e8b5e89"
+    },
+    {
+        "Keyword": "edmonton, canada",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "505b977d-28ab-75ba-ea19-343e78bb40bd"
+    },
+    {
+        "Keyword": "leipzig, germany",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "c2239feb-5d1e-e2c6-feb1-21356ba27547"
+    },
+    {
+        "Keyword": "lilongwe, malawi",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "95f3751d-3a20-42fd-9840-738f6cb82722"
+    },
+    {
+        "Keyword": "lilongwe, malawi",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "95f3751d-3a20-42fd-9840-738f6cb82722"
+    },
+    {
+        "Keyword": "blantyre, malawi",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "ec073919-18ec-23cf-7187-4f4e3e8b5e89"
+    },
+    {
+        "Keyword": "roseau, dominica",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "b060d1b9-d5b9-c3aa-e872-e695d8b0f75b"
+    },
+    {
+        "Keyword": "imbituba, brazil",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5013ddac-ae8c-46a9-9d09-9902772e1312"
+    },
+    {
+        "Keyword": "roseau, dominica",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b060d1b9-d5b9-c3aa-e872-e695d8b0f75b"
+    },
+    {
+        "Keyword": "halmstad, sweden",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d699d906-93cb-8cf4-ca06-6f7e4b83e1b0"
+    },
+    {
+        "Keyword": "yerevan, armenia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "e5d1476b-6ed9-4f1d-71db-986470e7ddf0"
+    },
+    {
+        "Keyword": "yerevan, armenia",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "e5d1476b-6ed9-4f1d-71db-986470e7ddf0"
+    },
+    {
+        "Keyword": "egersund, norway",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "31c52d8a-b37c-4342-b97f-70d710cd0d5c"
+    },
+    {
+        "Keyword": "baku, azerbaijan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1bb21b5c-36d5-41c1-6c62-a8d91ff92cfc"
+    },
+    {
+        "Keyword": "aalborg, denmark",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "749a6945-2449-bb23-f32a-19896b5e3ede"
+    },
+    {
+        "Keyword": "lautoka (fjltk)fiji",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e695f7df-8822-41e7-8ce2-06348e1572e3"
+    },
+    {
+        "Keyword": "labuan, malaysia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8128d4d0-ce21-3808-af9e-2b24f5c45551"
+    },
+    {
+        "Keyword": "mundra (inmun)india",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9819c622-6ba0-4e8a-8f03-d8df536e8b60"
+    },
+    {
+        "Keyword": "mundra (inmun)india",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "9819c622-6ba0-4e8a-8f03-d8df536e8b60"
+    },
+    {
+        "Keyword": "bottrop, germany",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a1ab1569-9d1e-4a61-a662-87acaea0067d"
+    },
+    {
+        "Keyword": "kenitra, morocco",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a9452cc7-1c06-4068-8214-7c42b3830a74"
+    },
+    {
+        "Keyword": "shibushi, japan, cy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f729ccbc-319c-441e-bf2d-5722df19159e"
+    },
+    {
+        "Keyword": "djen djen, algeria",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "82b882de-fd4d-406e-9080-83ec6840fb2e"
+    },
+    {
+        "Keyword": "longoni, mayotte",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "bde608c9-898d-d920-2181-fd7c3a607a32"
+    },
+    {
+        "Keyword": "kenitra, morocco",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a9452cc7-1c06-4068-8214-7c42b3830a74"
+    },
+    {
+        "Keyword": "el dekheila, egedk",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "865ee322-9ba2-0a29-d834-c21d1820d00e"
+    },
+    {
+        "Keyword": "benicarlo, spain",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "02ea2679-a1de-4770-b203-b418a74e197f"
+    },
+    {
+        "Keyword": "koblenz, germany",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "be3f989b-13ed-4d38-891b-c32759f010cc"
+    },
+    {
+        "Keyword": "kismayu, somalia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "dbfbddab-453b-4fb8-88fe-61b952587629"
+    },
+    {
+        "Keyword": "saint john, canada",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8e61a4bf-6977-42c6-82e4-8c0b22f338bc"
+    },
+    {
+        "Keyword": "mtwara, tanzania",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a3f6a77d-62bf-4a8c-bc35-82f9241bf4b5"
+    },
+    {
+        "Keyword": "cap haitien, haiti",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9fb55903-2755-fb34-e0d8-f1c94410d02b"
+    },
+    {
+        "Keyword": "shumen, bulgaria",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "109ad40e-d8ff-4783-94bb-727ef268ac53"
+    },
+    {
+        "Keyword": "shumen, bulgaria",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "109ad40e-d8ff-4783-94bb-727ef268ac53"
+    },
+    {
+        "Keyword": "castellon, spain",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "16f2294b-3226-41de-9781-f9b4139f4e32"
+    },
+    {
+        "Keyword": "toyohashi, japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b6854fb3-6d43-4dc8-9edb-d006d98663e4"
+    },
+    {
+        "Keyword": "toyohashi, japan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "b6854fb3-6d43-4dc8-9edb-d006d98663e4"
+    },
+    {
+        "Keyword": "san vicente,  chile",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "72443d75-47c8-018c-f2f3-76c4d3344cde"
+    },
+    {
+        "Keyword": "rotterdam ,netherlands",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d501115d-6d73-8fea-f34d-75c6c74c31db"
+    },
+    {
+        "Keyword": "chittagong ,bangladesh",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5cee9607-704c-43cb-8106-eb5cdf63ac16"
+    },
+    {
+        "Keyword": "buenaventura ,colombia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "113a9d33-b651-e027-2c53-755314fb55dc"
+    },
+    {
+        "Keyword": "fremantle,wa,australia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fb4e3874-8c83-a24b-386a-494d12bf0787"
+    },
+    {
+        "Keyword": "amarillo, united states",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "5a4f0328-16fd-47df-8715-35b3ebb2aa61"
+    },
+    {
+        "Keyword": "shanghai - shanghai - china",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "3f1e0e96-f90e-4593-8a99-e381d100cd9e"
+    },
+    {
+        "Keyword": "shanghai - shanghai - china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3f1e0e96-f90e-4593-8a99-e381d100cd9e"
+    },
+    {
+        "Keyword": "buenaventura ,colombia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "113a9d33-b651-e027-2c53-755314fb55dc"
+    },
+    {
+        "Keyword": "lazaro cardenas, mh, mexico",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "084e8f5f-ac54-602b-e0c8-05a6803c0c07"
+    },
+    {
+        "Keyword": "townsville, ql, australia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "65467e6e-1c86-45a9-8c77-532cfa215682"
+    },
+    {
+        "Keyword": "amsterdam ,netherlands",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b985a538-137a-cc90-be7c-d7dbd142ce55"
+    },
+    {
+        "Keyword": "kota kinabalu international airport",
+        "Port Type": "air_port",
+        "Mapped Port ID": "63c6597b-6fec-4bb0-b8fa-3750de73950e"
+    },
+    {
+        "Keyword": "songkhla,thailand",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c3bc4e48-d852-d755-4edf-e976d35e0298"
+    },
+    {
+        "Keyword": "jakarta,indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b4a682f5-745e-7eae-9e38-98757dba1a50"
+    },
+    {
+        "Keyword": "jeddah,saudi arabia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a99ce448-c4ea-4ef8-894d-7ca1cac1c52f"
+    },
+    {
+        "Keyword": "port klang,malaysia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c78f16f5-b8e0-a2de-72dc-85d403b0d9f7"
+    },
+    {
+        "Keyword": "incheon,south korea",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "30271445-d995-c8b2-4dd8-7d49736e1a7a"
+    },
+    {
+        "Keyword": "djibouti,djibouti",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6d983d0a-99a1-f69f-c998-b00fe5a32891"
+    },
+    {
+        "Keyword": "dammam,saudi arabia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e6b38f93-a99e-00a3-791f-6af095d212f7"
+    },
+    {
+        "Keyword": "houston ushou",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "242ba837-4d31-f522-2c24-16abc8d7d45d"
+    },
+    {
+        "Keyword": "jakarta,indonesia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "b4a682f5-745e-7eae-9e38-98757dba1a50"
+    },
+    {
+        "Keyword": "jubail, saudi arabia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "618f34fb-2a67-471d-a46d-5578b26b83a9"
+    },
+    {
+        "Keyword": "seattle ussea",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0a5e5cce-5842-147b-c40f-797357dc8806"
+    },
+    {
+        "Keyword": "zhangjiagang cnzjg",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b1aebf00-ec65-0e9f-e1fc-f1af00d1bfb7"
+    },
+    {
+        "Keyword": "norfolk usorf",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "256b341f-08b4-eab8-0e51-4cf7fb76d731"
+    },
+    {
+        "Keyword": "singapore, singapore, singapore",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a822e173-18b9-408c-8836-5c86c4b2f47c"
+    },
+    {
+        "Keyword": "belfast, belfast, united kingdom",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "92bb6c89-0bd6-4adc-6d12-179ea826efe2"
+    },
+    {
+        "Keyword": "callao, pecll",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "982e42e3-1032-98bd-0c15-3bf8daf591f8"
+    },
+    {
+        "Keyword": "callao, pecll",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "982e42e3-1032-98bd-0c15-3bf8daf591f8"
+    },
+    {
+        "Keyword": "durban,south africa",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f106ea67-b12c-c8c0-ef66-91ee024f1390"
+    },
+    {
+        "Keyword": "belawan,indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f60380de-6878-aa73-6818-21689c08bb69"
+    },
+    {
+        "Keyword": "belawan,indonesia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "f60380de-6878-aa73-6818-21689c08bb69"
+    },
+    {
+        "Keyword": "managua,nicaragua",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "202bfe5e-d0e5-c641-3370-07c4627b713d"
+    },
+    {
+        "Keyword": "managua,nicaragua",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "202bfe5e-d0e5-c641-3370-07c4627b713d"
+    },
+    {
+        "Keyword": "iskenderun,turkey",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c71bf269-3d3a-eb5a-5f71-2fc010792f8a"
+    },
+    {
+        "Keyword": "port qasim,pakistan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a9e7cef2-c23e-8cb2-950f-679a278ecc92"
+    },
+    {
+        "Keyword": "corinto,nicaragua",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c6bd1d7c-914d-ca18-64ea-b987c6c716e7"
+    },
+    {
+        "Keyword": "corinto,nicaragua",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c6bd1d7c-914d-ca18-64ea-b987c6c716e7"
+    },
+    {
+        "Keyword": "phnom penh,cambodia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "440f2ff2-0e81-b1a9-4d0c-0ef63231b556"
+    },
+    {
+        "Keyword": "phnom penh,cambodia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "440f2ff2-0e81-b1a9-4d0c-0ef63231b556"
+    },
+    {
+        "Keyword": "navegantes,brazil",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "063c4200-67f8-ce8f-1334-0235de3d405b"
+    },
+    {
+        "Keyword": "rio de janeiro,brazil",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7953f069-9c18-4ea7-a398-56c46179b2d4"
+    },
+    {
+        "Keyword": "iskenderun,turkey",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c71bf269-3d3a-eb5a-5f71-2fc010792f8a"
+    },
+    {
+        "Keyword": "sakaiminato,japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "32fda1f5-a2c8-4361-8c52-90882206fc3d"
+    },
+    {
+        "Keyword": "sakaiminato,japan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "32fda1f5-a2c8-4361-8c52-90882206fc3d"
+    },
+    {
+        "Keyword": "panjang,indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5e4beed1-004b-49a1-a41d-2e38943d79ce"
+    },
+    {
+        "Keyword": "panjang,indonesia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "5e4beed1-004b-49a1-a41d-2e38943d79ce"
+    },
+    {
+        "Keyword": "icd hyderabad, india",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "328717dd-0521-db3f-329f-5fe6434c9254"
+    },
+    {
+        "Keyword": "icd hyderabad, india",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "328717dd-0521-db3f-329f-5fe6434c9254"
+    },
+    {
+        "Keyword": "helsingborg, sehel",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7dca2945-b680-32de-46f3-4d3557f3d847"
+    },
+    {
+        "Keyword": "apapa lagos, nigeria",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5b27be57-c85f-4054-81e1-54b98ad9980a"
+    },
+    {
+        "Keyword": "indonesia surabaya",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5f8617ad-f14d-d51d-eb5c-ffaf8bc5fe49"
+    },
+    {
+        "Keyword": "saharanpur, uttar pradesh.",
+        "Port Type": "address",
+        "Mapped Port ID": "d51a0dee-e615-439f-a4fa-60b3b2a22ee9"
+    },
+    {
+        "Keyword": "toyamashinko jptos",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e814e674-19b7-77f1-95a7-f2b11a6e696d"
+    },
+    {
+        "Keyword": "everett uspae",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b4a2178f-3100-4359-b96a-7c6c4cbfde2c"
+    },
+    {
+        "Keyword": "nacala,mozambique",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ee6eea2b-38fc-3cb7-6ce1-dfc0d4b615ef"
+    },
+    {
+        "Keyword": "maputo,mozambique",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "61c7c781-4e1c-946d-8fba-58144e981e4b"
+    },
+    {
+        "Keyword": "felixstowe (united kingdom)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d6ff98d3-b550-afde-5cb1-b29070f8b493"
+    },
+    {
+        "Keyword": "port elizabeth (south africa)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "61668630-9036-7d32-c09b-3e9c6726cf3a"
+    },
+    {
+        "Keyword": "port elizabeth (south africa)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "61668630-9036-7d32-c09b-3e9c6726cf3a"
+    },
+    {
+        "Keyword": "gaborone,botswana",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "8406400c-0b79-13bd-5a0f-126e048e2031"
+    },
+    {
+        "Keyword": "gaborone,botswana",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "8406400c-0b79-13bd-5a0f-126e048e2031"
+    },
+    {
+        "Keyword": "rosario,argentina",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "38101d79-3a7f-4599-ab0a-0027a5b45979"
+    },
+    {
+        "Keyword": "sakaisenboku jpsbk",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d6f3e870-b05a-3917-88fe-bed781a03aea"
+    },
+    {
+        "Keyword": "norrkoping, e, sweden",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "913d45ae-0208-bcea-7f34-7c842f8531f2"
+    },
+    {
+        "Keyword": "cedar rapids ia united states, ia",
+        "Port Type": "address",
+        "Mapped Port ID": "4104dfb0-c804-4063-be5a-6be63f9f6dfa"
+    },
+    {
+        "Keyword": "semarang - indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c9575f17-1fca-41c3-a6c9-b6866ee6bcc7"
+    },
+    {
+        "Keyword": "john f. kennedy international airport (jfk)",
+        "Port Type": "air_port",
+        "Mapped Port ID": "2f59d0d1-31e7-466b-8f7e-9e3cd1637d1d"
+    },
+    {
+        "Keyword": "new york, ny usnyc",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "99def56e-b1fb-4265-8f44-69c45aa7d1a3"
+    },
+    {
+        "Keyword": "tacoma, wa ustiw",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "79863a89-425f-0212-1b7c-c119ec161c7a"
+    },
+    {
+        "Keyword": "mobile, al usmob",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5b4b77bb-d34d-44d8-ae29-161b25d17bb1"
+    },
+    {
+        "Keyword": "dar es salaam , tanzania",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "28a58bd2-6422-476a-91b1-ef65a8445feb"
+    },
+    {
+        "Keyword": "incheon,korea krinc",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "30271445-d995-c8b2-4dd8-7d49736e1a7a"
+    },
+    {
+        "Keyword": "arica, chile,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0c53da5e-90f6-6e99-9af9-45b47d64874c"
+    },
+    {
+        "Keyword": "cedar rapids ia  united states, ia",
+        "Port Type": "address",
+        "Mapped Port ID": "4104dfb0-c804-4063-be5a-6be63f9f6dfa"
+    },
+    {
+        "Keyword": "ushou - houston",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "242ba837-4d31-f522-2c24-16abc8d7d45d"
+    },
+    {
+        "Keyword": "ussea - seattle",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0a5e5cce-5842-147b-c40f-797357dc8806"
+    },
+    {
+        "Keyword": "khalifa, abu zabi, united arab emirates",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "cc87f5a9-632e-48c6-ab04-21c14b444624"
+    },
+    {
+        "Keyword": "khalifa, abu zabi, united arab emirates",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "cc87f5a9-632e-48c6-ab04-21c14b444624"
+    },
+    {
+        "Keyword": "umm al qawain, united arab emirates",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4679c2ab-4559-8edd-39f0-1cd35a1bcc94"
+    },
+    {
+        "Keyword": "laemchabang,thailand",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e8ce4073-c739-4637-b7f5-e97f9d8b9963"
+    },
+    {
+        "Keyword": "buenos aires ,argentina",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6f4b0bc4-5ea5-5361-4efb-e074c7477cf5"
+    },
+    {
+        "Keyword": "bremerhaven, hb, germany",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "82e9a2a6-64b7-060d-ac82-4c7f57f39c37"
+    },
+    {
+        "Keyword": "puerto limon,costa rica",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "85e0ff87-4454-4306-8d36-3dee9be19f1f"
+    },
+    {
+        "Keyword": "adelaide,sa,australia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7e2ef365-1c6b-6bdc-f4bc-32de0bd951e8"
+    },
+    {
+        "Keyword": "buenos aires/ argentina",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "6f4b0bc4-5ea5-5361-4efb-e074c7477cf5"
+    },
+    {
+        "Keyword": "buenos aires/ argentina",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6f4b0bc4-5ea5-5361-4efb-e074c7477cf5"
+    },
+    {
+        "Keyword": "puerto limon,costa rica",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "85e0ff87-4454-4306-8d36-3dee9be19f1f"
+    },
+    {
+        "Keyword": "singapore, singapore cfs",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a822e173-18b9-408c-8836-5c86c4b2f47c"
+    },
+    {
+        "Keyword": "melbourne, vi, australia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0dd0799f-2a64-ddca-2171-636b84a2a570"
+    },
+    {
+        "Keyword": "laemchabang,thailand",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "e8ce4073-c739-4637-b7f5-e97f9d8b9963"
+    },
+    {
+        "Keyword": "kribi, cameroon",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e2301f4f-3659-4eeb-bd82-c1bb08cdf66b"
+    },
+    {
+        "Keyword": "varna, bulgaria",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "2fd4c9e5-49d7-775b-bc0f-a19e55c832c8"
+    },
+    {
+        "Keyword": "odessa, ukraine",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "439072a6-c078-43c7-dafa-c378c7db5184"
+    },
+    {
+        "Keyword": "valencia, spain",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4f4cce2e-56ef-459d-15f7-ed5b7a8aaba2"
+    },
+    {
+        "Keyword": "yangon, myanmar",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "53460e14-f4a9-d50a-c398-f34e6c5731a3"
+    },
+    {
+        "Keyword": "varna, bulgaria",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "2fd4c9e5-49d7-775b-bc0f-a19e55c832c8"
+    },
+    {
+        "Keyword": "dublin, ireland",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8b342b27-aa0e-7451-21c6-76420a1214a6"
+    },
+    {
+        "Keyword": "yokohama, japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0b7d33e1-d771-ba97-786a-e0b722031d9f"
+    },
+    {
+        "Keyword": "damietta, egypt",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b2195826-6664-48c0-8cd4-47e3e9d63ae7"
+    },
+    {
+        "Keyword": "sines, portugal",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fb3ebd05-5689-86e7-27b2-b4312a4db55b"
+    },
+    {
+        "Keyword": "zaragoza, spain",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "eb16c402-1ece-4c47-a2a6-bc715ff6f9e9"
+    },
+    {
+        "Keyword": "port sudan, sudan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "2145d006-26e9-32fd-bd1c-337c9e612700"
+    },
+    {
+        "Keyword": "vung tau, vietnam",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c77a336b-5465-49bd-95b1-2e5f997b1325"
+    },
+    {
+        "Keyword": "toronto, canada",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "00956388-71ad-854f-3907-c515fdb2ce00"
+    },
+    {
+        "Keyword": "rijeka, croatia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "eb6a979b-c7db-6aa7-c35c-0097de1e017b"
+    },
+    {
+        "Keyword": "odessa, ukraine",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "439072a6-c078-43c7-dafa-c378c7db5184"
+    },
+    {
+        "Keyword": "halifax, canada",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a954ee34-e89b-9753-e34f-3ac6e63d82a7"
+    },
+    {
+        "Keyword": "valencia, spain",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "4f4cce2e-56ef-459d-15f7-ed5b7a8aaba2"
+    },
+    {
+        "Keyword": "fukuyama, japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7f0b6b0f-6c08-acd8-b855-60f39281ef90"
+    },
+    {
+        "Keyword": "berlin, germany",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f7235066-c161-4cf7-b406-a1eebb0222ce"
+    },
+    {
+        "Keyword": "sousse, tunisia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "56341b82-04e5-c178-2a23-41c137747dde"
+    },
+    {
+        "Keyword": "beirut, lebanon",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4e11f3d0-c839-f83f-e671-dc7aa7a724a1"
+    },
+    {
+        "Keyword": "sousse, tunisia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "56341b82-04e5-c178-2a23-41c137747dde"
+    },
+    {
+        "Keyword": "yokohama, japan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "0b7d33e1-d771-ba97-786a-e0b722031d9f"
+    },
+    {
+        "Keyword": "kanazawa, japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b86d4fe6-48db-405f-8154-9553858b3d1d"
+    },
+    {
+        "Keyword": "calgary, canada",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "f999d781-b68c-41b4-fc07-0abdb028fe22"
+    },
+    {
+        "Keyword": "conakry, guinea",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4a4c52f4-910e-3a52-f7fa-9d2c98f58b65"
+    },
+    {
+        "Keyword": "antalya, turkey",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "cc708fa9-0f27-4b8a-8f23-b6f13fb4baf1"
+    },
+    {
+        "Keyword": "shenzhen, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "aad5efd4-cb19-dbc7-39e7-78c17a1b00f5"
+    },
+    {
+        "Keyword": "shenzhen, china",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "aad5efd4-cb19-dbc7-39e7-78c17a1b00f5"
+    },
+    {
+        "Keyword": "vitoria, brazil",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "73c33f2e-2b76-1c94-f6fb-2054d2715710"
+    },
+    {
+        "Keyword": "changsha, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1610a821-29be-09de-6762-423673d94332"
+    },
+    {
+        "Keyword": "jiujiang, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "2efd4ea4-d20c-0df3-14ff-0e0d7aa78e8e"
+    },
+    {
+        "Keyword": "shibushi, japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f729ccbc-319c-441e-bf2d-5722df19159e"
+    },
+    {
+        "Keyword": "santiago, chile",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "4135863e-ffef-4bd8-a344-e6952654ef54"
+    },
+    {
+        "Keyword": "yangzhou, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "127e8d24-9b37-5fc8-f58b-ecbca011cbe8"
+    },
+    {
+        "Keyword": "bremen, germany",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1e72e177-6734-4521-81f3-6a243ab07dac"
+    },
+    {
+        "Keyword": "drammen, norway",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "597e6977-c087-43a3-a183-bdc3d5d2584f"
+    },
+    {
+        "Keyword": "kamaishi, japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "51c53b3c-b432-4a3d-9a41-921fdb8ecc28"
+    },
+    {
+        "Keyword": "changshu, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "77176542-f5d4-4d3f-aead-f3e0b2d7eb37"
+    },
+    {
+        "Keyword": "jingzhou, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ab556a70-d368-4478-9bee-0802f7a562a0"
+    },
+    {
+        "Keyword": "jiangmen, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ad56dfcf-d6c9-a1e6-387b-b7a79da42d59"
+    },
+    {
+        "Keyword": "annaba, algeria",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "08be3fec-63d1-7370-e958-4f2257664fd5"
+    },
+    {
+        "Keyword": "takoradi, ghana",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4a359db4-60f5-2ffa-7c6b-2ef73821d39f"
+    },
+    {
+        "Keyword": "tanga, tanzania",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e08d7fc2-98c7-57aa-7a6c-a5011bf3b992"
+    },
+    {
+        "Keyword": "durres, albania",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a4d0e905-137a-635d-c9b1-94dd10cbf3f4"
+    },
+    {
+        "Keyword": "quanzhou, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6e8449e8-7c5b-4c51-a7d7-6236de943b7d"
+    },
+    {
+        "Keyword": "kampala, uganda",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "9923ef0e-b89f-1dd3-5e98-0828e793e23e"
+    },
+    {
+        "Keyword": "fos sur mer, france",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b13b787b-7192-dbd2-e424-dddd334e175a"
+    },
+    {
+        "Keyword": "qui nhon, vietnam",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "16fb9184-6baf-b74f-eb3d-4676ffc02815"
+    },
+    {
+        "Keyword": "batumi, georgia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c3845c5e-3f90-6c9b-b4a1-10abcd969285"
+    },
+    {
+        "Keyword": "tawau, malaysia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a834238a-9765-90b0-d939-1f71a2f77ddb"
+    },
+    {
+        "Keyword": "skikda, algeria",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4b80837c-0590-4ae0-b8b1-e60eb57f70b8"
+    },
+    {
+        "Keyword": "zhaoqing, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9bbf79f8-fc65-478a-5b2c-b1f0688898e3"
+    },
+    {
+        "Keyword": "moroni, comoros",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ae454c21-92b3-6882-cffc-43a03e80872c"
+    },
+    {
+        "Keyword": "hakodate, japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "777e9123-fbc3-4363-822d-4fc85b20a055"
+    },
+    {
+        "Keyword": "tenerife, spain",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "86c53205-2f13-4c46-9e44-bcd12d6b9927"
+    },
+    {
+        "Keyword": "aarhus, denmark",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6373174c-7968-c76c-fa3f-b2a20950d3eb"
+    },
+    {
+        "Keyword": "agadir, morocco",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f22e1c5a-c6a2-45c5-837d-61507e0d023a"
+    },
+    {
+        "Keyword": "nanchang, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "203e302d-48a1-47ba-bd9c-a4d7dcc96653"
+    },
+    {
+        "Keyword": "svelgen, norway",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c3a13658-0c40-4222-83f4-ea9208390832"
+    },
+    {
+        "Keyword": "mesaieed, qatar",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b2b8c56e-9c74-4e5d-96a7-34e37d3524d3"
+    },
+    {
+        "Keyword": "alesund, norway",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4749cea8-3f65-5ab7-38f9-7c1069da9d6d"
+    },
+    {
+        "Keyword": "damietta, egypt",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "b2195826-6664-48c0-8cd4-47e3e9d63ae7"
+    },
+    {
+        "Keyword": "alesund, norway",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "4749cea8-3f65-5ab7-38f9-7c1069da9d6d"
+    },
+    {
+        "Keyword": "kayseri, turkey",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "055a399f-079c-4206-99cd-4ce26e18f6e0"
+    },
+    {
+        "Keyword": "zaragoza, spain",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "eb16c402-1ece-4c47-a2a6-bc715ff6f9e9"
+    },
+    {
+        "Keyword": "kampala, uganda",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "9923ef0e-b89f-1dd3-5e98-0828e793e23e"
+    },
+    {
+        "Keyword": "leicester (gblcs)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a73ce70a-7d52-241f-0294-d299ec442791"
+    },
+    {
+        "Keyword": "misurata, libya",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7b7c976d-50cd-edaf-f2c3-5cd82c0ccbd4"
+    },
+    {
+        "Keyword": "port sudan, sudan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "2145d006-26e9-32fd-bd1c-337c9e612700"
+    },
+    {
+        "Keyword": "charleston, usa",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "362ccec1-89f6-4f1b-7c64-cd1016c1ba76"
+    },
+    {
+        "Keyword": "onne, onne, nigeria",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8bf36750-ca37-e658-b2b6-490d1587df26"
+    },
+    {
+        "Keyword": "yokohama, jpyok",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0b7d33e1-d771-ba97-786a-e0b722031d9f"
+    },
+    {
+        "Keyword": "fukuyama, japan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "7f0b6b0f-6c08-acd8-b855-60f39281ef90"
+    },
+    {
+        "Keyword": "zapopan, mexico",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "3f74939c-6b79-4250-9cb0-5d17beae1e7f"
+    },
+    {
+        "Keyword": "kawasaki, japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fb26d78a-cb52-47b4-a8f1-6e376bb1b027"
+    },
+    {
+        "Keyword": "takoradi, ghana",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "4a359db4-60f5-2ffa-7c6b-2ef73821d39f"
+    },
+    {
+        "Keyword": "bejaia, algeria",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "45f8df6d-a59d-1002-6739-aa71d73dad69"
+    },
+    {
+        "Keyword": "piacenza, italy",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "39f3749b-3701-41a9-94b8-2ecb62b5385c"
+    },
+    {
+        "Keyword": "calgary, canada",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "f999d781-b68c-41b4-fc07-0abdb028fe22"
+    },
+    {
+        "Keyword": "cork co cork, ireland",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "be76da87-31f8-7276-1f36-ce5dbf26040a"
+    },
+    {
+        "Keyword": "cork co cork, ireland",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "be76da87-31f8-7276-1f36-ce5dbf26040a"
+    },
+    {
+        "Keyword": "kayseri, turkey",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "055a399f-079c-4206-99cd-4ce26e18f6e0"
+    },
+    {
+        "Keyword": "alicante, spain",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "199de9ac-3214-c4fc-4e2e-5efcdc69a9eb"
+    },
+    {
+        "Keyword": "sofia, bulgaria",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "1b3dedf7-9a14-4bfe-b421-bd651bc36b2b"
+    },
+    {
+        "Keyword": "turbo, colombia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "206f4f32-3806-c981-3ddf-c7cf627ad91c"
+    },
+    {
+        "Keyword": "bar, montenegro",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "051e893b-c549-fe69-76f5-6afd138f65b6"
+    },
+    {
+        "Keyword": "bar, montenegro",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "051e893b-c549-fe69-76f5-6afd138f65b6"
+    },
+    {
+        "Keyword": "cagliari, italy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "864500f6-eee1-629e-5706-f90a7e903f79"
+    },
+    {
+        "Keyword": "badalona, spain",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "453a238f-91d5-4a98-9c21-fa4ca3b9d413"
+    },
+    {
+        "Keyword": "cabinda, angola",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0d161ef6-bdcc-4e79-4c66-0a11be2bf81e"
+    },
+    {
+        "Keyword": "tongling, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d71f102c-e9d8-44cc-b678-62124359cc0b"
+    },
+    {
+        "Keyword": "santiago, chile",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "4135863e-ffef-4bd8-a344-e6952654ef54"
+    },
+    {
+        "Keyword": "milton keynes, gb",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "5ed746dc-8850-4eb3-83a4-3d97741dde58"
+    },
+    {
+        "Keyword": "milton keynes, gb",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "5ed746dc-8850-4eb3-83a4-3d97741dde58"
+    },
+    {
+        "Keyword": "n'djamena, chad",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "0fcea9dc-6eac-47ed-a113-9591ea165ff1"
+    },
+    {
+        "Keyword": "n'djamena, chad",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "0fcea9dc-6eac-47ed-a113-9591ea165ff1"
+    },
+    {
+        "Keyword": "sofia, bulgaria",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "1b3dedf7-9a14-4bfe-b421-bd651bc36b2b"
+    },
+    {
+        "Keyword": "pantaco, mexico",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "3742cec4-3c1b-5033-8bb6-01146c021384"
+    },
+    {
+        "Keyword": "pantaco, mexico",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "3742cec4-3c1b-5033-8bb6-01146c021384"
+    },
+    {
+        "Keyword": "speyer, germany",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ebf72ed2-cea9-4dd9-8591-39a254e58e3a"
+    },
+    {
+        "Keyword": "ishikari, japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9e8ec27e-e424-4e8d-ad43-0a4179b2950d"
+    },
+    {
+        "Keyword": "rovereto, italy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4be52cfd-a822-4449-b731-2eb196bffc88"
+    },
+    {
+        "Keyword": "sharonville, oh",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "d540990a-5358-4fc1-a041-9a5eba9aa4be"
+    },
+    {
+        "Keyword": "sharonville, oh",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "d540990a-5358-4fc1-a041-9a5eba9aa4be"
+    },
+    {
+        "Keyword": "salaverry pesvy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1a36551e-7e04-4518-8a7f-308de05628c0"
+    },
+    {
+        "Keyword": "piacenza, italy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "39f3749b-3701-41a9-94b8-2ecb62b5385c"
+    },
+    {
+        "Keyword": "larnaca, cyprus",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3f8ae13a-06e7-4679-9588-0dd90375310a"
+    },
+    {
+        "Keyword": "lekki, la, nigeria",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3cb3a3d1-6720-444e-a1da-234f720351a5"
+    },
+    {
+        "Keyword": "tripoli, ly, libya",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "09546bd9-bffb-680d-f028-6d2c2c91a663"
+    },
+    {
+        "Keyword": "nassau, bahamas",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b889d4e0-68eb-42d6-b710-c1daab00d35f"
+    },
+    {
+        "Keyword": "valencia, esvlc",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4f4cce2e-56ef-459d-15f7-ed5b7a8aaba2"
+    },
+    {
+        "Keyword": "zagreb, croatia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "aeb48ec3-60b9-8b27-f7b8-5cc921df66eb"
+    },
+    {
+        "Keyword": "niigata, japan, cy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6400b35d-8c13-4118-86a3-eea023909670"
+    },
+    {
+        "Keyword": "zagreb, croatia",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "aeb48ec3-60b9-8b27-f7b8-5cc921df66eb"
+    },
+    {
+        "Keyword": "las palmas, spain",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fc8ede5c-0348-4167-aa02-251db75fe28f"
+    },
+    {
+        "Keyword": "wroclaw, poland",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "407ee69e-25c6-4f35-a023-18f06a7ba934"
+    },
+    {
+        "Keyword": "qingdao, china, cy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8b4727c3-fd1d-4d87-a369-fc4a25b16ff4"
+    },
+    {
+        "Keyword": "ras laffan, qatar",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "95e5a81c-87a5-49a8-96fe-8436883d662a"
+    },
+    {
+        "Keyword": "braila, romania",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4b354c64-9f8d-414a-a967-55f29bcf7bc8"
+    },
+    {
+        "Keyword": "grenaa, denmark",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c4d17d99-2b79-4feb-ae6d-95d958adea73"
+    },
+    {
+        "Keyword": "huber heights, oh",
+        "Port Type": "address",
+        "Mapped Port ID": "5cc15ff2-305d-4b1e-aa84-3d4b009328f6"
+    },
+    {
+        "Keyword": "new orleans, la usmsy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "20319910-8008-fe6b-7607-e3c2274aef8c"
+    },
+    {
+        "Keyword": "odense, denmark",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9e840404-1871-4606-a148-db41332f6810"
+    },
+    {
+        "Keyword": "cagliari, italy",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "864500f6-eee1-629e-5706-f90a7e903f79"
+    },
+    {
+        "Keyword": "kamaishi, japan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "51c53b3c-b432-4a3d-9a41-921fdb8ecc28"
+    },
+    {
+        "Keyword": "beijing. china, cn",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "115b3f3b-d2c1-ede8-af7f-a792d1eac169"
+    },
+    {
+        "Keyword": "bangkok international airport (suvarnabhumi airport)",
+        "Port Type": "air_port",
+        "Mapped Port ID": "add98478-0d3f-4f1b-ecf0-359125a5a621"
+    },
+    {
+        "Keyword": "london gateway port, gblgp",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fcc8e287-952d-459e-91bf-9a7d9ebb8a30"
+    },
+    {
+        "Keyword": "tanjung pelepas (malaysia)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "55d1fea4-353c-8f91-b705-09543a17b67d"
+    },
+    {
+        "Keyword": "port victoria (seychelles)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1d113d2c-2978-406f-731e-1480a5cbb63f"
+    },
+    {
+        "Keyword": "ajman (united arab emirates)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ea64127f-a6e6-e91e-91d4-c217698c9827"
+    },
+    {
+        "Keyword": "puerto cabello (venezuela)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "298e908e-5b11-a2c9-a2e8-b3df7cee4b4b"
+    },
+    {
+        "Keyword": "sihanoukville (cambodia)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d7b1aeab-c7a9-401d-8004-c55cebd7a3ca"
+    },
+    {
+        "Keyword": "papeete (french polynesia)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fd0cc85f-5d65-8142-1fc9-7f12670c4ded"
+    },
+    {
+        "Keyword": "puerto barrios (guatemala)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "29652dac-a103-4f5e-bdd1-b6ac6fa7077d"
+    },
+    {
+        "Keyword": "cagayan de oro (philippines)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "cfbed0aa-5dc1-88b5-f8eb-d2029e1458d9"
+    },
+    {
+        "Keyword": "liverpool (united kingdom)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "45e5acc2-fea1-dddf-2feb-643e1e3996ad"
+    },
+    {
+        "Keyword": "puerto quetzal (guatemala)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f0fb45cf-652f-9f0e-947a-b7a128c9fbf9"
+    },
+    {
+        "Keyword": "felixstowe, united kingd,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d6ff98d3-b550-afde-5cb1-b29070f8b493"
+    },
+    {
+        "Keyword": "beira,mozambique",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "413f6827-dbfb-7196-3154-d15c3ede549c"
+    },
+    {
+        "Keyword": "tuticorin, india (in)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "20873cad-47a8-507f-07af-a780bd1c4c1e"
+    },
+    {
+        "Keyword": "jakarta , indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b4a682f5-745e-7eae-9e38-98757dba1a50"
+    },
+    {
+        "Keyword": "helsinki,finland",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4f0d3c38-0b0b-2eed-bb4d-e4f37fcc76ef"
+    },
+    {
+        "Keyword": "walvis bay,namibia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a1d8e93f-2684-6f9b-0d0e-4ca1288f94d7"
+    },
+    {
+        "Keyword": "philadelphia, pa, us",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d3134405-646d-49b4-a8e5-e382449dbb26"
+    },
+    {
+        "Keyword": "vostochny, russia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f1a60fb8-8c70-4298-8e1c-291a1c756e8a"
+    },
+    {
+        "Keyword": "jakarta , indonesia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "b4a682f5-745e-7eae-9e38-98757dba1a50"
+    },
+    {
+        "Keyword": "john f. kennedy international airport",
+        "Port Type": "air_port",
+        "Mapped Port ID": "2f59d0d1-31e7-466b-8f7e-9e3cd1637d1d"
+    },
+    {
+        "Keyword": "paranagua,brazil",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3924f710-c097-46cb-888c-72d3bef77d95"
+    },
+    {
+        "Keyword": "damietta, egypt, egypt",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b2195826-6664-48c0-8cd4-47e3e9d63ae7"
+    },
+    {
+        "Keyword": "charleston, sc (uschs)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "362ccec1-89f6-4f1b-7c64-cd1016c1ba76"
+    },
+    {
+        "Keyword": "pittsburgh, pa (uspit)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7f034809-5325-6f3a-5ba0-c3754f406b2e"
+    },
+    {
+        "Keyword": "mombasa, mombasa, kenya",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b07b5b45-4dd2-46ca-8854-0b49f7524c0f"
+    },
+    {
+        "Keyword": "bintulu,malaysia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "173d7ff5-4e0f-98ee-de0e-110c1dd67f7a"
+    },
+    {
+        "Keyword": "cincinnati, oh (uscvg)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "29e8fcda-0d62-15d8-3acf-2eb2cea67af2"
+    },
+    {
+        "Keyword": "lianyungang cnlyg",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c3360e50-09c4-bf46-c7cb-592858033d22"
+    },
+    {
+        "Keyword": "charleston, sc (uschs)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "362ccec1-89f6-4f1b-7c64-cd1016c1ba76"
+    },
+    {
+        "Keyword": "louisville, ky (uslui)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "136047b4-9442-e977-2056-69bfdb245f65"
+    },
+    {
+        "Keyword": "kaohsiung,taiwan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "2fe3b18c-b871-6195-53e6-e0d6329ed04c"
+    },
+    {
+        "Keyword": "karachi,pakistan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "77d1e0c6-c5bc-ce8d-92f3-6ea30db8c872"
+    },
+    {
+        "Keyword": "delhi (new delhi) - india",
+        "Port Type": "address",
+        "Mapped Port ID": "7fd2ebd6-ad7d-4db7-ae9d-27804d556e66"
+    },
+    {
+        "Keyword": "antofagasta clanf",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "89dbce82-1efb-6ad8-daf6-e84d617bc966"
+    },
+    {
+        "Keyword": "ixonia, wi",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "80bcf2cf-078e-4037-8c01-4fc071e151e1"
+    },
+    {
+        "Keyword": "louisville, ky (uslui)",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "136047b4-9442-e977-2056-69bfdb245f65"
+    },
+    {
+        "Keyword": "karachi,pakistan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "77d1e0c6-c5bc-ce8d-92f3-6ea30db8c872"
+    },
+    {
+        "Keyword": "kaohsiung,taiwan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "2fe3b18c-b871-6195-53e6-e0d6329ed04c"
+    },
+    {
+        "Keyword": "kingston,jamaica",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "08aa5253-8ba5-b65d-6478-11dcc3cfda28"
+    },
+    {
+        "Keyword": "lae,papua new guinea",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a627cae5-439d-4ece-a86c-0cc1d5a492f8"
+    },
+    {
+        "Keyword": "rio de janeiro, brrio",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7953f069-9c18-4ea7-a398-56c46179b2d4"
+    },
+    {
+        "Keyword": "kattupalli,india",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0a174633-57b3-460b-85f9-5f96a1436e0c"
+    },
+    {
+        "Keyword": "kattupalli,india",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "0a174633-57b3-460b-85f9-5f96a1436e0c"
+    },
+    {
+        "Keyword": "kuching,malaysia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f31d0bf7-6f0e-2707-92ed-cc1a76f5eff0"
+    },
+    {
+        "Keyword": "budapest,hungary",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "661aff82-d36a-01f6-86c4-25b50e5e4e89"
+    },
+    {
+        "Keyword": "budapest,hungary",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "661aff82-d36a-01f6-86c4-25b50e5e4e89"
+    },
+    {
+        "Keyword": "iyomishima,japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f2edecf5-1835-23d6-0eb6-4512b1f4ce17"
+    },
+    {
+        "Keyword": "kuantan,malaysia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5d2bce37-5317-4492-8832-3623efddd774"
+    },
+    {
+        "Keyword": "yatsushiro,japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f9e061b8-d86f-4ba0-8738-b9ff3f1f86c4"
+    },
+    {
+        "Keyword": "yatsushiro,japan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "f9e061b8-d86f-4ba0-8738-b9ff3f1f86c4"
+    },
+    {
+        "Keyword": "napier,new zealand",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7895c7ae-ed42-4ab8-a166-a4f7222a40a8"
+    },
+    {
+        "Keyword": "lubuk gaung, lubuk gaung, riau, indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8a70c3be-658c-48c7-85f2-7f67ef0d1b90"
+    },
+    {
+        "Keyword": "port klang north port ,malaysia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "908e466a-d7a7-4a39-98a6-56afded2b9bf"
+    },
+    {
+        "Keyword": "port klang north port ,malaysia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "908e466a-d7a7-4a39-98a6-56afded2b9bf"
+    },
+    {
+        "Keyword": "saudi arabia jeddah",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a99ce448-c4ea-4ef8-894d-7ca1cac1c52f"
+    },
+    {
+        "Keyword": "karachi,pakistan k",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "77d1e0c6-c5bc-ce8d-92f3-6ea30db8c872"
+    },
+    {
+        "Keyword": "karachi,pakistan k",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "77d1e0c6-c5bc-ce8d-92f3-6ea30db8c872"
+    },
+    {
+        "Keyword": "hitachinaka jphic",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "520b84ec-d0eb-49a0-9401-f1a1631e5a72"
+    },
+    {
+        "Keyword": "sakaiminato jpsmn",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "32fda1f5-a2c8-4361-8c52-90882206fc3d"
+    },
+    {
+        "Keyword": "naha, okinawa jpnah",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4d4a33b1-7041-d9b1-0036-3581bf8c02ce"
+    },
+    {
+        "Keyword": "qinhuangdao cnshp",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a8e9a73a-d5df-435e-8e84-208304cb4020"
+    },
+    {
+        "Keyword": "suzhou,jiangsu, cn",
+        "Port Type": "address",
+        "Mapped Port ID": "7bbb670f-9857-4f7a-bc91-54d6c9ff2a87"
+    },
+    {
+        "Keyword": "vila do conde,brazil",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0ef99037-ad88-42d7-9b8f-aee9fcff0665"
+    },
+    {
+        "Keyword": "port klang (westport), malaysia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "df56235a-28e2-404e-bece-6c8bd65ad640"
+    },
+    {
+        "Keyword": "iyomishima, japan cy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f2edecf5-1835-23d6-0eb6-4512b1f4ce17"
+    },
+    {
+        "Keyword": "durban, south afric",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f106ea67-b12c-c8c0-ef66-91ee024f1390"
+    },
+    {
+        "Keyword": "jebel ali, jebel ali, united arab emirates",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fbeff16d-5465-4e5c-ad3b-55e0f8c666b7"
+    },
+    {
+        "Keyword": "klaipeda, klaipeda city, lithuania",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "28347798-ee29-93c6-bfb1-82185e465593"
+    },
+    {
+        "Keyword": "singapore ,singapore",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a822e173-18b9-408c-8836-5c86c4b2f47c"
+    },
+    {
+        "Keyword": "laem chabang ,thailand",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e8ce4073-c739-4637-b7f5-e97f9d8b9963"
+    },
+    {
+        "Keyword": "visakhapatnam ,india",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3c6e4a1e-2cd9-0c7c-3b06-0c70a3d887ea"
+    },
+    {
+        "Keyword": "patli, haryana, india",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "704148e3-9beb-487f-be50-4ab234f0711a"
+    },
+    {
+        "Keyword": "dusseldorf, nw, germany",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "2c29e9f0-bdb1-4387-bf46-c3e9d7678ee0"
+    },
+    {
+        "Keyword": "jakarta, java, indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b4a682f5-745e-7eae-9e38-98757dba1a50"
+    },
+    {
+        "Keyword": "jakarta, java, indonesia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "b4a682f5-745e-7eae-9e38-98757dba1a50"
+    },
+    {
+        "Keyword": "melbourne ,australia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0dd0799f-2a64-ddca-2171-636b84a2a570"
+    },
+    {
+        "Keyword": "prince rupert, bc, canada",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "55f25474-af7c-49aa-9605-c3a4becc59cc"
+    },
+    {
+        "Keyword": "patli, haryana, india",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "704148e3-9beb-487f-be50-4ab234f0711a"
+    },
+    {
+        "Keyword": "prince rupert, bc, canada",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "55f25474-af7c-49aa-9605-c3a4becc59cc"
+    },
+    {
+        "Keyword": "shanghai, shanghai, cn",
+        "Port Type": "address",
+        "Mapped Port ID": "e12c6f71-a703-46ba-994f-4ce1d750abe3"
+    },
+    {
+        "Keyword": "lazaro cardenas mxlzc",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "084e8f5f-ac54-602b-e0c8-05a6803c0c07"
+    },
+    {
+        "Keyword": "zaporizhzhia, ukraine",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c8161782-15c3-475d-bce1-573a66348815"
+    },
+    {
+        "Keyword": "degrad des cannes gfddc",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "64497906-d86b-237c-a81c-8853b9970a8f"
+    },
+    {
+        "Keyword": "fremantle ,australia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fb4e3874-8c83-a24b-386a-494d12bf0787"
+    },
+    {
+        "Keyword": "umm qasr, al basrah, iraq",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fc6b39b4-6f81-0371-d9ba-5e75a8469cc2"
+    },
+    {
+        "Keyword": "brisbane, ql, australia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "467d5af2-d939-cba1-2951-fa929a10375f"
+    }
+]

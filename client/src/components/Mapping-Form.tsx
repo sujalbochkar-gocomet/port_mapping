@@ -1,21 +1,40 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import axios from "axios";
 import { Shipment, statusPort } from "../types/types";
 import flagIcon from "../assets/flag.svg";
 import landIcon from "../assets/land.svg";
 import airIcon from "../assets/air.svg";
 import seaIcon from "../assets/sea.svg";
-import allIcon from "../assets/all.svg";
 import { toast } from "react-toastify";
 
 const MappingForm = () => {
   const [shipments, setShipments] = useState<Shipment[]>([]);
-  const [carrierType, setCarrierType] = useState<string>("");
+  const [carrierType, setCarrierType] = useState<string>("sea_port");
   const [loading, setLoading] = useState(false);
+  const [isPolSearching, setIsPolSearching] = useState(false);
+  const [isPodSearching, setIsPodSearching] = useState(false);
+
+  // Reset states when carrier type changes
+  useEffect(() => {
+    // Reset POL states
+    setPolSearchInput("");
+    setPolResults([]);
+    setLastPolResults([]);
+    setSelectedPol(null);
+    setIsPolDropdownOpen(false);
+
+    // Reset POD states
+    setPodSearchInput("");
+    setPodResults([]);
+    setLastPodResults([]);
+    setSelectedPod(null);
+    setIsPodDropdownOpen(false);
+  }, [carrierType]);
 
   // Search states for POL
   const [polSearchInput, setPolSearchInput] = useState("");
   const [polResults, setPolResults] = useState<statusPort[]>([]);
+  const [lastPolResults, setLastPolResults] = useState<statusPort[]>([]);
   const [selectedPol, setSelectedPol] = useState<statusPort | null>(null);
   const [isPolDropdownOpen, setIsPolDropdownOpen] = useState(false);
   const polDropdownRef = useRef<HTMLDivElement>(null);
@@ -23,23 +42,196 @@ const MappingForm = () => {
   // Search states for POD
   const [podSearchInput, setPodSearchInput] = useState("");
   const [podResults, setPodResults] = useState<statusPort[]>([]);
+  const [lastPodResults, setLastPodResults] = useState<statusPort[]>([]);
   const [selectedPod, setSelectedPod] = useState<statusPort | null>(null);
   const [isPodDropdownOpen, setIsPodDropdownOpen] = useState(false);
   const podDropdownRef = useRef<HTMLDivElement>(null);
+  // Add debounce timer refs
+  const polDebounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const podDebounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const polAbortController = useRef<AbortController | null>(null);
+  const podAbortController = useRef<AbortController | null>(null);
+
+  const handlePolSelect = useCallback((port: statusPort) => {
+    setPolSearchInput("");
+    setSelectedPol(port);
+    setPolResults([]);
+    setIsPolDropdownOpen(false);
+  }, []);
+
+  const handlePodSelect = useCallback((port: statusPort) => {
+    setPodSearchInput("");
+    setSelectedPod(port);
+    setPodResults([]);
+    setIsPodDropdownOpen(false);
+  }, []);
+
+  // Auto-select first result function
+  const autoSelectFirstResult = useCallback(
+    (isPol: boolean) => {
+      const results = isPol ? lastPolResults : lastPodResults;
+      const isSearching = isPol ? isPolSearching : isPodSearching;
+      const isDropdownOpen = isPol ? isPolDropdownOpen : isPodDropdownOpen;
+      const selected = isPol ? selectedPol : selectedPod;
+      const handleSelect = isPol ? handlePolSelect : handlePodSelect;
+
+      if (!isSearching && results.length > 0 && !selected && !isDropdownOpen) {
+        handleSelect(results[0]);
+      }
+    },
+    [
+      lastPolResults,
+      lastPodResults,
+      isPolSearching,
+      isPodSearching,
+      isPolDropdownOpen,
+      isPodDropdownOpen,
+      selectedPol,
+      selectedPod,
+      handlePolSelect,
+      handlePodSelect,
+    ]
+  );
+
+  // Debounced search function
+  const debouncedSearch = useCallback(
+    (term: string, isPol: boolean) => {
+      // Clear existing timer
+      const timerRef = isPol ? polDebounceTimer : podDebounceTimer;
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+
+      // Abort previous request if it exists
+      const abortControllerRef = isPol
+        ? polAbortController
+        : podAbortController;
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+
+      if (!term.trim()) {
+        if (isPol) {
+          setPolResults([]);
+          setLastPolResults([]);
+          setIsPolSearching(false);
+        } else {
+          setPodResults([]);
+          setLastPodResults([]);
+          setIsPodSearching(false);
+        }
+        return;
+      }
+
+      // Set loading state
+      if (isPol) {
+        setIsPolSearching(true);
+      } else {
+        setIsPodSearching(true);
+      }
+
+      abortControllerRef.current = new AbortController();
+
+      // Set new timer
+      timerRef.current = setTimeout(async () => {
+        try {
+          const portType = getPortTypeFromCarrier(carrierType);
+          const response = await axios.get(
+            `http://localhost:3000/search-ports?q=${encodeURIComponent(
+              term
+            )}&type=${portType}`,
+            {
+              signal: abortControllerRef.current?.signal,
+            }
+          );
+          const results = response.data;
+
+          if (isPol) {
+            setPolResults(results);
+            setLastPolResults(results);
+            setIsPolSearching(false);
+            autoSelectFirstResult(true);
+          } else {
+            setPodResults(results);
+            setLastPodResults(results);
+            setIsPodSearching(false);
+            autoSelectFirstResult(false);
+          }
+        } catch (error) {
+          // Ignore errors from aborted requests
+          if (axios.isCancel(error)) {
+            return;
+          }
+          console.error("Error fetching ports:", error);
+          if (isPol) {
+            setPolResults([]);
+            setLastPolResults([]);
+            setIsPolSearching(false);
+          } else {
+            setPodResults([]);
+            setLastPodResults([]);
+            setIsPodSearching(false);
+          }
+        }
+      }, 300); // 300ms delay
+    },
+    [
+      carrierType,
+      isPolDropdownOpen,
+      isPodDropdownOpen,
+      selectedPol,
+      selectedPod,
+    ]
+  );
+
+  // Cleanup on unmount
+  useEffect(() => {
+    // Store current ref values in variables inside effect
+    const polController = polAbortController.current;
+    const podController = podAbortController.current;
+    const polTimer = polDebounceTimer.current;
+    const podTimer = podDebounceTimer.current;
+    return () => {
+      if (polController) {
+        polController.abort();
+      }
+      if (podController) {
+        podController.abort();
+      }
+      if (polTimer) {
+        clearTimeout(polTimer);
+      }
+      if (podTimer) {
+        clearTimeout(podTimer);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      // Check if click is outside POL input and dropdown
       if (
         polDropdownRef.current &&
         !polDropdownRef.current.contains(event.target as Node)
       ) {
         setIsPolDropdownOpen(false);
+        // Only auto-select if no manual selection was made
+        if (polResults.length > 0 && !selectedPol && !isPolDropdownOpen) {
+          handlePolSelect(polResults[0]);
+        }
       }
+
+      // Check if click is outside POD input and dropdown
       if (
         podDropdownRef.current &&
         !podDropdownRef.current.contains(event.target as Node)
       ) {
         setIsPodDropdownOpen(false);
+        // Only auto-select if no manual selection was made
+        if (podResults.length > 0 && !selectedPod && !isPodDropdownOpen) {
+          handlePodSelect(podResults[0]);
+        }
       }
     };
 
@@ -47,33 +239,56 @@ const MappingForm = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [
+    polResults,
+    podResults,
+    selectedPol,
+    selectedPod,
+    handlePolSelect,
+    handlePodSelect,
+    isPolDropdownOpen,
+    isPodDropdownOpen,
+  ]);
 
-  const searchPorts = async (term: string, isPol: boolean) => {
-    try {
-      const portType = getPortTypeFromCarrier(carrierType);
-      const response = await axios.get(
-        `http://localhost:3000/search-ports?q=${encodeURIComponent(
-          term
-        )}&type=${portType}`
-      );
-      const results = response.data;
-      if (isPol) {
-        setPolResults(results);
-      } else {
-        setPodResults(results);
+  // Add blur handlers for the inputs
+  const handlePolBlur = () => {
+    // Small delay to allow click events to fire first
+    setTimeout(() => {
+      // Only auto-select if dropdown is closed (meaning no click was made)
+      if (polResults.length > 0 && !selectedPol && !isPolDropdownOpen) {
+        handlePolSelect(polResults[0]);
       }
-    } catch (error) {
-      console.error("Error fetching ports:", error);
-      if (isPol) {
-        setPolResults([]);
-      } else {
-        setPodResults([]);
-      }
-    }
+    }, 200);
   };
+
+  const handlePodBlur = () => {
+    // Small delay to allow click events to fire first
+    setTimeout(() => {
+      // Only auto-select if dropdown is closed (meaning no click was made)
+      if (podResults.length > 0 && !selectedPod && !isPodDropdownOpen) {
+        handlePodSelect(podResults[0]);
+      }
+    }, 200);
+  };
+
+  // Modify the click handlers for dropdown items
+  const handlePolItemClick = (port: statusPort) => {
+    setIsPolDropdownOpen(false);
+    handlePolSelect(port);
+  };
+
+  const handlePodItemClick = (port: statusPort) => {
+    setIsPodDropdownOpen(false);
+    handlePodSelect(port);
+  };
+
   const addShipment = async () => {
     if (loading) return;
+
+    // Auto-select first result when adding shipment
+    autoSelectFirstResult(true);
+    autoSelectFirstResult(false);
+
     if (!selectedPol || !selectedPod) {
       toast.error("Please fill in all fields and select valid ports");
       return;
@@ -110,26 +325,26 @@ const MappingForm = () => {
     const value = e.target.value;
     setPolSearchInput(value);
     setIsPolDropdownOpen(true);
-    searchPorts(value, true);
+
+    // Clear any pending debounce timer
+    if (polDebounceTimer.current) {
+      clearTimeout(polDebounceTimer.current);
+    }
+
+    debouncedSearch(value, true);
   };
 
   const handlePodInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setPodSearchInput(value);
     setIsPodDropdownOpen(true);
-    searchPorts(value, false);
-  };
-  const handlePolSelect = (port: statusPort) => {
-    setPolSearchInput("");
-    setSelectedPol(port);
-    setPolResults([]);
-    setIsPolDropdownOpen(false);
-  };
-  const handlePodSelect = (port: statusPort) => {
-    setPodSearchInput("");
-    setSelectedPod(port);
-    setPodResults([]);
-    setIsPodDropdownOpen(false);
+
+    // Clear any pending debounce timer
+    if (podDebounceTimer.current) {
+      clearTimeout(podDebounceTimer.current);
+    }
+
+    debouncedSearch(value, false);
   };
 
   return (
@@ -171,18 +386,10 @@ const MappingForm = () => {
                   {(() => {
                     const displayName =
                       selectedPol.port.display_name || selectedPol.port.name;
-                    const city = selectedPol.port.city;
-                    const country = selectedPol.port.country;
-                    const code = selectedPol.port.code;
 
-                    let fullText = displayName;
-                    if (city) fullText += `, ${city}`;
-                    if (country) fullText += `, ${country}`;
-                    if (code) fullText += `, ${code}`;
-
-                    return fullText.length > 50
-                      ? fullText.substring(0, 50) + "..."
-                      : fullText;
+                    return displayName.length > 50
+                      ? displayName.substring(0, 50) + "..."
+                      : displayName;
                   })()}
                 </p>
               </div>
@@ -195,7 +402,11 @@ const MappingForm = () => {
               {/* Third div: close button */}
               <div>
                 <button
-                  onClick={() => setSelectedPol(null)}
+                  onClick={() => {
+                    setPolResults([]);
+                    setLastPolResults([]);
+                    setSelectedPol(null);
+                  }}
                   className="text-gray-500 hover:text-gray-700 ml-2 hover:cursor-pointer"
                 >
                   ✕
@@ -204,14 +415,22 @@ const MappingForm = () => {
             </div>
           ) : (
             <div ref={polDropdownRef} className="relative w-full">
-              <input
-                type="text"
-                value={polSearchInput}
-                placeholder="Enter POL..."
-                className="w-full px-3 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                onChange={handlePolInputChange}
-                onClick={() => setIsPolDropdownOpen(true)}
-              />
+              <div className="relative">
+                <input
+                  type="text"
+                  value={polSearchInput}
+                  placeholder="Enter POL..."
+                  className="w-full px-3 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pr-10"
+                  onChange={handlePolInputChange}
+                  onClick={() => setIsPolDropdownOpen(true)}
+                  onBlur={handlePolBlur}
+                />
+                {isPolSearching && (
+                  <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-500"></div>
+                  </div>
+                )}
+              </div>
 
               {/* POL Search Results */}
               {isPolDropdownOpen &&
@@ -223,7 +442,7 @@ const MappingForm = () => {
                       <div
                         key={index}
                         className="px-4 py-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-0"
-                        onClick={() => handlePolSelect(port)}
+                        onClick={() => handlePolItemClick(port)}
                       >
                         {port.port?.id?.startsWith("temp-") ? (
                           <div className="flex justify-between items-center">
@@ -272,18 +491,10 @@ const MappingForm = () => {
                   {(() => {
                     const displayName =
                       selectedPod.port.display_name || selectedPod.port.name;
-                    const city = selectedPod.port.city;
-                    const country = selectedPod.port.country;
-                    const code = selectedPod.port.code;
 
-                    let fullText = displayName;
-                    if (city) fullText += `, ${city}`;
-                    if (country) fullText += `, ${country}`;
-                    if (code) fullText += `, ${code}`;
-
-                    return fullText.length > 45
-                      ? fullText.substring(0, 45) + "..."
-                      : fullText;
+                    return displayName.length > 45
+                      ? displayName.substring(0, 45) + "..."
+                      : displayName;
                   })()}
                 </p>
               </div>
@@ -296,7 +507,11 @@ const MappingForm = () => {
               {/* Third div: close button */}
               <div>
                 <button
-                  onClick={() => setSelectedPod(null)}
+                  onClick={() => {
+                    setPodResults([]);
+                    setLastPodResults([]);
+                    setSelectedPod(null);
+                  }}
                   className="text-gray-500 hover:text-gray-700 ml-2 hover:cursor-pointer"
                 >
                   ✕
@@ -305,14 +520,22 @@ const MappingForm = () => {
             </div>
           ) : (
             <div ref={podDropdownRef} className="relative w-full">
-              <input
-                type="text"
-                value={podSearchInput}
-                placeholder="Enter POD..."
-                className="w-full px-3 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                onChange={handlePodInputChange}
-                onClick={() => setIsPodDropdownOpen(true)}
-              />
+              <div className="relative">
+                <input
+                  type="text"
+                  value={podSearchInput}
+                  placeholder="Enter POD..."
+                  className="w-full px-3 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pr-10"
+                  onChange={handlePodInputChange}
+                  onClick={() => setIsPodDropdownOpen(true)}
+                  onBlur={handlePodBlur}
+                />
+                {isPodSearching && (
+                  <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-500"></div>
+                  </div>
+                )}
+              </div>
 
               {/* POD Search Results */}
               {isPodDropdownOpen &&
@@ -324,7 +547,7 @@ const MappingForm = () => {
                       <div
                         key={index}
                         className="px-4 py-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-0"
-                        onClick={() => handlePodSelect(port)}
+                        onClick={() => handlePodItemClick(port)}
                       >
                         {port.port?.id?.startsWith("temp-") ? (
                           <div className="flex justify-between items-center">
@@ -333,7 +556,7 @@ const MappingForm = () => {
                                 <span className="text-xs">+</span>
                               </span>
                               <span className="text-sm font-medium">
-                                Create: "{port.port.name}"
+                                Create: "{port.port.display_name}"
                               </span>
                             </div>
                             <div className="text-xs text-gray-500">
@@ -403,9 +626,9 @@ const PortDropdownItem = ({ port }: { port: statusPort }) => {
         )}
         <p className="text-sm text-gray-800 font-medium">
           {port.port.display_name ? port.port.display_name : port.port.name}
-          {port.port.city ? `, ${port.port.city}` : ""}
+          {/* {port.port.city ? `, ${port.port.city}` : ""}
           {port.port.country ? `, ${port.port.country}` : ""}
-          {port.port.code ? `, ${port.port.code}` : ""}
+          {port.port.code ? `, ${port.port.code}` : ""} */}
         </p>
       </div>
       <div>
@@ -427,10 +650,10 @@ const ModeSelector = ({
   onModeSelect: (mode: string) => void;
 }) => {
   const modes = [
-    { id: "all", icon: allIcon, label: "ALL" },
     { id: "sea_port", icon: seaIcon, label: "SEA" },
     { id: "air_port", icon: airIcon, label: "AIR" },
-    { id: "address", icon: landIcon, label: "LAND" },
+    { id: "inland_port", icon: landIcon, label: "LAND" },
+    { id: "address", icon: flagIcon, label: "ADDRESS" },
   ];
 
   return (
@@ -473,10 +696,12 @@ const getPortTypeFromCarrier = (carrierType: string): string => {
       return "sea_port";
     case "air_port":
       return "air_port";
+    case "inland_port":
+      return "inland_port";
     case "address":
       return "address";
     default:
-      return "all";
+      return "sea_port"; // Default to sea_port instead of all
   }
 };
 export const FlagIcon = () => {
@@ -491,6 +716,6 @@ export const FlagIcon = () => {
 const checkPortType = (portType: string) => {
   if (portType === "sea_port") return "Sea Port";
   if (portType === "air_port") return "Air Port";
-  if (portType === "address") return "Address";
+  if (portType === "inland_port") return "Inland Port";
   return portType;
 };
