@@ -24,8 +24,8 @@ export interface Port {
 
   deleted: boolean;
   client_group_id: string | undefined;
-  created_at: Date;
-  updated_at: Date;
+  created_at: string;
+  updated_at: string;
   sort_order: number;
   verified: boolean | undefined;
   sailing_schedule_available: boolean | undefined;

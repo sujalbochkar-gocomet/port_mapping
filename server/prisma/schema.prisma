@@ -11,7 +11,7 @@ generator client {
 
 datasource db {
     provider = "mongodb"
-    url      = env("MONGODB_URL")
+    url      = env("DATABASE_URL")
 }
 
 model Port {
@@ -29,14 +29,14 @@ model Port {
     region       String?
 
     port_type     String // Changed from enum to String to match MongoDB
-    lat_lon       LatLon
+    lat_lon       LatLon?
     nearby_ports  Json?
     other_details Json?
 
     deleted                    Boolean  @default(false)
     client_group_id            String?
-    created_at                 String? // Changed from DateTime to String
-    updated_at                 String? // Changed from DateTime to String
+    created_at                 String?
+    updated_at                 String?
     sort_order                 Int      @default(0)
     verified                   Boolean?
     sailing_schedule_available Boolean?
@@ -53,6 +53,13 @@ model Port {
     prefer_inland              Boolean?
     country_port               Boolean?
 
+    @@index([name])
+    @@index([code])
+    @@index([display_name])
+    @@index([country])
+    @@index([region])
+    @@index([city])
+    @@index([state_name])
     @@map("Port")
 }
 
@@ -105,9 +112,10 @@ model Shipment {
     podLat_lon       LatLon?
     podNearby_ports  Json?
     podOther_details Json?
+
     // Timestamps
-    createdAt        DateTime @default(now())
-    updatedAt        DateTime @updatedAt
+    createdAt DateTime?
+    updatedAt DateTime?
 }
 
 // Keep your existing Port model

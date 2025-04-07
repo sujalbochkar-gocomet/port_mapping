@@ -293,6 +293,12 @@ const MappingForm = () => {
       toast.error("Please fill in all fields and select valid ports");
       return;
     }
+
+    if (selectedPol.port.id === selectedPod.port.id) {
+      toast.error("POL and POD cannot be the same port. Please select different ports.");
+      return;
+    }
+
     setLoading(true);
     try {
       const response = await axios.post("http://localhost:3000/add-shipment", {
@@ -372,7 +378,7 @@ const MappingForm = () => {
           {selectedPol ? (
             <div className="w-full px-3 py-3 bg-white border border-gray-300 rounded-lg shadow-sm flex justify-between items-center">
               {/* First div: logo and port name */}
-              <div className="flex items-center gap-2 max-w-[80%] min-w-[80%]">
+              <div className="flex items-center gap-2 max-w-[75%] min-w-[75%]">
                 {selectedPol !== null && selectedPol.port?.country_code ? (
                   <img
                     src={`https://flagsapi.com/${selectedPol.port.country_code.toUpperCase()}/flat/64.png`}
@@ -387,8 +393,8 @@ const MappingForm = () => {
                     const displayName =
                       selectedPol.port.display_name || selectedPol.port.name;
 
-                    return displayName.length > 50
-                      ? displayName.substring(0, 50) + "..."
+                    return displayName.length > 45
+                      ? displayName.substring(0, 45) + "..."
                       : displayName;
                   })()}
                 </p>
@@ -477,7 +483,7 @@ const MappingForm = () => {
           {selectedPod ? (
             <div className="w-full px-3 py-3 bg-white border border-gray-300 rounded-lg shadow-sm flex justify-between items-center">
               {/* First div: logo and port name */}
-              <div className="flex items-center gap-2 max-w-[80%] min-w-[80%]">
+              <div className="flex items-center gap-2 max-w-[75%] min-w-[75%]">
                 {selectedPod !== null && selectedPod.port?.country_code ? (
                   <img
                     src={`https://flagsapi.com/${selectedPod.port.country_code.toUpperCase()}/flat/64.png`}

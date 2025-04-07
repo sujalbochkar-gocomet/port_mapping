@@ -1,80 +1,78 @@
 import { Port, PortType, statusPort } from "./types/types";
 import { Request, Response } from "express";
 import cors from "cors";
-const express = require('express');
+const express = require("express");
 import { prisma } from "./lib/prisma";
 import PortMatcher = require("../port_mapper/mapper");
-import mongoose from 'mongoose';
-import connectDB = require('../lib/db');
-import swaggerUi from 'swagger-ui-express';
-import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerUi from "swagger-ui-express";
+import swaggerJsdoc from "swagger-jsdoc";
 
 // Swagger configuration
 const swaggerOptions = {
   definition: {
-    openapi: '3.0.0',
+    openapi: "3.0.0",
     info: {
-      title: 'Port Mapping API',
-      version: '1.0.0',
-      description: 'API for port mapping and shipment management',
+      title: "Port Mapping API",
+      version: "1.0.0",
+      description: "API for port mapping and shipment management",
     },
     servers: [
       {
-        url: 'http://localhost:3000',
-        description: 'Development server',
+        url: "http://localhost:3000",
+        description: "Development server",
       },
     ],
     components: {
       schemas: {
         Port: {
-          type: 'object',
+          type: "object",
           properties: {
-            _id: { type: 'string' },
-            id: { type: 'string' },
-            name: { type: 'string' },
-            display_name: { type: 'string' },
-            port_type: { type: 'string' },
-            code: { type: 'string' },
-            other_names: { type: 'array', items: { type: 'string' } },
-            city: { type: 'string' },
-            state_name: { type: 'string' },
-            country: { type: 'string' },
-            country_code: { type: 'string' },
-            region: { type: 'string' },
+            _id: { type: "string" },
+            id: { type: "string" },
+            name: { type: "string" },
+            display_name: { type: "string" },
+            port_type: { type: "string" },
+            code: { type: "string" },
+            other_names: { type: "array", items: { type: "string" } },
+            city: { type: "string" },
+            state_name: { type: "string" },
+            country: { type: "string" },
+            country_code: { type: "string" },
+            region: { type: "string" },
             lat_lon: {
-              type: 'object',
+              type: "object",
               properties: {
-                lat: { type: 'number' },
-                lon: { type: 'number' }
-              }
-            }
-          }
+                lat: { type: "number" },
+                lon: { type: "number" },
+              },
+            },
+          },
         },
         PortSearchResult: {
-          type: 'object',
+          type: "object",
           properties: {
-            port: { $ref: '#/components/schemas/Port' },
-            verified: { type: 'boolean' },
-            match_score: { type: 'number' },
-            match_type: { type: 'string' },
-            sources: { type: 'array', items: { type: 'string' } }
-          }
+            port: { $ref: "#/components/schemas/Port" },
+            verified: { type: "boolean" },
+            match_score: { type: "number" },
+            match_type: { type: "string" },
+            sources: { type: "array", items: { type: "string" } },
+          },
         },
         Shipment: {
-          type: 'object',
+          type: "object",
           properties: {
-            id: { type: 'string' },
-            carrierType: { type: 'string' },
-            pol: { $ref: '#/components/schemas/Port' },
-            pod: { $ref: '#/components/schemas/Port' },
-            createdAt: { type: 'string', format: 'date-time' },
-            updatedAt: { type: 'string', format: 'date-time' }
-          }
-        }
-      }
-    }
+            id: { type: "string" },
+            carrierType: { type: "string" },
+            pol: { $ref: "#/components/schemas/Port" },
+            pod: { $ref: "#/components/schemas/Port" },
+            createdAt: { type: "string", format: "date-time" },
+            updatedAt: { type: "string", format: "date-time" },
+          },
+        },
+      },
+    },
   },
-  apis: ['./src/script.ts'], // Path to the API docs
+  apis: ["./src/script.ts"], // Path to the API docs
 };
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
@@ -89,46 +87,13 @@ interface PortMatcherResult {
 const app = express();
 const port = 3000;
 let portMatcher: PortMatcher | null = null;
-let isReconnecting = false;
 let refreshInterval: NodeJS.Timeout | null = null;
-
-// MongoDB connection monitoring
-mongoose.connection.on('disconnected', () => {
-  if (!isReconnecting) {
-    reconnectMongoDB();
-  }
-});
-
-mongoose.connection.on('error', (err) => {
-  console.error('MongoDB connection error:', err);
-  if (!isReconnecting) {
-    reconnectMongoDB();
-  }
-});
-
-async function reconnectMongoDB() {
-  if (isReconnecting) return;
-
-  isReconnecting = true;
-
-  try {
-    await mongoose.disconnect();
-    await connectDB();
-
-    // Reinitialize PortMatcher with fresh data
-    await initializePortMatcher();
-  } catch (error) {
-    console.error('Failed to reconnect to MongoDB:', error);
-  } finally {
-    isReconnecting = false;
-  }
-}
 
 app.use(cors());
 app.use(express.json());
 
 // Serve Swagger UI
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // Add the refresh function
 async function refreshPortData() {
@@ -137,12 +102,12 @@ async function refreshPortData() {
       await portMatcher.refreshData();
     }
   } catch (error) {
-    console.error('Failed to refresh port data:', error);
+    console.error("Failed to refresh port data:", error);
     // If refresh fails, try to reinitialize the PortMatcher
     try {
       await initializePortMatcher();
     } catch (reinitError) {
-      console.error('Failed to reinitialize PortMatcher:', reinitError);
+      console.error("Failed to reinitialize PortMatcher:", reinitError);
     }
   }
 }
@@ -232,7 +197,8 @@ app.get("/search-ports", async (req: Request, res: Response) => {
     const type = req.query.type as string;
 
     let results = [];
-    if (type === "all") results = await portMatcher.aggregatedResults(query, null);
+    if (type === "all")
+      results = await portMatcher.aggregatedResults(query, null);
     else results = await portMatcher.aggregatedResults(query, type);
 
     if (results.length === 0) {
@@ -254,8 +220,8 @@ app.get("/search-ports", async (req: Request, res: Response) => {
         other_details: JSON.parse("{}"),
         deleted: true,
         client_group_id: "",
-        created_at: new Date(),
-        updated_at: new Date(),
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
         sort_order: 0,
         verified: false,
         sailing_schedule_available: false,
@@ -286,7 +252,7 @@ app.get("/search-ports", async (req: Request, res: Response) => {
       verified: true,
       match_score: result.confidence_score,
       match_type: result.match_type,
-      sources: result.sources
+      sources: result.sources,
     }));
 
     res.status(200).json(transformedPorts);
@@ -414,9 +380,12 @@ app.post("/add-shipment", async (req: Request, res: Response) => {
         },
         podNearby_ports: pod.port.nearby_ports || {},
         podOther_details: pod.port.other_details || {},
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
     });
 
+    ///
     res.status(200).json(shipment);
   } catch (error) {
     console.error("Error creating shipment:", error);
@@ -426,6 +395,7 @@ app.post("/add-shipment", async (req: Request, res: Response) => {
     });
   }
 });
+0;
 
 /**
  * @swagger
@@ -537,7 +507,9 @@ const startServer = async () => {
     await initializePortMatcher();
     app.listen(port, () => {
       console.log(`Server is running on http://localhost:${port}`);
-      console.log(`API documentation available at http://localhost:${port}/api-docs`);
+      console.log(
+        `API documentation available at http://localhost:${port}/api-docs`
+      );
     });
   } catch (error) {
     console.error("Failed to start server:", error);

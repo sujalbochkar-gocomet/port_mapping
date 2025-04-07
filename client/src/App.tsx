@@ -4,7 +4,7 @@ import PortSearch from "./pages/PortSearch";
 import PortMap from "./pages/PortMap";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import IssueReportMain from "./components/IssueReport-Main";
 function App() {
   return (
     <div>
@@ -23,6 +23,7 @@ function App() {
       <Routes>
         <Route path="/port-map" element={<PortMap />} />
         <Route path="/port-search" element={<PortSearch />} />
+        <Route path="/admin/issue-report" element={<IssueReportMain />} />
         <Route path="*" element={<Navigate to="/port-map" replace />} />
       </Routes>
     </div>
