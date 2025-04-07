@@ -24,25 +24,25 @@ app.get("/search-ports", async (req: Request, res: Response) => {
     const type = req.query.type as string;
     console.log(`Searching ports with query: "${query}" and type: "${type}"`);
 
-    // const ports = await prisma.port.findMany({
-    //   where: {
-    //     OR: [
-    //       { name: { contains: query, mode: "insensitive" } },
-    //       { code: { contains: query, mode: "insensitive" } },
-    //       { display_name: { contains: query, mode: "insensitive" } },
-    //       { country: { contains: query, mode: "insensitive" } },
-    //       { city: { contains: query, mode: "insensitive" } },
-    //       { other_names: { has: query } },
-    //     ],
-    //     ...(type !== "all" && {
-    //       AND: [{ port_type: { equals: type } }, { verified: true }],
-    //     }),
-    //   },
-    //   take: 40,
-    // });
-    let ports: MappedPort[] = [];
-    if (type === "all") ports = await map_port(query, null);
-    else ports = await map_port(query, type);
+    const ports = await prisma.port.findMany({
+      where: {
+        OR: [
+          { name: { contains: query, mode: "insensitive" } },
+          { code: { contains: query, mode: "insensitive" } },
+          { display_name: { contains: query, mode: "insensitive" } },
+          { country: { contains: query, mode: "insensitive" } },
+          { city: { contains: query, mode: "insensitive" } },
+          { other_names: { has: query } },
+        ],
+        ...(type !== "all" && {
+          AND: [{ port_type: { equals: type } }, { verified: true }],
+        }),
+      },
+      take: 40,
+    });
+    // let ports: MappedPort[] = [];
+    // if (type === "all") ports = await map_port(query, null);
+    // else ports = await map_port(query, type);
 
     // const ports = map_port_name(query);
     if (ports.length === 0) {
@@ -94,16 +94,16 @@ app.get("/search-ports", async (req: Request, res: Response) => {
       res.status(200).json([statusPort]);
       return;
     }
-    // const transformedPorts = ports.map((port) => ({
-    //   port: port,
-    //   verified: true,
-    //   match_score: Math.floor(Math.random() * (100 - 90) + 90),
-    // }));
     const transformedPorts = ports.map((port) => ({
-      port: port.port_data,
+      port: port,
       verified: true,
-      match_score: port.confidence_score,
+      match_score: Math.floor(Math.random() * (100 - 90) + 90),
     }));
+    // const transformedPorts = ports.map((port) => ({
+    //   port: port.port_data,
+    //   verified: true,
+    //   match_score: port.confidence_score,
+    // }));
     transformedPorts.sort((a, b) => b.match_score - a.match_score);
     res.status(200).json(transformedPorts);
   } catch (error) {
