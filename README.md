@@ -13,11 +13,11 @@ This system supports teams dealing with inconsistent input from clients or users
   - Exact match
   - Token match (country/region)
   - Fuzzy match (substring & Levenshtein)
-  - LLM fallback (OpenAI GPT)
+  - LLM fallback (LLAMA3-70b-8192 Model From Groq Api)
 
 - 🔍 **Confidence Flagging**
-  - Tracks the logic layer used (e.g., `"token-match"`, `"llm"`)
-  - `usedLLM` boolean in response
+  - Tracks The Sources used Cascading or LLM
+  - Associates it with a confidence scrore
 
 - 📦 **Modular Architecture**
   - Easily extend logic layers or change backend behavior
@@ -26,29 +26,43 @@ This system supports teams dealing with inconsistent input from clients or users
 - 🛠️ **Data Sanitization**
   - Pre-processing for port names to improve matching accuracy
 
-## 🧪 Sample API Usage
 
-**Request**:
+### 🔍 Sample API Usage – `GET /search-ports`
+
+Description:  
+Search for ports based on a keyword (`q`) and optional type (`type`: `inland`, `sea`, `airport`, etc.).
+
+**Example Request**:
 ```bash
-POST /map-keyword
-Content-Type: application/json
-
-{
-  "keyword": "germany coast port"
-}
+curl -X GET "http://localhost:3000/search-ports?q=amritsar&type=inland" \
+  -H "accept: application/json"
 ```
 
-**Response**:
+**Query Parameters**:
+```
+| Parameter | Type   | Required | Description             |
+|-----------|--------|----------|-------------------------|
+| `q`       | string | ✅       | Keyword to search       |
+| `type`    | string | ❌       | Filter by port type     |
+```
+
+**Sample Response** (`200 OK`):
 ```
 json
-{
-  "matchedPort": "Hamburg",
-  "confidenceLevel": "token-match",
-  "usedLLM": false
-}
+[
+  {
+    "port": {
+      "id": "temp-1744010759388",
+      "name": "amritsar",
+      "display_name": "amritsar",
+      "port_type": "inland",
+      "lat_lon": { "lat": 0, "lon": 0 }
+    },
+    "verified": false,
+    "match_score": 0
+  }
+]
 ```
-
----
 
 ## 📂 Project Structure
 
@@ -67,8 +81,6 @@ json
 ├── docker-compose.yml
 └── README.md
 ```
-
----
 
 ## 🛠 Installation
 
@@ -96,11 +108,11 @@ npm install
 ```bash
 # Backend
 cd ../backend
-npm start
+npm run dev
 
 # Frontend (in another terminal)
 cd ../frontend
-npm start
+npm run dev
 ```
 
 ## 👨‍💻 Development
