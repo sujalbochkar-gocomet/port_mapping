@@ -6,14 +6,26 @@ import { join } from 'path';
 import connectDB = require('../lib/db');
 import PortModel = require('../models/Port');
 
+
 interface PortMatcherResult {
+
+  /**
+ * Interface representing a port matching result
+ */
+
   port_data: Port;
   confidence_score: number;
   match_type: string;
   sources: string[];
 }
 
+
 interface CascadingResult {
+
+  /**
+ * Interface representing a cascading search result
+ */
+
   port_data: Port;
   confidence_score: number;
   match_type: string;
@@ -22,6 +34,11 @@ interface CascadingResult {
 
 
 class PortMatcher {
+
+  /**
+ * Class for matching ports based on various search algorithms
+ */
+
   private portsData: Port[];
   private searchableKeys: string[];
   private locationSearchableKeys: string[];
@@ -29,7 +46,16 @@ class PortMatcher {
   private groq: Groq;
   // private openai: OpenAI;
 
+  
+
   constructor(portsData: Port[]) {
+
+    /**
+   * Creates a new PortMatcher instance
+   * @param portsData - Array of port data to search through
+   * @throws Error if portsData is empty or not an array
+   */
+
     if (!Array.isArray(portsData) || portsData.length === 0) {
       throw new Error("Ports data must be a non-empty array");
     }
@@ -97,7 +123,15 @@ class PortMatcher {
 
   }
 
+  
   static async loadPortsData(): Promise<Port[]> {
+
+    /**
+   * Loads port data from MongoDB
+   * @returns Promise resolving to an array of Port objects
+   * @throws Error if database connection or query fails
+   */
+
     try {
       await connectDB();
       const allPorts = await PortModel.find({
@@ -111,7 +145,15 @@ class PortMatcher {
     }
   }
 
+ 
   public async refreshData(): Promise<void> {
+
+     /**
+   * Refreshes the port data by reloading from MongoDB
+   * @returns Promise that resolves when data is refreshed
+   * @throws Error if data refresh fails
+   */
+
     try {
       const freshData = await PortMatcher.loadPortsData();
       this.portsData = freshData;
@@ -121,7 +163,15 @@ class PortMatcher {
     }
   }
 
+ 
   private normalizeString(str: string | undefined): string {
+
+     /**
+   * Normalizes a string by converting to lowercase and removing special characters
+   * @param str - String to normalize
+   * @returns Normalized string
+   */
+
     return (
       str
         ?.toLowerCase()
@@ -131,7 +181,16 @@ class PortMatcher {
     );
   }
 
+ 
   private filterByLocation(inputString: string, portsData: Port[] = this.portsData): Port[] {
+
+     /**
+   * Filters ports based on location keywords
+   * @param inputString - Location search string
+   * @param portsData - Optional array of ports to search through
+   * @returns Array of ports matching location criteria
+   */
+
     if (typeof inputString !== "string" || !inputString.trim()) {
       return [];
     }
@@ -153,7 +212,16 @@ class PortMatcher {
     });
   }
 
+  
   private completeNameSearch(inputString: string, portsData: Port[] = this.portsData): CascadingResult[] {
+
+    /**
+   * Performs exact name matching search
+   * @param inputString - Search string
+   * @param portsData - Optional array of ports to search through
+   * @returns Array of exact match results
+   */
+
     if (typeof inputString !== "string" || !inputString.trim()) {
       return [];
     }
@@ -166,16 +234,24 @@ class PortMatcher {
       let matchType = "";
       let matched = false;
       let confidenceScore = 0;
-
+      let weightedScore=0;
       for (const key of this.searchableKeys) {
-
-
+        
+  
         const normalizedField = this.normalizeString(port[key as keyof Port] as string);
+
+
+        if(key=="name" || key=="display_name"){
+          weightedScore=100
+        }else if(key=="code"){
+          weightedScore=99
+        }
+
 
         if (normalizedField && normalizedField == normalizedInput) {
           matchType = `_${key.toLowerCase().replace(/\s+/g, '_')}`;
           matched = true;
-          confidenceScore = 100;
+          confidenceScore = weightedScore;
           break;
         }
       }
@@ -185,7 +261,7 @@ class PortMatcher {
         if (normalizedField && normalizedField === normalizedInput) {
           matchType = "other_names";
           matched = true;
-          confidenceScore = 99;
+          confidenceScore = 98.5;
           break;
         }
       }
@@ -203,7 +279,16 @@ class PortMatcher {
     return results.sort((a, b) => b.confidence_score - a.confidence_score);
   }
 
+ 
   private wordSearch(inputString: string, portsData: Port[] = this.portsData): CascadingResult[] {
+
+     /**
+   * Performs word-based search with partial matching
+   * @param inputString - Search string
+   * @param portsData - Optional array of ports to search through
+   * @returns Array of word match results
+   */
+
     if (typeof inputString !== "string" || !inputString.trim()) {
       return [];
     }
@@ -218,7 +303,7 @@ class PortMatcher {
 
     const inputWordsSet = new Set(inputWords);
     const results: CascadingResult[] = [];
-    const MIN_CONFIDENCE = 10;
+    const MIN_CONFIDENCE = 50;
 
     const getNormalizedWords = (value: string | undefined): { words: string[], set: Set<string> } | null => {
       if (!value) return null;
@@ -249,7 +334,7 @@ class PortMatcher {
 
       const minLength = Math.min(inputWords.length, fieldWords.length);
       let maxConsecutiveMatches = 0;
-
+      
       for (let i = 0; i <= fieldWords.length - minLength; i++) {
         let matches = 0;
         for (let j = 0; j < minLength; j++) {
@@ -276,14 +361,14 @@ class PortMatcher {
         if (overlapScore < MIN_CONFIDENCE) continue;
 
         const orderScore = calculateOrderScore(normalized.words);
-        const confidence = (overlapScore * 0.6) + (orderScore * 0.4);
+        const confidence = (overlapScore * 0.7) + (orderScore * 0.3);
 
         if (confidence > bestMatch.confidence) {
           bestMatch = { confidence, matchType: key.toLowerCase().replace(/\s+/g, '_') };
         }
       }
 
-      if (bestMatch.confidence > 80) {
+      if (bestMatch.confidence > 60) {
         results.push({
           port_data: port,
           confidence_score: parseFloat(bestMatch.confidence.toFixed(2)),
@@ -321,8 +406,16 @@ class PortMatcher {
     return results.sort((a, b) => b.confidence_score - a.confidence_score);
   }
 
-
+ 
   private async rubyFuzzySearch(inputString: string, portsData: Port[] = this.portsData): Promise<CascadingResult[]> {
+
+     /**
+   * Performs fuzzy search using Ruby script
+   * @param inputString - Search string
+   * @param portsData - Optional array of ports to search through
+   * @returns Promise resolving to array of fuzzy match results
+   */
+
     if (typeof inputString !== "string" || !inputString.trim()) {
       return [];
     }
@@ -376,8 +469,15 @@ class PortMatcher {
     });
   }
 
-
+ 
   private validateLLMResponse(data: any): boolean {
+
+     /**
+   * Validates LLM response format
+   * @param data - Response data to validate
+   * @returns Boolean indicating if response is valid
+   */
+
     if (!data || typeof data !== 'object' || !Array.isArray(data.ports)) {
       return false;
     }
@@ -400,41 +500,25 @@ class PortMatcher {
     return true;
   }
 
-
+  
   private async getGroqResponse(keyword: string, portType: string | null): Promise<string> {
+
+    /**
+   * Gets response from Groq LLM service
+   * @param keyword - Search keyword
+   * @param portType - Optional port type filter
+   * @returns Promise resolving to LLM response string
+   */
+
      try {
-       const query = `User Prompt Format:
-                       Input Keyword is ${keyword} and Port Type is ${portType || 'any'}.
+       const query = `Input Keyword is ${keyword} and Port Type is ${portType || 'any'}.
 
-                       Identify and return an array of multiple valid ports that match the given keyword and port type.
 
-                       Ensure the output follows exactly this JSON format:
+Important:
+- Strictly follow the JSON structure—any deviation is incorrect`;
 
-                       [
-                         {
-                           "name": "<Port Name>",
-                           "alternative_names": [
-                             "<Alternative Name 1>",
-                             "<Alternative Name 2>",
-                             "<Alternative Name 3>"
-                             ...lot and lots of alternative names
-                           ],
-                           "port_code": "<Official Port Code>",
-                           "latitude": "<Latitude>",
-                           "longitude": "<Longitude>",
-                           "confidence_score": <Confidence Score between 0 and 100>
-                         }
-                       ]
-
-                       Rules:
-                       - Return multiple valid matches whenever possible
-                       - return latitude and longitude accurately
-                       - Return as many alternative names and commonly used names as possible
-                       - Ensure the port name is correct and not a misspelling
-                       - Do not return explanations or alternative suggestions if no match is found. Instead, return exactly: []
-                       - The confidence_score must be between 0 - 100, reflecting the match accuracy
-                       - Strictly follow this JSON structure—any deviation is incorrect`;
-
+     
+ 
        const completion = await this.groq.chat.completions.create({
          messages: [
            { role: "system", content: process.env.SYSTEM_PROMPT || "" },
@@ -447,7 +531,7 @@ class PortMatcher {
          temperature: 0.1,
          max_completion_tokens: 8192,
        });
-
+ 
        const content = completion.choices[0].message.content;
        if (!content) {
          throw new Error("No content in response");
@@ -458,8 +542,17 @@ class PortMatcher {
        throw error;
      }
    }
-
+  
+  
   private async getLLMResponse(keyword: string, portType: string | null = null): Promise<PortMatcherResult[]> {
+
+    /**
+   * Processes LLM response and matches with database ports
+   * @param keyword - Search keyword
+   * @param portType - Optional port type filter
+   * @returns Promise resolving to array of matched ports
+   */
+
     try {
       if (keyword === "") {
         return [];
@@ -469,9 +562,9 @@ class PortMatcher {
         const R = 6371;
         const dLat = (lat2 - lat1) * Math.PI / 180;
         const dLon = (lon2 - lon1) * Math.PI / 180;
-        const a =
+        const a = 
           Math.sin(dLat/2) * Math.sin(dLat/2) +
-          Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+          Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
           Math.sin(dLon/2) * Math.sin(dLon/2);
         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         return R * c;
@@ -484,7 +577,7 @@ class PortMatcher {
         ].filter(Boolean).map(name => name.toLowerCase());
 
         const filteredPorts = portType ? this.portsData.filter(port => port.port_type === portType) : this.portsData;
-
+        
         const matches = filteredPorts.filter(dbPort => {
           const dbNames = [
             dbPort.name,
@@ -492,14 +585,14 @@ class PortMatcher {
             ...(dbPort.other_names || [])
           ].filter(Boolean).map(name => name.toLowerCase());
 
-          const nameMatch = llmNames.some(llmName =>
+          const nameMatch = llmNames.some(llmName => 
             dbNames.some(dbName => dbName === llmName)
           );
 
           const codeMatch = dbPort.code?.toLowerCase() === llmPort.port_code?.toLowerCase();
 
           let locationMatch = false;
-          if (llmPort.latitude && llmPort.longitude &&
+          if (llmPort.latitude && llmPort.longitude && 
               dbPort.lat_lon?.lat && dbPort.lat_lon?.lon) {
             const distance = calculateDistance(
               parseFloat(llmPort.latitude),
@@ -526,6 +619,8 @@ class PortMatcher {
 
       const rawResponse = await this.getGroqResponse(keyword, portType);
 
+   
+      
       let parsedResponse;
       try {
         parsedResponse = JSON.parse(rawResponse);
@@ -540,10 +635,10 @@ class PortMatcher {
 
       const matchedPorts = parsedResponse.ports.flatMap((llmPort: any) => {
         const matchedPorts = findMatchingPort(llmPort);
-
+        
         return matchedPorts ? matchedPorts.map(port => {
           let confidenceAdjustment = 0;
-          if (llmPort.latitude && llmPort.longitude &&
+          if (llmPort.latitude && llmPort.longitude && 
               port.lat_lon?.lat && port.lat_lon?.lon) {
             const distance = calculateDistance(
               parseFloat(llmPort.latitude),
@@ -578,7 +673,16 @@ class PortMatcher {
     }
   }
 
+  
   private async cascadingSearch(inputString: string, portType: string | null = null): Promise<CascadingResult[]> {
+
+    /**
+   * Performs cascading search using multiple algorithms
+   * @param inputString - Search string
+   * @param portType - Optional port type filter
+   * @returns Promise resolving to array of search results
+   */
+
     if (typeof inputString !== "string" || this.normalizeString(inputString) === "") {
       return [];
     }
@@ -617,13 +721,6 @@ class PortMatcher {
         }));
       }
 
-      const llmResults = await this.getLLMResponse(inputString, portType);
-      if (llmResults.length > 0) {
-        return llmResults.map(result => ({
-          ...result,
-          match_algo_type: "llm"
-        }));
-      }
 
       return [];
     } catch (error) {
@@ -632,11 +729,20 @@ class PortMatcher {
     }
   }
 
+  
   async aggregatedResults(keyword: string, portType: string | null = null): Promise<PortMatcherResult[]> {
+
+    /**
+   * Aggregates results from multiple search methods
+   * @param keyword - Search keyword
+   * @param portType - Optional port type filter
+   * @returns Promise resolving to array of aggregated results
+   */
+  
     try {
       const cascadingResults = await this.cascadingSearch(keyword, portType);
-      const highConfidenceMatches = cascadingResults.filter(result =>
-        result.confidence_score >= 80 &&
+      const highConfidenceMatches = cascadingResults.filter(result => 
+        result.confidence_score >= 80 && 
         (result.match_algo_type === "exact" || result.match_algo_type === "word")
       );
 
@@ -651,11 +757,13 @@ class PortMatcher {
 
       const [llmResults, remainingCascadingResults] = await Promise.all([
         this.getLLMResponse(keyword, portType),
-        Promise.resolve(cascadingResults.filter(result =>
-          result.confidence_score < 80 ||
+        Promise.resolve(cascadingResults.filter(result => 
+          result.confidence_score < 80 || 
           (result.match_algo_type !== "exact" && result.match_algo_type !== "word")
         ))
       ]);
+
+
 
       if (llmResults.length === 0 && remainingCascadingResults.length === 0) {
         return [];
@@ -723,7 +831,7 @@ class PortMatcher {
         };
       });
 
-      return finalResults.sort((a, b) => b.confidence_score - a.confidence_score);
+      return finalResults.sort((a, b) => b.confidence_score - a.confidence_score).filter((result:PortMatcherResult)=>result.confidence_score>=60).slice(0,10);
     } catch (error) {
       console.error("Error in aggregatedResults:", error);
       return [];
@@ -731,9 +839,7 @@ class PortMatcher {
   }
 }
 
-
-
-export = PortMatcher;
+export = PortMatcher; 
 
 
 
