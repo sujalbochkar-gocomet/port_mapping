@@ -207,6 +207,8 @@
 - Match Type: other_names
 - Sources: cascading
 
+_?undefined expected port id
+
 ### ✅ Matched
 - Keyword: "ashdod, israel, ilash"
 - Mapped To: Ashdod
@@ -1500,6 +1502,9 @@
 - Match Type: _name
 - Sources: cascading
 
+_?Duplicate Data
+
+
 ### ✅ Matched
 - Keyword: "son duong, vietnam, vnsdp"
 - Mapped To: Son Duong
@@ -1677,6 +1682,9 @@
 - Time: 3132.58ms
 - Match Type: _name
 - Sources: cascading
+
+_?Duplicate Data
+
 
 ### ✅ Matched
 - Keyword: "oita, japan, jpoit"
@@ -2006,6 +2014,9 @@
 - Match Type: _name
 - Sources: cascading
 
+_?Duplicate Data
+
+
 ### ✅ Matched
 - Keyword: "munnar,kerala,india"
 - Mapped To: Munnar,Kerala,India
@@ -2229,6 +2240,8 @@
 - Match Type: name
 - Sources: cascading
 
+_?Expected Port is unverified
+
 ### ✅ Matched
 - Keyword: "orobay, papua new guinea, pgror"
 - Mapped To: Orobay
@@ -2271,6 +2284,8 @@
 - Time: 2931.28ms
 - Match Type: _name
 - Sources: cascading
+?_Duplicate Data
+
 
 ### ✅ Matched
 - Keyword: "vaniyambadi,tamil nadu,india"

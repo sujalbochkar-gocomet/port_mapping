@@ -275,7 +275,7 @@ app.get("/search-ports", async (req: Request, res: Response) => {
       const statusPort: statusPort = {
         port: tempPort as Port,
         verified: false,
-        match_score: Math.floor(Math.random() * (50 - 30) + 30),
+        match_score: 0,
       };
       res.status(200).json([statusPort]);
       return;

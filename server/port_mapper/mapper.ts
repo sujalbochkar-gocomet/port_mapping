@@ -159,6 +159,7 @@ class PortMatcher {
     }
 
     const normalizedInput = this.normalizeString(inputString);
+
     const results: CascadingResult[] = [];
 
     for (const port of portsData) {
@@ -167,7 +168,10 @@ class PortMatcher {
       let confidenceScore = 0;
 
       for (const key of this.searchableKeys) {
+        
+  
         const normalizedField = this.normalizeString(port[key as keyof Port] as string);
+
         if (normalizedField && normalizedField == normalizedInput) {
           matchType = `_${key.toLowerCase().replace(/\s+/g, '_')}`;
           matched = true;
