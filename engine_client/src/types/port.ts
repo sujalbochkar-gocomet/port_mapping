@@ -1,0 +1,35 @@
+export interface Port {
+  id: string;
+  name: string;
+  display_name: string;
+  city: string;
+  country: string;
+  country_code: string;
+  code: string;
+  port_type: string;
+  deleted: boolean;
+  client_group_id: null;
+  region: string;
+  lat_lon: { lat: number; lon: number };
+  created_at: string;
+  updated_at: string;
+  other_names: string[];
+  sort_order: number;
+  other_details: { origin: string };
+  verified: boolean;
+  sailing_schedule_available: boolean;
+  item_type: string;
+  master_port: boolean;
+  nearby_ports: string[];
+  address: string;
+  fax_number: string | null;
+  telephone_number: string | null;
+  website: string | null;
+  description: string;
+  seo_code: string | null;
+  seo_updated: boolean;
+  state_name: string;
+  is_head_port: boolean;
+  prefer_inland: boolean;
+  country_port: boolean;
+} 
