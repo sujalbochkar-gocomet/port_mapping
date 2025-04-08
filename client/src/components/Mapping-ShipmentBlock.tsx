@@ -76,8 +76,11 @@ const ShipmentBlock = (shipment: Shipment) => {
       await axios.delete(
         `http://localhost:3000/delete-shipment/${shipment.id}`
       );
-      toast.success("Shipment deleted successfully");
-      window.location.reload();
+      toast.success("Shipment deleted successfully", {
+        onClose: () => {
+          window.location.reload();
+        },
+      });
     } catch (error) {
       console.error("Error deleting shipment:", error);
       toast.error("Failed to delete shipment");

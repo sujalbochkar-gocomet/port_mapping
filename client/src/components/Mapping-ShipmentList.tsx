@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import ShipmentBlock from "./Mapping-ShipmentBlock";
 import { Shipment } from "../types/types";
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 
 interface ShipmentListProps {
   filterType: "all" | "verified" | "unverified";

@@ -265,6 +265,25 @@ app.get("/search-ports", async (req: Request, res: Response) => {
   }
 });
 
+app.get("/issue-search", async (req: Request, res: Response) => {
+  // example link http://localhost:3000/issue-search?q=los
+  const query = (req.query.q as string)?.toLowerCase() || "";
+  const ports = await prisma.port.findMany({
+    where: {
+      OR: [
+        { name: { contains: query, mode: "insensitive" } },
+        { code: { contains: query, mode: "insensitive" } },
+        { display_name: { contains: query, mode: "insensitive" } },
+        { country: { contains: query, mode: "insensitive" } },
+        { city: { contains: query, mode: "insensitive" } },
+        { other_names: { has: query } },
+      ],
+    },
+    take: 100,
+  });
+  res.status(200).json(ports);
+});
+
 /**
  * @swagger
  * /add-shipment:
@@ -385,7 +404,6 @@ app.post("/add-shipment", async (req: Request, res: Response) => {
       },
     });
 
-    ///
     res.status(200).json(shipment);
   } catch (error) {
     console.error("Error creating shipment:", error);
@@ -395,7 +413,6 @@ app.post("/add-shipment", async (req: Request, res: Response) => {
     });
   }
 });
-0;
 
 /**
  * @swagger

@@ -5,8 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-    provider        = "prisma-client-js"
-    previewFeatures = ["mongodb"]
+    provider = "prisma-client-js"
 }
 
 datasource db {
@@ -117,8 +116,6 @@ model Shipment {
     createdAt DateTime?
     updatedAt DateTime?
 }
-
-// Keep your existing Port model
 
 type LatLon {
     lat Float?
