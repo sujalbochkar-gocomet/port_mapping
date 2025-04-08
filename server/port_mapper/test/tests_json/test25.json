@@ -1,0 +1,5002 @@
+[
+    {
+        "Keyword": "olive branch, ms",
+        "Port Type": "address",
+        "Mapped Port ID": "ee0b242d-05df-4479-8de1-b4247bc7f5c0"
+    },
+    {
+        "Keyword": "batu ampar port, batu ampar (batam), kepulauan riau, indonesia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c0305016-fe4e-4a72-9b44-5ba96ac41cf1"
+    },
+    {
+        "Keyword": "batu ampar port, batu ampar (batam), kepulauan riau, indonesia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c0305016-fe4e-4a72-9b44-5ba96ac41cf1"
+    },
+    {
+        "Keyword": "bog (bogota)",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "85ace6c0-cd10-f81f-5297-36796720c2f3"
+    },
+    {
+        "Keyword": "ros container service.co., ltd, bangkok, thailand",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "07ff492c-a773-486d-9628-8a7b04447391"
+    },
+    {
+        "Keyword": "zagreb",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "aeb48ec3-60b9-8b27-f7b8-5cc921df66eb"
+    },
+    {
+        "Keyword": "den (denver)",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "61de0e6b-c81f-e0b1-efa2-2ba679db19be"
+    },
+    {
+        "Keyword": "beicun(nanhai),gd,foshan,china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8642c42d-a1c0-2e2a-7151-32cb9dcad754"
+    },
+    {
+        "Keyword": "kotka, es",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4d0c1079-7210-9e20-0d72-d0fc7305a930"
+    },
+    {
+        "Keyword": "lekki, la",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3cb3a3d1-6720-444e-a1da-234f720351a5"
+    },
+    {
+        "Keyword": "scottsdale, az 85260",
+        "Port Type": "address",
+        "Mapped Port ID": "4430d1f7-0934-419e-b775-c9eeb70422af"
+    },
+    {
+        "Keyword": "scottsdale, az 85254",
+        "Port Type": "address",
+        "Mapped Port ID": "4430d1f7-0934-419e-b775-c9eeb70422af"
+    },
+    {
+        "Keyword": "locust grove, ga 30248",
+        "Port Type": "address",
+        "Mapped Port ID": "78d699fd-de6b-4507-b5c1-8613fd023e75"
+    },
+    {
+        "Keyword": "snellville, ga 30039",
+        "Port Type": "address",
+        "Mapped Port ID": "dcf6b095-66f1-469d-8f41-ef6c5647015b"
+    },
+    {
+        "Keyword": "alpharetta, ga 30022",
+        "Port Type": "address",
+        "Mapped Port ID": "11753113-675f-48dd-b187-dacc8a2c0e88"
+    },
+    {
+        "Keyword": "carrollton, ga 30116",
+        "Port Type": "address",
+        "Mapped Port ID": "04327a2b-fe49-4694-b93a-e95f860a52b3"
+    },
+    {
+        "Keyword": "tezpur",
+        "Port Type": "address",
+        "Mapped Port ID": "27b983b1-9e3d-4a08-859a-59ddf77b3d0a"
+    },
+    {
+        "Keyword": "swainsboro, ga 30401",
+        "Port Type": "address",
+        "Mapped Port ID": "e71c2c62-c701-48bb-8e5b-769b0edcb4fb"
+    },
+    {
+        "Keyword": "milwaukee, wi 53219",
+        "Port Type": "address",
+        "Mapped Port ID": "5567797b-a2f0-48fa-8d32-4561be5b0e96"
+    },
+    {
+        "Keyword": "bennington, vt 05201",
+        "Port Type": "address",
+        "Mapped Port ID": "af7354e6-fdaf-41ad-b3fd-2da16d0f201c"
+    },
+    {
+        "Keyword": "alpharetta, ga 30005",
+        "Port Type": "address",
+        "Mapped Port ID": "11753113-675f-48dd-b187-dacc8a2c0e88"
+    },
+    {
+        "Keyword": "middleton, wi 53562",
+        "Port Type": "address",
+        "Mapped Port ID": "f182d6b5-b16d-4a38-a2c1-2ea64c76993f"
+    },
+    {
+        "Keyword": "milwaukee, wi 53218",
+        "Port Type": "address",
+        "Mapped Port ID": "5567797b-a2f0-48fa-8d32-4561be5b0e96"
+    },
+    {
+        "Keyword": "milwaukee, wi 53203",
+        "Port Type": "address",
+        "Mapped Port ID": "5567797b-a2f0-48fa-8d32-4561be5b0e96"
+    },
+    {
+        "Keyword": "menomonie, wi 54751",
+        "Port Type": "address",
+        "Mapped Port ID": "98bd224a-f755-43ba-9377-ebc1b6cfbb34"
+    },
+    {
+        "Keyword": "scottsdale, az 85251",
+        "Port Type": "address",
+        "Mapped Port ID": "4430d1f7-0934-419e-b775-c9eeb70422af"
+    },
+    {
+        "Keyword": "scottsdale, az 85257",
+        "Port Type": "address",
+        "Mapped Port ID": "4430d1f7-0934-419e-b775-c9eeb70422af"
+    },
+    {
+        "Keyword": "milwaukee, wi 53215",
+        "Port Type": "address",
+        "Mapped Port ID": "5567797b-a2f0-48fa-8d32-4561be5b0e96"
+    },
+    {
+        "Keyword": "carrollton, ga 30117",
+        "Port Type": "address",
+        "Mapped Port ID": "04327a2b-fe49-4694-b93a-e95f860a52b3"
+    },
+    {
+        "Keyword": "sun prairie, wi 53590",
+        "Port Type": "address",
+        "Mapped Port ID": "8f56a806-fa6b-4fde-b1e5-dff735093295"
+    },
+    {
+        "Keyword": "hinesville, ga 31313",
+        "Port Type": "address",
+        "Mapped Port ID": "7b820bd5-53b3-4e0f-8b35-afc8b228b927"
+    },
+    {
+        "Keyword": "milwaukee, wi 53210",
+        "Port Type": "address",
+        "Mapped Port ID": "5567797b-a2f0-48fa-8d32-4561be5b0e96"
+    },
+    {
+        "Keyword": "sierra vista, az 85635",
+        "Port Type": "address",
+        "Mapped Port ID": "2c022c14-25a1-4a50-9a58-c5a27cbf6b31"
+    },
+    {
+        "Keyword": "scottsdale, az 85255",
+        "Port Type": "address",
+        "Mapped Port ID": "4430d1f7-0934-419e-b775-c9eeb70422af"
+    },
+    {
+        "Keyword": "sheboygan, wi 53081",
+        "Port Type": "address",
+        "Mapped Port ID": "ad010669-7cb9-4853-b2bd-beb1ead88bc7"
+    },
+    {
+        "Keyword": "munger",
+        "Port Type": "address",
+        "Mapped Port ID": "457ba23c-a7a3-4115-a2fd-07f7369d9876"
+    },
+    {
+        "Keyword": "waddinxveen, netherland.",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3eb75307-028d-4cf4-9431-e0e01ee70ae5"
+    },
+    {
+        "Keyword": "abidjan, cote d'ivoire",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5d36f38f-33c0-4eeb-8cb4-09bbbc4da49f"
+    },
+    {
+        "Keyword": "abidjan, cote d'ivoire",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "5d36f38f-33c0-4eeb-8cb4-09bbbc4da49f"
+    },
+    {
+        "Keyword": "alpharetta, ga 30004",
+        "Port Type": "address",
+        "Mapped Port ID": "11753113-675f-48dd-b187-dacc8a2c0e88"
+    },
+    {
+        "Keyword": "milwaukee, wi 53207",
+        "Port Type": "address",
+        "Mapped Port ID": "5567797b-a2f0-48fa-8d32-4561be5b0e96"
+    },
+    {
+        "Keyword": "pusan - hutchison busan cntr tml",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "80595cf1-a59f-2cf7-a29a-622faf40c2f8"
+    },
+    {
+        "Keyword": "sacramento, ca 95837 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "5f4ffd1c-836a-44bf-b740-4441e56bde16"
+    },
+    {
+        "Keyword": "chah-bahar ,iran, islamic republic of",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e6b953a5-51e3-4ae8-b1e9-d27eb6240c24"
+    },
+    {
+        "Keyword": "cincinnati, oh 45215 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "17a07f63-fea7-4269-842f-965f6eb8cf5f"
+    },
+    {
+        "Keyword": "elmhurst, il 60126 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "2acc7884-20c0-4727-8885-a3453641116d"
+    },
+    {
+        "Keyword": "statesboro, ga 30458",
+        "Port Type": "address",
+        "Mapped Port ID": "a17e7104-33be-4d2c-93e5-55d02b9be054"
+    },
+    {
+        "Keyword": "redondo beach, ca 90277 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "fb91c203-04c0-49b5-99da-10217681a3cc"
+    },
+    {
+        "Keyword": "san francisco, ca 94124 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "7774dba4-74f0-4dc2-877a-217dd130beee"
+    },
+    {
+        "Keyword": "bakersfield, ca 93307 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "254d2790-5519-48d2-92c4-87cdbbd606d6"
+    },
+    {
+        "Keyword": "garden grove, ca 92842 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "b541649c-245d-46f2-8a74-5bcefc8d0252"
+    },
+    {
+        "Keyword": "bakersfield, ca 93308 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "254d2790-5519-48d2-92c4-87cdbbd606d6"
+    },
+    {
+        "Keyword": "mission viejo, ca 92690 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "66fff374-a585-4e54-a264-6a22ec72166b"
+    },
+    {
+        "Keyword": "mountain view, ca 94043 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "fabb66f6-deb0-4475-a827-e86c6b641000"
+    },
+    {
+        "Keyword": "williamsburg, va 23185 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "af0d7277-d340-41da-8db4-f6902a9011ac"
+    },
+    {
+        "Keyword": "silver spring, md 20904 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "d7ea084d-18ed-4910-a59e-bf4b32822567"
+    },
+    {
+        "Keyword": "burlington, vt 05401",
+        "Port Type": "address",
+        "Mapped Port ID": "234259b3-fc1e-4323-867c-1d1e8a7314e7"
+    },
+    {
+        "Keyword": "milwaukee, wi 53206",
+        "Port Type": "address",
+        "Mapped Port ID": "5567797b-a2f0-48fa-8d32-4561be5b0e96"
+    },
+    {
+        "Keyword": "birmingham, united states",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "fd04e7e6-8fed-4154-ae68-587695381a3f"
+    },
+    {
+        "Keyword": "hyattsville, md 20782 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "abd593d1-1d7d-48bb-b708-0ab319f1c9f9"
+    },
+    {
+        "Keyword": "virginia beach, va 23464 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "74b6a1e0-62aa-4b18-ac36-e91d9263bf0f"
+    },
+    {
+        "Keyword": "milwaukee, wi 53228",
+        "Port Type": "address",
+        "Mapped Port ID": "5567797b-a2f0-48fa-8d32-4561be5b0e96"
+    },
+    {
+        "Keyword": "panorama city, ca 91402 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "ecceacfc-573f-4c32-a66e-abc3f8089779"
+    },
+    {
+        "Keyword": "qapco, qatar",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "9652540b-d2f9-962a-7164-09869c398e10"
+    },
+    {
+        "Keyword": "apple valley, ca 92307 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "e15d1cc9-5695-4437-9974-52917cc914d2"
+    },
+    {
+        "Keyword": "jorhat",
+        "Port Type": "address",
+        "Mapped Port ID": "126733e5-5cb6-4e9a-8a96-a25e5661ec1a"
+    },
+    {
+        "Keyword": "longmen",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "73083319-4f0f-48fd-b224-ea1757664ba1"
+    },
+    {
+        "Keyword": "watertown, wi 53094",
+        "Port Type": "address",
+        "Mapped Port ID": "7651a660-df06-4f59-9e91-d7e02840e2b7"
+    },
+    {
+        "Keyword": "east brunswick, nj 08816 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b36ecf5b-8b72-42b9-916e-b77f034213f7"
+    },
+    {
+        "Keyword": "san francisco, ca 94103 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "7774dba4-74f0-4dc2-877a-217dd130beee"
+    },
+    {
+        "Keyword": "kamrup",
+        "Port Type": "address",
+        "Mapped Port ID": "ccee03d6-8543-4cbd-b146-757d85eb89db"
+    },
+    {
+        "Keyword": "salt lake city, ut 84104 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "17a677ee-cc28-4e81-a8b9-630a49714626"
+    },
+    {
+        "Keyword": "milwaukee, wi 53226",
+        "Port Type": "address",
+        "Mapped Port ID": "5567797b-a2f0-48fa-8d32-4561be5b0e96"
+    },
+    {
+        "Keyword": "san francisco, ca 94115 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "7774dba4-74f0-4dc2-877a-217dd130beee"
+    },
+    {
+        "Keyword": "snellville, ga 30078",
+        "Port Type": "address",
+        "Mapped Port ID": "dcf6b095-66f1-469d-8f41-ef6c5647015b"
+    },
+    {
+        "Keyword": "havre, mt",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "64b17f20-a8ce-40b2-aeea-48bc0f2b8f7e"
+    },
+    {
+        "Keyword": "virginia beach, va 23456 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "74b6a1e0-62aa-4b18-ac36-e91d9263bf0f"
+    },
+    {
+        "Keyword": "derince, derince, kocaeli, turkiye",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "47b94f59-d418-4527-abbf-fc02b3b68334"
+    },
+    {
+        "Keyword": "castro valley, ca 94546 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "1c62a710-487a-4bcc-8efd-68c72c4b765e"
+    },
+    {
+        "Keyword": "purnia",
+        "Port Type": "address",
+        "Mapped Port ID": "39a0e512-1057-47ff-b5dc-75c6999da8ad"
+    },
+    {
+        "Keyword": "virginia beach, va 23454 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "74b6a1e0-62aa-4b18-ac36-e91d9263bf0f"
+    },
+    {
+        "Keyword": "gordonsville, va 22942 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "64a5cf5a-3a4f-4d76-b804-98bfbe683686"
+    },
+    {
+        "Keyword": "scotts valley, ca 95066 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "a2c7f483-468e-43b2-b1d8-b14c4ee7b3dc"
+    },
+    {
+        "Keyword": "williamsburg, va 23188 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "af0d7277-d340-41da-8db4-f6902a9011ac"
+    },
+    {
+        "Keyword": "san francisco, ca 94118 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "7774dba4-74f0-4dc2-877a-217dd130beee"
+    },
+    {
+        "Keyword": "virginia beach, va 23452 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "74b6a1e0-62aa-4b18-ac36-e91d9263bf0f"
+    },
+    {
+        "Keyword": "san luis obispo, ca 93401 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "7ac88989-b770-422f-be1b-c039a0d2b777"
+    },
+    {
+        "Keyword": "alipur",
+        "Port Type": "address",
+        "Mapped Port ID": "5efbcd1c-6a3d-4a45-92f7-5a55622ce386"
+    },
+    {
+        "Keyword": "virginia beach, va 23462 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "74b6a1e0-62aa-4b18-ac36-e91d9263bf0f"
+    },
+    {
+        "Keyword": "aurangabad branch ixub",
+        "Port Type": "address",
+        "Mapped Port ID": "946b2787-e2c5-4579-9881-d9725a7f0196"
+    },
+    {
+        "Keyword": "moreno valley, ca 92553 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "f330bd6d-7450-47d4-8733-0114ed8c811b"
+    },
+    {
+        "Keyword": "silver spring, md 20901 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "d7ea084d-18ed-4910-a59e-bf4b32822567"
+    },
+    {
+        "Keyword": "river falls, wi 54022",
+        "Port Type": "address",
+        "Mapped Port ID": "3e0532c4-2e10-4ea6-96be-afd8e33e9065"
+    },
+    {
+        "Keyword": "watsonville, ca 95076 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "416c9c55-c607-4e94-897d-680fc5e8b0d5"
+    },
+    {
+        "Keyword": "krkwy kwangyang",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "21b573f8-d7f7-1fd4-c75f-e1dda6cfe1a8"
+    },
+    {
+        "Keyword": "krkwy kwangyang",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "21b573f8-d7f7-1fd4-c75f-e1dda6cfe1a8"
+    },
+    {
+        "Keyword": "sacramento, ca 95827 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "5f4ffd1c-836a-44bf-b740-4441e56bde16"
+    },
+    {
+        "Keyword": "milwaukee, wi 53202",
+        "Port Type": "address",
+        "Mapped Port ID": "5567797b-a2f0-48fa-8d32-4561be5b0e96"
+    },
+    {
+        "Keyword": "bell gardens, ca 90205 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "8dbfeb62-f993-4f71-b9bc-7c9a5b4010e2"
+    },
+    {
+        "Keyword": "newport beach, ca 92658 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b51688ad-3619-4180-b045-ac0d70175e3d"
+    },
+    {
+        "Keyword": "laguna niguel, ca 92607 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "2cc84f03-a830-4eec-a48c-078640008780"
+    },
+    {
+        "Keyword": "bowling green, ky 42104 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "cf92161b-8853-4556-aaa4-172198955a8f"
+    },
+    {
+        "Keyword": "bakersfield, ca 93306 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "254d2790-5519-48d2-92c4-87cdbbd606d6"
+    },
+    {
+        "Keyword": "san francisco, ca 94116 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "7774dba4-74f0-4dc2-877a-217dd130beee"
+    },
+    {
+        "Keyword": "virginia beach, va 23455 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "74b6a1e0-62aa-4b18-ac36-e91d9263bf0f"
+    },
+    {
+        "Keyword": "colchester, vt 05446",
+        "Port Type": "address",
+        "Mapped Port ID": "56a156be-e3f5-47d8-a6cf-43a274e0229d"
+    },
+    {
+        "Keyword": "san francisco, ca 94141 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "7774dba4-74f0-4dc2-877a-217dd130beee"
+    },
+    {
+        "Keyword": "shunde(rongqi),gd,shunde,china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8983e88b-6d31-0660-1221-cf3b335b1d4a"
+    },
+    {
+        "Keyword": "hamburg eurogate terminal hamburg",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3ebde357-59ac-40e5-9697-79e16a4d9e9e"
+    },
+    {
+        "Keyword": "chatsworth, ga 30705",
+        "Port Type": "address",
+        "Mapped Port ID": "fae65236-6c5c-468c-84af-9d61b65bba7f"
+    },
+    {
+        "Keyword": "ros container service.co., ltd, bangkok, thailand",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "0871f1e3-eb67-41e3-a905-193b8f75ab9a"
+    },
+    {
+        "Keyword": "pleasanton, ca 94566 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "68221170-bed3-465d-8d24-d2071102be66"
+    },
+    {
+        "Keyword": "springfield, mo 65807 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "a3936eef-970c-46d1-aea0-f26a230de3fd"
+    },
+    {
+        "Keyword": "sacramento, ca 95816 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "5f4ffd1c-836a-44bf-b740-4441e56bde16"
+    },
+    {
+        "Keyword": "carmichael, ca 95608 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "d2ea5117-c727-4e0a-9ee3-0e0df8e621bc"
+    },
+    {
+        "Keyword": "milwaukee, wi 53216",
+        "Port Type": "address",
+        "Mapped Port ID": "5567797b-a2f0-48fa-8d32-4561be5b0e96"
+    },
+    {
+        "Keyword": "san clemente, ca 92674 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "c278d0a1-bad9-4b08-b21d-ceb06c58c83d"
+    },
+    {
+        "Keyword": "delafield, wi 53018",
+        "Port Type": "address",
+        "Mapped Port ID": "faa7c3f3-b009-479d-aeaa-df5b6e901172"
+    },
+    {
+        "Keyword": "oklahoma city, ok 73110 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "4b5ff6f7-f617-49c9-9209-93c1434f04b4"
+    },
+    {
+        "Keyword": "luxemburg, wi 54217",
+        "Port Type": "address",
+        "Mapped Port ID": "950ef191-8d6b-4ba6-bce2-d84b39624170"
+    },
+    {
+        "Keyword": "youngstown, oh 44505 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "95844101-0bfb-4df6-a312-c9e2c930f676"
+    },
+    {
+        "Keyword": "san francisco, ca 94123 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "7774dba4-74f0-4dc2-877a-217dd130beee"
+    },
+    {
+        "Keyword": "tianjin - china, peoples republic",
+        "Port Type": "address",
+        "Mapped Port ID": "d31802e4-b83f-4ade-b19e-aba87ab5220f"
+    },
+    {
+        "Keyword": "bell gardens, ca 90205 [departed usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "8dbfeb62-f993-4f71-b9bc-7c9a5b4010e2"
+    },
+    {
+        "Keyword": "ho chi minh city, vn",
+        "Port Type": "air_port",
+        "Mapped Port ID": "4d607010-2ce9-4c60-bcb4-a8824a0f6435"
+    },
+    {
+        "Keyword": "purcellville, va 20132 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "e7b98546-9a6b-4b67-b151-af5a9566bfb5"
+    },
+    {
+        "Keyword": "westfield, ma",
+        "Port Type": "address",
+        "Mapped Port ID": "d604d5bc-b28e-4224-96e7-bbe012d3c0b3"
+    },
+    {
+        "Keyword": "tokyo, jp",
+        "Port Type": "address",
+        "Mapped Port ID": "331ca8c7-f72c-491b-afb0-694903b6dd51"
+    },
+    {
+        "Keyword": "portsmouth, nh",
+        "Port Type": "address",
+        "Mapped Port ID": "951481df-6c63-4fbc-a465-b060ecda6a33"
+    },
+    {
+        "Keyword": "porterville, ca 93257 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "c39f846c-49e1-4d5c-af30-dbe5c27284f8"
+    },
+    {
+        "Keyword": "ramsey",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "44045db4-392f-44e2-9b93-8aa181af0381"
+    },
+    {
+        "Keyword": "billerica, ma",
+        "Port Type": "address",
+        "Mapped Port ID": "34595d68-6d84-4297-a0e7-8af70284805c"
+    },
+    {
+        "Keyword": "alpharetta, ga 30009",
+        "Port Type": "address",
+        "Mapped Port ID": "11753113-675f-48dd-b187-dacc8a2c0e88"
+    },
+    {
+        "Keyword": "milwaukee, wi 53225",
+        "Port Type": "address",
+        "Mapped Port ID": "5567797b-a2f0-48fa-8d32-4561be5b0e96"
+    },
+    {
+        "Keyword": "sicklerville, nj 08081 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "7d7d8163-a2bb-46c0-8024-1b0599a37295"
+    },
+    {
+        "Keyword": "long island city, ny 11101 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "cf70f4cc-7028-4df5-ad84-19852ce66c5c"
+    },
+    {
+        "Keyword": "loganville, ga 30052",
+        "Port Type": "address",
+        "Mapped Port ID": "3fcbac9f-d893-41f5-bccd-e4b3a46c1975"
+    },
+    {
+        "Keyword": "fishery, vladivostok fishery",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f996d0ea-7199-be5b-a218-705996e0c9b7"
+    },
+    {
+        "Keyword": "new bedford, ma",
+        "Port Type": "address",
+        "Mapped Port ID": "c23aebb1-33ef-4e73-8635-ccfe1d44a683"
+    },
+    {
+        "Keyword": "ellisville, ms",
+        "Port Type": "address",
+        "Mapped Port ID": "aefc7785-c4ff-4355-b9bc-39e41156da54"
+    },
+    {
+        "Keyword": "milwaukee, wi 53212",
+        "Port Type": "address",
+        "Mapped Port ID": "5567797b-a2f0-48fa-8d32-4561be5b0e96"
+    },
+    {
+        "Keyword": "colonial beach, va 22443 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "a0224afa-1253-4761-b2d0-fc7b0629edba"
+    },
+    {
+        "Keyword": "montpelier, vt 05602",
+        "Port Type": "address",
+        "Mapped Port ID": "40569070-6576-49a5-8467-c6d23f03499d"
+    },
+    {
+        "Keyword": "oklahoma city, ok 73129 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "4b5ff6f7-f617-49c9-9209-93c1434f04b4"
+    },
+    {
+        "Keyword": "oklahoma city, ok 73129 [departed usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "4b5ff6f7-f617-49c9-9209-93c1434f04b4"
+    },
+    {
+        "Keyword": "cliffside park, nj 07010 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "ca7fc0d7-3bae-4db5-ad65-22c550e44988"
+    },
+    {
+        "Keyword": "bakersfield, ca 93304 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "254d2790-5519-48d2-92c4-87cdbbd606d6"
+    },
+    {
+        "Keyword": "harrisonburg, va 22801 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "138d2265-2c02-43c9-befb-4a5c54979f3b"
+    },
+    {
+        "Keyword": "fitchburg, ma",
+        "Port Type": "address",
+        "Mapped Port ID": "6db9cc89-aa12-4f46-8a18-bf70bd26db2f"
+    },
+    {
+        "Keyword": "watertown, wi 53098",
+        "Port Type": "address",
+        "Mapped Port ID": "7651a660-df06-4f59-9e91-d7e02840e2b7"
+    },
+    {
+        "Keyword": "worcester, ma",
+        "Port Type": "address",
+        "Mapped Port ID": "fa01cf15-fc50-447c-bbe5-50d545edd6af"
+    },
+    {
+        "Keyword": "beverly hills, ca 90209 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b3a939d2-6169-49af-a17a-58b23f3ccd83"
+    },
+    {
+        "Keyword": "palm springs, ca 92262 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "ec64f772-0c3a-492a-88da-0728f083200c"
+    },
+    {
+        "Keyword": "palm springs, ca 92262 [departed usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "ec64f772-0c3a-492a-88da-0728f083200c"
+    },
+    {
+        "Keyword": "shatou cn",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "2926029b-efe4-f9d7-aff6-eff394870c87"
+    },
+    {
+        "Keyword": "williamstown, nj 08094 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "fb9cf3ad-d172-4f6e-8f2e-40f6f7cb6a0e"
+    },
+    {
+        "Keyword": "dunstable, ma",
+        "Port Type": "address",
+        "Mapped Port ID": "ef017285-b637-4fab-8807-3f315ecdbc25"
+    },
+    {
+        "Keyword": "richfield, wi 53076",
+        "Port Type": "address",
+        "Mapped Port ID": "413cf9d2-9baa-4647-95d0-301ed25548b6"
+    },
+    {
+        "Keyword": "smithfield, ri us",
+        "Port Type": "address",
+        "Mapped Port ID": "70b0d3c2-842a-4641-9901-9d904533da96"
+    },
+    {
+        "Keyword": "hopkinton, ma",
+        "Port Type": "address",
+        "Mapped Port ID": "a7337428-fd79-4d69-b52c-6b409bf0af31"
+    },
+    {
+        "Keyword": "stoughton, ma",
+        "Port Type": "address",
+        "Mapped Port ID": "fa6fdff3-9299-48fb-9399-d1f4baf52da1"
+    },
+    {
+        "Keyword": "silver creek, ga 30173",
+        "Port Type": "address",
+        "Mapped Port ID": "1958cec1-2bf2-4f5d-8485-161796111003"
+    },
+    {
+        "Keyword": "greensboro, ga 30642",
+        "Port Type": "address",
+        "Mapped Port ID": "2cc1c4a1-48ac-449d-a4cc-2b7e340d3059"
+    },
+    {
+        "Keyword": "bentonville, ar 72712 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "234d7c10-0476-4fe1-9377-f83756dc1f16"
+    },
+    {
+        "Keyword": "milwaukee, wi 53208",
+        "Port Type": "address",
+        "Mapped Port ID": "5567797b-a2f0-48fa-8d32-4561be5b0e96"
+    },
+    {
+        "Keyword": "bawana",
+        "Port Type": "address",
+        "Mapped Port ID": "ac40437c-5530-40de-a491-21c40322bf44"
+    },
+    {
+        "Keyword": "oklahoma city, ok 73162 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "4b5ff6f7-f617-49c9-9209-93c1434f04b4"
+    },
+    {
+        "Keyword": "brockton, ma, us",
+        "Port Type": "address",
+        "Mapped Port ID": "e9bd5307-2929-4bc1-8209-e37c784ab8bb"
+    },
+    {
+        "Keyword": "allendale, mi, 49401",
+        "Port Type": "address",
+        "Mapped Port ID": "7e4005ee-968c-41de-bb33-1612881f997b"
+    },
+    {
+        "Keyword": "gansevoort, ny, 12831",
+        "Port Type": "address",
+        "Mapped Port ID": "f5d3f968-df4a-4d3d-97b8-44674d312a35"
+    },
+    {
+        "Keyword": "santa monica, ca 90401 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "db39675a-8cd1-4997-b233-669128885688"
+    },
+    {
+        "Keyword": "san vittore olona, italy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "557de672-1023-4749-ae7a-16e7fc706ee1"
+    },
+    {
+        "Keyword": "rockville, md, 20853",
+        "Port Type": "address",
+        "Mapped Port ID": "a48952b8-c23f-4325-ad3a-d226a6c03a26"
+    },
+    {
+        "Keyword": "salt lake city, ut 84116 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "17a677ee-cc28-4e81-a8b9-630a49714626"
+    },
+    {
+        "Keyword": "kings langley, hertfordshire, england, united kingdom",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3910f71d-024b-4b00-88d7-010f736da0e0"
+    },
+    {
+        "Keyword": "danville, ca, 94506",
+        "Port Type": "address",
+        "Mapped Port ID": "5ac23f94-72df-4761-bdef-793a8c21f360"
+    },
+    {
+        "Keyword": "lake elsinor, ca",
+        "Port Type": "address",
+        "Mapped Port ID": "13d3ecac-9586-4d4e-a88b-9cc080e61cef"
+    },
+    {
+        "Keyword": "arlington, ma",
+        "Port Type": "address",
+        "Mapped Port ID": "8c505ce8-7b2c-448d-8e56-01ff94c7b2cc"
+    },
+    {
+        "Keyword": "remington, va, 22734",
+        "Port Type": "address",
+        "Mapped Port ID": "4323e860-43b6-49bf-8f3c-010ede750d65"
+    },
+    {
+        "Keyword": "far rockaway, ny, 11691",
+        "Port Type": "address",
+        "Mapped Port ID": "18dd19d7-bf91-4ed1-a89c-9fe1e3d482bc"
+    },
+    {
+        "Keyword": "parkville, md, 21234",
+        "Port Type": "address",
+        "Mapped Port ID": "c17e57b6-0232-4e01-9263-4fb24b70e379"
+    },
+    {
+        "Keyword": "walnut creek, ca 94596 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "cf27e948-fcd3-4ab3-99ac-fd7cfc5963fa"
+    },
+    {
+        "Keyword": "dongfu,haicang,fj,xiamen,china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9fdb1172-1f5b-4546-ac8c-dd07f9ca4a29"
+    },
+    {
+        "Keyword": "izmir (tu)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1dd8e089-419e-b4cf-d23e-8cd8376d35b0"
+    },
+    {
+        "Keyword": "manchester, nh",
+        "Port Type": "address",
+        "Mapped Port ID": "8998f4cc-9340-46c3-b1ee-39eae66de19d"
+    },
+    {
+        "Keyword": "istanbul, ambarli port e. side (tu)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "05957d27-1783-589f-0627-d304f407bf7f"
+    },
+    {
+        "Keyword": "izmit (tu)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "539c1d6f-c68b-4f49-086c-fa8099ea5e13"
+    },
+    {
+        "Keyword": "gebze (tu)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "84981088-43e8-1962-dbbc-58adf4f59b81"
+    },
+    {
+        "Keyword": "rouen (fr)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "2ab8ccfe-8c14-4c6f-a572-0466c8a91772"
+    },
+    {
+        "Keyword": "centerton, ar, 72719",
+        "Port Type": "address",
+        "Mapped Port ID": "e2601c7d-efe8-4e6e-b2d4-f2f1e708e8d6"
+    },
+    {
+        "Keyword": "kalamazoo, mi, 49008",
+        "Port Type": "address",
+        "Mapped Port ID": "ba436059-f213-4263-bdfe-6c8bcc0139fa"
+    },
+    {
+        "Keyword": "new franken, wi 54229",
+        "Port Type": "address",
+        "Mapped Port ID": "329cab5f-97aa-487f-995e-e6576e484f69"
+    },
+    {
+        "Keyword": "west babylon, ny, 11704",
+        "Port Type": "address",
+        "Mapped Port ID": "85db507d-9e1b-4c93-b634-98a07c1a0778"
+    },
+    {
+        "Keyword": "manchester, tn, us",
+        "Port Type": "address",
+        "Mapped Port ID": "4d3476dd-b7ba-4d23-b24b-22e9e76242e7"
+    },
+    {
+        "Keyword": "baltimore, md, 21230",
+        "Port Type": "address",
+        "Mapped Port ID": "38b08723-efa7-4093-b31e-373287ed4322"
+    },
+    {
+        "Keyword": "tahlequah, ok, 74464",
+        "Port Type": "address",
+        "Mapped Port ID": "4c3d3294-39a4-4847-a846-feccf7958a20"
+    },
+    {
+        "Keyword": "garden city, mi, 48135",
+        "Port Type": "address",
+        "Mapped Port ID": "201a262c-f0af-46a9-8ad1-537ae7f90ed1"
+    },
+    {
+        "Keyword": "emeryville, ca 94608 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "380e6580-f5b4-462c-9edb-dcf9304defa9"
+    },
+    {
+        "Keyword": "le havre ()",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "64b17f20-a8ce-40b2-aeea-48bc0f2b8f7e"
+    },
+    {
+        "Keyword": "le havre ()",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "64b17f20-a8ce-40b2-aeea-48bc0f2b8f7e"
+    },
+    {
+        "Keyword": "new rochelle, ny, 10804",
+        "Port Type": "address",
+        "Mapped Port ID": "bd0d6634-6ff8-4f9c-84d5-6775149c1c0f"
+    },
+    {
+        "Keyword": "semarang(tanjung emas, in srg)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c9575f17-1fca-41c3-a6c9-b6866ee6bcc7"
+    },
+    {
+        "Keyword": "nhava sheva(bharat mumbai container terminals)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9670351e-cb9a-4921-a9a5-7f0aa0461c4c"
+    },
+    {
+        "Keyword": "port klang westport(westport container terminal)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "df56235a-28e2-404e-bece-6c8bd65ad640"
+    },
+    {
+        "Keyword": "port klang westport(westport container terminal)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "df56235a-28e2-404e-bece-6c8bd65ad640"
+    },
+    {
+        "Keyword": "nagasaki(nagasaki port container terminal)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "748950bc-8bf3-549f-dcc9-556d9a9fe23b"
+    },
+    {
+        "Keyword": "oklahoma city, ok 73159 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "4b5ff6f7-f617-49c9-9209-93c1434f04b4"
+    },
+    {
+        "Keyword": "torrance, ca, 90504",
+        "Port Type": "address",
+        "Mapped Port ID": "798999cc-277c-43fe-89c5-2d9b4be3052e"
+    },
+    {
+        "Keyword": "springfield, ky 40069 [departed usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "43276ff9-35f9-4181-9f01-d1055fd74edb"
+    },
+    {
+        "Keyword": "lynchburg, va, 24502",
+        "Port Type": "address",
+        "Mapped Port ID": "a0017e18-b68d-4465-aa3e-6bb9bafc49d4"
+    },
+    {
+        "Keyword": "berkeley, ca, 94702",
+        "Port Type": "address",
+        "Mapped Port ID": "a8547bcf-d413-40f3-b860-737c69975fe1"
+    },
+    {
+        "Keyword": "oklahoma city, ok 73179 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "4b5ff6f7-f617-49c9-9209-93c1434f04b4"
+    },
+    {
+        "Keyword": "oklahoma city, ok 73179 [departed usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "4b5ff6f7-f617-49c9-9209-93c1434f04b4"
+    },
+    {
+        "Keyword": "greenleaf, wi 54126",
+        "Port Type": "address",
+        "Mapped Port ID": "4348ff15-f2eb-43c2-a25c-608f2ab94e2a"
+    },
+    {
+        "Keyword": "farmville, va, 23901",
+        "Port Type": "address",
+        "Mapped Port ID": "e12331c5-52ce-439a-9ee1-48a6590ad529"
+    },
+    {
+        "Keyword": "grand ledge, mi, 48837",
+        "Port Type": "address",
+        "Mapped Port ID": "2bdf4de7-b491-4025-8829-41dca3e216b3"
+    },
+    {
+        "Keyword": "mamaroneck, ny, 10543",
+        "Port Type": "address",
+        "Mapped Port ID": "254ddeb8-9200-4cb6-9a07-fc1bd5f28010"
+    },
+    {
+        "Keyword": "glendale, ca, 91202",
+        "Port Type": "address",
+        "Mapped Port ID": "3205343c-226d-4ae3-9930-09ed07596b9d"
+    },
+    {
+        "Keyword": "owingsville, ky 40360 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "20a428c2-64cb-4d14-918f-e5bd077985d3"
+    },
+    {
+        "Keyword": "ypsilanti, mi, 48197",
+        "Port Type": "address",
+        "Mapped Port ID": "e8e978d9-d6f5-400b-81e3-7830875327a3"
+    },
+    {
+        "Keyword": "baltimore, md, 21212",
+        "Port Type": "address",
+        "Mapped Port ID": "38b08723-efa7-4093-b31e-373287ed4322"
+    },
+    {
+        "Keyword": "bunker hill, il, 62014",
+        "Port Type": "address",
+        "Mapped Port ID": "6c8a23a3-bfa1-468a-be3a-667f6f3540a4"
+    },
+    {
+        "Keyword": "costa mesa, ca, 92627",
+        "Port Type": "address",
+        "Mapped Port ID": "bb31674e-adf7-43ef-af6f-1f9107318bdc"
+    },
+    {
+        "Keyword": "port townsend, wa 98368 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "7e3bf9fc-879b-4957-ab9e-654f9c5b28d8"
+    },
+    {
+        "Keyword": "baltimore, md, 21215",
+        "Port Type": "address",
+        "Mapped Port ID": "38b08723-efa7-4093-b31e-373287ed4322"
+    },
+    {
+        "Keyword": "suttons bay, mi, 49682",
+        "Port Type": "address",
+        "Mapped Port ID": "993ee13a-ed05-4226-b186-806c41b4dffc"
+    },
+    {
+        "Keyword": "stockton, ca, 95207",
+        "Port Type": "address",
+        "Mapped Port ID": "35598162-b038-48f5-9e0c-6ff1db489b7e"
+    },
+    {
+        "Keyword": "takoma park, md, 20912",
+        "Port Type": "address",
+        "Mapped Port ID": "53a09b5a-b65e-4425-8b9e-4462d212eb5f"
+    },
+    {
+        "Keyword": "santa clarita, ca 91383 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "7ecd4b00-848c-4178-8446-aa233d4a943b"
+    },
+    {
+        "Keyword": "kalamazoo, mi, 49001",
+        "Port Type": "address",
+        "Mapped Port ID": "ba436059-f213-4263-bdfe-6c8bcc0139fa"
+    },
+    {
+        "Keyword": "seal beach, ca, 90740",
+        "Port Type": "address",
+        "Mapped Port ID": "3007968f-2862-40d5-b88f-9c49cdd0d351"
+    },
+    {
+        "Keyword": "sacramento, ca 95813 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "5f4ffd1c-836a-44bf-b740-4441e56bde16"
+    },
+    {
+        "Keyword": "baldwin park, ca 91706 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "f017486d-ea70-4928-9023-8317f928550a"
+    },
+    {
+        "Keyword": "mersin ()",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7855555a-67d2-d553-2085-9eff815e052e"
+    },
+    {
+        "Keyword": "rock island, il, 61201",
+        "Port Type": "address",
+        "Mapped Port ID": "a986c04b-b6d8-4d42-9c70-0ca08bc8e460"
+    },
+    {
+        "Keyword": "inmun1-mundra ( factory to mundra - by road)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9819c622-6ba0-4e8a-8f03-d8df536e8b60"
+    },
+    {
+        "Keyword": "walled lake, mi, 48390",
+        "Port Type": "address",
+        "Mapped Port ID": "8840156a-a82c-460f-8d40-8bfd60d74236"
+    },
+    {
+        "Keyword": "effingham, il, 62401",
+        "Port Type": "address",
+        "Mapped Port ID": "ec479579-740d-452a-b0d6-213a8ee01f65"
+    },
+    {
+        "Keyword": "stockton, ca, 95206",
+        "Port Type": "address",
+        "Mapped Port ID": "35598162-b038-48f5-9e0c-6ff1db489b7e"
+    },
+    {
+        "Keyword": "long beach, ca, 90813",
+        "Port Type": "address",
+        "Mapped Port ID": "029227a4-8350-4d83-b5ae-c34501827491"
+    },
+    {
+        "Keyword": "san carlos, ca, 94070",
+        "Port Type": "address",
+        "Mapped Port ID": "41b8c9a6-2555-4419-a4b3-b8abfd252843"
+    },
+    {
+        "Keyword": "zhanjiang port int'l container tml, zhanjiang, guangdong, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fd93b323-bd3c-21ad-3563-d93ef2b9fa60"
+    },
+    {
+        "Keyword": "nhava sheva(bharat mumbai container terminals)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "9670351e-cb9a-4921-a9a5-7f0aa0461c4c"
+    },
+    {
+        "Keyword": "lakewood, ca, 90712",
+        "Port Type": "address",
+        "Mapped Port ID": "31f8278b-32e6-4c70-9065-c46a8b5d5b93"
+    },
+    {
+        "Keyword": "baltimore, md, 21206",
+        "Port Type": "address",
+        "Mapped Port ID": "38b08723-efa7-4093-b31e-373287ed4322"
+    },
+    {
+        "Keyword": "glendale, ca, 91208",
+        "Port Type": "address",
+        "Mapped Port ID": "3205343c-226d-4ae3-9930-09ed07596b9d"
+    },
+    {
+        "Keyword": "chevy chase, md, 20815",
+        "Port Type": "address",
+        "Mapped Port ID": "eef34fec-c01c-4530-8559-02647b491eeb"
+    },
+    {
+        "Keyword": "salisbury, md, 21804",
+        "Port Type": "address",
+        "Mapped Port ID": "b4ee456b-ec8f-43b8-88ec-a7bc88734c9a"
+    },
+    {
+        "Keyword": "bakersfield, ca 93311 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "254d2790-5519-48d2-92c4-87cdbbd606d6"
+    },
+    {
+        "Keyword": "port chester, ny, 10573",
+        "Port Type": "address",
+        "Mapped Port ID": "4fcb2b9a-d9f2-44e7-9b61-310e8015c168"
+    },
+    {
+        "Keyword": "menominee, mi, 49858",
+        "Port Type": "address",
+        "Mapped Port ID": "bb10ce1c-e1b9-4c61-b6df-23477d859030"
+    },
+    {
+        "Keyword": "waterford, wi 53185",
+        "Port Type": "address",
+        "Mapped Port ID": "923a6875-62ad-4238-890f-81d0fd211e82"
+    },
+    {
+        "Keyword": "park ridge, il 60068 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "94ff9204-c602-48f0-a25a-62164c22d6e5"
+    },
+    {
+        "Keyword": "baltimore, md, 21217",
+        "Port Type": "address",
+        "Mapped Port ID": "38b08723-efa7-4093-b31e-373287ed4322"
+    },
+    {
+        "Keyword": "round lake, il 60073 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "96f2d532-5681-4e10-9537-948f11d7fb93"
+    },
+    {
+        "Keyword": "stockton, ca, 95209",
+        "Port Type": "address",
+        "Mapped Port ID": "35598162-b038-48f5-9e0c-6ff1db489b7e"
+    },
+    {
+        "Keyword": "new baltimore, mi 48047 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "0d75e9bb-44b6-4e55-9cb9-b74b3b79235e"
+    },
+    {
+        "Keyword": "san francisco, ca 94109 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "7774dba4-74f0-4dc2-877a-217dd130beee"
+    },
+    {
+        "Keyword": "lake zurich, il, 60047",
+        "Port Type": "address",
+        "Mapped Port ID": "c5f33d10-5b31-4872-b055-3b6d71b2e962"
+    },
+    {
+        "Keyword": "socar terminals, aliaga, izmir, turkey",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1dd8e089-419e-b4cf-d23e-8cd8376d35b0"
+    },
+    {
+        "Keyword": "mohegan lake, ny, 10547",
+        "Port Type": "address",
+        "Mapped Port ID": "a6262c88-0393-4d4d-a81a-4ccef3909719"
+    },
+    {
+        "Keyword": "gibson city, il, 60936",
+        "Port Type": "address",
+        "Mapped Port ID": "ace586e8-75a3-4477-a0fe-f48150eed0ff"
+    },
+    {
+        "Keyword": "frederick, md, 21702",
+        "Port Type": "address",
+        "Mapped Port ID": "165dd835-d04d-420e-a5c9-a9b63afd34dd"
+    },
+    {
+        "Keyword": "arlington, va, 22202",
+        "Port Type": "address",
+        "Mapped Port ID": "89124bae-d429-4b7f-8979-b904faf7778d"
+    },
+    {
+        "Keyword": "ypsilanti, mi, 48198",
+        "Port Type": "address",
+        "Mapped Port ID": "e8e978d9-d6f5-400b-81e3-7830875327a3"
+    },
+    {
+        "Keyword": "san miguel petapa, guatemala",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "ce1cda6e-7978-7b3d-7271-a22afa070d7d"
+    },
+    {
+        "Keyword": "forest hill, md, 21050",
+        "Port Type": "address",
+        "Mapped Port ID": "df422934-a432-461b-87da-2841cf277df3"
+    },
+    {
+        "Keyword": "indian head, md, 20640",
+        "Port Type": "address",
+        "Mapped Port ID": "5fa80f29-5946-4544-9270-427f86021ce9"
+    },
+    {
+        "Keyword": "castorland, ny, 13620",
+        "Port Type": "address",
+        "Mapped Port ID": "a4fe37f1-f097-416f-9378-6a7fc1796201"
+    },
+    {
+        "Keyword": "roslyn heights, ny 11577 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "3431a457-7e52-4926-9dc5-929c9e3561a2"
+    },
+    {
+        "Keyword": "roslyn heights, ny 11577 [departed usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "3431a457-7e52-4926-9dc5-929c9e3561a2"
+    },
+    {
+        "Keyword": "east amherst, ny, 14051",
+        "Port Type": "address",
+        "Mapped Port ID": "29bb24a7-4d46-4555-8536-d3026def75b8"
+    },
+    {
+        "Keyword": "spanish fork, ut 84660 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "124e6b15-c494-41f4-a9e7-6b3b3568f787"
+    },
+    {
+        "Keyword": "cheboygan, mi, 49721",
+        "Port Type": "address",
+        "Mapped Port ID": "b09d0fac-106a-4f23-8642-22f6674a1d17"
+    },
+    {
+        "Keyword": "oklahoma city, ok 73170 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "4b5ff6f7-f617-49c9-9209-93c1434f04b4"
+    },
+    {
+        "Keyword": "oklahoma city, ok 73170 [departed usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "4b5ff6f7-f617-49c9-9209-93c1434f04b4"
+    },
+    {
+        "Keyword": "lynchburg, va, 24501",
+        "Port Type": "address",
+        "Mapped Port ID": "a0017e18-b68d-4465-aa3e-6bb9bafc49d4"
+    },
+    {
+        "Keyword": "capitola, ca, 95010",
+        "Port Type": "address",
+        "Mapped Port ID": "e9e7da90-b71b-4842-a453-8a08c49afe93"
+    },
+    {
+        "Keyword": "frederick, md, 21701",
+        "Port Type": "address",
+        "Mapped Port ID": "165dd835-d04d-420e-a5c9-a9b63afd34dd"
+    },
+    {
+        "Keyword": "turbo,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "206f4f32-3806-c981-3ddf-c7cf627ad91c"
+    },
+    {
+        "Keyword": "westfield, wi 53964",
+        "Port Type": "address",
+        "Mapped Port ID": "25d16298-38af-4b3f-a711-2cc08441a8f9"
+    },
+    {
+        "Keyword": "sherman oaks, ca 91403 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "aafedd36-0f1a-4501-adba-28240e7be352"
+    },
+    {
+        "Keyword": "des plaines, il, 60016",
+        "Port Type": "address",
+        "Mapped Port ID": "fd9984b0-ffe8-4ef6-9bf1-8cc0b49ce20f"
+    },
+    {
+        "Keyword": "benton harbor, mi 49022 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "0b225de4-6bf9-4c60-be48-e861fee223ff"
+    },
+    {
+        "Keyword": "stockton, ca, 95204",
+        "Port Type": "address",
+        "Mapped Port ID": "35598162-b038-48f5-9e0c-6ff1db489b7e"
+    },
+    {
+        "Keyword": "bakersfield, ca 93309 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "254d2790-5519-48d2-92c4-87cdbbd606d6"
+    },
+    {
+        "Keyword": "roseville, mi, 48066",
+        "Port Type": "address",
+        "Mapped Port ID": "81535d4c-81be-4977-99ce-08e9fe61989b"
+    },
+    {
+        "Keyword": "baltimore, md, 21202",
+        "Port Type": "address",
+        "Mapped Port ID": "38b08723-efa7-4093-b31e-373287ed4322"
+    },
+    {
+        "Keyword": "arlington, va, 22204",
+        "Port Type": "address",
+        "Mapped Port ID": "89124bae-d429-4b7f-8979-b904faf7778d"
+    },
+    {
+        "Keyword": "berkeley, ca, 94704",
+        "Port Type": "address",
+        "Mapped Port ID": "a8547bcf-d413-40f3-b860-737c69975fe1"
+    },
+    {
+        "Keyword": "progeco bilbao, bilbao, euskadi (basque country), spain",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "78efff27-61b1-48fb-94d4-960bbe7a9c6b"
+    },
+    {
+        "Keyword": "warrenton, va, 20186",
+        "Port Type": "address",
+        "Mapped Port ID": "2ca2e3bd-f4c2-45c3-8b43-5fd692b93863"
+    },
+    {
+        "Keyword": "greenwood, ar, 72936",
+        "Port Type": "address",
+        "Mapped Port ID": "e31af115-a691-418f-b8d8-4059fbedf5e9"
+    },
+    {
+        "Keyword": "champaign, il, 61822",
+        "Port Type": "address",
+        "Mapped Port ID": "a45e500d-3552-4d13-a252-118947a5d74b"
+    },
+    {
+        "Keyword": "coalinga, ca, 93210",
+        "Port Type": "address",
+        "Mapped Port ID": "b69e6739-7e50-459d-baef-0d45e845f8ec"
+    },
+    {
+        "Keyword": "chickasha, ok, 73018",
+        "Port Type": "address",
+        "Mapped Port ID": "46028b9d-d798-4a52-b292-bcf19e95abec"
+    },
+    {
+        "Keyword": "chantilly, va, 20151",
+        "Port Type": "address",
+        "Mapped Port ID": "074fb6a4-b3e1-4950-88a1-a6f5c13f1daf"
+    },
+    {
+        "Keyword": "st paul, mn ()",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c8e7eb8d-25a9-4c45-81b1-2ec36daf4396"
+    },
+    {
+        "Keyword": "streator, il 61364 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "aebb52a6-ba8c-45fd-8585-099819aa904e"
+    },
+    {
+        "Keyword": "scottsdale, az 85259",
+        "Port Type": "address",
+        "Mapped Port ID": "4430d1f7-0934-419e-b775-c9eeb70422af"
+    },
+    {
+        "Keyword": "agoura hills, ca 91301 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "67336bc3-a9fd-4c69-8966-af1eaf1e9f72"
+    },
+    {
+        "Keyword": "talking rock, ga 30175",
+        "Port Type": "address",
+        "Mapped Port ID": "e5adc9bf-d399-42e2-bf4e-64d36a978170"
+    },
+    {
+        "Keyword": "champaign, il, 61820",
+        "Port Type": "address",
+        "Mapped Port ID": "a45e500d-3552-4d13-a252-118947a5d74b"
+    },
+    {
+        "Keyword": "monterey, ca, 93940",
+        "Port Type": "address",
+        "Mapped Port ID": "66aac8c1-aae0-4a44-b2db-85f87a765da4"
+    },
+    {
+        "Keyword": "germantown, tn, us",
+        "Port Type": "address",
+        "Mapped Port ID": "28df03af-eb57-4109-be05-307b9eb5fb6a"
+    },
+    {
+        "Keyword": "kribi,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e2301f4f-3659-4eeb-bd82-c1bb08cdf66b"
+    },
+    {
+        "Keyword": "rochester, mi, 48307",
+        "Port Type": "address",
+        "Mapped Port ID": "8a0ade26-384a-4e7e-9295-2b37a72688c1"
+    },
+    {
+        "Keyword": "dfw airport, tx, united states",
+        "Port Type": "address",
+        "Mapped Port ID": "51e08bfe-15dd-4df9-9711-5c6d5f2e68b0"
+    },
+    {
+        "Keyword": "arlington, va, 22207",
+        "Port Type": "address",
+        "Mapped Port ID": "89124bae-d429-4b7f-8979-b904faf7778d"
+    },
+    {
+        "Keyword": "annapolis, md, 21401",
+        "Port Type": "address",
+        "Mapped Port ID": "d5276d5d-8c6b-4485-83a9-79d0edf98799"
+    },
+    {
+        "Keyword": "express container terminal corp., keelung, , taiwan, china",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "db7abd36-59ba-b9e4-624f-538d5551241a"
+    },
+    {
+        "Keyword": "tokyo,    jp",
+        "Port Type": "address",
+        "Mapped Port ID": "331ca8c7-f72c-491b-afb0-694903b6dd51"
+    },
+    {
+        "Keyword": "woodland park, co 80863 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "11e9b8a6-c2b1-4c44-bd58-17d59141da98"
+    },
+    {
+        "Keyword": "milpitas, ca, 95035",
+        "Port Type": "address",
+        "Mapped Port ID": "b7fa1372-7921-4b01-93dc-2b0c0007d590"
+    },
+    {
+        "Keyword": "south gate, ca, 90280",
+        "Port Type": "address",
+        "Mapped Port ID": "46dc6e6a-f33d-4f60-aece-524744a64cd1"
+    },
+    {
+        "Keyword": "monticello, ga 31064",
+        "Port Type": "address",
+        "Mapped Port ID": "025db5fc-f9c7-4945-8be8-0277dc5eb280"
+    },
+    {
+        "Keyword": "crows landing, ca 95313 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "24d08f3e-2d79-4d86-b839-5ec2da368ebb"
+    },
+    {
+        "Keyword": "stockton, ca, 95205",
+        "Port Type": "address",
+        "Mapped Port ID": "35598162-b038-48f5-9e0c-6ff1db489b7e"
+    },
+    {
+        "Keyword": "larkspur, ca, 94939",
+        "Port Type": "address",
+        "Mapped Port ID": "3d2cdb1a-2d23-4c30-b39e-e596d4e86ffe"
+    },
+    {
+        "Keyword": "imperial, ca, 92251",
+        "Port Type": "address",
+        "Mapped Port ID": "edc5cd3a-8ace-4777-bcc9-bf16a05f34c7"
+    },
+    {
+        "Keyword": "whittier, ca, 90607",
+        "Port Type": "address",
+        "Mapped Port ID": "2fffc14c-6ea1-4018-9adc-bdc0d6d7be74"
+    },
+    {
+        "Keyword": "frederick, md, 21703",
+        "Port Type": "address",
+        "Mapped Port ID": "165dd835-d04d-420e-a5c9-a9b63afd34dd"
+    },
+    {
+        "Keyword": "manitowoc, wi 54220",
+        "Port Type": "address",
+        "Mapped Port ID": "c7e0e6a4-1ca4-4db7-8d87-48529bc8930c"
+    },
+    {
+        "Keyword": "stonewall, ok, 74871",
+        "Port Type": "address",
+        "Mapped Port ID": "638e1f16-eaeb-497e-8964-37cab8c89bab"
+    },
+    {
+        "Keyword": "long beach, ca, 90804",
+        "Port Type": "address",
+        "Mapped Port ID": "029227a4-8350-4d83-b5ae-c34501827491"
+    },
+    {
+        "Keyword": "santa cruz, ca, 95060",
+        "Port Type": "address",
+        "Mapped Port ID": "13639399-c5d7-41af-bb80-088eb83d98b8"
+    },
+    {
+        "Keyword": "moorpark, ca, 93021",
+        "Port Type": "address",
+        "Mapped Port ID": "8e62f523-e5ca-4677-8302-5315b15b3a8c"
+    },
+    {
+        "Keyword": "martinsville, nj 08836 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "1b5e023b-c5c3-414f-bb23-20480fcf6b1e"
+    },
+    {
+        "Keyword": "sacramento-ca",
+        "Port Type": "address",
+        "Mapped Port ID": "5f4ffd1c-836a-44bf-b740-4441e56bde16"
+    },
+    {
+        "Keyword": "jefferson, wi 53549",
+        "Port Type": "address",
+        "Mapped Port ID": "1edc5982-1052-453f-87aa-87fb05313f47"
+    },
+    {
+        "Keyword": "yucca valley, ca 92284 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "1f605e09-f7cc-4f38-8818-e8614e23e9ed"
+    },
+    {
+        "Keyword": "yucca valley, ca 92284 [departed usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "1f605e09-f7cc-4f38-8818-e8614e23e9ed"
+    },
+    {
+        "Keyword": "white stone, va, 22578",
+        "Port Type": "address",
+        "Mapped Port ID": "d4e57abc-79ac-4f52-8430-cae6b17956f3"
+    },
+    {
+        "Keyword": "petaluma, ca, 94954",
+        "Port Type": "address",
+        "Mapped Port ID": "8fc25422-afc0-4f32-be76-cb07e00d372a"
+    },
+    {
+        "Keyword": "winnetka, ca, 91306",
+        "Port Type": "address",
+        "Mapped Port ID": "41ecb637-36da-4758-b126-87e8e19ee38c"
+    },
+    {
+        "Keyword": "painted post, ny, 14870",
+        "Port Type": "address",
+        "Mapped Port ID": "eb2ae713-10a3-427f-95fa-e40ca140f751"
+    },
+    {
+        "Keyword": "riverdale, md, 20737",
+        "Port Type": "address",
+        "Mapped Port ID": "7e4a1e86-c3ea-48ad-b161-482ae5759895"
+    },
+    {
+        "Keyword": "westville, ok, 74965",
+        "Port Type": "address",
+        "Mapped Port ID": "59195b75-bec2-45f3-8fe6-e626c6746337"
+    },
+    {
+        "Keyword": "murrieta, ca, 92563",
+        "Port Type": "address",
+        "Mapped Port ID": "a934d5e6-84ee-4e6b-86c7-0396c3fd677c"
+    },
+    {
+        "Keyword": "charleston, wv",
+        "Port Type": "address",
+        "Mapped Port ID": "b4d64dde-4601-496d-8e34-2ed7bd530ccc"
+    },
+    {
+        "Keyword": "redlands, ca, 92373",
+        "Port Type": "address",
+        "Mapped Port ID": "2957c2d8-8c8e-44d0-b095-125639f2dfb3"
+    },
+    {
+        "Keyword": "genoa it",
+        "Port Type": "air_port",
+        "Mapped Port ID": "5afdee3f-24fb-4c2e-82c5-0c60b4d685e0"
+    },
+    {
+        "Keyword": "johnson city, ny, 13790",
+        "Port Type": "address",
+        "Mapped Port ID": "bd3ac581-24bb-44c5-a6e3-eb5bf32aec73"
+    },
+    {
+        "Keyword": "highland, ca, 92346",
+        "Port Type": "address",
+        "Mapped Port ID": "5f4b8be2-ca91-4cee-8107-e29d0d4dd1cb"
+    },
+    {
+        "Keyword": "blackwell, ok, 74631",
+        "Port Type": "address",
+        "Mapped Port ID": "e0f251cb-7343-4112-afff-991df73b49c1"
+    },
+    {
+        "Keyword": "zhongshan, comoros",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f133f8d4-e40b-4066-afbc-12a0995dd9e2"
+    },
+    {
+        "Keyword": "mcalester, ok, 74501",
+        "Port Type": "address",
+        "Mapped Port ID": "ddb7e5b5-d0c7-4848-8f3b-b9f15fb515f7"
+    },
+    {
+        "Keyword": "richmond, ca, 94804",
+        "Port Type": "address",
+        "Mapped Port ID": "3ec6fa6e-2624-4bec-be92-714111fd6683"
+    },
+    {
+        "Keyword": "jonesboro, ar, 72404",
+        "Port Type": "address",
+        "Mapped Port ID": "e5a90925-7efe-4ed5-84c2-027a0b84e7fc"
+    },
+    {
+        "Keyword": "santa rosa, ca, 95407",
+        "Port Type": "address",
+        "Mapped Port ID": "1f7cc296-1cb4-4232-a385-9180670e749d"
+    },
+    {
+        "Keyword": "campbell, ca, 95008",
+        "Port Type": "address",
+        "Mapped Port ID": "a0765a98-1810-4797-a6fc-0ed6212d2b96"
+    },
+    {
+        "Keyword": "2020-04-17 20:00, lianyungang",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c3360e50-09c4-bf46-c7cb-592858033d22"
+    },
+    {
+        "Keyword": "costa mesa, ca, 92626",
+        "Port Type": "address",
+        "Mapped Port ID": "bb31674e-adf7-43ef-af6f-1f9107318bdc"
+    },
+    {
+        "Keyword": "oroville, ca, 95966",
+        "Port Type": "address",
+        "Mapped Port ID": "d283d2ef-6b35-4ad2-b01f-21ae688d511e"
+    },
+    {
+        "Keyword": "greenbelt, md, 20770",
+        "Port Type": "address",
+        "Mapped Port ID": "f9bb867b-3e4f-40ab-8f56-26eea18b33ca"
+    },
+    {
+        "Keyword": "manorville, ny, 11949",
+        "Port Type": "address",
+        "Mapped Port ID": "4146b868-3efb-4a70-9c98-57885845c858"
+    },
+    {
+        "Keyword": "baltimore, md, 21210",
+        "Port Type": "address",
+        "Mapped Port ID": "38b08723-efa7-4093-b31e-373287ed4322"
+    },
+    {
+        "Keyword": "courtland, va, 23837",
+        "Port Type": "address",
+        "Mapped Port ID": "f3f022b9-802d-47f2-aa9d-97a3f64b62bf"
+    },
+    {
+        "Keyword": "woodstock, il, 60098",
+        "Port Type": "address",
+        "Mapped Port ID": "daedcc26-947f-4186-bf6c-389bf4655339"
+    },
+    {
+        "Keyword": "ain sokhna",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "10d6c7ef-2a79-c07b-f412-abd8c088a3cd"
+    },
+    {
+        "Keyword": "lakeside, ca, 92040",
+        "Port Type": "address",
+        "Mapped Port ID": "580343e5-acbf-40f9-97f2-949d05d1b15d"
+    },
+    {
+        "Keyword": "little rock, ar, 72204",
+        "Port Type": "address",
+        "Mapped Port ID": "2d09deff-44a6-44a6-be37-76abf18551b1"
+    },
+    {
+        "Keyword": "hawthorne, wi 54842",
+        "Port Type": "address",
+        "Mapped Port ID": "832887af-57dc-4a96-a686-60a7bed10f8a"
+    },
+    {
+        "Keyword": "algonquin, il, 60102",
+        "Port Type": "address",
+        "Mapped Port ID": "1746d718-71db-4a24-a97d-d42ab165ef91"
+    },
+    {
+        "Keyword": "ronkonkoma, ny, 11779",
+        "Port Type": "address",
+        "Mapped Port ID": "56524a8b-b625-4a4d-85b2-8bd3449260ab"
+    },
+    {
+        "Keyword": "woodstock, md, 21163",
+        "Port Type": "address",
+        "Mapped Port ID": "6e1df59a-0483-4fc0-9b58-8b31b38afaed"
+    },
+    {
+        "Keyword": "long beach, ca, 90808",
+        "Port Type": "address",
+        "Mapped Port ID": "029227a4-8350-4d83-b5ae-c34501827491"
+    },
+    {
+        "Keyword": "pine grove, ca, 95665",
+        "Port Type": "address",
+        "Mapped Port ID": "d620bf72-381b-4cb4-9b75-3a27994b19fb"
+    },
+    {
+        "Keyword": "baltimore, md, 21205",
+        "Port Type": "address",
+        "Mapped Port ID": "38b08723-efa7-4093-b31e-373287ed4322"
+    },
+    {
+        "Keyword": "washington, ga 30673",
+        "Port Type": "address",
+        "Mapped Port ID": "88660733-4e22-486f-9791-d07f26f1de49"
+    },
+    {
+        "Keyword": "amityville, ny, 11701",
+        "Port Type": "address",
+        "Mapped Port ID": "cb552f6c-be0d-4f5e-a342-df2b78b5a933"
+    },
+    {
+        "Keyword": "milwaukee, wi 53213",
+        "Port Type": "address",
+        "Mapped Port ID": "5567797b-a2f0-48fa-8d32-4561be5b0e96"
+    },
+    {
+        "Keyword": "georgetown gy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "234178dc-bfe7-4927-bb41-245d09f35d4e"
+    },
+    {
+        "Keyword": "sines pt",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fb3ebd05-5689-86e7-27b2-b4312a4db55b"
+    },
+    {
+        "Keyword": "traverse city, mi 49684 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "ce5ca976-157d-4e39-9218-debfeaed2099"
+    },
+    {
+        "Keyword": "torrance, ca, 90505",
+        "Port Type": "address",
+        "Mapped Port ID": "798999cc-277c-43fe-89c5-2d9b4be3052e"
+    },
+    {
+        "Keyword": "hillsdale, mi, 49242",
+        "Port Type": "address",
+        "Mapped Port ID": "4693e870-0324-4387-b811-b19febd1584c"
+    },
+    {
+        "Keyword": "fillmore, ca, 93015",
+        "Port Type": "address",
+        "Mapped Port ID": "ad25c3eb-4e61-478c-8ae9-6a458f93cae7"
+    },
+    {
+        "Keyword": "lexington, mi, 48450",
+        "Port Type": "address",
+        "Mapped Port ID": "e895b01d-ffa8-489f-9bda-6a3efe3b5dd3"
+    },
+    {
+        "Keyword": "anderson, ca, 96007",
+        "Port Type": "address",
+        "Mapped Port ID": "298091d7-52b4-40ac-a5f6-caeecdd76711"
+    },
+    {
+        "Keyword": "alhambra, ca, 91801",
+        "Port Type": "address",
+        "Mapped Port ID": "906e4588-4df0-47dc-9d2d-bf96fb6e4b15"
+    },
+    {
+        "Keyword": "king george, va, 22485",
+        "Port Type": "address",
+        "Mapped Port ID": "07c396e0-7fc9-41d7-a500-01a8b3942e36"
+    },
+    {
+        "Keyword": "grayville, il, 62844",
+        "Port Type": "address",
+        "Mapped Port ID": "741560bd-689a-4332-a331-3ad4778717e3"
+    },
+    {
+        "Keyword": "beijing - china, peoples republic",
+        "Port Type": "address",
+        "Mapped Port ID": "33d3f169-97cc-4a5f-bd8c-fff032ae841f"
+    },
+    {
+        "Keyword": "claremore, ok, 74017",
+        "Port Type": "address",
+        "Mapped Port ID": "de88ab32-9474-4087-a1fe-16c6b07bbe41"
+    },
+    {
+        "Keyword": "lynchburg, va, 24504",
+        "Port Type": "address",
+        "Mapped Port ID": "a0017e18-b68d-4465-aa3e-6bb9bafc49d4"
+    },
+    {
+        "Keyword": "traverse city, mi 49686 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "ce5ca976-157d-4e39-9218-debfeaed2099"
+    },
+    {
+        "Keyword": "san ysidro, ca, 92173",
+        "Port Type": "address",
+        "Mapped Port ID": "1f767aa0-a4d2-42e0-bbfe-0f4a3d52dd96"
+    },
+    {
+        "Keyword": "jonesboro, ar, 72401",
+        "Port Type": "address",
+        "Mapped Port ID": "e5a90925-7efe-4ed5-84c2-027a0b84e7fc"
+    },
+    {
+        "Keyword": "castellarano, reggio-emilia, italy",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "32428c80-3bd5-42ed-b43f-150b1d67ee02"
+    },
+    {
+        "Keyword": "santa rosa, ca, 95404",
+        "Port Type": "address",
+        "Mapped Port ID": "1f7cc296-1cb4-4232-a385-9180670e749d"
+    },
+    {
+        "Keyword": "grass valley, ca 95945 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "b364c7f8-9cd1-40c0-8549-a28d8ae01dd7"
+    },
+    {
+        "Keyword": "papillion, ne, 68046",
+        "Port Type": "address",
+        "Mapped Port ID": "f103bb63-60cf-4e1d-bff5-85d9d0b5037d"
+    },
+    {
+        "Keyword": "stockton, ca, 95219",
+        "Port Type": "address",
+        "Mapped Port ID": "35598162-b038-48f5-9e0c-6ff1db489b7e"
+    },
+    {
+        "Keyword": "laguna hills, ca 92654 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "aadca2b8-b3c7-487a-b142-128850b6c947"
+    },
+    {
+        "Keyword": "homerville, ga 31634",
+        "Port Type": "address",
+        "Mapped Port ID": "0799f617-2c0e-440b-b452-ca68efeeca55"
+    },
+    {
+        "Keyword": "petaluma, ca, 94952",
+        "Port Type": "address",
+        "Mapped Port ID": "8fc25422-afc0-4f32-be76-cb07e00d372a"
+    },
+    {
+        "Keyword": "sacramento, ca 95823 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "5f4ffd1c-836a-44bf-b740-4441e56bde16"
+    },
+    {
+        "Keyword": "baltimore, md, 21201",
+        "Port Type": "address",
+        "Mapped Port ID": "38b08723-efa7-4093-b31e-373287ed4322"
+    },
+    {
+        "Keyword": "northfield, vt 05663",
+        "Port Type": "address",
+        "Mapped Port ID": "e9e63015-38ea-4f99-937f-6aba019d427e"
+    },
+    {
+        "Keyword": "orchard park, ny, 14127",
+        "Port Type": "address",
+        "Mapped Port ID": "534efedb-5f7e-49a2-b7c5-7f1527e40353"
+    },
+    {
+        "Keyword": "whittier, ca, 90603",
+        "Port Type": "address",
+        "Mapped Port ID": "2fffc14c-6ea1-4018-9adc-bdc0d6d7be74"
+    },
+    {
+        "Keyword": "wyandotte, mi, 48192",
+        "Port Type": "address",
+        "Mapped Port ID": "89e0d9f2-5cf0-4f8b-ab56-bb74cdb5fc88"
+    },
+    {
+        "Keyword": "new rochelle, ny, 10801",
+        "Port Type": "address",
+        "Mapped Port ID": "bd0d6634-6ff8-4f9c-84d5-6775149c1c0f"
+    },
+    {
+        "Keyword": "greating fortune (malaysia), port klang, selangor, malaysia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c78f16f5-b8e0-a2de-72dc-85d403b0d9f7"
+    },
+    {
+        "Keyword": "oklahoma city, ok 73118 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "4b5ff6f7-f617-49c9-9209-93c1434f04b4"
+    },
+    {
+        "Keyword": "oklahoma city, ok 73118 [departed usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "4b5ff6f7-f617-49c9-9209-93c1434f04b4"
+    },
+    {
+        "Keyword": "oklahoma city, ok 73114 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "4b5ff6f7-f617-49c9-9209-93c1434f04b4"
+    },
+    {
+        "Keyword": "braidwood, il, 60408",
+        "Port Type": "address",
+        "Mapped Port ID": "244bf928-f2fa-4e88-9816-5d097bcd0848"
+    },
+    {
+        "Keyword": "annapolis, md, 21409",
+        "Port Type": "address",
+        "Mapped Port ID": "d5276d5d-8c6b-4485-83a9-79d0edf98799"
+    },
+    {
+        "Keyword": "calexico, ca, 92231",
+        "Port Type": "address",
+        "Mapped Port ID": "f8a0c476-78ab-43dc-ba2c-5e02a46666e8"
+    },
+    {
+        "Keyword": "victorville, ca 92395 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b5a39557-1c4c-4454-8ae4-0efbf36540a7"
+    },
+    {
+        "Keyword": "wilseyville, ca 95257 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "e0a47426-eb8f-44a5-bfdf-6337e46b71d5"
+    },
+    {
+        "Keyword": "sterling, il 61081 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "d2574a66-de04-4909-8aa5-5a1eef5ecde6"
+    },
+    {
+        "Keyword": "wildomar, ca, 92595",
+        "Port Type": "address",
+        "Mapped Port ID": "a1f3696a-55fb-4d4a-b9f2-d01d8082be00"
+    },
+    {
+        "Keyword": "crescent city, ca 95531 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "84963117-ea2f-4ac3-bdbe-41a467940b35"
+    },
+    {
+        "Keyword": "carlsbad, ca, 92010",
+        "Port Type": "address",
+        "Mapped Port ID": "fde186f8-504f-4566-a4ea-bfcfefd12c1b"
+    },
+    {
+        "Keyword": "hercules, ca, 94547",
+        "Port Type": "address",
+        "Mapped Port ID": "ea66fbbd-04c8-4f8f-ae72-5193b130820f"
+    },
+    {
+        "Keyword": "kalamazoo, mi, 49048",
+        "Port Type": "address",
+        "Mapped Port ID": "ba436059-f213-4263-bdfe-6c8bcc0139fa"
+    },
+    {
+        "Keyword": "ellenville, ny, 12428",
+        "Port Type": "address",
+        "Mapped Port ID": "7e6f0d3b-60ff-41a9-b6dc-6cd98fb94c7d"
+    },
+    {
+        "Keyword": "paradise, ca, 95969",
+        "Port Type": "address",
+        "Mapped Port ID": "0af7d26b-711f-485b-a196-037f04c49172"
+    },
+    {
+        "Keyword": "rockville, md, 20851",
+        "Port Type": "address",
+        "Mapped Port ID": "a48952b8-c23f-4325-ad3a-d226a6c03a26"
+    },
+    {
+        "Keyword": "smithville, ga 31787",
+        "Port Type": "address",
+        "Mapped Port ID": "34b01fb4-24ae-4244-9ab5-fe8bedef8fd6"
+    },
+    {
+        "Keyword": "norris city, il, 62869",
+        "Port Type": "address",
+        "Mapped Port ID": "92d41423-efe2-4f80-8f3f-0fa6421f1af8"
+    },
+    {
+        "Keyword": "independence, ks 67301 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "e70d4c01-20a0-4af2-95ff-19433e905b09"
+    },
+    {
+        "Keyword": "coldwater, mi, 49036",
+        "Port Type": "address",
+        "Mapped Port ID": "dfea93bb-8442-49ab-933e-a256a06c38cd"
+    },
+    {
+        "Keyword": "cedarburg, wi 53012",
+        "Port Type": "address",
+        "Mapped Port ID": "9b12d5e7-99bf-4a1c-977a-9dbd08d58c97"
+    },
+    {
+        "Keyword": "carlsbad, ca, 92009",
+        "Port Type": "address",
+        "Mapped Port ID": "fde186f8-504f-4566-a4ea-bfcfefd12c1b"
+    },
+    {
+        "Keyword": "monrovia, ca, 91016",
+        "Port Type": "address",
+        "Mapped Port ID": "fa38ef77-56de-46f1-ba18-27f79005d731"
+    },
+    {
+        "Keyword": "rensselaer, ny, 12144",
+        "Port Type": "address",
+        "Mapped Port ID": "559e2de3-778d-4090-ad6b-03ce03190aa7"
+    },
+    {
+        "Keyword": "mercer island, wa 98040 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "f3f33531-62cb-4779-a6e1-ce829977562a"
+    },
+    {
+        "Keyword": "chattogram port banglades",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5cee9607-704c-43cb-8106-eb5cdf63ac16"
+    },
+    {
+        "Keyword": "long beach, ca, 90815",
+        "Port Type": "address",
+        "Mapped Port ID": "029227a4-8350-4d83-b5ae-c34501827491"
+    },
+    {
+        "Keyword": "sugar grove, va, 24375",
+        "Port Type": "address",
+        "Mapped Port ID": "45ae9396-4a58-48c3-ab58-bc4c820eb819"
+    },
+    {
+        "Keyword": "glendora, ca, 91740",
+        "Port Type": "address",
+        "Mapped Port ID": "1541c382-4c26-4ad4-b5c1-7fb8e3ed1be0"
+    },
+    {
+        "Keyword": "long beach, ca, 90805",
+        "Port Type": "address",
+        "Mapped Port ID": "029227a4-8350-4d83-b5ae-c34501827491"
+    },
+    {
+        "Keyword": "annapolis, md, 21412",
+        "Port Type": "address",
+        "Mapped Port ID": "d5276d5d-8c6b-4485-83a9-79d0edf98799"
+    },
+    {
+        "Keyword": "annandale, va, 22003",
+        "Port Type": "address",
+        "Mapped Port ID": "2fdf2393-04a9-4b04-9e27-4211db35fba2"
+    },
+    {
+        "Keyword": "burlingame, ca 94010 [departed usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "b0edd11b-ec6c-4e5c-ba6f-c5042b6eee8c"
+    },
+    {
+        "Keyword": "horseheads, ny, 14845",
+        "Port Type": "address",
+        "Mapped Port ID": "2b0da857-8bf1-4b0d-9748-049fd2847cd2"
+    },
+    {
+        "Keyword": "cleveland, wi 53015",
+        "Port Type": "address",
+        "Mapped Port ID": "963976b8-28d2-4872-938c-47b229b45aca"
+    },
+    {
+        "Keyword": "cincinnati, oh 45241 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "17a07f63-fea7-4269-842f-965f6eb8cf5f"
+    },
+    {
+        "Keyword": "bridgeport, wv",
+        "Port Type": "address",
+        "Mapped Port ID": "1f0d88b9-00ca-4947-972c-cd754e6cae5e"
+    },
+    {
+        "Keyword": "fort stewart, ga 31314",
+        "Port Type": "address",
+        "Mapped Port ID": "8eab25a3-d17d-47e3-aed8-c19d598dc82a"
+    },
+    {
+        "Keyword": "clarksburg, wv",
+        "Port Type": "address",
+        "Mapped Port ID": "c2404b32-980b-40a8-bf9a-7e9c21545497"
+    },
+    {
+        "Keyword": "westminster, md 21157 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "70df2441-bbab-477d-8bcb-388109b4708b"
+    },
+    {
+        "Keyword": "binghamton, ny, 13904",
+        "Port Type": "address",
+        "Mapped Port ID": "391c682c-8dc6-4b5f-9e55-659e29662f33"
+    },
+    {
+        "Keyword": "ellsworth, mi, 49729",
+        "Port Type": "address",
+        "Mapped Port ID": "1e666ec8-4aa0-4453-81e2-ab7f42a9541b"
+    },
+    {
+        "Keyword": "united container depot, durban, kwazulu-natal, south africa",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "f106ea67-b12c-c8c0-ef66-91ee024f1390"
+    },
+    {
+        "Keyword": "cartersville, va 23027 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "c8457dcf-52ed-4019-9696-2270163a84d5"
+    },
+    {
+        "Keyword": "lexington, va, 24450",
+        "Port Type": "address",
+        "Mapped Port ID": "be1b0035-caa3-4f01-8b52-9e39054723b4"
+    },
+    {
+        "Keyword": "garberville, ca 95542 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "128203f0-e9f0-4ef7-af31-6889b4811717"
+    },
+    {
+        "Keyword": "independence, ks 67301 [departed usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "e70d4c01-20a0-4af2-95ff-19433e905b09"
+    },
+    {
+        "Keyword": "stockton, ca, 95210",
+        "Port Type": "address",
+        "Mapped Port ID": "35598162-b038-48f5-9e0c-6ff1db489b7e"
+    },
+    {
+        "Keyword": "baltimore, md, 21213",
+        "Port Type": "address",
+        "Mapped Port ID": "38b08723-efa7-4093-b31e-373287ed4322"
+    },
+    {
+        "Keyword": "kenbridge, va, 23944",
+        "Port Type": "address",
+        "Mapped Port ID": "1f00e660-9956-4237-92c4-68d744414765"
+    },
+    {
+        "Keyword": "glendale, ca, 91206",
+        "Port Type": "address",
+        "Mapped Port ID": "3205343c-226d-4ae3-9930-09ed07596b9d"
+    },
+    {
+        "Keyword": "galali",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0b75fc95-877a-476e-a0af-f9320b1c72fc"
+    },
+    {
+        "Keyword": "gambrills, md, 21054",
+        "Port Type": "address",
+        "Mapped Port ID": "73ae0d77-b569-4c17-9166-9fe80dd65278"
+    },
+    {
+        "Keyword": "east moline, il, 61244",
+        "Port Type": "address",
+        "Mapped Port ID": "272bff53-68ad-462d-b2c8-cfc86f13d431"
+    },
+    {
+        "Keyword": "arlington, va, 22206",
+        "Port Type": "address",
+        "Mapped Port ID": "89124bae-d429-4b7f-8979-b904faf7778d"
+    },
+    {
+        "Keyword": "rockville, md, 20850",
+        "Port Type": "address",
+        "Mapped Port ID": "a48952b8-c23f-4325-ad3a-d226a6c03a26"
+    },
+    {
+        "Keyword": "watervliet, ny, 12189",
+        "Port Type": "address",
+        "Mapped Port ID": "d85f2b34-0f16-47ce-b73e-9db804dab58b"
+    },
+    {
+        "Keyword": "glendale, ca, 91204",
+        "Port Type": "address",
+        "Mapped Port ID": "3205343c-226d-4ae3-9930-09ed07596b9d"
+    },
+    {
+        "Keyword": "rockville, md, 20852",
+        "Port Type": "address",
+        "Mapped Port ID": "a48952b8-c23f-4325-ad3a-d226a6c03a26"
+    },
+    {
+        "Keyword": "globe container terminal, dammam, ash sharqiyah, saudi arabia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "e6b38f93-a99e-00a3-791f-6af095d212f7"
+    },
+    {
+        "Keyword": "sehnde",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5c1d5e69-6dd0-48b0-99ce-9151cfaf7ad2"
+    },
+    {
+        "Keyword": "samsun.",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "95fdb0ef-16d7-1a95-af13-4e287824ca90"
+    },
+    {
+        "Keyword": "hicksville, ny, 11801",
+        "Port Type": "address",
+        "Mapped Port ID": "addcc79f-987a-451d-9188-d79c8048522a"
+    },
+    {
+        "Keyword": "brazil-brasilia",
+        "Port Type": "address",
+        "Mapped Port ID": "06b5c60a-9a09-4e2b-8573-b46c26ab6a2d"
+    },
+    {
+        "Keyword": "buena park, ca, 90621",
+        "Port Type": "address",
+        "Mapped Port ID": "2752dd7e-8105-4341-ae24-7486f026d7cd"
+    },
+    {
+        "Keyword": "arlington, va, 22203",
+        "Port Type": "address",
+        "Mapped Port ID": "89124bae-d429-4b7f-8979-b904faf7778d"
+    },
+    {
+        "Keyword": "hampton bays, ny, 11946",
+        "Port Type": "address",
+        "Mapped Port ID": "c96cc379-d0bb-4000-9a87-23417a525bff"
+    },
+    {
+        "Keyword": "trieste - italy",
+        "Port Type": "address",
+        "Mapped Port ID": "329e0941-d397-4629-bf36-bae49414b289"
+    },
+    {
+        "Keyword": "williamson, ny, 14589",
+        "Port Type": "address",
+        "Mapped Port ID": "3475ee06-0284-4609-a88f-620adaef224f"
+    },
+    {
+        "Keyword": "port reunion relpt",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3ba841de-c446-c373-1b9f-0b501f74408c"
+    },
+    {
+        "Keyword": "commerce city, co 80022 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "bf795651-2530-45eb-aecd-e75999f09af9"
+    },
+    {
+        "Keyword": "baltimore, md, 21224",
+        "Port Type": "address",
+        "Mapped Port ID": "38b08723-efa7-4093-b31e-373287ed4322"
+    },
+    {
+        "Keyword": "palmdale, ca, 93551",
+        "Port Type": "address",
+        "Mapped Port ID": "74488874-1879-4143-af38-0be0d0a7d5c7"
+    },
+    {
+        "Keyword": "silver spring, md 20905 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "d7ea084d-18ed-4910-a59e-bf4b32822567"
+    },
+    {
+        "Keyword": "silver spring, md 20905 [departed usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "d7ea084d-18ed-4910-a59e-bf4b32822567"
+    },
+    {
+        "Keyword": "port of guangzhou hangpu",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "007cdebd-9a27-9908-4033-bffb25cf5526"
+    },
+    {
+        "Keyword": "alsokhna",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "10d6c7ef-2a79-c07b-f412-abd8c088a3cd"
+    },
+    {
+        "Keyword": "baltimore, md, 21216",
+        "Port Type": "address",
+        "Mapped Port ID": "38b08723-efa7-4093-b31e-373287ed4322"
+    },
+    {
+        "Keyword": "stoughton, wi 53589",
+        "Port Type": "address",
+        "Mapped Port ID": "c7e5e787-db3a-4b2b-9863-4e6b02033d7a"
+    },
+    {
+        "Keyword": "charlotte, mi, 48813",
+        "Port Type": "address",
+        "Mapped Port ID": "e1be5561-4acb-46ff-9ecc-75e6c6cd7680"
+    },
+    {
+        "Keyword": "kobe, france",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7d4904dd-83cf-098a-60e6-5960cb2e67a6"
+    },
+    {
+        "Keyword": "nashville, mi, 49073",
+        "Port Type": "address",
+        "Mapped Port ID": "7addd060-0116-4501-9eb7-87dd2977d5f0"
+    },
+    {
+        "Keyword": "palmdale, ca, 93550",
+        "Port Type": "address",
+        "Mapped Port ID": "74488874-1879-4143-af38-0be0d0a7d5c7"
+    },
+    {
+        "Keyword": "toamasina mgtmm",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "195898f2-acfd-ed7a-1a09-45427219eb28"
+    },
+    {
+        "Keyword": "torrance, ca, 90501",
+        "Port Type": "address",
+        "Mapped Port ID": "798999cc-277c-43fe-89c5-2d9b4be3052e"
+    },
+    {
+        "Keyword": "livingston, mt 59047",
+        "Port Type": "address",
+        "Mapped Port ID": "002a456e-d4e3-4307-8350-0931d49411d2"
+    },
+    {
+        "Keyword": "pasadena, ca, 91104",
+        "Port Type": "address",
+        "Mapped Port ID": "8a7499de-d43f-4f66-b815-7c2e030ea01b"
+    },
+    {
+        "Keyword": "ballymena, county antrim, united kingdom",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "a6d9345d-55bd-4dcb-88cb-e11bec9e05aa"
+    },
+    {
+        "Keyword": "ballymena, county antrim, united kingdom",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a6d9345d-55bd-4dcb-88cb-e11bec9e05aa"
+    },
+    {
+        "Keyword": "cincinnati, oh 45240 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "17a07f63-fea7-4269-842f-965f6eb8cf5f"
+    },
+    {
+        "Keyword": "tokyo busan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "e5737ff3-23fb-5ca1-5092-832aae16bf9b"
+    },
+    {
+        "Keyword": "oklahoma city, ok 73159 [departed usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "4b5ff6f7-f617-49c9-9209-93c1434f04b4"
+    },
+    {
+        "Keyword": "tallapoosa, ga 30176",
+        "Port Type": "address",
+        "Mapped Port ID": "d6cdb761-488f-4622-844c-6382f24b32d4"
+    },
+    {
+        "Keyword": "cincinnati, oh 45204 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "17a07f63-fea7-4269-842f-965f6eb8cf5f"
+    },
+    {
+        "Keyword": "pyeongtaek dongbang i-port",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8e63e07b-a0e2-4ec9-abef-290539349b64"
+    },
+    {
+        "Keyword": "ishpeming, mi, 49849",
+        "Port Type": "address",
+        "Mapped Port ID": "ff27f184-be2f-4d54-81dd-5595e38037f0"
+    },
+    {
+        "Keyword": "grand haven, mi, 49417",
+        "Port Type": "address",
+        "Mapped Port ID": "9c088581-ccbc-4557-b9c5-f8b329bf7b18"
+    },
+    {
+        "Keyword": "san rafael, ca, 94903",
+        "Port Type": "address",
+        "Mapped Port ID": "f540d783-6785-4424-9288-1856b2c5cc12"
+    },
+    {
+        "Keyword": "alhambra, ca, 91803",
+        "Port Type": "address",
+        "Mapped Port ID": "906e4588-4df0-47dc-9d2d-bf96fb6e4b15"
+    },
+    {
+        "Keyword": "whittier, ca, 90605",
+        "Port Type": "address",
+        "Mapped Port ID": "2fffc14c-6ea1-4018-9adc-bdc0d6d7be74"
+    },
+    {
+        "Keyword": "salisbury, md, 21801",
+        "Port Type": "address",
+        "Mapped Port ID": "b4ee456b-ec8f-43b8-88ec-a7bc88734c9a"
+    },
+    {
+        "Keyword": "gonzales, ca, 93926",
+        "Port Type": "address",
+        "Mapped Port ID": "a31ee44a-2eb6-4bb5-a9ba-b3a351c6758a"
+    },
+    {
+        "Keyword": "praia,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "60dbf32c-a29e-4eb7-9936-83bc14cc16b1"
+    },
+    {
+        "Keyword": "sun valley, ca, 91352",
+        "Port Type": "address",
+        "Mapped Port ID": "4d14fef6-63c4-49f7-9b52-832937961126"
+    },
+    {
+        "Keyword": "union city, ca, 94587",
+        "Port Type": "address",
+        "Mapped Port ID": "aec3def0-a3fe-4c63-9106-ed4b587935a1"
+    },
+    {
+        "Keyword": "white plains, ny, 10601",
+        "Port Type": "address",
+        "Mapped Port ID": "c3dccc89-4ca7-45bc-8bc5-af82d3a6e4cf"
+    },
+    {
+        "Keyword": "mahdia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a7bde462-5ad8-4a4e-b798-f12771a37555"
+    },
+    {
+        "Keyword": "berkeley, ca, 94703",
+        "Port Type": "address",
+        "Mapped Port ID": "a8547bcf-d413-40f3-b860-737c69975fe1"
+    },
+    {
+        "Keyword": "huntsville, united states",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "c4158c5e-29f6-4bc4-98e0-28105bd6191b"
+    },
+    {
+        "Keyword": "varna,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "2fd4c9e5-49d7-775b-bc0f-a19e55c832c8"
+    },
+    {
+        "Keyword": "yorkville, il, 60560",
+        "Port Type": "address",
+        "Mapped Port ID": "aa5c90fd-0e5a-4bd8-84fe-225484f7acdc"
+    },
+    {
+        "Keyword": "hesperia, ca, 92344",
+        "Port Type": "address",
+        "Mapped Port ID": "c3669bca-6d0d-4446-9d52-a9d8c7424b9d"
+    },
+    {
+        "Keyword": "el dorado hills, ca 95762 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "44fb155b-c5c1-4082-b686-4bfe5768bfe1"
+    },
+    {
+        "Keyword": "soekarno-hatta intl",
+        "Port Type": "air_port",
+        "Mapped Port ID": "f6c1bd9b-83b3-1cb0-ea5e-550902a3f0b6"
+    },
+    {
+        "Keyword": "des plaines, il, 60018",
+        "Port Type": "address",
+        "Mapped Port ID": "fd9984b0-ffe8-4ef6-9bf1-8cc0b49ce20f"
+    },
+    {
+        "Keyword": "westminster, ca 92685 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "2dc85f34-bbc9-4698-8f07-ad86fc10bddd"
+    },
+    {
+        "Keyword": "ellicott city, md 21043 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "7bc4c527-1d61-436f-8cbc-bfcd7a56fb3b"
+    },
+    {
+        "Keyword": "pt everglades,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "163f0085-edad-458b-8bd6-5b9eb48ce20d"
+    },
+    {
+        "Keyword": "little rock, ar, 72202",
+        "Port Type": "address",
+        "Mapped Port ID": "2d09deff-44a6-44a6-be37-76abf18551b1"
+    },
+    {
+        "Keyword": "santa cruz, ca, 95064",
+        "Port Type": "address",
+        "Mapped Port ID": "13639399-c5d7-41af-bb80-088eb83d98b8"
+    },
+    {
+        "Keyword": "hampshire, il, 60140",
+        "Port Type": "address",
+        "Mapped Port ID": "422209e5-480d-43db-9e8a-0dc2837f988f"
+    },
+    {
+        "Keyword": "silver spring, md 20906 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "d7ea084d-18ed-4910-a59e-bf4b32822567"
+    },
+    {
+        "Keyword": "marysville, ca 95901 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "ff49648d-b569-402e-8372-f0209c9be559"
+    },
+    {
+        "Keyword": "plainwell, mi, 49080",
+        "Port Type": "address",
+        "Mapped Port ID": "a0a371ac-2401-44e4-89a2-78d3d1449096"
+    },
+    {
+        "Keyword": "alexandria old port,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "45508c79-2204-8772-1801-4cf4c339865c"
+    },
+    {
+        "Keyword": "baltimore, md, 21231",
+        "Port Type": "address",
+        "Mapped Port ID": "38b08723-efa7-4093-b31e-373287ed4322"
+    },
+    {
+        "Keyword": "boulder creek, ca 95006 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "638a8978-9597-427a-a981-da902001e181"
+    },
+    {
+        "Keyword": "pasadena, ca, 91106",
+        "Port Type": "address",
+        "Mapped Port ID": "8a7499de-d43f-4f66-b815-7c2e030ea01b"
+    },
+    {
+        "Keyword": "phillipsburg, nj 08865 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "901579ab-c2ac-4702-9002-db598e38a65a"
+    },
+    {
+        "Keyword": "lake elsinore, ca 92530 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "13d3ecac-9586-4d4e-a88b-9cc080e61cef"
+    },
+    {
+        "Keyword": "pepperell, ma",
+        "Port Type": "address",
+        "Mapped Port ID": "7267cc2b-4360-4b0e-8a38-2f61105ef690"
+    },
+    {
+        "Keyword": "odesa,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "439072a6-c078-43c7-dafa-c378c7db5184"
+    },
+    {
+        "Keyword": "skagen",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6440e934-f4cd-41bf-8901-979112b10ef0"
+    },
+    {
+        "Keyword": "tornio",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4600bf99-aa00-45fe-8b68-989e343b5a39"
+    },
+    {
+        "Keyword": "beirut",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4e11f3d0-c839-f83f-e671-dc7aa7a724a1"
+    },
+    {
+        "Keyword": "batumi",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c3845c5e-3f90-6c9b-b4a1-10abcd969285"
+    },
+    {
+        "Keyword": "bejaia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "45f8df6d-a59d-1002-6739-aa71d73dad69"
+    },
+    {
+        "Keyword": "annaba",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "08be3fec-63d1-7370-e958-4f2257664fd5"
+    },
+    {
+        "Keyword": "qui nhon",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "16fb9184-6baf-b74f-eb3d-4676ffc02815"
+    },
+    {
+        "Keyword": "dublin",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8b342b27-aa0e-7451-21c6-76420a1214a6"
+    },
+    {
+        "Keyword": "nassau",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b889d4e0-68eb-42d6-b710-c1daab00d35f"
+    },
+    {
+        "Keyword": "qui nhon",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "16fb9184-6baf-b74f-eb3d-4676ffc02815"
+    },
+    {
+        "Keyword": "agadir",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f22e1c5a-c6a2-45c5-837d-61507e0d023a"
+    },
+    {
+        "Keyword": "odessa",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "439072a6-c078-43c7-dafa-c378c7db5184"
+    },
+    {
+        "Keyword": "moroni",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ae454c21-92b3-6882-cffc-43a03e80872c"
+    },
+    {
+        "Keyword": "brisbane container terminals pty ltd, brisbane, queensland, australia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "467d5af2-d939-cba1-2951-fa929a10375f"
+    },
+    {
+        "Keyword": "singapore,central singapore community development council,singapore",
+        "Port Type": "address",
+        "Mapped Port ID": "7a66c788-f401-40bd-a799-cb839f0d644f"
+    },
+    {
+        "Keyword": "marblehead, ma 01945 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "49765284-dd93-424a-af4e-7d9abcb53e27"
+    },
+    {
+        "Keyword": "boston heights,oh,summit,united states",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "fac60ac7-45cc-453d-9e7b-75be467df3d7"
+    },
+    {
+        "Keyword": "burlington, ma 01803 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "25c58d99-de96-434f-aed8-8869bb771b4f"
+    },
+    {
+        "Keyword": "west wareham, ma 02576 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "3c5a3012-ae2c-4034-b925-6d2e7baa4622"
+    },
+    {
+        "Keyword": "somerville, ma 02143 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "0d9af28c-e5be-47d3-9e18-0ddb14c4d3e2"
+    },
+    {
+        "Keyword": "leominster, ma 01453 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "53ab9e8e-2812-4b9a-b7e5-c5eac64927bf"
+    },
+    {
+        "Keyword": "martinsburg, wv 25403 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "c903d352-1e4e-4f43-8035-bd63f998e034"
+    },
+    {
+        "Keyword": "south portland, me 04106 [departed shipping partner facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "464fac19-c979-487c-b60a-669bff5a470d"
+    },
+    {
+        "Keyword": "north clarendon, vt 05759 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "c72e9f26-3ebe-4dc5-a4b4-724e3ccb2127"
+    },
+    {
+        "Keyword": "auburndale, ma 02466 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "e104c837-32fd-48a1-9f9d-042344f9d62d"
+    },
+    {
+        "Keyword": "indianapolis (in), u.s.a.",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "5b5eea72-9d16-476d-b2b6-b8ec009a46dd"
+    },
+    {
+        "Keyword": "trieste, trieste, friuli-venezia giulia, italy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a37d91c9-36b4-071e-286a-006895c7b85b"
+    },
+    {
+        "Keyword": "zhoushan, zhoushan, zhoushan, zhejiang, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "45f452c2-fab2-40a3-9305-2185b7ffa5fb"
+    },
+    {
+        "Keyword": "kwangyang, korea republic of",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "21b573f8-d7f7-1fd4-c75f-e1dda6cfe1a8"
+    },
+    {
+        "Keyword": "khalifa port, abu dhabi",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "cc87f5a9-632e-48c6-ab04-21c14b444624"
+    },
+    {
+        "Keyword": "kwangyang, korea republic of",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "21b573f8-d7f7-1fd4-c75f-e1dda6cfe1a8"
+    },
+    {
+        "Keyword": "kwangyang ,republic of korea",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "21b573f8-d7f7-1fd4-c75f-e1dda6cfe1a8"
+    },
+    {
+        "Keyword": "asia world port terminal, yangon, yangon, myanmar",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "53460e14-f4a9-d50a-c398-f34e6c5731a3"
+    },
+    {
+        "Keyword": "indianapolis (in), u.s.a.",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "5b5eea72-9d16-476d-b2b6-b8ec009a46dd"
+    },
+    {
+        "Keyword": "oocl warehousing (shanghai) ltd, shanghai, china",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "c0b00ef8-59ba-4c56-932a-b1d8e6f6c0bc"
+    },
+    {
+        "Keyword": "mundra, gujarat, india",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "9f39e6c5-b8b6-43fa-901a-2991a61c381f"
+    },
+    {
+        "Keyword": "rivalta scrivia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a3afc54d-1aed-4e94-ad37-5dc853f56d96"
+    },
+    {
+        "Keyword": "trieste, trieste, friuli-venezia giulia, italy",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a37d91c9-36b4-071e-286a-006895c7b85b"
+    },
+    {
+        "Keyword": "philadelphia, pa 19176",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "jacksonville, nc 28546",
+        "Port Type": "address",
+        "Mapped Port ID": "f78313a4-5c12-4400-9cb0-06af14d7918b"
+    },
+    {
+        "Keyword": "philadelphia, pa 19154",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "philadelphia, pa 19153",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "philadelphia, pa 19132",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "philadelphia, pa 19148",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "southeastern, pa 19399",
+        "Port Type": "address",
+        "Mapped Port ID": "6eea6103-a266-4d73-9fa2-6c14e2c87674"
+    },
+    {
+        "Keyword": "philadelphia, pa 19134",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "jacksonville, nc 28540",
+        "Port Type": "address",
+        "Mapped Port ID": "f78313a4-5c12-4400-9cb0-06af14d7918b"
+    },
+    {
+        "Keyword": "philadelphia, pa 19138",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "philadelphia, pa 19106",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "philadelphia, pa 19142",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "philadelphia, pa 19146",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "fayetteville, nc 28304",
+        "Port Type": "address",
+        "Mapped Port ID": "27e1adba-662c-48d5-8ca3-839b6866c6b0"
+    },
+    {
+        "Keyword": "kennett square, pa 19348",
+        "Port Type": "address",
+        "Mapped Port ID": "3364dcd4-9be4-460e-8f64-0a07c4724210"
+    },
+    {
+        "Keyword": "simpsonville, sc 29681",
+        "Port Type": "address",
+        "Mapped Port ID": "383e6e62-52b3-4226-ab57-4d691f23e38e"
+    },
+    {
+        "Keyword": "phoenixville, pa 19460",
+        "Port Type": "address",
+        "Mapped Port ID": "b79ed8a0-f965-491b-8fc6-3f2c8fe904f2"
+    },
+    {
+        "Keyword": "philadelphia, pa 19124",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "philadelphia, pa 19104",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "philadelphia, pa 19139",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "great falls mt distribution center",
+        "Port Type": "address",
+        "Mapped Port ID": "a5267dd7-1052-450e-b7d8-495ceb8f189f"
+    },
+    {
+        "Keyword": "philadelphia, pa 19115",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "philadelphia, pa 19151",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "philadelphia, pa 19135",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "philadelphia, pa 19140",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "philadelphia, pa 19116",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "philadelphia, pa 19130",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "conshohocken, pa 19428",
+        "Port Type": "address",
+        "Mapped Port ID": "aa4af97d-36bc-463c-ba17-054662b46b23"
+    },
+    {
+        "Keyword": "philadelphia, pa 19125",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "harleysville, pa 19438",
+        "Port Type": "address",
+        "Mapped Port ID": "a0249ed2-6eb0-455d-8584-441936615208"
+    },
+    {
+        "Keyword": "philadelphia, pa 19131",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "fairless hills, pa 19030",
+        "Port Type": "address",
+        "Mapped Port ID": "cc14b184-d68d-4c97-8416-df6e82bc7db6"
+    },
+    {
+        "Keyword": "new kensington, pa 15068",
+        "Port Type": "address",
+        "Mapped Port ID": "b1ded65b-a762-4838-bfc8-ab704bcb56db"
+    },
+    {
+        "Keyword": "philadelphia, pa 19144",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "roanoke rapids, nc 27870",
+        "Port Type": "address",
+        "Mapped Port ID": "fa06af86-7785-4451-9100-87ede575b614"
+    },
+    {
+        "Keyword": "simpsonville, sc 29680",
+        "Port Type": "address",
+        "Mapped Port ID": "383e6e62-52b3-4226-ab57-4d691f23e38e"
+    },
+    {
+        "Keyword": "philadelphia, pa 19114",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "philadelphia, pa 19136",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "collegeville, pa 19426",
+        "Port Type": "address",
+        "Mapped Port ID": "b4de9a65-0943-4cc4-8e05-2bdfe99b31af"
+    },
+    {
+        "Keyword": "philadelphia, pa 19143",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "philadelphia, pa 19120",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "terre haute in distribution center",
+        "Port Type": "address",
+        "Mapped Port ID": "c073ba1c-976c-4234-a799-f8d626137cfc"
+    },
+    {
+        "Keyword": "elizabeth city, nc 27909",
+        "Port Type": "address",
+        "Mapped Port ID": "e41e1c7c-14fe-4ebc-a6cd-70bbbadf2632"
+    },
+    {
+        "Keyword": "fayetteville, nc 28303",
+        "Port Type": "address",
+        "Mapped Port ID": "27e1adba-662c-48d5-8ca3-839b6866c6b0"
+    },
+    {
+        "Keyword": "philadelphia, pa 19122",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "shippensburg, pa 17257",
+        "Port Type": "address",
+        "Mapped Port ID": "d768a64f-daf6-45e0-a9ac-e4dbf6072057"
+    },
+    {
+        "Keyword": "philadelphia, pa 19147",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "chambersburg, pa 17201",
+        "Port Type": "address",
+        "Mapped Port ID": "0a7d3641-f20d-4c94-813a-3a4e2abddb01"
+    },
+    {
+        "Keyword": "philadelphia, pa 19121",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "st helens, united kingdom",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "a6d9345d-55bd-4dcb-88cb-e11bec9e05aa"
+    },
+    {
+        "Keyword": "st helens, united kingdom",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a6d9345d-55bd-4dcb-88cb-e11bec9e05aa"
+    },
+    {
+        "Keyword": "philadelphia, pa 19149",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "kwangyang ,republic of korea",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "21b573f8-d7f7-1fd4-c75f-e1dda6cfe1a8"
+    },
+    {
+        "Keyword": "philadelphia, pa 19145",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "philadelphia, pa 19133",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "southern pines, nc 28387",
+        "Port Type": "address",
+        "Mapped Port ID": "e158b590-cc47-4986-b7bc-f333f0ff2a96"
+    },
+    {
+        "Keyword": "murfreesboro, nc 27855",
+        "Port Type": "address",
+        "Mapped Port ID": "4070d054-5fd7-4790-98ed-6884f73abcc2"
+    },
+    {
+        "Keyword": "bilbao csp iberian bilbao terminal, s.l.",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "78efff27-61b1-48fb-94d4-960bbe7a9c6b"
+    },
+    {
+        "Keyword": "fayetteville, nc 28314",
+        "Port Type": "address",
+        "Mapped Port ID": "27e1adba-662c-48d5-8ca3-839b6866c6b0"
+    },
+    {
+        "Keyword": "williamsport, pa 17701",
+        "Port Type": "address",
+        "Mapped Port ID": "1ab939b6-a054-4489-b995-0f8d7f2cc028"
+    },
+    {
+        "Keyword": "fayetteville, nc 28312",
+        "Port Type": "address",
+        "Mapped Port ID": "27e1adba-662c-48d5-8ca3-839b6866c6b0"
+    },
+    {
+        "Keyword": "kill devil hills, nc 27948",
+        "Port Type": "address",
+        "Mapped Port ID": "55677b6e-d4b3-40bd-90d2-79b69a383194"
+    },
+    {
+        "Keyword": "philadelphia, pa 19141",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "huntersville, nc 28078",
+        "Port Type": "address",
+        "Mapped Port ID": "c33dfd71-9462-423a-9843-a549b7a40023"
+    },
+    {
+        "Keyword": "philadelphia, pa 19119",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "philadelphia, pa 19107",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "tinsley, united kingdom",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a6d9345d-55bd-4dcb-88cb-e11bec9e05aa"
+    },
+    {
+        "Keyword": "philadelphia, pa 19123",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "philadelphia, pa 19111",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "chambersburg, pa 17202",
+        "Port Type": "address",
+        "Mapped Port ID": "0a7d3641-f20d-4c94-813a-3a4e2abddb01"
+    },
+    {
+        "Keyword": "kernersville, nc 27284",
+        "Port Type": "address",
+        "Mapped Port ID": "5f3b8165-cf31-48a1-ad48-2785c4d3781c"
+    },
+    {
+        "Keyword": "ocean isle beach, nc 28469",
+        "Port Type": "address",
+        "Mapped Port ID": "c5bfb857-10a7-4b5d-af58-da23cdc24f52"
+    },
+    {
+        "Keyword": "philadelphia, pa 19126",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "usa-san francisco gateway",
+        "Port Type": "address",
+        "Mapped Port ID": "7774dba4-74f0-4dc2-877a-217dd130beee"
+    },
+    {
+        "Keyword": "duncansville, pa 16635",
+        "Port Type": "address",
+        "Mapped Port ID": "c5ba2982-6758-47b7-b2df-8f2bfa50fb57"
+    },
+    {
+        "Keyword": "hong kong(hongkong international terminal)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "2a42a8db-b6e5-8a2e-5498-90f8b01bb8c8"
+    },
+    {
+        "Keyword": "denca bonded terminal lagos, lagos, nigeria",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5b27be57-c85f-4054-81e1-54b98ad9980a"
+    },
+    {
+        "Keyword": "philipsburg, netherlands antilles",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "998fef74-5e1b-1dea-3b78-00669e9cefa8"
+    },
+    {
+        "Keyword": "hochiminh(hiep phuoc terminal)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "0ede2b79-1b5e-4b6b-9190-1b871e2a00bf"
+    },
+    {
+        "Keyword": "newfoundland, pa 18445",
+        "Port Type": "address",
+        "Mapped Port ID": "5710381f-9abd-46c0-8f59-89a42766fc72"
+    },
+    {
+        "Keyword": "denca bonded terminal lagos, lagos, , nigeria",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "5b27be57-c85f-4054-81e1-54b98ad9980a"
+    },
+    {
+        "Keyword": "new enterprise, pa 16664",
+        "Port Type": "address",
+        "Mapped Port ID": "12d2fc96-0178-4c3e-aab2-85b7be69c36b"
+    },
+    {
+        "Keyword": "philadelphia, pa 19152",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "springfield, ma, 01107",
+        "Port Type": "address",
+        "Mapped Port ID": "023956ad-4a49-4af7-830f-bc8c9ddbb951"
+    },
+    {
+        "Keyword": "hillsborough, nc 27278",
+        "Port Type": "address",
+        "Mapped Port ID": "90b5aad7-f106-4aa4-b3d6-8892964ce1dc"
+    },
+    {
+        "Keyword": "cosco shanghai og enterprises co., shanghai, china",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "c0b00ef8-59ba-4c56-932a-b1d8e6f6c0bc"
+    },
+    {
+        "Keyword": "philadelphia, pa 19128",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "burnley, united kingdom",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a6d9345d-55bd-4dcb-88cb-e11bec9e05aa"
+    },
+    {
+        "Keyword": "marlborough, ma, 01752",
+        "Port Type": "address",
+        "Mapped Port ID": "dcbbf656-9601-4dbd-a9c6-80184950c219"
+    },
+    {
+        "Keyword": "pass christian, ms, 39571",
+        "Port Type": "address",
+        "Mapped Port ID": "85b89973-f43e-4b0a-8064-eb07ac7bb3c6"
+    },
+    {
+        "Keyword": "williamsburg, pa 16693",
+        "Port Type": "address",
+        "Mapped Port ID": "2eeac574-d16c-4faf-adb3-376b52c27f59"
+    },
+    {
+        "Keyword": "macclesfield, nc 27852",
+        "Port Type": "address",
+        "Mapped Port ID": "200411e8-7ff5-4a49-8c6c-be4e4147d0d1"
+    },
+    {
+        "Keyword": "burnley, united kingdom",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "a6d9345d-55bd-4dcb-88cb-e11bec9e05aa"
+    },
+    {
+        "Keyword": "philadelphia, pa 19150",
+        "Port Type": "address",
+        "Mapped Port ID": "19040d7a-041a-461f-8db6-687f5b7dc211"
+    },
+    {
+        "Keyword": "ross on wye, united kingdom",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a6d9345d-55bd-4dcb-88cb-e11bec9e05aa"
+    },
+    {
+        "Keyword": "factoryville, pa 18419",
+        "Port Type": "address",
+        "Mapped Port ID": "b0c18f7d-fb6a-4e98-8f26-242d8b8d8a8d"
+    },
+    {
+        "Keyword": "leicester, england, united kingdom",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d6ff98d3-b550-afde-5cb1-b29070f8b493"
+    },
+    {
+        "Keyword": "easthampton, ma, 01027",
+        "Port Type": "address",
+        "Mapped Port ID": "fdfdc0da-10da-4ab5-8386-d8ef56abcc1e"
+    },
+    {
+        "Keyword": "north andover, ma, 01845",
+        "Port Type": "address",
+        "Mapped Port ID": "e16fbe94-78b4-4794-a12a-6a1f7eb32b78"
+    },
+    {
+        "Keyword": "fayetteville, nc 28311",
+        "Port Type": "address",
+        "Mapped Port ID": "27e1adba-662c-48d5-8ca3-839b6866c6b0"
+    },
+    {
+        "Keyword": "taylorsville, nc 28681",
+        "Port Type": "address",
+        "Mapped Port ID": "fd4f3c4b-954c-4b03-97f7-5cbfe96a7a37"
+    },
+    {
+        "Keyword": "bridgewater, ma, 02324",
+        "Port Type": "address",
+        "Mapped Port ID": "b876db8a-4fbd-4125-9c08-8496fef0e59f"
+    },
+    {
+        "Keyword": "tinsley, united kingdom",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "a6d9345d-55bd-4dcb-88cb-e11bec9e05aa"
+    },
+    {
+        "Keyword": "falling waters, wv, 25419",
+        "Port Type": "address",
+        "Mapped Port ID": "1b95481f-f6ea-4e1d-b86d-25471b2a0561"
+    },
+    {
+        "Keyword": "gerrardstown, wv, 25420",
+        "Port Type": "address",
+        "Mapped Port ID": "045ced90-2586-4e92-98e6-f4bf18c119bb"
+    },
+    {
+        "Keyword": "springfield, ma, 01104",
+        "Port Type": "address",
+        "Mapped Port ID": "023956ad-4a49-4af7-830f-bc8c9ddbb951"
+    },
+    {
+        "Keyword": "brackenridge, pa 15014",
+        "Port Type": "address",
+        "Mapped Port ID": "0f7d5e96-74d3-4d71-8005-14c29000a483"
+    },
+    {
+        "Keyword": "felipe angeles intl",
+        "Port Type": "air_port",
+        "Mapped Port ID": "5064a930-4f9d-45c7-8b94-2f00767ac631"
+    },
+    {
+        "Keyword": "new cumberland, pa 17070",
+        "Port Type": "address",
+        "Mapped Port ID": "5955525d-9084-4afe-908b-f89d8059cfb1"
+    },
+    {
+        "Keyword": "graniteville, sc 29829",
+        "Port Type": "address",
+        "Mapped Port ID": "3bf4ea73-0648-4bb4-ba44-eda84e7cdaf1"
+    },
+    {
+        "Keyword": "santa cruz de tenerife, santa cruz de tenerife, spain",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "86c53205-2f13-4c46-9e44-bcd12d6b9927"
+    },
+    {
+        "Keyword": "santa cruz de tenerife, santa cruz de tenerife, spain",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "86c53205-2f13-4c46-9e44-bcd12d6b9927"
+    },
+    {
+        "Keyword": "northampton, ma, 01060",
+        "Port Type": "address",
+        "Mapped Port ID": "a22c0ee1-81d3-4a85-84e4-9dfa394d2623"
+    },
+    {
+        "Keyword": "freightliner terminal leeds,leeds,england,united kingdom",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "a6d9345d-55bd-4dcb-88cb-e11bec9e05aa"
+    },
+    {
+        "Keyword": "charleston sc processing center [departed usps regional facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "0c6137bb-1ee3-45db-bcba-9938f548c0bb"
+    },
+    {
+        "Keyword": "charleston sc processing center [arrived at usps regional facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "0c6137bb-1ee3-45db-bcba-9938f548c0bb"
+    },
+    {
+        "Keyword": "china shanghai shanghai shengdong international container terminal co.ltd.",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3f1e0e96-f90e-4593-8a99-e381d100cd9e"
+    },
+    {
+        "Keyword": "huntingdon valley, pa 19006 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "359c0579-36b1-48a4-9312-7e254c473867"
+    },
+    {
+        "Keyword": "hacienda heights, ca 91745 [departed shipping partner facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "c2a10b79-fc86-4960-8ecb-e17a693a880a"
+    },
+    {
+        "Keyword": "rancho cucamonga, ca 91730 [departed shipping partner facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "7a98700b-150a-40aa-b288-b120c29a75c7"
+    },
+    {
+        "Keyword": "freightliner manchester, manchester, england, united kingdom",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "a6d9345d-55bd-4dcb-88cb-e11bec9e05aa"
+    },
+    {
+        "Keyword": "freightliner manchester, manchester, england, united kingdom",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a6d9345d-55bd-4dcb-88cb-e11bec9e05aa"
+    },
+    {
+        "Keyword": "savannah (ga), u.s.a.",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "22b41ff1-e649-07c3-fb46-d2cb2c08d538"
+    },
+    {
+        "Keyword": "lincoln, ne",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "faa2b72a-a9e6-426d-876a-995fe2d16afa"
+    },
+    {
+        "Keyword": "yantai, shandong (cn)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d341b0f9-4816-4e5e-99f1-68e9ff1ffca7"
+    },
+    {
+        "Keyword": "subic bay (ph)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "dfea3e9d-db31-1415-70b2-48118757c399"
+    },
+    {
+        "Keyword": "portbury",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "acf58a3b-3160-4b3d-8bdc-cc63ff334286"
+    },
+    {
+        "Keyword": "tallinn, ee",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "905d26bd-60c2-1bb4-8fb7-b39c7aaf26ed"
+    },
+    {
+        "Keyword": "houston, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "242ba837-4d31-f522-2c24-16abc8d7d45d"
+    },
+    {
+        "Keyword": "chicago, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "395707c6-acdf-423b-a506-62031e14b8b2"
+    },
+    {
+        "Keyword": "norfolk, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "256b341f-08b4-eab8-0e51-4cf7fb76d731"
+    },
+    {
+        "Keyword": "memphis, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1f3dbb0f-2353-a0f0-9fbc-e95f64429fe6"
+    },
+    {
+        "Keyword": "norfolk, united states",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "256b341f-08b4-eab8-0e51-4cf7fb76d731"
+    },
+    {
+        "Keyword": "seattle, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0a5e5cce-5842-147b-c40f-797357dc8806"
+    },
+    {
+        "Keyword": "houston, united states",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "242ba837-4d31-f522-2c24-16abc8d7d45d"
+    },
+    {
+        "Keyword": "plymouth",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "45827003-a10d-406a-92ae-1d6d6d34a6a1"
+    },
+    {
+        "Keyword": "decatur, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b9e93b8a-3194-4a4c-a54f-b28e579aa03d"
+    },
+    {
+        "Keyword": "aberdeen",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "afde5e4b-8ed0-4545-8867-12e3e2bf9331"
+    },
+    {
+        "Keyword": "aberdeen",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "afde5e4b-8ed0-4545-8867-12e3e2bf9331"
+    },
+    {
+        "Keyword": "heathrow",
+        "Port Type": "air_port",
+        "Mapped Port ID": "df40e853-e546-4fb6-880a-18808d994343"
+    },
+    {
+        "Keyword": "hialeah, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "bce7e719-9f47-32dc-2548-ea2279dcdfa3"
+    },
+    {
+        "Keyword": "maseru, lesotho",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9176accd-48ba-5168-a0e6-eb8abc5cd793"
+    },
+    {
+        "Keyword": "mongla (bdmon)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7fdea268-bb2b-6302-ab4f-87c7ad70191f"
+    },
+    {
+        "Keyword": "new york, ny, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "99def56e-b1fb-4265-8f44-69c45aa7d1a3"
+    },
+    {
+        "Keyword": "boston, ma, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b6c989fd-16de-4965-8ca2-b23dcdfb7157"
+    },
+    {
+        "Keyword": "dallas-fort worth int apt",
+        "Port Type": "air_port",
+        "Mapped Port ID": "70b83cf4-de4c-49ea-9cca-bdce9f0d61dc"
+    },
+    {
+        "Keyword": "bilbao, es",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "78efff27-61b1-48fb-94d4-960bbe7a9c6b"
+    },
+    {
+        "Keyword": "qinzhou (in guangxi)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1426f865-7e12-42c1-bfee-c5ab99deb3f2"
+    },
+    {
+        "Keyword": "dong nai, vn",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "98530f68-35b6-4734-a965-107ecce3c5b7"
+    },
+    {
+        "Keyword": "tallinn, ee",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "905d26bd-60c2-1bb4-8fb7-b39c7aaf26ed"
+    },
+    {
+        "Keyword": "new york, ny, united states",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "99def56e-b1fb-4265-8f44-69c45aa7d1a3"
+    },
+    {
+        "Keyword": "boston, ma, united states",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "b6c989fd-16de-4965-8ca2-b23dcdfb7157"
+    },
+    {
+        "Keyword": "jaipur, in",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "58ad8ff4-2c72-4a4c-b4d1-36a01437cdda"
+    },
+    {
+        "Keyword": "bilbao, es",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "78efff27-61b1-48fb-94d4-960bbe7a9c6b"
+    },
+    {
+        "Keyword": "dong nai, vn",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "98530f68-35b6-4734-a965-107ecce3c5b7"
+    },
+    {
+        "Keyword": "kuantan, pahang",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5d2bce37-5317-4492-8832-3623efddd774"
+    },
+    {
+        "Keyword": "sun kwang newport container terminal, inchon, south korea",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "30271445-d995-c8b2-4dd8-7d49736e1a7a"
+    },
+    {
+        "Keyword": "sanand, in",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "1c9c7cba-cbc4-4e06-a13e-efe31aefde28"
+    },
+    {
+        "Keyword": "sanshan, cn",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c0b72516-6bb0-4981-b4b4-1b66ecdb0f97"
+    },
+    {
+        "Keyword": "warszawa",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "4757173d-b566-8e14-447c-b93014c5a9f5"
+    },
+    {
+        "Keyword": "dhannad/indore, in",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "f61bee93-3670-4acf-9d8a-afa1b3905cdb"
+    },
+    {
+        "Keyword": "budapest",
+        "Port Type": "address",
+        "Mapped Port ID": "541a9a4e-a4d4-4ca3-b2c3-32168e0261e4"
+    },
+    {
+        "Keyword": "villingen - germany",
+        "Port Type": "address",
+        "Mapped Port ID": "28bd33aa-316d-46aa-b26c-b53b47be5b47"
+    },
+    {
+        "Keyword": "city of industry ca distribution center",
+        "Port Type": "address",
+        "Mapped Port ID": "44645cf8-e403-4538-93f1-13994e89e351"
+    },
+    {
+        "Keyword": "chonburi th",
+        "Port Type": "address",
+        "Mapped Port ID": "20d8d23c-5d7c-4ee7-bd27-584af6f2d01b"
+    },
+    {
+        "Keyword": "koblenz am rhein, de",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "be3f989b-13ed-4d38-891b-c32759f010cc"
+    },
+    {
+        "Keyword": "san bernardino ca distribution center",
+        "Port Type": "address",
+        "Mapped Port ID": "8112dcdc-83cf-4891-9809-b6af817d0c7d"
+    },
+    {
+        "Keyword": "sanand, in",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "1c9c7cba-cbc4-4e06-a13e-efe31aefde28"
+    },
+    {
+        "Keyword": "jaipur, in",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "58ad8ff4-2c72-4a4c-b4d1-36a01437cdda"
+    },
+    {
+        "Keyword": "mafang, cn",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6332abe7-2c1a-4d59-8034-997bc8f7f47d"
+    },
+    {
+        "Keyword": "warszawa",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "4757173d-b566-8e14-447c-b93014c5a9f5"
+    },
+    {
+        "Keyword": "tokuyama, tokuyama (shunan), yamaguchi, japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "271fbbd0-bd58-42d0-a53c-3010a9e88c56"
+    },
+    {
+        "Keyword": "icd khodiyar,gandhinagar,gujarat,india",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "39c8ea00-18f4-19da-d21a-5b64be7c3903"
+    },
+    {
+        "Keyword": "icd khodiyar,gandhinagar,gujarat,india",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "39c8ea00-18f4-19da-d21a-5b64be7c3903"
+    },
+    {
+        "Keyword": "belfast, uk",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "92bb6c89-0bd6-4adc-6d12-179ea826efe2"
+    },
+    {
+        "Keyword": "moji/kitakyushu jpmoj",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7c6af786-d1b3-a9ee-197e-28bf1567c510"
+    },
+    {
+        "Keyword": "dhannad/indore, in",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "f61bee93-3670-4acf-9d8a-afa1b3905cdb"
+    },
+    {
+        "Keyword": "newark, nj (us)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f409348e-facd-c5e0-1749-15eb29bccff8"
+    },
+    {
+        "Keyword": "chennai in",
+        "Port Type": "address",
+        "Mapped Port ID": "6190196b-567c-4c35-9af0-5092fb82e04e"
+    },
+    {
+        "Keyword": "dp world botany rd park 1,sydney,new south wales,australia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "eb5a25b0-7366-4cdb-ab36-5b40ebbed897"
+    },
+    {
+        "Keyword": "belfast, uk",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "92bb6c89-0bd6-4adc-6d12-179ea826efe2"
+    },
+    {
+        "Keyword": "helsinbourg",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7dca2945-b680-32de-46f3-4d3557f3d847"
+    },
+    {
+        "Keyword": "wattala, sri lanka",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "74c27a0a-c586-45bd-bb76-b0dad1e276d9"
+    },
+    {
+        "Keyword": "bangkok -sahathai, thailand",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "05d7873e-7b70-4ac8-b102-1d7ffbe4eea8"
+    },
+    {
+        "Keyword": "bangkok -sahathai, thailand",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "05d7873e-7b70-4ac8-b102-1d7ffbe4eea8"
+    },
+    {
+        "Keyword": "avinashi - hub",
+        "Port Type": "address",
+        "Mapped Port ID": "03abf146-e0f7-4f4b-88ab-a08b89bb0e42"
+    },
+    {
+        "Keyword": "albuquerque nm distribution center annex",
+        "Port Type": "address",
+        "Mapped Port ID": "1e4b0703-ab86-47d4-bf30-756894524aeb"
+    },
+    {
+        "Keyword": "dayton, oh, us",
+        "Port Type": "address",
+        "Mapped Port ID": "19aaedd2-7a8f-4cf2-b050-452e42cbb865"
+    },
+    {
+        "Keyword": "dumyat (damietta)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b2195826-6664-48c0-8cd4-47e3e9d63ae7"
+    },
+    {
+        "Keyword": "aberdour",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "03186e10-4b34-4ebc-85a4-c4fd33dec3e9"
+    },
+    {
+        "Keyword": "hanover park, il 60133 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "7c450115-b1a4-4846-9930-223af5838774"
+    },
+    {
+        "Keyword": "louisville, ky 40211 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b856195f-8148-49c4-b0c5-c692b05fda35"
+    },
+    {
+        "Keyword": "hagerstown, md 21740 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "f00631b7-c409-40ad-9953-e58db5224f17"
+    },
+    {
+        "Keyword": "louisville, ky 40213 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b856195f-8148-49c4-b0c5-c692b05fda35"
+    },
+    {
+        "Keyword": "temple hills, md 20748 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "69bf65b0-874a-4109-9b99-7e0f6707da3e"
+    },
+    {
+        "Keyword": "midlothian, il 60445 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "1ba6a547-ecce-4dcf-9383-e6d175bccf3a"
+    },
+    {
+        "Keyword": "windsor mill, md 21244 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "ec8a189c-2158-41bb-93ab-2c2a4ede6fb2"
+    },
+    {
+        "Keyword": "staten island, ny 10305 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "e6a1a712-3dd6-4c64-86f6-ccb7f1bc3acf"
+    },
+    {
+        "Keyword": "germantown, md 20874 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "4ada624c-caf0-4133-a6a8-7beaf31684b3"
+    },
+    {
+        "Keyword": "louisville, ky 40220 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b856195f-8148-49c4-b0c5-c692b05fda35"
+    },
+    {
+        "Keyword": "wielsbeke, belgium",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "8f5f809c-d584-d34b-29ba-c9a7f313292c"
+    },
+    {
+        "Keyword": "louisville, ky 40203 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b856195f-8148-49c4-b0c5-c692b05fda35"
+    },
+    {
+        "Keyword": "florissant, mo 63033 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "4f91f5fa-8f9f-4083-89dc-c33a27073575"
+    },
+    {
+        "Keyword": "port of djibouti",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6d983d0a-99a1-f69f-c998-b00fe5a32891"
+    },
+    {
+        "Keyword": "the nilgiris",
+        "Port Type": "address",
+        "Mapped Port ID": "729e22e4-34df-4421-b59b-2959becca2a4"
+    },
+    {
+        "Keyword": "louisville, ky 40216 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b856195f-8148-49c4-b0c5-c692b05fda35"
+    },
+    {
+        "Keyword": "staten island, ny 10314 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "e6a1a712-3dd6-4c64-86f6-ccb7f1bc3acf"
+    },
+    {
+        "Keyword": "farmingdale, ny 11735 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "4b327bff-ee9c-430e-8018-977292a37faf"
+    },
+    {
+        "Keyword": "centralia, il 62801 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "da686721-b8cc-4c59-942f-c78b1c38ebba"
+    },
+    {
+        "Keyword": "canandaigua, ny 14424 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "03b82e34-1d2f-4e02-b667-31e388d79913"
+    },
+    {
+        "Keyword": "kensington, md 20895 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "841717c3-dc9e-4e2b-b033-ef6ab38196cc"
+    },
+    {
+        "Keyword": "centralia, il 62801 [departed usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "da686721-b8cc-4c59-942f-c78b1c38ebba"
+    },
+    {
+        "Keyword": "schaumburg, il 60194 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "4db47056-bcdd-436d-a881-c1c790945839"
+    },
+    {
+        "Keyword": "vecses, hungary",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "661aff82-d36a-01f6-86c4-25b50e5e4e89"
+    },
+    {
+        "Keyword": "vecses, hungary",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "661aff82-d36a-01f6-86c4-25b50e5e4e89"
+    },
+    {
+        "Keyword": "fort collins, co 80521 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "6215698c-6c9e-40d1-9c82-080a9e284674"
+    },
+    {
+        "Keyword": "valley stream, ny 11580 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "d01476fa-4dc9-4c2d-99a1-2e5e4ddffa04"
+    },
+    {
+        "Keyword": "wentzville, mo 63385 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "f2349faa-e2ec-45f5-a11f-ed64f5cadc2b"
+    },
+    {
+        "Keyword": "louisville, ne 68037 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "705ea3cc-baf7-4d4f-ac6e-bff17ee7efd0"
+    },
+    {
+        "Keyword": "clarksburg, md 20871 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b5ffef06-06b7-4f5e-b9c5-24ff89a72de6"
+    },
+    {
+        "Keyword": "louisville, ky 40243 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b856195f-8148-49c4-b0c5-c692b05fda35"
+    },
+    {
+        "Keyword": "bridgeview, il 60455 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "31a15628-854e-47fc-b108-8dc65e32a8bf"
+    },
+    {
+        "Keyword": "north las vegas, nv 89031 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "100e6962-cf8b-43cd-9577-3c283ef2bcc2"
+    },
+    {
+        "Keyword": "fort collins, co 80525 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "6215698c-6c9e-40d1-9c82-080a9e284674"
+    },
+    {
+        "Keyword": "plymouth",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "45827003-a10d-406a-92ae-1d6d6d34a6a1"
+    },
+    {
+        "Keyword": "broken arrow, ok 74012 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "3aa51d15-06a3-4405-9a85-60b27d5dd663"
+    },
+    {
+        "Keyword": "broken arrow, ok 74014 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "3aa51d15-06a3-4405-9a85-60b27d5dd663"
+    },
+    {
+        "Keyword": "louisville, ky 40222 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b856195f-8148-49c4-b0c5-c692b05fda35"
+    },
+    {
+        "Keyword": "springdale, ar 72764 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "8df310eb-153f-4c7f-b765-0e08f5660898"
+    },
+    {
+        "Keyword": "eugene, or",
+        "Port Type": "address",
+        "Mapped Port ID": "77ceb651-2386-4eac-bc27-39844c7df630"
+    },
+    {
+        "Keyword": "west memphis, ar 72301 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "ea69f59c-71bc-4430-bf7f-1c6ee8448719"
+    },
+    {
+        "Keyword": "north las vegas, nv 89030 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "100e6962-cf8b-43cd-9577-3c283ef2bcc2"
+    },
+    {
+        "Keyword": ", pyongtaek",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8e63e07b-a0e2-4ec9-abef-290539349b64"
+    },
+    {
+        "Keyword": "new delhi in",
+        "Port Type": "air_port",
+        "Mapped Port ID": "fffcdff2-72b6-4cf3-a79a-01ed7723bc0f"
+    },
+    {
+        "Keyword": "staten island, ny 10304 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "e6a1a712-3dd6-4c64-86f6-ccb7f1bc3acf"
+    },
+    {
+        "Keyword": "mumbai, mh in",
+        "Port Type": "address",
+        "Mapped Port ID": "69e28eb3-fa62-436c-a1c5-9814b692d5b2"
+    },
+    {
+        "Keyword": "pro-formance intermodal,edmonton,alberta,canada",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "505b977d-28ab-75ba-ea19-343e78bb40bd"
+    },
+    {
+        "Keyword": "jieyang chaoshan apt",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "30ee8145-741c-4323-80f8-9c1614048958"
+    },
+    {
+        "Keyword": "louisville, ky 40258 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b856195f-8148-49c4-b0c5-c692b05fda35"
+    },
+    {
+        "Keyword": "rieste, germany",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "24ee8efa-9f2f-406b-b333-55454806545b"
+    },
+    {
+        "Keyword": "piraeus gr",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0bba510c-eb73-e88b-75ca-46ba8aa50019"
+    },
+    {
+        "Keyword": "turner, or",
+        "Port Type": "address",
+        "Mapped Port ID": "c82bd570-2740-4efb-b23f-025804852698"
+    },
+    {
+        "Keyword": "louisville, ky 40207 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b856195f-8148-49c4-b0c5-c692b05fda35"
+    },
+    {
+        "Keyword": "freising de",
+        "Port Type": "address",
+        "Mapped Port ID": "eca9cd53-bd0f-4d5f-845a-1fa2d35a2279"
+    },
+    {
+        "Keyword": "ismaning de",
+        "Port Type": "address",
+        "Mapped Port ID": "8128d797-4b4b-44da-b322-44a970a3f2b1"
+    },
+    {
+        "Keyword": "yorkville, il 60560 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "aa5c90fd-0e5a-4bd8-84fe-225484f7acdc"
+    },
+    {
+        "Keyword": "california, md 20619 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "8555bd48-e0bf-4ea6-b585-d9844cfc92bc"
+    },
+    {
+        "Keyword": "louisville, ky 40291 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b856195f-8148-49c4-b0c5-c692b05fda35"
+    },
+    {
+        "Keyword": "kirksville, mo 63501 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "11724661-0709-4fed-be15-c089b3794a79"
+    },
+    {
+        "Keyword": "gauting, by de",
+        "Port Type": "address",
+        "Mapped Port ID": "a5267dff-6569-4688-98a6-80e7591791b9"
+    },
+    {
+        "Keyword": "blue springs, mo 64014 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "af2be15c-ed54-4bdd-aece-1a116f3950e4"
+    },
+    {
+        "Keyword": "belvidere, il 61008 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "8d27a718-4d27-4faa-bd39-995e306d6466"
+    },
+    {
+        "Keyword": "west liberty, ky 41472 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "0b71487a-f21c-4d64-8dcc-03e2587c974c"
+    },
+    {
+        "Keyword": "teesport gbtee",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "345a274d-fec5-261f-d31b-391fcaf5ae31"
+    },
+    {
+        "Keyword": "algonquin, il 60102 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "1746d718-71db-4a24-a97d-d42ab165ef91"
+    },
+    {
+        "Keyword": "algonquin, il 60102 [departed usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "1746d718-71db-4a24-a97d-d42ab165ef91"
+    },
+    {
+        "Keyword": "overland park, ks 66212 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b22c86fa-8928-4768-9d3a-e809506315a0"
+    },
+    {
+        "Keyword": "stillwater, ok 74074 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "68e89f86-9662-41c8-b252-31f4881c6d28"
+    },
+    {
+        "Keyword": "outer ludhiana",
+        "Port Type": "address",
+        "Mapped Port ID": "c6dd2dd0-14d8-4284-b4ef-bb5dfcb6612d"
+    },
+    {
+        "Keyword": "schenectady, ny 12305 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "3ad56835-d352-476b-abce-85e0de607867"
+    },
+    {
+        "Keyword": "staten island, ny 10306 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "e6a1a712-3dd6-4c64-86f6-ccb7f1bc3acf"
+    },
+    {
+        "Keyword": "naperville, il 60540 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "8fc672a3-2c04-401c-9d59-8784464f0f69"
+    },
+    {
+        "Keyword": "port klang (xpq)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c78f16f5-b8e0-a2de-72dc-85d403b0d9f7"
+    },
+    {
+        "Keyword": "malacca, my",
+        "Port Type": "address",
+        "Mapped Port ID": "6a9ee27d-1352-4538-ab2d-3f050b69627d"
+    },
+    {
+        "Keyword": "shapingba, china",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "ea168629-332e-205f-8e29-35bf42d3626a"
+    },
+    {
+        "Keyword": "havre de grace, md 21078 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "a8d986d5-d6ab-4896-b1d9-06a23412ad86"
+    },
+    {
+        "Keyword": "dfw (dallasforth worth)",
+        "Port Type": "air_port",
+        "Mapped Port ID": "70b83cf4-de4c-49ea-9cca-bdce9f0d61dc"
+    },
+    {
+        "Keyword": "owings mills, md 21117 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "29b629c9-9d40-4172-b356-9c9a01c70d35"
+    },
+    {
+        "Keyword": "crystal lake, il 60014 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "28ea9945-e47b-4c40-ae82-82b03682ac94"
+    },
+    {
+        "Keyword": "neelyville, mo 63954 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b06bed86-d3d9-47dd-93af-d5774bed3002"
+    },
+    {
+        "Keyword": "richmond hill, ny 11418 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "ee39f72c-419c-4fc6-b667-f2bd807d6bf5"
+    },
+    {
+        "Keyword": "iowa city, ia",
+        "Port Type": "address",
+        "Mapped Port ID": "ffc4f0de-f0fe-486a-adf4-5afc65c2935a"
+    },
+    {
+        "Keyword": "poplar bluff, mo 63901 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "1cc0ed29-4fe7-44f8-b083-eda04ce0bcef"
+    },
+    {
+        "Keyword": "holts summit, mo 65043 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "2bbb0d89-d925-43a2-b6c7-9f94b0f56f4d"
+    },
+    {
+        "Keyword": "st. austell",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "3f301efb-7fa9-423c-8075-1cb7b5f857aa"
+    },
+    {
+        "Keyword": "st. austell",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "3f301efb-7fa9-423c-8075-1cb7b5f857aa"
+    },
+    {
+        "Keyword": "broomfield, co 80020 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "0ff23ebe-93f8-4260-9024-94f0346d8f03"
+    },
+    {
+        "Keyword": "romeoville, il 60446 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "1f2b5259-7f6a-4174-82b5-0734ab24433d"
+    },
+    {
+        "Keyword": "plainfield, il 60544 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "8cd8ff1e-3c3b-4c4d-91df-0e21bd21d16f"
+    },
+    {
+        "Keyword": "coffeyville, ks 67337 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "a55d00df-dead-4c89-8380-a24db5a49228"
+    },
+    {
+        "Keyword": "morton grove, il 60053 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "12ad3f3c-703d-4829-a62e-97280f01c53e"
+    },
+    {
+        "Keyword": "staten island, ny 10301 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "e6a1a712-3dd6-4c64-86f6-ccb7f1bc3acf"
+    },
+    {
+        "Keyword": "jambi, sumatra, id",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "680a9350-5700-47a2-bb2c-a83c3e88f1a3"
+    },
+    {
+        "Keyword": "acajutla (es)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4a9c710c-f131-1a33-b2e5-cc771a1da63c"
+    },
+    {
+        "Keyword": "adelaide (as)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7e2ef365-1c6b-6bdc-f4bc-32de0bd951e8"
+    },
+    {
+        "Keyword": "port louis (mp)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c2ff9903-e21f-b2fa-d6f8-10216841f15f"
+    },
+    {
+        "Keyword": "port louis (mp)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c2ff9903-e21f-b2fa-d6f8-10216841f15f"
+    },
+    {
+        "Keyword": "brisbane (as)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "467d5af2-d939-cba1-2951-fa929a10375f"
+    },
+    {
+        "Keyword": "hagerstown, md 21742 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "f00631b7-c409-40ad-9953-e58db5224f17"
+    },
+    {
+        "Keyword": "bloomfield, nm 87413 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "e5f71f01-3546-4986-aa4f-1c359d5a7941"
+    },
+    {
+        "Keyword": "rieste, germany",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "24ee8efa-9f2f-406b-b333-55454806545b"
+    },
+    {
+        "Keyword": "st louis, mo, united states",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "0493e796-7623-4d11-83d3-6a33cc896228"
+    },
+    {
+        "Keyword": "st louis, mo, united states",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "0493e796-7623-4d11-83d3-6a33cc896228"
+    },
+    {
+        "Keyword": "overland park, ks 66213 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b22c86fa-8928-4768-9d3a-e809506315a0"
+    },
+    {
+        "Keyword": "andechs, by de",
+        "Port Type": "address",
+        "Mapped Port ID": "b3696ff5-980b-402b-a317-9e09356a5a8e"
+    },
+    {
+        "Keyword": "sahathai, bangkok ,thailand",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "05d7873e-7b70-4ac8-b102-1d7ffbe4eea8"
+    },
+    {
+        "Keyword": "sahathai, bangkok ,thailand",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "05d7873e-7b70-4ac8-b102-1d7ffbe4eea8"
+    },
+    {
+        "Keyword": "schenectady, ny 12303 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "3ad56835-d352-476b-abce-85e0de607867"
+    },
+    {
+        "Keyword": "columbus, oh ()",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6b02b75b-d80e-6378-fce6-9b826ce9db6e"
+    },
+    {
+        "Keyword": "piraeus,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0bba510c-eb73-e88b-75ca-46ba8aa50019"
+    },
+    {
+        "Keyword": "satara, mh in",
+        "Port Type": "address",
+        "Mapped Port ID": "db62b5c3-a558-48fd-a217-0c994235929e"
+    },
+    {
+        "Keyword": "banting, malaysia",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "f14e1be5-ee77-4e1a-8f0e-a36b39b41be8"
+    },
+    {
+        "Keyword": "locust valley, ny 11560 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "328f0bfe-f6ed-4b52-88b7-a6845c6edf77"
+    },
+    {
+        "Keyword": "providence, ky 42450 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "aae71a74-b924-4d06-9294-1bd1f3c636fd"
+    },
+    {
+        "Keyword": "qasim int'l container terminal, karachi, sindh, pakistan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "77d1e0c6-c5bc-ce8d-92f3-6ea30db8c872"
+    },
+    {
+        "Keyword": "hesse-noord natie nv quay 913, antwerp, vlaanderen, belgium",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "28f18263-b309-4a4b-b02d-ff4564f69dda"
+    },
+    {
+        "Keyword": "goalpara branch",
+        "Port Type": "address",
+        "Mapped Port ID": "71b0aaff-3dbe-4837-b970-5edafe672e4e"
+    },
+    {
+        "Keyword": "junction city, ks 66441 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "781ee43b-200a-4fd5-af33-5770c923237e"
+    },
+    {
+        "Keyword": "calumet city, il 60409 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "ef36ffd9-5fd5-4ff0-a727-2bfe8cddcb62"
+    },
+    {
+        "Keyword": "chon thanh, vietnam",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "1d241ed8-058d-4f42-af33-76fe913321e1"
+    },
+    {
+        "Keyword": "lake zurich, il 60047 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "c5f33d10-5b31-4872-b055-3b6d71b2e962"
+    },
+    {
+        "Keyword": "staten island, ny 10309 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "e6a1a712-3dd6-4c64-86f6-ccb7f1bc3acf"
+    },
+    {
+        "Keyword": "halethorpe, md 21227 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "77a6abcc-24de-4daf-a57e-391683cb5d2f"
+    },
+    {
+        "Keyword": "northbrook, il 60062 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "adfa54c1-06d0-4cfe-8ac3-f3bbf07cd89a"
+    },
+    {
+        "Keyword": "middle river, md 21220 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "989557dc-6291-4a8a-bc5e-dac1095d3632"
+    },
+    {
+        "Keyword": "louisville, ky 40217 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b856195f-8148-49c4-b0c5-c692b05fda35"
+    },
+    {
+        "Keyword": "melrose park, il 60160 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "13816734-8977-4af6-ae42-69676fa70128"
+    },
+    {
+        "Keyword": "louisville, ky 40219 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b856195f-8148-49c4-b0c5-c692b05fda35"
+    },
+    {
+        "Keyword": "puerto caldera,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "2e2ce6ee-8299-b409-5151-00abe3b438d4"
+    },
+    {
+        "Keyword": "marseilles, il 61341 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "7f51307e-f57b-42de-a7d1-b29e7a224d0b"
+    },
+    {
+        "Keyword": "woodridge, il 60517 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "3c66bc29-51ed-4253-99b2-a252afa88875"
+    },
+    {
+        "Keyword": "smithville, mo 64089 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "13fc3f1a-22d8-4cc5-80c5-71e33a713fd0"
+    },
+    {
+        "Keyword": "toledo, oh, us",
+        "Port Type": "address",
+        "Mapped Port ID": "8a8710ea-ad73-4ecc-9e52-d7c81b746833"
+    },
+    {
+        "Keyword": "staten island, ny 10307 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "e6a1a712-3dd6-4c64-86f6-ccb7f1bc3acf"
+    },
+    {
+        "Keyword": "eurogate container terminal wilhelmshavengmbh",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9b22fc23-14e3-0cc6-8d5b-8be7940f02a6"
+    },
+    {
+        "Keyword": "sykesville, md 21784 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "9331c5e8-1f46-434c-b5d4-2e2485e86aa3"
+    },
+    {
+        "Keyword": "park forest, il 60466 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "05e5bc11-9dc3-4c19-873b-bb78ede984b7"
+    },
+    {
+        "Keyword": "weldon, ia, us",
+        "Port Type": "address",
+        "Mapped Port ID": "c4196c06-3054-477d-9565-1b40cea8bfaa"
+    },
+    {
+        "Keyword": "river forest, il 60305 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "de5d2a60-edaa-4c58-bb96-d1355dc94b09"
+    },
+    {
+        "Keyword": "louisville, ky 40299 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b856195f-8148-49c4-b0c5-c692b05fda35"
+    },
+    {
+        "Keyword": "pikesville, md 21208 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "7fa0b870-6754-40de-9ba5-be028d7b0ef9"
+    },
+    {
+        "Keyword": "staten island, ny 10312 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "e6a1a712-3dd6-4c64-86f6-ccb7f1bc3acf"
+    },
+    {
+        "Keyword": "college park, md 20740 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "69da6a2a-0d47-455c-9fd3-d8a751e3906b"
+    },
+    {
+        "Keyword": "durban, zambia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f106ea67-b12c-c8c0-ef66-91ee024f1390"
+    },
+    {
+        "Keyword": "severna park, md 21146 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "d6ae8211-e48d-419c-aaab-4979059f678e"
+    },
+    {
+        "Keyword": "florissant, co 80816 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "cbe3d4db-db6d-4a8b-8719-98a205e34197"
+    },
+    {
+        "Keyword": "leavenworth, ks 66048 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "c4358265-d7f8-404b-9c5b-fcddb5e17f80"
+    },
+    {
+        "Keyword": "belleville, il 62223 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "a48d1318-88a4-41c9-868c-b33418e38cb5"
+    },
+    {
+        "Keyword": "arkansas city, ks 67005 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "1c86a303-dfd9-40de-804a-cabfdb27f10a"
+    },
+    {
+        "Keyword": "champaign, il 61820 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "a45e500d-3552-4d13-a252-118947a5d74b"
+    },
+    {
+        "Keyword": "yueyang, 43, comoros",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1f4490e5-cd96-4478-be95-a9a5129bcd67"
+    },
+    {
+        "Keyword": "indian hills, co 80454 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b888dff0-4c7e-4609-9256-c9c668bb5446"
+    },
+    {
+        "Keyword": "staten island, ny 10302 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "e6a1a712-3dd6-4c64-86f6-ccb7f1bc3acf"
+    },
+    {
+        "Keyword": "rineyville, ky 40162 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "c920bc9b-459e-4a50-afee-29901a9c1be0"
+    },
+    {
+        "Keyword": "shenzhen cn",
+        "Port Type": "address",
+        "Mapped Port ID": "9db2b686-a3e3-412d-a918-7406fd39b3eb"
+    },
+    {
+        "Keyword": "niagara falls, ny 14301 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "6d3fbed8-36dd-4143-9fb2-5a06abd3d64b"
+    },
+    {
+        "Keyword": "huntsville, ar 72740 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "2a926acf-d68c-4951-9e19-a2fd2707214b"
+    },
+    {
+        "Keyword": "greenville, ky 42345 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "241908c3-326c-4002-961a-b627af26e1a1"
+    },
+    {
+        "Keyword": "booneville, ky 41314 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "f81e06a3-0a03-47f4-9dce-1fa6cc30b48a"
+    },
+    {
+        "Keyword": "farmington, nm 87401 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "3fb6a7ae-a731-4c4f-a57b-dc78b8bf3a8d"
+    },
+    {
+        "Keyword": "louisville, ky 40209 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b856195f-8148-49c4-b0c5-c692b05fda35"
+    },
+    {
+        "Keyword": "fresh meadows, ny 11365 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "19606df6-49b9-49dd-be36-b01e4473e8d7"
+    },
+    {
+        "Keyword": "spring grove, il 60081 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "f2d5fb46-9ed2-4e59-859e-af55c69d515b"
+    },
+    {
+        "Keyword": "montreal, ca",
+        "Port Type": "address",
+        "Mapped Port ID": "ff0ac261-99ee-41f2-8163-abcb3d6c3ce7"
+    },
+    {
+        "Keyword": "london (lgw)",
+        "Port Type": "air_port",
+        "Mapped Port ID": "74a7771c-ab89-b858-a975-c9087d723590"
+    },
+    {
+        "Keyword": "brisbane port",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "467d5af2-d939-cba1-2951-fa929a10375f"
+    },
+    {
+        "Keyword": "calvert city, ky 42029 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "ef1aabe0-d8b2-4417-8cfe-e8eaf4d95197"
+    },
+    {
+        "Keyword": "apahida ro",
+        "Port Type": "address",
+        "Mapped Port ID": "48a2b298-dcd4-4ee3-9ce0-87668ebd3ea8"
+    },
+    {
+        "Keyword": "plattsburgh, ny 12901 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "97a30224-0230-4fe4-b3df-e3b96e421705"
+    },
+    {
+        "Keyword": "east elmhurst, ny 11369 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "25600ea4-874c-44e5-925d-084abc170207"
+    },
+    {
+        "Keyword": "carbondale, il 62901 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "245d8002-ebeb-447e-9fc5-e96cd3f00d09"
+    },
+    {
+        "Keyword": "overland park, ks 66223 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b22c86fa-8928-4768-9d3a-e809506315a0"
+    },
+    {
+        "Keyword": "prince george, ca",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "cbadeabd-36b6-4ec4-9035-a271ece9d37b"
+    },
+    {
+        "Keyword": "trumansburg, ny 14886 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "ff41d40d-6c0b-469b-a8c7-ee77178e6878"
+    },
+    {
+        "Keyword": "hamburg, hh de",
+        "Port Type": "address",
+        "Mapped Port ID": "4bec830b-d427-4799-86e9-4f45360a4ccd"
+    },
+    {
+        "Keyword": "overland park, ks 66207 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b22c86fa-8928-4768-9d3a-e809506315a0"
+    },
+    {
+        "Keyword": "ransomville, ny 14131 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "335eebca-b639-4064-b371-fe33eb72d79e"
+    },
+    {
+        "Keyword": "singapor-t",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a822e173-18b9-408c-8836-5c86c4b2f47c"
+    },
+    {
+        "Keyword": "pusan krpus",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "80595cf1-a59f-2cf7-a29a-622faf40c2f8"
+    },
+    {
+        "Keyword": "dongguan cn",
+        "Port Type": "address",
+        "Mapped Port ID": "9f8d8da9-c4d6-42da-b235-491564d26eaa"
+    },
+    {
+        "Keyword": "myersville, md 21773 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "cfcc3766-5e02-4b64-ab99-f93123f28100"
+    },
+    {
+        "Keyword": "central city, ky 42330 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "93414002-02fa-4a62-ba8e-16030a7441a7"
+    },
+    {
+        "Keyword": "gingelom, belgium",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "69e9d95a-c223-449e-bd24-c0ece97561b6"
+    },
+    {
+        "Keyword": "hallsville, mo 65255 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "81cfcc2b-3e31-49b0-a8de-3d547d444fc8"
+    },
+    {
+        "Keyword": "semarang java",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c9575f17-1fca-41c3-a6c9-b6866ee6bcc7"
+    },
+    {
+        "Keyword": "pyongtaek",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8e63e07b-a0e2-4ec9-abef-290539349b64"
+    },
+    {
+        "Keyword": "spinelli srl - livorno",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "2a18675b-4950-f2a5-ad2d-7a9acf3d7079"
+    },
+    {
+        "Keyword": "pocahontas, ar 72455 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "c8dd9997-1314-4ff4-90f7-f6ff7c8c6f38"
+    },
+    {
+        "Keyword": "broomfield, co 80021 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "0ff23ebe-93f8-4260-9024-94f0346d8f03"
+    },
+    {
+        "Keyword": "granite city, il 62040 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "afeb5622-699c-4261-b58e-5042688cc8cf"
+    },
+    {
+        "Keyword": "vernon hills, il 60061 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "a65d6e64-6f92-486e-b142-840f71e8d6ef"
+    },
+    {
+        "Keyword": "segrate it",
+        "Port Type": "air_port",
+        "Mapped Port ID": "98299b5f-5c64-4f3f-99d5-48d24b31975b"
+    },
+    {
+        "Keyword": "honiara,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "44d7d4ee-3809-4f06-8875-b2654567d896"
+    },
+    {
+        "Keyword": "washington, mo 63090 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "19aaa8bd-2d1a-41b7-8316-b096fd355020"
+    },
+    {
+        "Keyword": "lauwin planque, france",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c589e3c9-8ace-44f9-84da-a7b79a713d54"
+    },
+    {
+        "Keyword": "hamburg, turkiye",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3ebde357-59ac-40e5-9697-79e16a4d9e9e"
+    },
+    {
+        "Keyword": "staten island, ny 10310 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "e6a1a712-3dd6-4c64-86f6-ccb7f1bc3acf"
+    },
+    {
+        "Keyword": "songkhla port,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c3bc4e48-d852-d755-4edf-e976d35e0298"
+    },
+    {
+        "Keyword": "elmwood park, il 60707 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "33dccf10-0ef5-4328-a38d-1c6d666d5514"
+    },
+    {
+        "Keyword": "albany, or",
+        "Port Type": "address",
+        "Mapped Port ID": "ba7d1dc9-cefc-40ec-840f-dac7d715b6c1"
+    },
+    {
+        "Keyword": "pyongtaek",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "8e63e07b-a0e2-4ec9-abef-290539349b64"
+    },
+    {
+        "Keyword": "college point, ny 11356 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "80697010-dac8-4b18-8f45-9422abb71862"
+    },
+    {
+        "Keyword": "owensville, mo 65066 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "68d3a245-0029-416c-831a-efe63d7e0d68"
+    },
+    {
+        "Keyword": "changshu shanghai",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "77176542-f5d4-4d3f-aead-f3e0b2d7eb37"
+    },
+    {
+        "Keyword": "metrans a.s., senov, severomoravsky, czech republic",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "b31aaaf5-1858-4bf2-96d5-c480f98b380a"
+    },
+    {
+        "Keyword": "metrans a.s., senov, severomoravsky, czech republic",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "b31aaaf5-1858-4bf2-96d5-c480f98b380a"
+    },
+    {
+        "Keyword": "spencerport, ny 14559 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b353405e-25c4-4878-8121-0fbfaeb29a77"
+    },
+    {
+        "Keyword": "friendship, ar 71942 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "fa14febd-43b3-4cb4-b7c9-18331ba8cc88"
+    },
+    {
+        "Keyword": "yarimca, kocaeli,",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "3557a1e2-b14a-f6be-d82c-a24a3bbf7419"
+    },
+    {
+        "Keyword": "sunland park, nm 88063 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "f567e8b4-b52b-426a-b8d8-420ac510cb13"
+    },
+    {
+        "Keyword": "aughafan",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "74bf4abf-6fc3-411e-8cc0-d461aea8c494"
+    },
+    {
+        "Keyword": "aughafan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "74bf4abf-6fc3-411e-8cc0-d461aea8c494"
+    },
+    {
+        "Keyword": "yarimca, kocaeli,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3557a1e2-b14a-f6be-d82c-a24a3bbf7419"
+    },
+    {
+        "Keyword": "louisville, ky 40231 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "b856195f-8148-49c4-b0c5-c692b05fda35"
+    },
+    {
+        "Keyword": "plymouth",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "45827003-a10d-406a-92ae-1d6d6d34a6a1"
+    },
+    {
+        "Keyword": "city of industry, usa",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e4fd50ae-4976-41fe-a82c-c383b980783c"
+    },
+    {
+        "Keyword": "aberdeen",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "afde5e4b-8ed0-4545-8867-12e3e2bf9331"
+    },
+    {
+        "Keyword": "portbury",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "acf58a3b-3160-4b3d-8bdc-cc63ff334286"
+    },
+    {
+        "Keyword": "eastern sea laem chabang terminal co., ltd. (bkk), bangkok, thailand",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e8ce4073-c739-4637-b7f5-e97f9d8b9963"
+    },
+    {
+        "Keyword": "red sea gateway terminal company limited, jeddah, makkah, saudi arabia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a99ce448-c4ea-4ef8-894d-7ca1cac1c52f"
+    },
+    {
+        "Keyword": "red sea gateway terminal company limited, jeddah, makkah, saudi arabia",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a99ce448-c4ea-4ef8-894d-7ca1cac1c52f"
+    },
+    {
+        "Keyword": "ct2 (klang port management-kpm), port klang(north port)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "908e466a-d7a7-4a39-98a6-56afded2b9bf"
+    },
+    {
+        "Keyword": "ct2 (klang port management-kpm), port klang(north port)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "908e466a-d7a7-4a39-98a6-56afded2b9bf"
+    },
+    {
+        "Keyword": "icd sonepat - delhi international cargo terminal pvt ltd.",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "5c7e3f6f-98a3-19ad-db99-e9e68f9b0c89"
+    },
+    {
+        "Keyword": "austin, tx, united states",
+        "Port Type": "air_port",
+        "Mapped Port ID": "5e897ef2-95d7-4cfc-9767-1c61e67e4243"
+    },
+    {
+        "Keyword": "lafayette, in 47905 [arrived at usps destination facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "74a9eb44-8f79-48c7-9a0a-7d210575a725"
+    },
+    {
+        "Keyword": "cartersville, ga 30121 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "75a83aeb-fa71-416d-bb25-8c911bad4f34"
+    },
+    {
+        "Keyword": "servicios maritimos unidos sa de cv, acajutla, sonsonate, el salvador",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "4a9c710c-f131-1a33-b2e5-cc771a1da63c"
+    },
+    {
+        "Keyword": "charlestown, in 47111 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "26a80665-edb9-44b8-b71d-5044eecc99f0"
+    },
+    {
+        "Keyword": "sturtevant, wi 53177 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "1e41b8d1-88f6-433a-9c79-754d109dd03a"
+    },
+    {
+        "Keyword": "servicios auxiliares maritimos(sam), algeciras, andalucia, spain",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "0208808b-fae0-e20c-15f7-eae790c7b404"
+    },
+    {
+        "Keyword": "bell gardens, ca 90205 [arrived at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "8dbfeb62-f993-4f71-b9bc-7c9a5b4010e2"
+    },
+    {
+        "Keyword": "burlingame, ca 94010 [arrived at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "b0edd11b-ec6c-4e5c-ba6f-c5042b6eee8c"
+    },
+    {
+        "Keyword": "sagamore beach, ma 02562 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "cb3ea53a-6e75-452b-bc3a-5516366dd1f4"
+    }
+]
