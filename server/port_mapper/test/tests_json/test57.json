@@ -1,0 +1,5002 @@
+[
+    {
+        "Keyword": "sl container terminal sdn. bhd., johor bahru, johor, malaysia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "e519d450-e90d-4da8-9d60-fd9f0f8d1f23"
+    },
+    {
+        "Keyword": "nmict (ningbo meishan-island international container terminal)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "83980fdc-fdd9-e4fa-200b-dd55611264b8"
+    },
+    {
+        "Keyword": "garden city ny distribution center [arrived at usps regional origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "80697010-dac8-4b18-8f45-9422abb71862"
+    },
+    {
+        "Keyword": "north bay ca distribution center [arrived at usps regional origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "8e1df821-2fee-4e5f-9012-f02558632a0a"
+    },
+    {
+        "Keyword": "bar",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "051e893b-c549-fe69-76f5-6afd138f65b6"
+    },
+    {
+        "Keyword": "new delhi",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "3bc832c2-e956-4d26-beb3-45dadee4f907"
+    },
+    {
+        "Keyword": "fos",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b13b787b-7192-dbd2-e424-dddd334e175a"
+    },
+    {
+        "Keyword": "ebl",
+        "Port Type": "air_port",
+        "Mapped Port ID": "ae1a17c9-284b-4f88-ad71-e9e200059daf"
+    },
+    {
+        "Keyword": "rubiera, italy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "557de672-1023-4749-ae7a-16e7fc706ee1"
+    },
+    {
+        "Keyword": "hnd",
+        "Port Type": "air_port",
+        "Mapped Port ID": "bcba08f1-a09e-48ae-a613-2470f863ce37"
+    },
+    {
+        "Keyword": "grz",
+        "Port Type": "air_port",
+        "Mapped Port ID": "866acefd-d3d2-4472-b411-b1aec539482c"
+    },
+    {
+        "Keyword": "zurich",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "395707c6-acdf-423b-a506-62031e14b8b2"
+    },
+    {
+        "Keyword": "beijiao, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "007cdebd-9a27-9908-4033-bffb25cf5526"
+    },
+    {
+        "Keyword": "cwn01",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f0c1d7aa-2cfa-4d73-bbed-e031501df06a"
+    },
+    {
+        "Keyword": "tianjinxingang, cn",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "98ff16b6-0ffe-4390-9923-e600c1333db6"
+    },
+    {
+        "Keyword": "tianjinxingang, cn",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "98ff16b6-0ffe-4390-9923-e600c1333db6"
+    },
+    {
+        "Keyword": "rubiera, italy",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "557de672-1023-4749-ae7a-16e7fc706ee1"
+    },
+    {
+        "Keyword": "ceska trebova, cz",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "7f66d7ba-9e6a-47aa-8301-2804b0ed7841"
+    },
+    {
+        "Keyword": "grskg",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "cd988e6b-56b7-409d-a50a-e50f5415eef7"
+    },
+    {
+        "Keyword": "modern terminal limited (mtl), hong kong, hong kong, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "49888ef2-e60b-44e9-b935-302f6d4cfac5"
+    },
+    {
+        "Keyword": "detroit mi network distribution center",
+        "Port Type": "address",
+        "Mapped Port ID": "e2589fd3-81d8-4480-a2c1-e8d781256e35"
+    },
+    {
+        "Keyword": "nitra",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "aba62730-be7c-405b-9801-fe221e5d1966"
+    },
+    {
+        "Keyword": "mallen",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "4308edee-94a2-433e-b84e-2e45a163ba04"
+    },
+    {
+        "Keyword": "allied yard 3 (25 penjuru lane)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "0fb3efd1-bbdf-4a94-b549-cf77b8a56e7c"
+    },
+    {
+        "Keyword": "nitra",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "aba62730-be7c-405b-9801-fe221e5d1966"
+    },
+    {
+        "Keyword": "klang (west)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "908e466a-d7a7-4a39-98a6-56afded2b9bf"
+    },
+    {
+        "Keyword": "icd tanamexco",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "0ede2b79-1b5e-4b6b-9190-1b871e2a00bf"
+    },
+    {
+        "Keyword": "seriate, italy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "557de672-1023-4749-ae7a-16e7fc706ee1"
+    },
+    {
+        "Keyword": "washington dc distribution center",
+        "Port Type": "address",
+        "Mapped Port ID": "d7ea084d-18ed-4910-a59e-bf4b32822567"
+    },
+    {
+        "Keyword": "reston, va 20190",
+        "Port Type": "address",
+        "Mapped Port ID": "540e6e25-edf7-4e26-a4f9-5c046f293b71"
+    },
+    {
+        "Keyword": "new delhi",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "3bc832c2-e956-4d26-beb3-45dadee4f907"
+    },
+    {
+        "Keyword": "mundra adani cma mundra container terminal",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "2a4b4d39-eb9d-cc1d-f98c-b97be21c3d6c"
+    },
+    {
+        "Keyword": "shashi",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "46155820-612d-5289-ee8a-15181529bef2"
+    },
+    {
+        "Keyword": "sixth october, egypt",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "7c16ced4-7878-4de3-960d-c1e84af8063d"
+    },
+    {
+        "Keyword": "adani ports and special economic zone ltd. (ct2), india",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "69f7509d-1f28-410e-ba92-8115b8d29376"
+    },
+    {
+        "Keyword": "6 october city,egypt",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "7c16ced4-7878-4de3-960d-c1e84af8063d"
+    },
+    {
+        "Keyword": "bandar casia, pe my",
+        "Port Type": "address",
+        "Mapped Port ID": "9a79e9e4-6251-4cb1-9048-7db8b047d300"
+    },
+    {
+        "Keyword": "reseda, ca",
+        "Port Type": "address",
+        "Mapped Port ID": "8e1df821-2fee-4e5f-9012-f02558632a0a"
+    },
+    {
+        "Keyword": "kolkatakolencherry",
+        "Port Type": "address",
+        "Mapped Port ID": "a3a6a088-44e5-4d89-85dd-23b1a037d056"
+    },
+    {
+        "Keyword": "tuolumne,, ca us",
+        "Port Type": "air_port",
+        "Mapped Port ID": "d17ff10c-95e7-827f-b64a-6f15bb114f3c"
+    },
+    {
+        "Keyword": "montreuil sur ille, 35",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "dda8a03a-7945-4c2e-988c-bfbe443b4910"
+    },
+    {
+        "Keyword": "hakata(hakata island city container terminal(kmtc))",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "7fa06ee8-c9dc-75f9-4739-431773872812"
+    },
+    {
+        "Keyword": "dunn, nc, 28334",
+        "Port Type": "address",
+        "Mapped Port ID": "406df2ab-e520-401c-807a-e49516cd86a9"
+    },
+    {
+        "Keyword": "le havre",
+        "Port Type": "air_port",
+        "Mapped Port ID": "1ec4088a-82eb-42b9-95aa-9d02d8235ca8"
+    },
+    {
+        "Keyword": "cary, nc, 27519",
+        "Port Type": "address",
+        "Mapped Port ID": "d425d7ca-cf54-4820-86e4-d1a9b2355298"
+    },
+    {
+        "Keyword": "cary, nc, 27518",
+        "Port Type": "address",
+        "Mapped Port ID": "d425d7ca-cf54-4820-86e4-d1a9b2355298"
+    },
+    {
+        "Keyword": "irmo, sc, 29063",
+        "Port Type": "address",
+        "Mapped Port ID": "5f085fde-80b8-497b-975f-bfcb9d2377f7"
+    },
+    {
+        "Keyword": "maracena, spain",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "8789ca31-75b2-666d-cbca-e70c598b6d34"
+    },
+    {
+        "Keyword": "anandbagh branch",
+        "Port Type": "address",
+        "Mapped Port ID": "92a74d10-b9e6-4635-a9a3-b36cbf943cff"
+    },
+    {
+        "Keyword": "chicago(joliet), il, will, united states",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "83770ae9-e91a-4258-839f-3630876a5e4c"
+    },
+    {
+        "Keyword": "apex, nc, 27502",
+        "Port Type": "address",
+        "Mapped Port ID": "2ec788cb-3087-42b8-b876-7aa92a29ff49"
+    },
+    {
+        "Keyword": "arleta, ca",
+        "Port Type": "address",
+        "Mapped Port ID": "8e1df821-2fee-4e5f-9012-f02558632a0a"
+    },
+    {
+        "Keyword": "wuxi suhua international container terminal co.,ltd.",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c0b00ef8-59ba-4c56-932a-b1d8e6f6c0bc"
+    },
+    {
+        "Keyword": "st lucia (uvf)",
+        "Port Type": "air_port",
+        "Mapped Port ID": "4d6158b0-a586-439e-b886-00a914a66050"
+    },
+    {
+        "Keyword": "port victoria, st. kitts and nevis",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "68100424-433b-45b3-9578-8aba2bc725ac"
+    },
+    {
+        "Keyword": "cary, nc, 27513",
+        "Port Type": "address",
+        "Mapped Port ID": "d425d7ca-cf54-4820-86e4-d1a9b2355298"
+    },
+    {
+        "Keyword": "cary, nc, 27511",
+        "Port Type": "address",
+        "Mapped Port ID": "d425d7ca-cf54-4820-86e4-d1a9b2355298"
+    },
+    {
+        "Keyword": "macau",
+        "Port Type": "air_port",
+        "Mapped Port ID": "cce84521-0a3f-49ad-809e-a284510b37b9"
+    },
+    {
+        "Keyword": "aurora, co, 80014",
+        "Port Type": "address",
+        "Mapped Port ID": "106d233c-5e9e-4564-aef0-dc816cc1fafe"
+    },
+    {
+        "Keyword": "one matrix 092w singapore",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "b4a682f5-745e-7eae-9e38-98757dba1a50"
+    },
+    {
+        "Keyword": "suwon-si kr",
+        "Port Type": "address",
+        "Mapped Port ID": "a3d0b1cd-9f36-4938-98f7-a5dc1de1d4c4"
+    },
+    {
+        "Keyword": "pat",
+        "Port Type": "air_port",
+        "Mapped Port ID": "85acfbed-6501-4227-b27d-6ed9f9f5a8a0"
+    },
+    {
+        "Keyword": "antsiranana mgdie",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0c46617f-dfd1-a16b-1e72-ac0213974760"
+    },
+    {
+        "Keyword": "mc bee, sc, 29101",
+        "Port Type": "address",
+        "Mapped Port ID": "192ee8bf-139a-40be-a9e8-32d0bf7007f3"
+    },
+    {
+        "Keyword": "troy, nc, 27371",
+        "Port Type": "address",
+        "Mapped Port ID": "425d2e45-8bb1-4bc6-8563-321932e25504"
+    },
+    {
+        "Keyword": "ta yuan district,, tw",
+        "Port Type": "address",
+        "Mapped Port ID": "34e66778-3dc7-4f62-9aa6-27727d0357cd"
+    },
+    {
+        "Keyword": "neuss de",
+        "Port Type": "address",
+        "Mapped Port ID": "bb85ffc4-b868-4fb4-ac3f-98f5c24a4404"
+    },
+    {
+        "Keyword": "inmbd",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "7a0c140a-4732-4caf-ab73-3768694a058f"
+    },
+    {
+        "Keyword": "jict (jkt international container termial)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "5a2a762f-2b9a-41ab-bdef-d37940654737"
+    },
+    {
+        "Keyword": "grskg",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "cd988e6b-56b7-409d-a50a-e50f5415eef7"
+    },
+    {
+        "Keyword": "pt. crane indo perdana (cip)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "238bfc87-8578-4c5b-9889-cf6bebdd4f3f"
+    },
+    {
+        "Keyword": "pipersville, united states",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "6fb1b0a3-859d-499e-a58f-a872c6a1032c"
+    },
+    {
+        "Keyword": "aurora, co, 80012",
+        "Port Type": "address",
+        "Mapped Port ID": "106d233c-5e9e-4564-aef0-dc816cc1fafe"
+    },
+    {
+        "Keyword": "rho, it",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "e703abc9-feed-4f3d-bc06-d11c5fcfe7d5"
+    },
+    {
+        "Keyword": "doha qa",
+        "Port Type": "air_port",
+        "Mapped Port ID": "4e43ec9c-55c8-b0ab-a4a5-e60864b991bf"
+    },
+    {
+        "Keyword": "las palmas, spain",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "8789ca31-75b2-666d-cbca-e70c598b6d34"
+    },
+    {
+        "Keyword": "vass, nc, 28394",
+        "Port Type": "address",
+        "Mapped Port ID": "8e39c7da-d05e-4d90-bc88-815419e6546a"
+    },
+    {
+        "Keyword": "zoetermeer (nl)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5a3bbb74-4068-455b-912a-14fa7f4950d8"
+    },
+    {
+        "Keyword": "bar",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "051e893b-c549-fe69-76f5-6afd138f65b6"
+    },
+    {
+        "Keyword": "everport terminal services (ben e nutter), oakland, alameda, california, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ff9062e8-2906-4107-906e-126609f47d3d"
+    },
+    {
+        "Keyword": "southern md distribution center annex [arrived at usps regional origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "edd8c98f-4b51-40b1-b5f4-cd25b194a319"
+    },
+    {
+        "Keyword": "american president line, los angeles, california, united states",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "e38c26cc-ef23-4d4c-bdc7-fb5a20b4d902"
+    },
+    {
+        "Keyword": "guangzhou nansha international container terminal ( \u201cnict\u201d\uff09",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "44bd20db-8400-b03f-a91d-766fc2459210"
+    },
+    {
+        "Keyword": "norfolk southern - livernois, detroit, wayne, michigan, united states",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c76719df-97dd-d17e-c557-ccd1c4866f81"
+    },
+    {
+        "Keyword": "yilport gebze anaterminal terminal, gebze, kocaeli, turkiye",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "fc185ac0-fbc5-4ca0-8f75-83e73021fa7c"
+    },
+    {
+        "Keyword": "centro intermodal de maniobras s.a., manzanillo, colima, mexico",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "58130b1d-4681-cf31-8e70-56171a730f0e"
+    },
+    {
+        "Keyword": "middlesex-essex ma distribution center",
+        "Port Type": "address",
+        "Mapped Port ID": "515faa79-eb4d-41cb-9312-48d0750be755"
+    },
+    {
+        "Keyword": "norfolk southern - livernois, detroit, wayne, michigan, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c76719df-97dd-d17e-c557-ccd1c4866f81"
+    },
+    {
+        "Keyword": "seabird marine services pvt. ltd., navi mumbai, maharashtra, india",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "a4bd9d16-3d49-f6b5-9e4a-7b5cec1f5579"
+    },
+    {
+        "Keyword": "aston, pa 19014 [arrived shipping partner facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "8f398382-4daf-46fb-a427-fc2ae3e552dd"
+    },
+    {
+        "Keyword": "zhoushan yongzhou container terminal ltd, zhoushan, zhejiang, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "83980fdc-fdd9-e4fa-200b-dd55611264b8"
+    },
+    {
+        "Keyword": "zhoushan yongzhou container terminal ltd, zhoushan, zhejiang, china",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "83980fdc-fdd9-e4fa-200b-dd55611264b8"
+    },
+    {
+        "Keyword": "fort lauderdale, fl",
+        "Port Type": "air_port",
+        "Mapped Port ID": "f689ff6e-5983-4e47-959c-a3ccc1df3bf2"
+    },
+    {
+        "Keyword": "prague",
+        "Port Type": "air_port",
+        "Mapped Port ID": "1a45c7cc-8f5c-9013-ed98-198cc52ba7df"
+    },
+    {
+        "Keyword": "newark",
+        "Port Type": "air_port",
+        "Mapped Port ID": "844ffd19-ef93-0e2c-f54d-0c7aeff023ba"
+    },
+    {
+        "Keyword": "qasim international container termi",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a9e7cef2-c23e-8cb2-950f-679a278ecc92"
+    },
+    {
+        "Keyword": "salt lake city, salt lake, utah, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "60669da9-4186-4d0f-a2ae-976395083c9a"
+    },
+    {
+        "Keyword": "denver",
+        "Port Type": "air_port",
+        "Mapped Port ID": "411bd239-c369-4ceb-b2f8-7e8772f64ba7"
+    },
+    {
+        "Keyword": "sendai container terminal, sendai (miyagi)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3e881e42-d5e8-45c3-a7dc-24ef0bc22cdb"
+    },
+    {
+        "Keyword": "busan container terminal company",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "80595cf1-a59f-2cf7-a29a-622faf40c2f8"
+    },
+    {
+        "Keyword": "chinese maritime transport ltd",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "3f1e0e96-f90e-4593-8a99-e381d100cd9e"
+    },
+    {
+        "Keyword": "pelabuhan umum pt. bandar teguh abadi",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "5a7835a2-4f09-498f-8224-ad7e5c556258"
+    },
+    {
+        "Keyword": "peenya branch(arisinakunte)",
+        "Port Type": "address",
+        "Mapped Port ID": "f8859a00-7edc-49a1-970b-98d9c0ea9943"
+    },
+    {
+        "Keyword": "shippensburg, united states",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "0ad2fc2f-377e-4cfb-bcf9-df5a3130623c"
+    },
+    {
+        "Keyword": "pinghu(dushangang),zj,jiaxing,china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "91b1cda7-a1a3-bfff-6583-56da3c33857d"
+    },
+    {
+        "Keyword": "osaka(mitsubishi logistics nanko c-9 d.h.a)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ac288b45-5d15-036d-8907-a84f245c6b29"
+    },
+    {
+        "Keyword": "las palmas de gran canaria, spain",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "8789ca31-75b2-666d-cbca-e70c598b6d34"
+    },
+    {
+        "Keyword": "ji lian container co., ltd. (cosco & oocl depot)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c9f17ba0-7930-491d-b651-404b28d48444"
+    },
+    {
+        "Keyword": "shams container terminal",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "9670351e-cb9a-4921-a9a5-7f0aa0461c4c"
+    },
+    {
+        "Keyword": "dna marine services, india",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9670351e-cb9a-4921-a9a5-7f0aa0461c4c"
+    },
+    {
+        "Keyword": "ybor city fl package sorting center",
+        "Port Type": "address",
+        "Mapped Port ID": "29ae888c-981f-4e34-8991-25bcd6dd4659"
+    },
+    {
+        "Keyword": "sendai container terminal, sendai (miyagi)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "3e881e42-d5e8-45c3-a7dc-24ef0bc22cdb"
+    },
+    {
+        "Keyword": "hmm (taiwan) co., ltd #078 terminal office",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "2fe3b18c-b871-6195-53e6-e0d6329ed04c"
+    },
+    {
+        "Keyword": "jeffersonville, in, clark, united states",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "136047b4-9442-e977-2056-69bfdb245f65"
+    },
+    {
+        "Keyword": "jeffersonville, in, clark, united states",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "136047b4-9442-e977-2056-69bfdb245f65"
+    },
+    {
+        "Keyword": "csp zeebrugge terminal n.v., zeebrugge, west-vlaanderen, vlaanderen, belgium",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "8f5f809c-d584-d34b-29ba-c9a7f313292c"
+    },
+    {
+        "Keyword": "oro bay",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "cfbed0aa-5dc1-88b5-f8eb-d2029e1458d9"
+    },
+    {
+        "Keyword": "guangzhou south china oceangate ctnr terminal company ltd.",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "44bd20db-8400-b03f-a91d-766fc2459210"
+    },
+    {
+        "Keyword": "bhbah",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "baf21e44-38f3-6f9d-db98-61eec964e052"
+    },
+    {
+        "Keyword": "riga",
+        "Port Type": "air_port",
+        "Mapped Port ID": "8d78deef-ecf0-4670-59b5-db0322f4f7d1"
+    },
+    {
+        "Keyword": "sjo (san jose)",
+        "Port Type": "air_port",
+        "Mapped Port ID": "c6756c71-12f8-45c2-8102-1d5ecc309129"
+    },
+    {
+        "Keyword": "ummsaid (qaums)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b2b8c56e-9c74-4e5d-96a7-34e37d3524d3"
+    },
+    {
+        "Keyword": "gdl container depot",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "b42d9c3e-11ca-fce2-4350-a306e2c5d00d"
+    },
+    {
+        "Keyword": "pretoria, za",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "f106ea67-b12c-c8c0-ef66-91ee024f1390"
+    },
+    {
+        "Keyword": "nbct (north butterworth container terminal), penang",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d60293c0-ee36-3570-1915-a88ac5057115"
+    },
+    {
+        "Keyword": "bhbah",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "baf21e44-38f3-6f9d-db98-61eec964e052"
+    },
+    {
+        "Keyword": "kict - pc15/16/17 (sankyu), kobe, hyogo-ken, japan",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "6deef5bb-57c6-4ed2-8a2e-87a8ce85b61e"
+    },
+    {
+        "Keyword": "nasik hub",
+        "Port Type": "address",
+        "Mapped Port ID": "88beb27e-fe27-4b66-8122-4a853088edec"
+    },
+    {
+        "Keyword": "hubli hub",
+        "Port Type": "address",
+        "Mapped Port ID": "e5fc7c81-4f92-4a44-be9a-a99bd8c49066"
+    },
+    {
+        "Keyword": "southern ct distribution center",
+        "Port Type": "address",
+        "Mapped Port ID": "29ac66f9-0712-41bc-b3af-72eccf911ddc"
+    },
+    {
+        "Keyword": "belgaum",
+        "Port Type": "address",
+        "Mapped Port ID": "38080b9f-cf8e-4f3a-9275-4c4af1679f19"
+    },
+    {
+        "Keyword": "el paso",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b191fa49-d632-46aa-9d84-6f429dd1108e"
+    },
+    {
+        "Keyword": "moji/kitakyushu, 40",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7c6af786-d1b3-a9ee-197e-28bf1567c510"
+    },
+    {
+        "Keyword": "foam lake, ca",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "bd35cdb2-86e4-4067-ac62-7936d0c1652b"
+    },
+    {
+        "Keyword": "sanshui new port (cn)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8642c42d-a1c0-2e2a-7151-32cb9dcad754"
+    },
+    {
+        "Keyword": "pune hub pnqh",
+        "Port Type": "address",
+        "Mapped Port ID": "49b9e470-c387-47d6-83fc-cb43428fa79e"
+    },
+    {
+        "Keyword": "\uc778\ucc9c\ucee8\ud14c\uc774\ub108\ud130\ubbf8\ub110(ict), incheon",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "30271445-d995-c8b2-4dd8-7d49736e1a7a"
+    },
+    {
+        "Keyword": "usa-reno",
+        "Port Type": "address",
+        "Mapped Port ID": "e7880d97-73f6-4ddd-88f8-d83b0f14e1cc"
+    },
+    {
+        "Keyword": "san antonio,tx,bexar,united states",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "fe48f398-b464-472a-9750-26b623271a7a"
+    },
+    {
+        "Keyword": "paio pires, pt",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "68c106ba-2953-48ca-9bd8-2eaedbb105bd"
+    },
+    {
+        "Keyword": "cambridge city, us",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "ebba8bad-8d06-7069-988c-090aaea8c71d"
+    },
+    {
+        "Keyword": "jeanerette, la",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "d7547497-2cc8-4384-8bd3-334efbbaea51"
+    },
+    {
+        "Keyword": "cnsgh",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3f1e0e96-f90e-4593-8a99-e381d100cd9e"
+    },
+    {
+        "Keyword": "bata (ek)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3b88a366-c102-3157-ab10-e32456552262"
+    },
+    {
+        "Keyword": "tan cang nhon trach",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "16fb9184-6baf-b74f-eb3d-4676ffc02815"
+    },
+    {
+        "Keyword": "p.kelang wpt",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c78f16f5-b8e0-a2de-72dc-85d403b0d9f7"
+    },
+    {
+        "Keyword": "inter company ate",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "00956388-71ad-854f-3907-c515fdb2ce00"
+    },
+    {
+        "Keyword": "meerbusch, de",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "f5018391-245d-465d-b46e-b5a436564a94"
+    },
+    {
+        "Keyword": "penang (georgetown), my",
+        "Port Type": "air_port",
+        "Mapped Port ID": "2519cc0c-545e-c7cc-7eca-758b8dd04ec7"
+    },
+    {
+        "Keyword": "munchen, de",
+        "Port Type": "air_port",
+        "Mapped Port ID": "982f44dc-f938-b8fb-54d1-385d91e9d149"
+    },
+    {
+        "Keyword": "ostfildern",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "d87287c2-6806-4f82-b479-0c30409a6242"
+    },
+    {
+        "Keyword": "waigaoqiao phase-5 terminal (smct)-china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3f1e0e96-f90e-4593-8a99-e381d100cd9e"
+    },
+    {
+        "Keyword": "munchen,",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "33610696-7f1b-4d60-a27c-736204f95718"
+    },
+    {
+        "Keyword": "munchen,",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "33610696-7f1b-4d60-a27c-736204f95718"
+    },
+    {
+        "Keyword": "belafst",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "92bb6c89-0bd6-4adc-6d12-179ea826efe2"
+    },
+    {
+        "Keyword": "belafst",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "92bb6c89-0bd6-4adc-6d12-179ea826efe2"
+    },
+    {
+        "Keyword": "rye, ny 10580",
+        "Port Type": "address",
+        "Mapped Port ID": "6e28b3b9-f30c-4ad1-b7ca-fac00d65a63a"
+    },
+    {
+        "Keyword": "dos hermanas",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0b088c72-4120-4896-b5cb-3251681c055f"
+    },
+    {
+        "Keyword": "san jose (sjo)",
+        "Port Type": "air_port",
+        "Mapped Port ID": "c6756c71-12f8-45c2-8102-1d5ecc309129"
+    },
+    {
+        "Keyword": "bengaluru",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "92f63de4-9507-42b6-8519-d1162f1bac8b"
+    },
+    {
+        "Keyword": "bengaluru",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "92f63de4-9507-42b6-8519-d1162f1bac8b"
+    },
+    {
+        "Keyword": "nsrr cmh rickenbacker, columbus, franklin, ohio, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6b02b75b-d80e-6378-fce6-9b826ce9db6e"
+    },
+    {
+        "Keyword": "thailand",
+        "Port Type": "air_port",
+        "Mapped Port ID": "add98478-0d3f-4f1b-ecf0-359125a5a621"
+    },
+    {
+        "Keyword": "container corporation of india ltd,tihi,madhya pradesh,india",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "15173cce-6cea-4612-829e-ae0bc71731af"
+    },
+    {
+        "Keyword": "bangkok th",
+        "Port Type": "air_port",
+        "Mapped Port ID": "add98478-0d3f-4f1b-ecf0-359125a5a621"
+    },
+    {
+        "Keyword": "adani ports and special economic zone ltd. (ct2), india",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "cc5572b1-6196-98e9-8896-46c9c356cf94"
+    },
+    {
+        "Keyword": "united kingdom of great britain and northern ireland (the)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fcc8e287-952d-459e-91bf-9a7d9ebb8a30"
+    },
+    {
+        "Keyword": "chicago-c.s.x. 59th street,illinois,u.s.a. 60636",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c1035994-16f3-4182-8c3c-ad4f679dbf5f"
+    },
+    {
+        "Keyword": "\"galena\", ul dozynkowa 10, wroclaw, 52-311",
+        "Port Type": "address",
+        "Mapped Port ID": "83d67caf-b942-4de6-88e0-c3caead6b3d3"
+    },
+    {
+        "Keyword": "portland, or, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "41a005ad-fbf7-4231-961f-2c62387b4fdf"
+    },
+    {
+        "Keyword": "cairo",
+        "Port Type": "air_port",
+        "Mapped Port ID": "47e4ac37-7a88-d025-533a-789153df3367"
+    },
+    {
+        "Keyword": "jawaharlal nehru nsict dpw, jawaharlal nehru, maharashtra, india",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9670351e-cb9a-4921-a9a5-7f0aa0461c4c"
+    },
+    {
+        "Keyword": "tihi, madhya pradesh, india",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "15173cce-6cea-4612-829e-ae0bc71731af"
+    },
+    {
+        "Keyword": "portland, or, united states",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "41a005ad-fbf7-4231-961f-2c62387b4fdf"
+    },
+    {
+        "Keyword": "hongwan,zhuhai, gd (cnhgw)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "bb805c68-24ce-43c2-a65a-332bf7ec4907"
+    },
+    {
+        "Keyword": "ho chi minh city - icd phuc long, vietnam",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "0083d603-dc8d-430a-ae02-26de7fa3c042"
+    },
+    {
+        "Keyword": "hradec kralove, cz",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "7f66d7ba-9e6a-47aa-8301-2804b0ed7841"
+    },
+    {
+        "Keyword": "pine bluff ssw, ar",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "aaa38bae-8989-4024-92da-6e937216026e"
+    },
+    {
+        "Keyword": "constanti, spain",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8789ca31-75b2-666d-cbca-e70c598b6d34"
+    },
+    {
+        "Keyword": "ecct empty yard (near to ecct cfs)",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "0fb3efd1-bbdf-4a94-b549-cf77b8a56e7c"
+    },
+    {
+        "Keyword": "san antonio, tx",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "fe48f398-b464-472a-9750-26b623271a7a"
+    },
+    {
+        "Keyword": "ecct empty yard (near to ecct cfs)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "0fb3efd1-bbdf-4a94-b549-cf77b8a56e7c"
+    },
+    {
+        "Keyword": "talegaon, india",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "5dbe2ae8-92cd-49c5-9e1e-4130eafe6ef6"
+    },
+    {
+        "Keyword": "incontrade limited",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "5cee9607-704c-43cb-8106-eb5cdf63ac16"
+    },
+    {
+        "Keyword": "talegaon, india",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "5dbe2ae8-92cd-49c5-9e1e-4130eafe6ef6"
+    },
+    {
+        "Keyword": "trivandrum",
+        "Port Type": "address",
+        "Mapped Port ID": "83a2dfed-02a2-4848-a18d-f68e9744e0c9"
+    },
+    {
+        "Keyword": "johore bahru, malaysia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "f87d66f9-4cc3-4633-a2f8-6f95be1f1000"
+    },
+    {
+        "Keyword": "rajajinagar branch",
+        "Port Type": "address",
+        "Mapped Port ID": "f8859a00-7edc-49a1-970b-98d9c0ea9943"
+    },
+    {
+        "Keyword": "crest hill, il 60403",
+        "Port Type": "address",
+        "Mapped Port ID": "fa9354e8-c4bd-47f2-8228-2fb7c42bc3fc"
+    },
+    {
+        "Keyword": "highland, in 46322",
+        "Port Type": "address",
+        "Mapped Port ID": "f57047cb-f063-49b3-84b8-c1ebd33151a4"
+    },
+    {
+        "Keyword": "ybor city fl distribution center [arrived at usps regional origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "29ae888c-981f-4e34-8991-25bcd6dd4659"
+    },
+    {
+        "Keyword": "hutchison ports ect euromax",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "69f7509d-1f28-410e-ba92-8115b8d29376"
+    },
+    {
+        "Keyword": "(qqctn), china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c0ca2a9a-5297-471d-aeee-45b53820bd16"
+    },
+    {
+        "Keyword": "saruh",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "4e0d5a2b-5be6-43c3-b548-4a3cbed55976"
+    },
+    {
+        "Keyword": "saruh",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "4e0d5a2b-5be6-43c3-b548-4a3cbed55976"
+    },
+    {
+        "Keyword": "spezzano, italy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "557de672-1023-4749-ae7a-16e7fc706ee1"
+    },
+    {
+        "Keyword": "ozarowice pl",
+        "Port Type": "air_port",
+        "Mapped Port ID": "4efb27df-f519-7431-7657-18b7bec3ebe4"
+    },
+    {
+        "Keyword": "(qqctn), china",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c0ca2a9a-5297-471d-aeee-45b53820bd16"
+    },
+    {
+        "Keyword": "somaglia, italy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "557de672-1023-4749-ae7a-16e7fc706ee1"
+    },
+    {
+        "Keyword": "basheerbagh branch",
+        "Port Type": "address",
+        "Mapped Port ID": "e1ea3b49-57a6-438b-8d3a-28cf462f29bc"
+    },
+    {
+        "Keyword": "reseda, ca us",
+        "Port Type": "address",
+        "Mapped Port ID": "8e1df821-2fee-4e5f-9012-f02558632a0a"
+    },
+    {
+        "Keyword": "rialto, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "07b23d12-0799-40f0-a550-9ec7ceddbf89"
+    },
+    {
+        "Keyword": "lincolnton, us",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "50572464-0ec0-4bf5-8ec6-d38ef4b92921"
+    },
+    {
+        "Keyword": "catarroja, spain",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "8789ca31-75b2-666d-cbca-e70c598b6d34"
+    },
+    {
+        "Keyword": "llica de vall, spain",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8789ca31-75b2-666d-cbca-e70c598b6d34"
+    },
+    {
+        "Keyword": "shinagawa container terminal",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c2a07065-7a0d-9f92-3029-048b0fb49ced"
+    },
+    {
+        "Keyword": "vigevano, italy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "557de672-1023-4749-ae7a-16e7fc706ee1"
+    },
+    {
+        "Keyword": "longmont, co, 80503",
+        "Port Type": "address",
+        "Mapped Port ID": "fc11ed40-6881-4e45-97d3-ab4b1b635edc"
+    },
+    {
+        "Keyword": "villalar de los comuneros, spain",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "4f864caf-e69c-4fb9-b2fe-6d4cd73fb72c"
+    },
+    {
+        "Keyword": "picassent, spain",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8789ca31-75b2-666d-cbca-e70c598b6d34"
+    },
+    {
+        "Keyword": "baku (heydar aliyev intl apt) az",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1bb21b5c-36d5-41c1-6c62-a8d91ff92cfc"
+    },
+    {
+        "Keyword": "beneixama, spain",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "8789ca31-75b2-666d-cbca-e70c598b6d34"
+    },
+    {
+        "Keyword": "warszawa pl",
+        "Port Type": "address",
+        "Mapped Port ID": "b6f1da5c-4cc2-4a6e-ad8b-c0b29c73d7db"
+    },
+    {
+        "Keyword": "oxda, oh us",
+        "Port Type": "air_port",
+        "Mapped Port ID": "6e470f9c-e3cc-47c8-8026-dddede222c4a"
+    },
+    {
+        "Keyword": "cadriano, italy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "557de672-1023-4749-ae7a-16e7fc706ee1"
+    },
+    {
+        "Keyword": "pegalajar, spain",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "8789ca31-75b2-666d-cbca-e70c598b6d34"
+    },
+    {
+        "Keyword": "taipei",
+        "Port Type": "air_port",
+        "Mapped Port ID": "2a190994-88c0-f69b-51cc-7cda02e97f65"
+    },
+    {
+        "Keyword": "taiwan",
+        "Port Type": "air_port",
+        "Mapped Port ID": "2a190994-88c0-f69b-51cc-7cda02e97f65"
+    },
+    {
+        "Keyword": "wan chun international co.ltd(wharf #34)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f1490878-3bfa-9c95-6f9e-d7da6fdd0b24"
+    },
+    {
+        "Keyword": "fco (rome)",
+        "Port Type": "air_port",
+        "Mapped Port ID": "1ca7b49d-bc20-453c-a41f-df78ba3056cd"
+    },
+    {
+        "Keyword": "riyadh",
+        "Port Type": "air_port",
+        "Mapped Port ID": "8b151841-af8b-475d-8883-2accd8d75b04"
+    },
+    {
+        "Keyword": "rome (fco)",
+        "Port Type": "air_port",
+        "Mapped Port ID": "1ca7b49d-bc20-453c-a41f-df78ba3056cd"
+    },
+    {
+        "Keyword": "puerto del rosario-fuerteventura, es",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "af652979-9b32-4c4d-9151-1ef9bd7a894d"
+    },
+    {
+        "Keyword": "ba ria vung tau(cm tv) tan cang cai mep thi vai tml (tctt)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0f1cd481-a372-4bcf-9a19-20dbd8a6088d"
+    },
+    {
+        "Keyword": "ba ria vung tau(cm tv) tan cang cai mep thi vai tml (tctt)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "0f1cd481-a372-4bcf-9a19-20dbd8a6088d"
+    },
+    {
+        "Keyword": "shipper's pack load count & seal\"   \"said to contain\"",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "f0c4f6db-9ba7-4e60-a627-07ebf1d96239"
+    },
+    {
+        "Keyword": "shipper's pack load count & seal\"   \"said to contain\"",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f0c4f6db-9ba7-4e60-a627-07ebf1d96239"
+    },
+    {
+        "Keyword": "hongyun logistics service co.,ltd(nansha)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "44bd20db-8400-b03f-a91d-766fc2459210"
+    },
+    {
+        "Keyword": "pnit (pusan new international terminal)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d047f9e0-a657-4b4e-80e3-c479992a1e7e"
+    },
+    {
+        "Keyword": "tcdd izmir alsancak liman isletmesi mudurlugu",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "1dd8e089-419e-b4cf-d23e-8cd8376d35b0"
+    },
+    {
+        "Keyword": "santa perpetua de mogoda, spain",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "3ec3a022-7275-809f-b037-8bb69f204486"
+    },
+    {
+        "Keyword": "nelt co. d.o.o., beograd, , serbia",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "518e181a-aabb-4494-aa4e-a7537b80e82d"
+    },
+    {
+        "Keyword": "pnit (pusan new international terminal)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "d047f9e0-a657-4b4e-80e3-c479992a1e7e"
+    },
+    {
+        "Keyword": "twin falls, id",
+        "Port Type": "air_port",
+        "Mapped Port ID": "9d3ed2cc-b5fd-4b62-b790-032ea26d1039"
+    },
+    {
+        "Keyword": "nashville tn distribution center annex",
+        "Port Type": "address",
+        "Mapped Port ID": "81f979ee-ecbb-47e1-b6a2-f311d6c688a1"
+    },
+    {
+        "Keyword": "washington - ronald reagan national, dc - usa",
+        "Port Type": "address",
+        "Mapped Port ID": "89124bae-d429-4b7f-8979-b904faf7778d"
+    },
+    {
+        "Keyword": "iti intermodal, edgerton, johnson, kansas, united states",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "eda7310c-74fa-0306-e5dd-21446f6db5b3"
+    },
+    {
+        "Keyword": "halifax, wy gb",
+        "Port Type": "air_port",
+        "Mapped Port ID": "a02eee09-01f9-4bed-bc9b-653b04bb8d20"
+    },
+    {
+        "Keyword": "db intermodal services gmbh,nuernberg,bayern,germany",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "25ff3912-1d60-b419-5ed9-e9e0f16339d7"
+    },
+    {
+        "Keyword": "keelung(united logistics international co.)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "db7abd36-59ba-b9e4-624f-538d5551241a"
+    },
+    {
+        "Keyword": "keelung(united logistics international co.)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "db7abd36-59ba-b9e4-624f-538d5551241a"
+    },
+    {
+        "Keyword": "rivalta terminal europa, rivalta scrivia, piemonte, italy",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "2ae30d93-7431-496b-9dc1-e262afab97b2"
+    },
+    {
+        "Keyword": "yichang port group container terminal, yichang, hubei, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "46155820-612d-5289-ee8a-15181529bef2"
+    },
+    {
+        "Keyword": "shenzhen greating fortune nansha, nansha, guangdong, china",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "60f43ad0-e0b9-63c4-3c16-070d52e857d7"
+    },
+    {
+        "Keyword": "norfolk southern - sharonville, sharonville, butler, ohio, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "256b341f-08b4-eab8-0e51-4cf7fb76d731"
+    },
+    {
+        "Keyword": "mlh (mulhouse)",
+        "Port Type": "air_port",
+        "Mapped Port ID": "c2440ab3-39f7-9211-5fe3-90b88bf14208"
+    },
+    {
+        "Keyword": "hollywood, fl 33024 [arrived at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "55c2ad4f-a3fb-452b-a51e-608afbd9bf2f"
+    },
+    {
+        "Keyword": "tokuyama container terminal (sankyu), tokuyama (shunan), yamaguchi, japan",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "6deef5bb-57c6-4ed2-8a2e-87a8ce85b61e"
+    },
+    {
+        "Keyword": "malik zahoor sons,lahore,punjab,pakistan",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "40d3cb17-3935-4dc5-ae45-85df710c2bcf"
+    },
+    {
+        "Keyword": "malik zahoor sons,lahore,punjab,pakistan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "40d3cb17-3935-4dc5-ae45-85df710c2bcf"
+    },
+    {
+        "Keyword": "tulsa, ok",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "aada8f4b-c0cf-4457-b6d6-62ba4b26c3ad"
+    },
+    {
+        "Keyword": "chu lai",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1d5bf825-f17e-45ef-a4d1-289e495d9653"
+    },
+    {
+        "Keyword": "tianjinxingang (cn)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "98ff16b6-0ffe-4390-9923-e600c1333db6"
+    },
+    {
+        "Keyword": "naples",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1a5e1d0b-5725-b5de-becf-5f7911918854"
+    },
+    {
+        "Keyword": "naples",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "1a5e1d0b-5725-b5de-becf-5f7911918854"
+    },
+    {
+        "Keyword": "icd phuoc long 3 (vnpxh)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "0083d603-dc8d-430a-ae02-26de7fa3c042"
+    },
+    {
+        "Keyword": "ir bsr / bnd / persian gulf",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4eb67c50-5fae-4894-b872-a0a6f9daa438"
+    },
+    {
+        "Keyword": "ngonn",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "195f42bf-5436-4149-a237-b94cbc3585be"
+    },
+    {
+        "Keyword": "la porte, tx, united states",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "7c7b9a9c-ee5c-4ba4-8baa-096a6cee76ba"
+    },
+    {
+        "Keyword": "china trade & development co.,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "62a43357-08b1-a9de-c2ac-e4d432ef57a6"
+    },
+    {
+        "Keyword": "luzzara",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "d55b0f37-be26-430d-b0b0-814806bda6f7"
+    },
+    {
+        "Keyword": "osaka",
+        "Port Type": "air_port",
+        "Mapped Port ID": "39a50a7c-c8e6-c794-f7f0-c4e6a6217254"
+    },
+    {
+        "Keyword": "pt. masaji tatana container",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "f60380de-6878-aa73-6818-21689c08bb69"
+    },
+    {
+        "Keyword": "cai lan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0f1cd481-a372-4bcf-9a19-20dbd8a6088d"
+    },
+    {
+        "Keyword": "transindia logistic park pvt limited, navi mumbai, maharashtra, india",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a4bd9d16-3d49-f6b5-9e4a-7b5cec1f5579"
+    },
+    {
+        "Keyword": "ciudad de mexico",
+        "Port Type": "air_port",
+        "Mapped Port ID": "8a350b73-73f3-00ea-324a-ec7bb7333af8"
+    },
+    {
+        "Keyword": "vila velha, br",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "def76232-512d-4b21-b514-f323bff872b0"
+    },
+    {
+        "Keyword": "colton tower, ca",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "2d38eb51-4ad5-4f3e-8645-4e3202b5b982"
+    },
+    {
+        "Keyword": "j.n.p.t, india",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9670351e-cb9a-4921-a9a5-7f0aa0461c4c"
+    },
+    {
+        "Keyword": "daytons bluff, mn",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "aaa38bae-8989-4024-92da-6e937216026e"
+    },
+    {
+        "Keyword": "barking",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "5ff1debe-deb0-40a5-8dad-ca204e15a3f9"
+    },
+    {
+        "Keyword": "leeds",
+        "Port Type": "air_port",
+        "Mapped Port ID": "53094f3d-79db-4c32-87e0-4bba6ca2e640"
+    },
+    {
+        "Keyword": "malta freeport terminals ltd",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "92997e3d-36cf-4196-a335-36d40d9c4a7e"
+    },
+    {
+        "Keyword": "sydney international container terminals pty ltd",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "7dbbc0a8-b19a-d41f-11a6-25dcb2375220"
+    },
+    {
+        "Keyword": "newark, nj",
+        "Port Type": "air_port",
+        "Mapped Port ID": "844ffd19-ef93-0e2c-f54d-0c7aeff023ba"
+    },
+    {
+        "Keyword": "ennur",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c2a07065-7a0d-9f92-3029-048b0fb49ced"
+    },
+    {
+        "Keyword": "ennur",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c2a07065-7a0d-9f92-3029-048b0fb49ced"
+    },
+    {
+        "Keyword": "brighton, ma",
+        "Port Type": "address",
+        "Mapped Port ID": "c778a2ab-8267-440f-b47f-79afddf6758d"
+    },
+    {
+        "Keyword": "reseda, ca 91335",
+        "Port Type": "address",
+        "Mapped Port ID": "f9192063-a734-4d76-b377-5aef4787be5c"
+    },
+    {
+        "Keyword": "fox valley il distribution center",
+        "Port Type": "address",
+        "Mapped Port ID": "683f96dd-555c-4d75-84fa-65d482375f8b"
+    },
+    {
+        "Keyword": "rhein-ruhr tml gesellschaft (rrt) - moerser strasse, duisburg, duisburg, nordrhein-westfalen, germany",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "0a51b848-8be5-411c-ae90-25ff682c2050"
+    },
+    {
+        "Keyword": "portland,or ,united states",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "41a005ad-fbf7-4231-961f-2c62387b4fdf"
+    },
+    {
+        "Keyword": "inviz vizag",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3c6e4a1e-2cd9-0c7c-3b06-0c70a3d887ea"
+    },
+    {
+        "Keyword": "inviz vizag",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "3c6e4a1e-2cd9-0c7c-3b06-0c70a3d887ea"
+    },
+    {
+        "Keyword": "gdansk pl",
+        "Port Type": "address",
+        "Mapped Port ID": "bcb10695-907f-4b73-832b-4c971494673c"
+    },
+    {
+        "Keyword": "tianjinxingang (cn)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "98ff16b6-0ffe-4390-9923-e600c1333db6"
+    },
+    {
+        "Keyword": "cnsso sanshui new port",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8642c42d-a1c0-2e2a-7151-32cb9dcad754"
+    },
+    {
+        "Keyword": "transindia logistic park pvt limited, navi mumbai, maharashtra, india",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "a4bd9d16-3d49-f6b5-9e4a-7b5cec1f5579"
+    },
+    {
+        "Keyword": "teesport, clv",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "345a274d-fec5-261f-d31b-391fcaf5ae31"
+    },
+    {
+        "Keyword": "harohalli - bangalore",
+        "Port Type": "address",
+        "Mapped Port ID": "f8859a00-7edc-49a1-970b-98d9c0ea9943"
+    },
+    {
+        "Keyword": "pt masaji tatanan container",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "f60380de-6878-aa73-6818-21689c08bb69"
+    },
+    {
+        "Keyword": "bpt \uac10\ub9cc (bptg), busan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "80595cf1-a59f-2cf7-a29a-622faf40c2f8"
+    },
+    {
+        "Keyword": "bpt \uac10\ub9cc (bptg), busan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "80595cf1-a59f-2cf7-a29a-622faf40c2f8"
+    },
+    {
+        "Keyword": "trn",
+        "Port Type": "air_port",
+        "Mapped Port ID": "a7453604-304d-4ebc-bd80-da1f4a8c91a6"
+    },
+    {
+        "Keyword": "sun valley, ca",
+        "Port Type": "address",
+        "Mapped Port ID": "8e1df821-2fee-4e5f-9012-f02558632a0a"
+    },
+    {
+        "Keyword": "dlugoleka pl",
+        "Port Type": "address",
+        "Mapped Port ID": "012fc2a9-b86e-4ef3-980d-5368c54eb296"
+    },
+    {
+        "Keyword": "elst nl",
+        "Port Type": "address",
+        "Mapped Port ID": "3b3ce57d-472e-4095-be49-e72d9d9f9d1d"
+    },
+    {
+        "Keyword": "lowa ia, ia us",
+        "Port Type": "address",
+        "Mapped Port ID": "ffc4f0de-f0fe-486a-adf4-5afc65c2935a"
+    },
+    {
+        "Keyword": "uskck",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "eda7310c-74fa-0306-e5dd-21446f6db5b3"
+    },
+    {
+        "Keyword": "uskck",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "eda7310c-74fa-0306-e5dd-21446f6db5b3"
+    },
+    {
+        "Keyword": "crmob",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "682b4654-7fa0-3bfb-b8c5-f9e507b4cbd8"
+    },
+    {
+        "Keyword": "nagoya-shi atsuta-ku jp",
+        "Port Type": "air_port",
+        "Mapped Port ID": "5a5fce23-3089-414a-8732-457787a0e53a"
+    },
+    {
+        "Keyword": "lathrop,ca,san joaquin,united states",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "fe48f398-b464-472a-9750-26b623271a7a"
+    },
+    {
+        "Keyword": "bahia, ca",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fa293092-2c8e-458b-b43b-d5c956ff236a"
+    },
+    {
+        "Keyword": "san antonio, united states",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "20482e59-53f0-4ca2-8df1-608cbf31e674"
+    },
+    {
+        "Keyword": "inddr",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "9e862257-83fb-39f3-4b9e-94028289e1d3"
+    },
+    {
+        "Keyword": "taipei tw",
+        "Port Type": "air_port",
+        "Mapped Port ID": "2a190994-88c0-f69b-51cc-7cda02e97f65"
+    },
+    {
+        "Keyword": "tulsa, ok",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "aada8f4b-c0cf-4457-b6d6-62ba4b26c3ad"
+    },
+    {
+        "Keyword": "lyon",
+        "Port Type": "air_port",
+        "Mapped Port ID": "cca49d1a-0058-f528-1e5a-82a0378f4264"
+    },
+    {
+        "Keyword": "sayreville, nj (us)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c1f91ffc-f390-465c-8650-1080c4516d61"
+    },
+    {
+        "Keyword": "gsmo",
+        "Port Type": "address",
+        "Mapped Port ID": "7051a0a6-8b68-4706-ab73-5953e39df9fc"
+    },
+    {
+        "Keyword": "evn",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "e5d1476b-6ed9-4f1d-71db-986470e7ddf0"
+    },
+    {
+        "Keyword": "cottondale, tuscaloosa, alabama, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5b4b77bb-d34d-44d8-ae29-161b25d17bb1"
+    },
+    {
+        "Keyword": "chiba(chiba centeral pier container terminal)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d0b22b2c-f8ae-47e1-a4e1-9d1b2110e4cd"
+    },
+    {
+        "Keyword": "chiba(chiba centeral pier container terminal)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "d0b22b2c-f8ae-47e1-a4e1-9d1b2110e4cd"
+    },
+    {
+        "Keyword": "ae jea",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "fbeff16d-5465-4e5c-ad3b-55e0f8c666b7"
+    },
+    {
+        "Keyword": "ae jea",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fbeff16d-5465-4e5c-ad3b-55e0f8c666b7"
+    },
+    {
+        "Keyword": "tarzana, ca us",
+        "Port Type": "address",
+        "Mapped Port ID": "8e1df821-2fee-4e5f-9012-f02558632a0a"
+    },
+    {
+        "Keyword": "guangzhou ctn terminal corp., ltd, huangpu, guangdong, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "44bd20db-8400-b03f-a91d-766fc2459210"
+    },
+    {
+        "Keyword": "summerville, sc, dorchester, united states",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "362ccec1-89f6-4f1b-7c64-cd1016c1ba76"
+    },
+    {
+        "Keyword": "sigonella, italy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "557de672-1023-4749-ae7a-16e7fc706ee1"
+    },
+    {
+        "Keyword": "union pacific railway -denver, denver, colorado, united states",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "61de0e6b-c81f-e0b1-efa2-2ba679db19be"
+    },
+    {
+        "Keyword": "cuarte de huerva, es",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "eb16c402-1ece-4c47-a2a6-bc715ff6f9e9"
+    },
+    {
+        "Keyword": "cuarte de huerva, es",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "eb16c402-1ece-4c47-a2a6-bc715ff6f9e9"
+    },
+    {
+        "Keyword": "dhaka, bd",
+        "Port Type": "air_port",
+        "Mapped Port ID": "f0c8750f-ce9a-4322-8114-0fa02d5c664f"
+    },
+    {
+        "Keyword": "icd dadri-cma cgm logistics dadri, dadri, uttar pradesh, india",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9819c622-6ba0-4e8a-8f03-d8df536e8b60"
+    },
+    {
+        "Keyword": "massanassa, spain",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8789ca31-75b2-666d-cbca-e70c598b6d34"
+    },
+    {
+        "Keyword": "wiesbaden",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "d3f0a903-5973-4bb1-a07a-8e0fde6db1df"
+    },
+    {
+        "Keyword": "cntsg",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d1d4adfa-5c6e-6f65-0a3b-eb239d44ba6d"
+    },
+    {
+        "Keyword": "union import export & transport co., ltd - sihanoukville, sihanoukville, cambodia",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "440f2ff2-0e81-b1a9-4d0c-0ef63231b556"
+    },
+    {
+        "Keyword": "amston, ct 06231",
+        "Port Type": "address",
+        "Mapped Port ID": "02e0394a-78ff-4420-bf22-6f8165541562"
+    },
+    {
+        "Keyword": "warszawa, pl",
+        "Port Type": "address",
+        "Mapped Port ID": "b6f1da5c-4cc2-4a6e-ad8b-c0b29c73d7db"
+    },
+    {
+        "Keyword": "clearfield, davis, utah, united states",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "bd35cdb2-86e4-4067-ac62-7936d0c1652b"
+    },
+    {
+        "Keyword": "clearfield, davis, utah, united states",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "bd35cdb2-86e4-4067-ac62-7936d0c1652b"
+    },
+    {
+        "Keyword": "chung-hua, tw",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "554d5e9b-fa1b-45e8-bf9e-aa5a96abae06"
+    },
+    {
+        "Keyword": "g\u00e4vle",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ad12b147-1f39-59b1-50d6-6a4c44f2327d"
+    },
+    {
+        "Keyword": "cmb",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "74c27a0a-c586-45bd-bb76-b0dad1e276d9"
+    },
+    {
+        "Keyword": "highland, in, 46322",
+        "Port Type": "address",
+        "Mapped Port ID": "f57047cb-f063-49b3-84b8-c1ebd33151a4"
+    },
+    {
+        "Keyword": "pune wagholi",
+        "Port Type": "address",
+        "Mapped Port ID": "49b9e470-c387-47d6-83fc-cb43428fa79e"
+    },
+    {
+        "Keyword": "depot of greek container services co (soutos group)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "cd988e6b-56b7-409d-a50a-e50f5415eef7"
+    },
+    {
+        "Keyword": "damietta container handling co dchc, dumyat, egypt",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "7c16ced4-7878-4de3-960d-c1e84af8063d"
+    },
+    {
+        "Keyword": "guangzhou ctn terminal corp., ltd, huangpu, guangdong, china",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "44bd20db-8400-b03f-a91d-766fc2459210"
+    },
+    {
+        "Keyword": "jazan - jcpdi port",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fad45ab3-0fb8-45a1-a8e1-9732978daee4"
+    },
+    {
+        "Keyword": "puerto ios",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7dcb576d-af61-4dff-8c6c-a9bef4d85050"
+    },
+    {
+        "Keyword": "nabeta pier container terminal, nagoya, aichi, japan",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "6deef5bb-57c6-4ed2-8a2e-87a8ce85b61e"
+    },
+    {
+        "Keyword": "teesport port",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "345a274d-fec5-261f-d31b-391fcaf5ae31"
+    },
+    {
+        "Keyword": "kramer distripark delta",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "7a4c18ed-4665-48de-9487-bf96547cdf77"
+    },
+    {
+        "Keyword": "calcutta terminal",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9e862257-83fb-39f3-4b9e-94028289e1d3"
+    },
+    {
+        "Keyword": "muhammad bin qasim-karac,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a9e7cef2-c23e-8cb2-950f-679a278ecc92"
+    },
+    {
+        "Keyword": "do not use jerez, spain",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "8789ca31-75b2-666d-cbca-e70c598b6d34"
+    },
+    {
+        "Keyword": "ukt",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "be7d8309-4946-4bfa-9e85-c3e28095dde0"
+    },
+    {
+        "Keyword": "dp world multimodal logistics private limited - icd pali",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "2b484b9d-8fb0-4b7c-88ae-0b46845b81d9"
+    },
+    {
+        "Keyword": "apm terminals elizabeth, llc, new york, new york, new york, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f409348e-facd-c5e0-1749-15eb29bccff8"
+    },
+    {
+        "Keyword": "\uc778\ucc9c\uc120\uad11\uc2e0\ud56d\ucee8\ud14c\uc774\ub108\ud130\ubbf8\ub110(snct), incheon",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "30271445-d995-c8b2-4dd8-7d49736e1a7a"
+    },
+    {
+        "Keyword": "pompano beach, fl 33073 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "633d4090-ba18-4239-a98e-946f42ec868b"
+    },
+    {
+        "Keyword": "alleppey branch(delivery vendor (non dox) - alleppey)",
+        "Port Type": "address",
+        "Mapped Port ID": "fe28a358-acdb-4fb6-8aa1-03a176dfbea1"
+    },
+    {
+        "Keyword": "uniondale, ny, united states",
+        "Port Type": "air_port",
+        "Mapped Port ID": "2f59d0d1-31e7-466b-8f7e-9e3cd1637d1d"
+    },
+    {
+        "Keyword": "burton upon trent, staffordshire, england, united kingdom",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ec2104b8-d785-4fcf-bd90-1a62d7289784"
+    },
+    {
+        "Keyword": "tan cang-cai mep international terminal (tcit)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0f1cd481-a372-4bcf-9a19-20dbd8a6088d"
+    },
+    {
+        "Keyword": "dp world jeddah (south container terminal)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a99ce448-c4ea-4ef8-894d-7ca1cac1c52f"
+    },
+    {
+        "Keyword": "gyd (baku)",
+        "Port Type": "air_port",
+        "Mapped Port ID": "038dc032-2339-4896-af5c-16eb46c28aba"
+    },
+    {
+        "Keyword": "qasim international container terminal",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a9e7cef2-c23e-8cb2-950f-679a278ecc92"
+    },
+    {
+        "Keyword": "pusan new port international terminal",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "80595cf1-a59f-2cf7-a29a-622faf40c2f8"
+    },
+    {
+        "Keyword": "ensisheim, france",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "20f8c18a-cb36-40ec-8637-7aa9320da270"
+    },
+    {
+        "Keyword": "sc inland port  (scip)  - greer",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "fefd5feb-c3db-4465-8388-c26b11897113"
+    },
+    {
+        "Keyword": "gateway terminals india pvt ltd",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "9670351e-cb9a-4921-a9a5-7f0aa0461c4c"
+    },
+    {
+        "Keyword": "los montesinos",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "03005f9f-0059-6917-f1f5-3caef0bc0a5f"
+    },
+    {
+        "Keyword": "canyon country, ca, 91351",
+        "Port Type": "address",
+        "Mapped Port ID": "7ecd4b00-848c-4178-8446-aa233d4a943b"
+    },
+    {
+        "Keyword": "canyon country, ca, 91387",
+        "Port Type": "address",
+        "Mapped Port ID": "7ecd4b00-848c-4178-8446-aa233d4a943b"
+    },
+    {
+        "Keyword": "nishi-ku,osaka, jp",
+        "Port Type": "air_port",
+        "Mapped Port ID": "39a50a7c-c8e6-c794-f7f0-c4e6a6217254"
+    },
+    {
+        "Keyword": "ferrocarril y terminal del valle de mexico sa de cv",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "58130b1d-4681-cf31-8e70-56171a730f0e"
+    },
+    {
+        "Keyword": "dhandari kalan, pb",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "8f67032a-ecf9-f1eb-82cf-99326fdff484"
+    },
+    {
+        "Keyword": "middl.sc, nj",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "b9e38112-52a7-40f2-941a-20aa334ee30d"
+    },
+    {
+        "Keyword": "granollers, spain",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "3ec3a022-7275-809f-b037-8bb69f204486"
+    },
+    {
+        "Keyword": "terminales portuarios peruanos sac",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "982e42e3-1032-98bd-0c15-3bf8daf591f8"
+    },
+    {
+        "Keyword": "chawapail, india",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "8f67032a-ecf9-f1eb-82cf-99326fdff484"
+    },
+    {
+        "Keyword": "chawapail, india",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "8f67032a-ecf9-f1eb-82cf-99326fdff484"
+    },
+    {
+        "Keyword": "hanoi",
+        "Port Type": "air_port",
+        "Mapped Port ID": "3c76d2d7-6896-fa08-8ac9-84d4a515673f"
+    },
+    {
+        "Keyword": "karachi-muhammad bin qasim",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a9e7cef2-c23e-8cb2-950f-679a278ecc92"
+    },
+    {
+        "Keyword": "muhammad bin qasim/karachi",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a9e7cef2-c23e-8cb2-950f-679a278ecc92"
+    },
+    {
+        "Keyword": "arcadia, us",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "fefd5feb-c3db-4465-8388-c26b11897113"
+    },
+    {
+        "Keyword": "arcadia, us",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "fefd5feb-c3db-4465-8388-c26b11897113"
+    },
+    {
+        "Keyword": "dhandari kalan, pb",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "8f67032a-ecf9-f1eb-82cf-99326fdff484"
+    },
+    {
+        "Keyword": "la palma, ca 90623",
+        "Port Type": "address",
+        "Mapped Port ID": "2752dd7e-8105-4341-ae24-7486f026d7cd"
+    },
+    {
+        "Keyword": "daman",
+        "Port Type": "address",
+        "Mapped Port ID": "e0e7b17b-189d-46c4-8e9f-58205b903567"
+    },
+    {
+        "Keyword": "sun city center, fl 33573",
+        "Port Type": "address",
+        "Mapped Port ID": "688108db-ae69-46f0-8903-0c1c3607f9db"
+    },
+    {
+        "Keyword": "leeds gb",
+        "Port Type": "air_port",
+        "Mapped Port ID": "53094f3d-79db-4c32-87e0-4bba6ca2e640"
+    },
+    {
+        "Keyword": "hamden, ct 06514",
+        "Port Type": "address",
+        "Mapped Port ID": "cddffb04-e201-4836-b3b2-943ecbc5e211"
+    },
+    {
+        "Keyword": "vietfracht depot",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "0ede2b79-1b5e-4b6b-9190-1b871e2a00bf"
+    },
+    {
+        "Keyword": "san pedro (iv)",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "77ea7c74-ab61-4ff2-9cb4-8d0da0ee2b9a"
+    },
+    {
+        "Keyword": "whites creek, tn",
+        "Port Type": "address",
+        "Mapped Port ID": "2ae19c8d-0eff-4e36-a995-c8a44604aec0"
+    },
+    {
+        "Keyword": "southern md distribution center [arrived at usps regional origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "edd8c98f-4b51-40b1-b5f4-cd25b194a319"
+    },
+    {
+        "Keyword": "tatahwade",
+        "Port Type": "address",
+        "Mapped Port ID": "0655c3de-95cc-4938-a2b5-93e240906f45"
+    },
+    {
+        "Keyword": "bangalore termanal-3",
+        "Port Type": "address",
+        "Mapped Port ID": "f8859a00-7edc-49a1-970b-98d9c0ea9943"
+    },
+    {
+        "Keyword": "dadra",
+        "Port Type": "address",
+        "Mapped Port ID": "32e94d5d-506c-42c7-9239-6cd40487d15f"
+    },
+    {
+        "Keyword": "pavia di udine, italy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "557de672-1023-4749-ae7a-16e7fc706ee1"
+    },
+    {
+        "Keyword": "hamden, ct 06517",
+        "Port Type": "address",
+        "Mapped Port ID": "cddffb04-e201-4836-b3b2-943ecbc5e211"
+    },
+    {
+        "Keyword": "izmir tr",
+        "Port Type": "air_port",
+        "Mapped Port ID": "508e09f2-9b9f-4904-99e1-ec372ca6689b"
+    },
+    {
+        "Keyword": "imabari container terminal (nippon express), imabari, ehime, japan",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "6deef5bb-57c6-4ed2-8a2e-87a8ce85b61e"
+    },
+    {
+        "Keyword": "pakistan lessor`s depot",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "40d3cb17-3935-4dc5-ae45-85df710c2bcf"
+    },
+    {
+        "Keyword": "el paso, tx",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b191fa49-d632-46aa-9d84-6f429dd1108e"
+    },
+    {
+        "Keyword": "puerto angamos clpag",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8f0e21ad-1e29-e09b-24c5-afbb77db69ea"
+    },
+    {
+        "Keyword": "dhannad, indore",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "15173cce-6cea-4612-829e-ae0bc71731af"
+    },
+    {
+        "Keyword": "wuzhou (in guangxi)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9bbf79f8-fc65-478a-5b2c-b1f0688898e3"
+    },
+    {
+        "Keyword": "el paso, us",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b191fa49-d632-46aa-9d84-6f429dd1108e"
+    },
+    {
+        "Keyword": "thar icd, rj",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "1c9c7cba-cbc4-4e06-a13e-efe31aefde28"
+    },
+    {
+        "Keyword": "el paso, nm",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b191fa49-d632-46aa-9d84-6f429dd1108e"
+    },
+    {
+        "Keyword": "thar icd, rj",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "1c9c7cba-cbc4-4e06-a13e-efe31aefde28"
+    },
+    {
+        "Keyword": "w80 kasumi kita (japan transcity), yokkaichi, mie, japan",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "6deef5bb-57c6-4ed2-8a2e-87a8ce85b61e"
+    },
+    {
+        "Keyword": "ferrara, it",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a1f1ef6d-0932-45b7-9d12-a893ab31723a"
+    },
+    {
+        "Keyword": "zurich",
+        "Port Type": "address",
+        "Mapped Port ID": "43a4c7b8-50a9-44fd-b79d-10a1f3f75043"
+    },
+    {
+        "Keyword": "mendoza, ar",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "6f4b0bc4-5ea5-5361-4efb-e074c7477cf5"
+    },
+    {
+        "Keyword": "mundra international container terminal pvt ltd",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "2a4b4d39-eb9d-cc1d-f98c-b97be21c3d6c"
+    },
+    {
+        "Keyword": "oslo",
+        "Port Type": "air_port",
+        "Mapped Port ID": "2539873e-2215-4f2d-b763-a6a55283cfae"
+    },
+    {
+        "Keyword": "borgaro torinese",
+        "Port Type": "air_port",
+        "Mapped Port ID": "a7453604-304d-4ebc-bd80-da1f4a8c91a6"
+    },
+    {
+        "Keyword": "nk logistics pvt ltd - tuglakabad, new delhi, delhi, india",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "704148e3-9beb-487f-be50-4ab234f0711a"
+    },
+    {
+        "Keyword": "ind warehouse",
+        "Port Type": "address",
+        "Mapped Port ID": "49b9e470-c387-47d6-83fc-cb43428fa79e"
+    },
+    {
+        "Keyword": "burdhwan",
+        "Port Type": "address",
+        "Mapped Port ID": "17533a7d-bf68-43d2-a825-314776107bb6"
+    },
+    {
+        "Keyword": "usa-ct",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "262c404e-c684-4378-813f-eb6668d259bb"
+    },
+    {
+        "Keyword": "trichur mini hub",
+        "Port Type": "address",
+        "Mapped Port ID": "6a94655b-8fd2-405a-8067-c50b6bf8f387"
+    },
+    {
+        "Keyword": "ballabgarh",
+        "Port Type": "address",
+        "Mapped Port ID": "d85e4c60-0491-4027-8236-51c26bada668"
+    },
+    {
+        "Keyword": "shornur-cpy",
+        "Port Type": "address",
+        "Mapped Port ID": "86033c22-c5dd-48a8-a33e-cae013cd6069"
+    },
+    {
+        "Keyword": "chur ch",
+        "Port Type": "address",
+        "Mapped Port ID": "4c879cea-4d23-4ede-ba4e-7205e0475235"
+    },
+    {
+        "Keyword": "baytown, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "242ba837-4d31-f522-2c24-16abc8d7d45d"
+    },
+    {
+        "Keyword": "ancaster, on",
+        "Port Type": "address",
+        "Mapped Port ID": "d5f3f6a3-1a94-4f9d-beec-0f2eecf9a999"
+    },
+    {
+        "Keyword": "vaughan, on",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "6a636d60-8a5b-4550-ab1b-ab22009627cf"
+    },
+    {
+        "Keyword": "vaughan, on",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "6a636d60-8a5b-4550-ab1b-ab22009627cf"
+    },
+    {
+        "Keyword": "muenchen, ba de",
+        "Port Type": "address",
+        "Mapped Port ID": "4fe5f8b3-66e6-486e-9ff8-1bf378016d6f"
+    },
+    {
+        "Keyword": "spitc",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "52512ee4-ab1a-4fae-8c03-f6158fb4ce43"
+    },
+    {
+        "Keyword": "bhbah01",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "baf21e44-38f3-6f9d-db98-61eec964e052"
+    },
+    {
+        "Keyword": "chlebovice",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "b31aaaf5-1858-4bf2-96d5-c480f98b380a"
+    },
+    {
+        "Keyword": "des plaines, cook, illinois, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3ba841de-c446-c373-1b9f-0b501f74408c"
+    },
+    {
+        "Keyword": "louviers",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "3f226d3f-1cd2-47fd-a8a7-1d17ef3b2c2b"
+    },
+    {
+        "Keyword": "mysore mini hub",
+        "Port Type": "address",
+        "Mapped Port ID": "673a74db-d039-4dbf-abcc-fbc65470f070"
+    },
+    {
+        "Keyword": "tachiunoura no.1 (moji)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7c6af786-d1b3-a9ee-197e-28bf1567c510"
+    },
+    {
+        "Keyword": "oita container terminal",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3b18c906-ed24-45ff-9b37-bbe49a4434a8"
+    },
+    {
+        "Keyword": "san fulgencio",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "40f43d18-1211-4b74-9484-4bc20643ad49"
+    },
+    {
+        "Keyword": "ava, mo 65608",
+        "Port Type": "address",
+        "Mapped Port ID": "074f8bee-f7a5-491a-bcb0-0aea547d8d36"
+    },
+    {
+        "Keyword": "liberty",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "9d4176d8-0ae1-4f2f-aa50-79a7820e70f6"
+    },
+    {
+        "Keyword": "liberty",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "9d4176d8-0ae1-4f2f-aa50-79a7820e70f6"
+    },
+    {
+        "Keyword": "guangdong yide port co,.ltd\uff08shunde new port\uff09",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8983e88b-6d31-0660-1221-cf3b335b1d4a"
+    },
+    {
+        "Keyword": "manila",
+        "Port Type": "air_port",
+        "Mapped Port ID": "5f02e3ed-9b32-47ed-b0d1-8dec4c5df908"
+    },
+    {
+        "Keyword": "tecnica y manutencio, s.l.",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "fefd5feb-c3db-4465-8388-c26b11897113"
+    },
+    {
+        "Keyword": "guangdong yide port co,.ltd\uff08shunde new port\uff09",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "8983e88b-6d31-0660-1221-cf3b335b1d4a"
+    },
+    {
+        "Keyword": "kiaora trans empty yard",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "9f39e6c5-b8b6-43fa-901a-2991a61c381f"
+    },
+    {
+        "Keyword": "kashima north public wharf, kashima  ibaragi",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "72a20603-714d-4597-acbd-9335064a1a9c"
+    },
+    {
+        "Keyword": "tunis, tn",
+        "Port Type": "air_port",
+        "Mapped Port ID": "63a1d732-e3f0-8d54-0f8e-8f91b0444263"
+    },
+    {
+        "Keyword": "st louis",
+        "Port Type": "air_port",
+        "Mapped Port ID": "f82f60e5-0d20-5ac8-4c59-0925b6358d77"
+    },
+    {
+        "Keyword": "kookyang logitech co., ltd. (uiwaong office)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "2fe3b18c-b871-6195-53e6-e0d6329ed04c"
+    },
+    {
+        "Keyword": "irenfilipa - s.m.a.v.m. ferr., lda,porto,porto,portugal",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "314a853d-dcf8-a870-22ef-ec1d40956743"
+    },
+    {
+        "Keyword": "eastern me distribution center [departed usps regional facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "f9bd96d0-1716-495e-9771-a7df88c1a5d7"
+    },
+    {
+        "Keyword": "hollywood, fl 33025 [arrived shipping partner facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "55c2ad4f-a3fb-452b-a51e-608afbd9bf2f"
+    },
+    {
+        "Keyword": "icd tumb-navkar corporation limited, tumb, gujarat, india",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9670351e-cb9a-4921-a9a5-7f0aa0461c4c"
+    },
+    {
+        "Keyword": "chengdu chuangyuan international freight forwarding co., ltd.",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "8e4ab06b-09ba-4901-acda-02e6ca6ea2ed"
+    },
+    {
+        "Keyword": "chengdu chuangyuan international freight forwarding co., ltd.",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "8e4ab06b-09ba-4901-acda-02e6ca6ea2ed"
+    },
+    {
+        "Keyword": "bellerose, ny 11426 [departed shipping partner facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "c81755bf-fd2d-461c-940b-e2b083f8b2b3"
+    },
+    {
+        "Keyword": "rhine europe terminals sas, strasbourg, bas rhin, grand est, france",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "1661f3ed-0bdd-4745-a883-245affc4c2f1"
+    },
+    {
+        "Keyword": "halethorpe, md 21227 [departed shipping partner facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "38b08723-efa7-4093-b31e-373287ed4322"
+    },
+    {
+        "Keyword": "kushiro nishiko daisan futo container yard(mitsuwa transportation), kushiro, hokkaido, japan",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "6deef5bb-57c6-4ed2-8a2e-87a8ce85b61e"
+    },
+    {
+        "Keyword": "lae",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a627cae5-439d-4ece-a86c-0cc1d5a492f8"
+    },
+    {
+        "Keyword": "bio",
+        "Port Type": "air_port",
+        "Mapped Port ID": "62815f99-b51b-1764-30b9-e05b6a82ce24"
+    },
+    {
+        "Keyword": "tampa",
+        "Port Type": "air_port",
+        "Mapped Port ID": "90fc619b-ae1e-e7ee-41fb-2ba019b64735"
+    },
+    {
+        "Keyword": "lovekin, on",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b6c989fd-16de-4965-8ca2-b23dcdfb7157"
+    },
+    {
+        "Keyword": "chiba central pier container terminal",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d0b22b2c-f8ae-47e1-a4e1-9d1b2110e4cd"
+    },
+    {
+        "Keyword": "aqaba container terminal",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "745132c2-28a7-472b-804d-d248aab8ed43"
+    },
+    {
+        "Keyword": "khalifa bin salman port(kbsp)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9b32949a-dea8-4698-b781-fd4ff908f6a3"
+    },
+    {
+        "Keyword": "tornata",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "797bf8c4-b885-70b8-a478-9a058297309a"
+    },
+    {
+        "Keyword": "acc",
+        "Port Type": "air_port",
+        "Mapped Port ID": "324b5590-e67b-ad61-1b9b-6501a809558a"
+    },
+    {
+        "Keyword": "sanshui",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8642c42d-a1c0-2e2a-7151-32cb9dcad754"
+    },
+    {
+        "Keyword": "huangshi",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "46155820-612d-5289-ee8a-15181529bef2"
+    },
+    {
+        "Keyword": "sanshui",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "8642c42d-a1c0-2e2a-7151-32cb9dcad754"
+    },
+    {
+        "Keyword": "khi",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "77d1e0c6-c5bc-ce8d-92f3-6ea30db8c872"
+    },
+    {
+        "Keyword": "lyben",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e52796e7-7244-78cc-e833-db61f95cc83a"
+    },
+    {
+        "Keyword": "guangxi wuzhou lijiazhuang ctn tml,wuzhou,guangxi,china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9bbf79f8-fc65-478a-5b2c-b1f0688898e3"
+    },
+    {
+        "Keyword": "apm terminals elizabeth, llc, new york, new york, new york, united states",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "99def56e-b1fb-4265-8f44-69c45aa7d1a3"
+    },
+    {
+        "Keyword": "modena",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "dd3e958d-2014-9e8b-9abf-57f1cd61dbe7"
+    },
+    {
+        "Keyword": "noain",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a3dd4859-8485-4916-a0b2-7782a0794584"
+    },
+    {
+        "Keyword": "chalette-sur-loing, fr",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "dda8a03a-7945-4c2e-988c-bfbe443b4910"
+    },
+    {
+        "Keyword": "le harve",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "64b17f20-a8ce-40b2-aeea-48bc0f2b8f7e"
+    },
+    {
+        "Keyword": "montreal - cp rail - lachine",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "b682c831-b777-4e66-9788-77487c6bc6ee"
+    },
+    {
+        "Keyword": "hhla cntr-trml altenwerder gmbh",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "3ebde357-59ac-40e5-9697-79e16a4d9e9e"
+    },
+    {
+        "Keyword": "fort moore, ga 31905",
+        "Port Type": "address",
+        "Mapped Port ID": "85d70028-8f0c-4eac-afa2-1b8f01a89a62"
+    },
+    {
+        "Keyword": "el paso - up rail - santa teresa",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "b682c831-b777-4e66-9788-77487c6bc6ee"
+    },
+    {
+        "Keyword": "nancy",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a14905f4-cd40-45ae-b67f-882c7bef4a68"
+    },
+    {
+        "Keyword": "cnjjg",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "2efd4ea4-d20c-0df3-14ff-0e0d7aa78e8e"
+    },
+    {
+        "Keyword": "moin terminal de contenedores de moin",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "682b4654-7fa0-3bfb-b8c5-f9e507b4cbd8"
+    },
+    {
+        "Keyword": "lima pe",
+        "Port Type": "air_port",
+        "Mapped Port ID": "0c762a0f-bb6f-4085-8cba-9795059a73c5"
+    },
+    {
+        "Keyword": "la mirada, ca, united states",
+        "Port Type": "air_port",
+        "Mapped Port ID": "2a597460-9ad6-4411-8a99-e50d7bb28aa5"
+    },
+    {
+        "Keyword": "valencia, ca",
+        "Port Type": "address",
+        "Mapped Port ID": "7ecd4b00-848c-4178-8446-aa233d4a943b"
+    },
+    {
+        "Keyword": "khi",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "77d1e0c6-c5bc-ce8d-92f3-6ea30db8c872"
+    },
+    {
+        "Keyword": "busan container terminal",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "80595cf1-a59f-2cf7-a29a-622faf40c2f8"
+    },
+    {
+        "Keyword": "niantic, ct 06357",
+        "Port Type": "address",
+        "Mapped Port ID": "c717e306-cc34-45ff-9b46-d5ca502577ca"
+    },
+    {
+        "Keyword": "minooka, us",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a2eb95b7-09a5-1f54-8ccc-3255190e0cc5"
+    },
+    {
+        "Keyword": "san pedro (cote d'ivoire)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8e3c7fe1-5dbe-4569-aaf8-dded6abbb7e2"
+    },
+    {
+        "Keyword": "preston, ct 06365",
+        "Port Type": "address",
+        "Mapped Port ID": "585923ba-27c9-4afd-a0ea-01ede1a41c59"
+    },
+    {
+        "Keyword": "lamezia terme, italy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "557de672-1023-4749-ae7a-16e7fc706ee1"
+    },
+    {
+        "Keyword": "shekou(mawan container terminal)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f0c1d7aa-2cfa-4d73-bbed-e031501df06a"
+    },
+    {
+        "Keyword": "shekou(mawan container terminal)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "f0c1d7aa-2cfa-4d73-bbed-e031501df06a"
+    },
+    {
+        "Keyword": "lone tree, co, 80124",
+        "Port Type": "address",
+        "Mapped Port ID": "15d2798a-d1a3-487a-bcca-19d92609e4db"
+    },
+    {
+        "Keyword": "crespiatica, italy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "557de672-1023-4749-ae7a-16e7fc706ee1"
+    },
+    {
+        "Keyword": "san miguel petapa, guatemala",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "20482e59-53f0-4ca2-8df1-608cbf31e674"
+    },
+    {
+        "Keyword": "iru, ee",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "af11778e-e368-4c56-8180-ab9d9aa9bb8b"
+    },
+    {
+        "Keyword": "shenzen",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "cd5775cd-c5a2-b983-2b6b-ce65a5418eea"
+    },
+    {
+        "Keyword": "maddilapalem",
+        "Port Type": "address",
+        "Mapped Port ID": "e0af1f8d-bde5-48a8-8826-21d99508e241"
+    },
+    {
+        "Keyword": "krakow, pl",
+        "Port Type": "address",
+        "Mapped Port ID": "6c3b4bac-312a-42cf-80ad-629e8be25e8e"
+    },
+    {
+        "Keyword": "port de pointe des",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3ba841de-c446-c373-1b9f-0b501f74408c"
+    },
+    {
+        "Keyword": "ashburn, va 20147 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "773c23d7-73da-447a-9707-14ebe572fb62"
+    },
+    {
+        "Keyword": "naples,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1a5e1d0b-5725-b5de-becf-5f7911918854"
+    },
+    {
+        "Keyword": "tudela navarra, spain",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8789ca31-75b2-666d-cbca-e70c598b6d34"
+    },
+    {
+        "Keyword": "keavy global logistic yard., navi mumbai, maharashtra, india",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "0fb3efd1-bbdf-4a94-b549-cf77b8a56e7c"
+    },
+    {
+        "Keyword": "eastvale, ca, 92880",
+        "Port Type": "address",
+        "Mapped Port ID": "2022decb-97b8-423f-b945-29f0b5c322c0"
+    },
+    {
+        "Keyword": "sun city center, fl, 33573",
+        "Port Type": "address",
+        "Mapped Port ID": "688108db-ae69-46f0-8903-0c1c3607f9db"
+    },
+    {
+        "Keyword": "hakika transport services-kenya",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b07b5b45-4dd2-46ca-8854-0b49f7524c0f"
+    },
+    {
+        "Keyword": "onda",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1f63a002-cc2e-4626-bfdf-d0199994c6d8"
+    },
+    {
+        "Keyword": "busan container terminal",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "80595cf1-a59f-2cf7-a29a-622faf40c2f8"
+    },
+    {
+        "Keyword": "yemkx",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c8a8ae56-9c04-1e79-466f-5b3538e6690c"
+    },
+    {
+        "Keyword": "lyben",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "e52796e7-7244-78cc-e833-db61f95cc83a"
+    },
+    {
+        "Keyword": "cvsid",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1570baa8-4852-4d0e-96d1-d8299906dcd2"
+    },
+    {
+        "Keyword": "huangshi",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "46155820-612d-5289-ee8a-15181529bef2"
+    },
+    {
+        "Keyword": "empezar global marine service private limited, raigad, maharashtra, india",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a4bd9d16-3d49-f6b5-9e4a-7b5cec1f5579"
+    },
+    {
+        "Keyword": "empezar global marine service private limited, raigad, maharashtra, india",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "a4bd9d16-3d49-f6b5-9e4a-7b5cec1f5579"
+    },
+    {
+        "Keyword": "\ud55c\uc9c4\ud3c9\ud0dd\ucee8\ud14c\uc774\ub108\ud130\ubbf8\ub110-\ub3d9\ubd80\ub450, pyongtaek",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8e63e07b-a0e2-4ec9-abef-290539349b64"
+    },
+    {
+        "Keyword": "mict ( mundra international container terminal pvt ltd) cfs station",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "2a4b4d39-eb9d-cc1d-f98c-b97be21c3d6c"
+    },
+    {
+        "Keyword": "jeddah",
+        "Port Type": "air_port",
+        "Mapped Port ID": "e4f551a3-4376-f127-fd45-2fd83fa792c8"
+    },
+    {
+        "Keyword": "shenwan port international container terminals",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "2783da2a-76bb-ba6d-90df-139c31ea6a71"
+    },
+    {
+        "Keyword": "satsuma sendai container terminal, satsuma sendai",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3e881e42-d5e8-45c3-a7dc-24ef0bc22cdb"
+    },
+    {
+        "Keyword": "hallam au",
+        "Port Type": "air_port",
+        "Mapped Port ID": "b8325e46-7df2-030d-771d-6420e747bda5"
+    },
+    {
+        "Keyword": "el centro, ca, united states",
+        "Port Type": "air_port",
+        "Mapped Port ID": "cf163e7c-a10d-4c75-9f35-7d48bfa1f413"
+    },
+    {
+        "Keyword": "waigaoqiao terminal (spict)-china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3f1e0e96-f90e-4593-8a99-e381d100cd9e"
+    },
+    {
+        "Keyword": "y-2 container terminal (stevedore : sumitomo), japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "e5737ff3-23fb-5ca1-5092-832aae16bf9b"
+    },
+    {
+        "Keyword": "pinnacle marine services pvt. ltd(tughlakabad)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c2a07065-7a0d-9f92-3029-048b0fb49ced"
+    },
+    {
+        "Keyword": "pierce county terminal (evergreen tacoma terminals)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "79863a89-425f-0212-1b7c-c119ec161c7a"
+    },
+    {
+        "Keyword": "cks container terminal(zhuhai doumen)co.,ltd 8 doumen port road,baijiao.doumen,zhuhai",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "283c416d-c117-f690-ea28-d8f02b4ff5d8"
+    },
+    {
+        "Keyword": "jnpt",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9670351e-cb9a-4921-a9a5-7f0aa0461c4c"
+    },
+    {
+        "Keyword": "mississauga, on (ca)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "00956388-71ad-854f-3907-c515fdb2ce00"
+    },
+    {
+        "Keyword": "colombo international container terminals limited(cict)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "74c27a0a-c586-45bd-bb76-b0dad1e276d9"
+    },
+    {
+        "Keyword": "willebroek",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "34bb5ca7-9ed6-47fc-9e01-96c2803f4426"
+    },
+    {
+        "Keyword": "willebroek",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "34bb5ca7-9ed6-47fc-9e01-96c2803f4426"
+    },
+    {
+        "Keyword": "cnqin",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c0ca2a9a-5297-471d-aeee-45b53820bd16"
+    },
+    {
+        "Keyword": "grobbendonk, be",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "6de5fbc5-1020-48be-b1f5-f6c787beb8ba"
+    },
+    {
+        "Keyword": "rock hill, sc",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "3b68c53a-663d-4533-838c-d95cdb9ae262"
+    },
+    {
+        "Keyword": "rock hill, sc",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "3b68c53a-663d-4533-838c-d95cdb9ae262"
+    },
+    {
+        "Keyword": "nnsa",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9670351e-cb9a-4921-a9a5-7f0aa0461c4c"
+    },
+    {
+        "Keyword": "bangalore",
+        "Port Type": "address",
+        "Mapped Port ID": "f8859a00-7edc-49a1-970b-98d9c0ea9943"
+    },
+    {
+        "Keyword": "gebze dilovasi",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fc185ac0-fbc5-4ca0-8f75-83e73021fa7c"
+    },
+    {
+        "Keyword": "east point, ga",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "f91cb627-9763-407b-b70f-2484bf3bc02d"
+    },
+    {
+        "Keyword": "neeleswaram",
+        "Port Type": "address",
+        "Mapped Port ID": "8996363f-c090-4b28-ab51-09470ca5ef27"
+    },
+    {
+        "Keyword": "nda warehouse",
+        "Port Type": "address",
+        "Mapped Port ID": "52a84fc1-f08f-47b8-9f24-bedf91b5b41f"
+    },
+    {
+        "Keyword": "kumarpatnam",
+        "Port Type": "address",
+        "Mapped Port ID": "3eb89df2-0e28-4b64-9ba9-423725b59191"
+    },
+    {
+        "Keyword": "marol branch",
+        "Port Type": "address",
+        "Mapped Port ID": "69e28eb3-fa62-436c-a1c5-9814b692d5b2"
+    },
+    {
+        "Keyword": "naples co.na.te.co spa",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1a5e1d0b-5725-b5de-becf-5f7911918854"
+    },
+    {
+        "Keyword": "jayanagar",
+        "Port Type": "address",
+        "Mapped Port ID": "f8859a00-7edc-49a1-970b-98d9c0ea9943"
+    },
+    {
+        "Keyword": "inluh",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "8f67032a-ecf9-f1eb-82cf-99326fdff484"
+    },
+    {
+        "Keyword": "inluh",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "8f67032a-ecf9-f1eb-82cf-99326fdff484"
+    },
+    {
+        "Keyword": "mundra in",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "2a4b4d39-eb9d-cc1d-f98c-b97be21c3d6c"
+    },
+    {
+        "Keyword": "markham, il",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "924180e7-e62a-4fb5-85b8-9cf8858758e9"
+    },
+    {
+        "Keyword": "ulm de",
+        "Port Type": "address",
+        "Mapped Port ID": "39011257-ada1-4d5e-a2fd-631b6c5ac104"
+    },
+    {
+        "Keyword": "chandran nagar",
+        "Port Type": "address",
+        "Mapped Port ID": "a3a6a088-44e5-4d89-85dd-23b1a037d056"
+    },
+    {
+        "Keyword": "ohio city, oh",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "08dbaeff-eb0f-443e-80cb-ebc034f35c60"
+    },
+    {
+        "Keyword": "ohio city, oh",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "80d2291d-4b63-42da-8549-56b2f90b25c8"
+    },
+    {
+        "Keyword": "elimarte",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "9d4176d8-0ae1-4f2f-aa50-79a7820e70f6"
+    },
+    {
+        "Keyword": "del rio, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b25264a1-ac1b-4ec4-ad4f-65493b1d75cb"
+    },
+    {
+        "Keyword": "gebze, turkiye",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "fc185ac0-fbc5-4ca0-8f75-83e73021fa7c"
+    },
+    {
+        "Keyword": "berhampur city",
+        "Port Type": "address",
+        "Mapped Port ID": "68117d1e-2c0e-46be-8165-64463ac94f62"
+    },
+    {
+        "Keyword": "bellary-pvn",
+        "Port Type": "address",
+        "Mapped Port ID": "ae560a73-3c3f-4ff3-866c-da7342a5b3b2"
+    },
+    {
+        "Keyword": "tatibandh",
+        "Port Type": "address",
+        "Mapped Port ID": "caf3aad2-6199-4bdd-89ee-b7d74a8d05b4"
+    },
+    {
+        "Keyword": "linden, us",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "9d4176d8-0ae1-4f2f-aa50-79a7820e70f6"
+    },
+    {
+        "Keyword": "its/con-global industries, cincinnati, ohio, united states",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "d540990a-5358-4fc1-a041-9a5eba9aa4be"
+    },
+    {
+        "Keyword": "in nsa",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9670351e-cb9a-4921-a9a5-7f0aa0461c4c"
+    },
+    {
+        "Keyword": "\uad11\uc591\ud56d\uc11c\ubd80\ucee8\ud14c\uc774\ub108\ud130\ubbf8\ub110(gwct), qingdao",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8b4727c3-fd1d-4d87-a369-fc4a25b16ff4"
+    },
+    {
+        "Keyword": "pallaresos, els, es",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "0e84488b-0f37-435b-a9cf-4e26fd91e789"
+    },
+    {
+        "Keyword": "guzman mx",
+        "Port Type": "address",
+        "Mapped Port ID": "e8e23aac-8641-49fb-a28f-b6f2a4add55a"
+    },
+    {
+        "Keyword": "teesport, gabon",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "345a274d-fec5-261f-d31b-391fcaf5ae31"
+    },
+    {
+        "Keyword": "ancaster, on ca",
+        "Port Type": "address",
+        "Mapped Port ID": "d5f3f6a3-1a94-4f9d-beec-0f2eecf9a999"
+    },
+    {
+        "Keyword": 1031,
+        "Port Type": "address",
+        "Mapped Port ID": "78a75bd1-fcf8-4d48-9dc5-160c3841f3e1"
+    },
+    {
+        "Keyword": "humble, tx 77396 [accepted at usps origin facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "44f805e5-ad18-4840-93f1-c5c854ad39cb"
+    },
+    {
+        "Keyword": "muenchen (de)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "33610696-7f1b-4d60-a27c-736204f95718"
+    },
+    {
+        "Keyword": "oakland international container terminal; oict (berth 57-59) ; ssa marine",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ff9062e8-2906-4107-906e-126609f47d3d"
+    },
+    {
+        "Keyword": "jung truck services, east saint louis, saint clair, illinois, united states",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c2ff9903-e21f-b2fa-d6f8-10216841f15f"
+    },
+    {
+        "Keyword": "gaolan (gd), china. people's republic",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "283c416d-c117-f690-ea28-d8f02b4ff5d8"
+    },
+    {
+        "Keyword": "west thurrock",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "fefd5feb-c3db-4465-8388-c26b11897113"
+    },
+    {
+        "Keyword": "gaolan (gd), china. people's republic",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "283c416d-c117-f690-ea28-d8f02b4ff5d8"
+    },
+    {
+        "Keyword": "west thurrock",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "fefd5feb-c3db-4465-8388-c26b11897113"
+    },
+    {
+        "Keyword": "bangalore yelahanka apex",
+        "Port Type": "address",
+        "Mapped Port ID": "f8859a00-7edc-49a1-970b-98d9c0ea9943"
+    },
+    {
+        "Keyword": "grosse pointe, mi 48230",
+        "Port Type": "address",
+        "Mapped Port ID": "11e219c5-50d7-4459-9f33-754c9b14f17a"
+    },
+    {
+        "Keyword": "tujunga, ca 91042",
+        "Port Type": "address",
+        "Mapped Port ID": "8e1df821-2fee-4e5f-9012-f02558632a0a"
+    },
+    {
+        "Keyword": "grosse pointe, mi 48236",
+        "Port Type": "address",
+        "Mapped Port ID": "11e219c5-50d7-4459-9f33-754c9b14f17a"
+    },
+    {
+        "Keyword": "mahadevapura indus. area",
+        "Port Type": "address",
+        "Mapped Port ID": "f8859a00-7edc-49a1-970b-98d9c0ea9943"
+    },
+    {
+        "Keyword": "pt.glorious interbuana",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "5a2a762f-2b9a-41ab-bdef-d37940654737"
+    },
+    {
+        "Keyword": "artur jose borges, s.a.",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "314a853d-dcf8-a870-22ef-ec1d40956743"
+    },
+    {
+        "Keyword": "pt.glorious interbuana",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5a2a762f-2b9a-41ab-bdef-d37940654737"
+    },
+    {
+        "Keyword": "\ubd80\uc0b0\uc2e0\ud56d\ub9cc(pnc), busan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d047f9e0-a657-4b4e-80e3-c479992a1e7e"
+    },
+    {
+        "Keyword": "kota in",
+        "Port Type": "air_port",
+        "Mapped Port ID": "63c6597b-6fec-4bb0-b8fa-3750de73950e"
+    },
+    {
+        "Keyword": "bpt \uc2e0\uc120\ub300 (bpts), busan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "80595cf1-a59f-2cf7-a29a-622faf40c2f8"
+    },
+    {
+        "Keyword": "bpt \uc2e0\uc120\ub300 (bpts), busan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "80595cf1-a59f-2cf7-a29a-622faf40c2f8"
+    },
+    {
+        "Keyword": "parets del valles, spain",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8789ca31-75b2-666d-cbca-e70c598b6d34"
+    },
+    {
+        "Keyword": "taylorsville, nc, us",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "50572464-0ec0-4bf5-8ec6-d38ef4b92921"
+    },
+    {
+        "Keyword": "wai gao qiao terminal phase 1",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3f1e0e96-f90e-4593-8a99-e381d100cd9e"
+    },
+    {
+        "Keyword": "fiji ports terminal limited, lautoka, , fiji",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "25c5d74b-575e-b1e8-c336-e63905390ac3"
+    },
+    {
+        "Keyword": "nilai my",
+        "Port Type": "address",
+        "Mapped Port ID": "cd87e5ee-bc8f-4eb1-bfed-db9ba0792b5f"
+    },
+    {
+        "Keyword": "borgo san giovanni, lodi, italy",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "20482e59-53f0-4ca2-8df1-608cbf31e674"
+    },
+    {
+        "Keyword": "pec\u00e9m pt/s\u00e3o gon\u00e7alo do amarante, br",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a72847d0-32ca-bc69-bb90-ee33262ac5e5"
+    },
+    {
+        "Keyword": "rosedale, md, 21237",
+        "Port Type": "address",
+        "Mapped Port ID": "38b08723-efa7-4093-b31e-373287ed4322"
+    },
+    {
+        "Keyword": "commerce city, co, 80022",
+        "Port Type": "address",
+        "Mapped Port ID": "106d233c-5e9e-4564-aef0-dc816cc1fafe"
+    },
+    {
+        "Keyword": "kurmannapalem",
+        "Port Type": "address",
+        "Mapped Port ID": "e0af1f8d-bde5-48a8-8826-21d99508e241"
+    },
+    {
+        "Keyword": "tamashima harbor island #6 wharf",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "72a20603-714d-4597-acbd-9335064a1a9c"
+    },
+    {
+        "Keyword": "leeds, wy gb",
+        "Port Type": "air_port",
+        "Mapped Port ID": "53094f3d-79db-4c32-87e0-4bba6ca2e640"
+    },
+    {
+        "Keyword": "greer, greenville, south carolina, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "362ccec1-89f6-4f1b-7c64-cd1016c1ba76"
+    },
+    {
+        "Keyword": "southern ca logistics center",
+        "Port Type": "address",
+        "Mapped Port ID": "b5a39557-1c4c-4454-8ae4-0efbf36540a7"
+    },
+    {
+        "Keyword": "ct1 (klang container terminal-kct)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "df56235a-28e2-404e-bece-6c8bd65ad640"
+    },
+    {
+        "Keyword": "gateway terminals india pvt.ltd.",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9670351e-cb9a-4921-a9a5-7f0aa0461c4c"
+    },
+    {
+        "Keyword": "chaumont/haute marne",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "20f8c18a-cb36-40ec-8637-7aa9320da270"
+    },
+    {
+        "Keyword": "chaumont/haute marne",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "20f8c18a-cb36-40ec-8637-7aa9320da270"
+    },
+    {
+        "Keyword": "mexico",
+        "Port Type": "air_port",
+        "Mapped Port ID": "8a350b73-73f3-00ea-324a-ec7bb7333af8"
+    },
+    {
+        "Keyword": "taipei city, tw",
+        "Port Type": "air_port",
+        "Mapped Port ID": "2a190994-88c0-f69b-51cc-7cda02e97f65"
+    },
+    {
+        "Keyword": "guangzhou south china oceangate container terminal company limted",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "44bd20db-8400-b03f-a91d-766fc2459210"
+    },
+    {
+        "Keyword": "york, pa 17406 [arrived shipping partner facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "f7d2f6f6-7346-445a-b7ef-4db6203062b7"
+    },
+    {
+        "Keyword": "york, pa 17402 [arrived shipping partner facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "f7d2f6f6-7346-445a-b7ef-4db6203062b7"
+    },
+    {
+        "Keyword": "trans misr terminal, alexandria, al iskandariyah, egypt",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "7c16ced4-7878-4de3-960d-c1e84af8063d"
+    },
+    {
+        "Keyword": "hit hongkong terminal(ct4,6,7,9) & act(8w),cocco-hit(8e)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "2a42a8db-b6e5-8a2e-5498-90f8b01bb8c8"
+    },
+    {
+        "Keyword": "southern md distribution center [arrived at usps regional destination facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "edd8c98f-4b51-40b1-b5f4-cd25b194a319"
+    },
+    {
+        "Keyword": "dunajska streda, sk",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "aa5f8f6c-df5d-4a03-b23c-c4da9b81f682"
+    },
+    {
+        "Keyword": "kumport terminal",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "05957d27-1783-589f-0627-d304f407bf7f"
+    },
+    {
+        "Keyword": "qingdao sinotrans logistics co. , ltd",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "62a43357-08b1-a9de-c2ac-e4d432ef57a6"
+    },
+    {
+        "Keyword": "sanshui, guangdong (cn)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8642c42d-a1c0-2e2a-7151-32cb9dcad754"
+    },
+    {
+        "Keyword": "umm said",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b2b8c56e-9c74-4e5d-96a7-34e37d3524d3"
+    },
+    {
+        "Keyword": "pew",
+        "Port Type": "air_port",
+        "Mapped Port ID": "e8543234-d85f-108c-737e-f297d523335d"
+    },
+    {
+        "Keyword": "westzaan, nl",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "87e18ac4-c3d5-4c59-8ca3-1da6804058c4"
+    },
+    {
+        "Keyword": "umm said",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "b2b8c56e-9c74-4e5d-96a7-34e37d3524d3"
+    },
+    {
+        "Keyword": "cnckg",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ea168629-332e-205f-8e29-35bf42d3626a"
+    },
+    {
+        "Keyword": "woerth am rhein (de)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "6716c4cc-98ac-4b88-bdce-fab582c68d0a"
+    },
+    {
+        "Keyword": "portland container repair corp., portland, multnomah, oregon, united states",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "41a005ad-fbf7-4231-961f-2c62387b4fdf"
+    },
+    {
+        "Keyword": "gemport",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "baaeee68-8e39-a8ff-d0e2-3344b1876460"
+    },
+    {
+        "Keyword": "beirut",
+        "Port Type": "air_port",
+        "Mapped Port ID": "159dce82-ee14-45cc-aaf9-6b88225dc3cb"
+    },
+    {
+        "Keyword": "aliaga, izmir, turkiye",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "d236262e-9b54-4b82-a23c-a5588c65ed2a"
+    },
+    {
+        "Keyword": "rovigo",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "04ecd44c-8c81-4d6d-b912-1cb801dd4afd"
+    },
+    {
+        "Keyword": "aburatsu container terminal (nippon express), nichinan-shi, miyazaki, japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fb26d78a-cb52-47b4-a8f1-6e376bb1b027"
+    },
+    {
+        "Keyword": "yichang port group container terminal, yichang, yichang, hubei, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "46155820-612d-5289-ee8a-15181529bef2"
+    },
+    {
+        "Keyword": "born",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "779fb61e-03a3-442a-97b9-0c59765a4a7c"
+    },
+    {
+        "Keyword": "saint paul, us",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "0493e796-7623-4d11-83d3-6a33cc896228"
+    },
+    {
+        "Keyword": "lurano, it",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "c0b0000e-d63b-49fc-1cd0-cf727591a4ef"
+    },
+    {
+        "Keyword": "lurano, it",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c0b0000e-d63b-49fc-1cd0-cf727591a4ef"
+    },
+    {
+        "Keyword": "keavy global logistic yard.,navi mumbai,maharashtra,india",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "0fb3efd1-bbdf-4a94-b549-cf77b8a56e7c"
+    },
+    {
+        "Keyword": "windsor, va",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "256b341f-08b4-eab8-0e51-4cf7fb76d731"
+    },
+    {
+        "Keyword": "nis",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "0610b60c-affa-4b08-b8d3-66e240234b14"
+    },
+    {
+        "Keyword": "yto",
+        "Port Type": "air_port",
+        "Mapped Port ID": "7908918b-ecc2-4312-bcfb-e76a2eb3f971"
+    },
+    {
+        "Keyword": "gennevilliers",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d96243bf-891a-42d6-a775-f73919452bc8"
+    },
+    {
+        "Keyword": "western container yard s. de r.l. de c.v.",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "0fb3efd1-bbdf-4a94-b549-cf77b8a56e7c"
+    },
+    {
+        "Keyword": "agra sfc/apex pud",
+        "Port Type": "address",
+        "Mapped Port ID": "6624e9b7-069a-41d9-acdb-674e3489396c"
+    },
+    {
+        "Keyword": "alleppey branch",
+        "Port Type": "address",
+        "Mapped Port ID": "fe28a358-acdb-4fb6-8aa1-03a176dfbea1"
+    },
+    {
+        "Keyword": "appleton, wi 54911",
+        "Port Type": "address",
+        "Mapped Port ID": "c6b42f46-fd0d-4d19-807d-34dbce4bd8cf"
+    },
+    {
+        "Keyword": "da chan bay (gd), china. people's republic",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "f329c2aa-b1eb-4317-bdd8-7ca2be220249"
+    },
+    {
+        "Keyword": "brighton, ma 02135",
+        "Port Type": "address",
+        "Mapped Port ID": "c778a2ab-8267-440f-b47f-79afddf6758d"
+    },
+    {
+        "Keyword": "wai",
+        "Port Type": "address",
+        "Mapped Port ID": "62280b7d-8c37-42a3-8789-f209c545407f"
+    },
+    {
+        "Keyword": "nemport",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d236262e-9b54-4b82-a23c-a5588c65ed2a"
+    },
+    {
+        "Keyword": "jiao xin, cn",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "b0960af4-44ed-f3b8-253f-821f58fa840a"
+    },
+    {
+        "Keyword": "villa nueva, gt",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "ce1cda6e-7978-7b3d-7271-a22afa070d7d"
+    },
+    {
+        "Keyword": "southern md distribution center [departed usps regional facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "edd8c98f-4b51-40b1-b5f4-cd25b194a319"
+    },
+    {
+        "Keyword": "southern md distribution center [arrived at usps regional facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "edd8c98f-4b51-40b1-b5f4-cd25b194a319"
+    },
+    {
+        "Keyword": "uran",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "4813fb07-6630-4103-a768-f25ed9e2e282"
+    },
+    {
+        "Keyword": "uran",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "4813fb07-6630-4103-a768-f25ed9e2e282"
+    },
+    {
+        "Keyword": "koropi, gr",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "33bbb1bc-ef55-4895-826e-99acfcb6a9ba"
+    },
+    {
+        "Keyword": "panam\u00e1, ciudad de",
+        "Port Type": "air_port",
+        "Mapped Port ID": "10e6efe6-0eac-1c5b-3f8c-070704d35736"
+    },
+    {
+        "Keyword": "china shekou shekou container terminal",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f0c1d7aa-2cfa-4d73-bbed-e031501df06a"
+    },
+    {
+        "Keyword": "nemport",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "d236262e-9b54-4b82-a23c-a5588c65ed2a"
+    },
+    {
+        "Keyword": "gemport",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "baaeee68-8e39-a8ff-d0e2-3344b1876460"
+    },
+    {
+        "Keyword": "sueca, es",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "b50cc5f1-4304-4f3d-9e36-a919cb77946b"
+    },
+    {
+        "Keyword": "leghorn",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "2a18675b-4950-f2a5-ad2d-7a9acf3d7079"
+    },
+    {
+        "Keyword": "efc logistics india private limited",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a4bd9d16-3d49-f6b5-9e4a-7b5cec1f5579"
+    },
+    {
+        "Keyword": "wincham",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "7017d43b-2381-4289-906e-1e4057054902"
+    },
+    {
+        "Keyword": "alliance, ne",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "2849f9fe-67b6-5201-f83e-033b7040cbea"
+    },
+    {
+        "Keyword": "morrow, ga, united states",
+        "Port Type": "air_port",
+        "Mapped Port ID": "8c69677b-fcbc-45c8-821c-ce73889ac047"
+    },
+    {
+        "Keyword": "v v nagar",
+        "Port Type": "address",
+        "Mapped Port ID": "747a2f53-dd41-4f47-a129-e84d40079ffa"
+    },
+    {
+        "Keyword": "sholinanallur",
+        "Port Type": "address",
+        "Mapped Port ID": "a3a6a088-44e5-4d89-85dd-23b1a037d056"
+    },
+    {
+        "Keyword": "ssa marine - t 30",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "0a5e5cce-5842-147b-c40f-797357dc8806"
+    },
+    {
+        "Keyword": "bangalore tr",
+        "Port Type": "address",
+        "Mapped Port ID": "f8859a00-7edc-49a1-970b-98d9c0ea9943"
+    },
+    {
+        "Keyword": "gonfreville l'orcher",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "64b17f20-a8ce-40b2-aeea-48bc0f2b8f7e"
+    },
+    {
+        "Keyword": "nice fr",
+        "Port Type": "address",
+        "Mapped Port ID": "e75879f7-32f3-4ae2-817b-8e87e27e4cf0"
+    },
+    {
+        "Keyword": "grobbendonk (be)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6de5fbc5-1020-48be-b1f5-f6c787beb8ba"
+    },
+    {
+        "Keyword": "grobbendonk (be)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "6de5fbc5-1020-48be-b1f5-f6c787beb8ba"
+    },
+    {
+        "Keyword": "du shan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "42edf655-f43b-4c43-85b9-e3933fdf7784"
+    },
+    {
+        "Keyword": "lovosice cz",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "9672453c-a01c-421f-be17-083e08549cdc"
+    },
+    {
+        "Keyword": "panorama city, ca us",
+        "Port Type": "address",
+        "Mapped Port ID": "8e1df821-2fee-4e5f-9012-f02558632a0a"
+    },
+    {
+        "Keyword": "vitoria-gasteiz, es",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a3dd4859-8485-4916-a0b2-7782a0794584"
+    },
+    {
+        "Keyword": "kalochori, gr",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "cd988e6b-56b7-409d-a50a-e50f5415eef7"
+    },
+    {
+        "Keyword": "hitachinaka(hitachinaka north wharf gaibo)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "72a20603-714d-4597-acbd-9335064a1a9c"
+    },
+    {
+        "Keyword": "sakata(sakata port kokusai terminal container yard)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b924bf02-9494-4c58-a4e4-99d362ffc2c6"
+    },
+    {
+        "Keyword": "cai mep (ba ria vung tau)(westport container terminal)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0f1cd481-a372-4bcf-9a19-20dbd8a6088d"
+    },
+    {
+        "Keyword": "lynn, ma, united states",
+        "Port Type": "air_port",
+        "Mapped Port ID": "4d21f746-77df-4189-b1a3-199a903965e3"
+    },
+    {
+        "Keyword": "tr dil",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3b87da23-0bd0-4d97-a83b-5c43705469ae"
+    },
+    {
+        "Keyword": "united states of america (the)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1f2e881d-f951-9e9c-1fd6-5371b4b3b7ac"
+    },
+    {
+        "Keyword": "sunland, ca, 91040",
+        "Port Type": "address",
+        "Mapped Port ID": "8e1df821-2fee-4e5f-9012-f02558632a0a"
+    },
+    {
+        "Keyword": "gleason, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "356ae7df-345a-4f36-a40b-99ba397209c7"
+    },
+    {
+        "Keyword": "thbmt",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "05d7873e-7b70-4ac8-b102-1d7ffbe4eea8"
+    },
+    {
+        "Keyword": "sherman oaks, ca, 91423",
+        "Port Type": "address",
+        "Mapped Port ID": "d6155eb9-dfb4-4665-be53-676e68ce7185"
+    },
+    {
+        "Keyword": "linz",
+        "Port Type": "air_port",
+        "Mapped Port ID": "1d73298e-4005-4d90-8190-abf581b4c1d6"
+    },
+    {
+        "Keyword": "kobenhavn",
+        "Port Type": "air_port",
+        "Mapped Port ID": "7e2b2edd-aa11-78a7-4260-dc1c401f9eb9"
+    },
+    {
+        "Keyword": "ametlla del valles, spain",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8789ca31-75b2-666d-cbca-e70c598b6d34"
+    },
+    {
+        "Keyword": "hickory, alexander, north carolina, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "362ccec1-89f6-4f1b-7c64-cd1016c1ba76"
+    },
+    {
+        "Keyword": "cormano, it",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "31537e01-f2c3-4582-bd35-556a5c859cdc"
+    },
+    {
+        "Keyword": "cormano, it",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "31537e01-f2c3-4582-bd35-556a5c859cdc"
+    },
+    {
+        "Keyword": "saku city, jp",
+        "Port Type": "address",
+        "Mapped Port ID": "f5a22169-def0-4494-a6b7-6f8e8a69511f"
+    },
+    {
+        "Keyword": "grosse pointe, mi, 48236",
+        "Port Type": "address",
+        "Mapped Port ID": "11e219c5-50d7-4459-9f33-754c9b14f17a"
+    },
+    {
+        "Keyword": "trivandrum-fort",
+        "Port Type": "address",
+        "Mapped Port ID": "83a2dfed-02a2-4848-a18d-f68e9744e0c9"
+    },
+    {
+        "Keyword": "cartagena - sociedad portuaria regional cartagena cospc",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "113a9d33-b651-e027-2c53-755314fb55dc"
+    },
+    {
+        "Keyword": "jakara",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9ab6ca29-3dfe-675e-c193-4c7cf9d5845b"
+    },
+    {
+        "Keyword": "tai pei",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f1490878-3bfa-9c95-6f9e-d7da6fdd0b24"
+    },
+    {
+        "Keyword": "umm said, qatar",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fc6b39b4-6f81-0371-d9ba-5e75a8469cc2"
+    },
+    {
+        "Keyword": "esmad",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "dad7f4d3-a857-42d4-82d2-3045c0378922"
+    },
+    {
+        "Keyword": "marly la ville fr",
+        "Port Type": "air_port",
+        "Mapped Port ID": "e923735f-ccaf-227d-e70f-7df4f03c8ec8"
+    },
+    {
+        "Keyword": "cuacedo",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "849f8870-72a2-d612-4700-8143dcce71d4"
+    },
+    {
+        "Keyword": "kramer container depot reeweg",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "54d74ac0-3719-40eb-9bd6-4270e5ebee55"
+    },
+    {
+        "Keyword": "tujunga, ca, 91042",
+        "Port Type": "address",
+        "Mapped Port ID": "8e1df821-2fee-4e5f-9012-f02558632a0a"
+    },
+    {
+        "Keyword": "honmoku bc-2 container terminal, yokohama, kanagawa, japan",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "6deef5bb-57c6-4ed2-8a2e-87a8ce85b61e"
+    },
+    {
+        "Keyword": "mystic, ct 06355",
+        "Port Type": "address",
+        "Mapped Port ID": "5aca1df6-2bab-47e5-8e3e-91d70c76dcfd"
+    },
+    {
+        "Keyword": "east saint louis",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "63c47a9b-a389-4793-abc4-914c781528af"
+    },
+    {
+        "Keyword": "chengdu railway east station, chengdu, sichuan, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9320b36d-2840-479c-ae75-0627c9cc9f5b"
+    },
+    {
+        "Keyword": "aguimes",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "e4e4a7e7-3138-4fbf-804a-4852e6f4145f"
+    },
+    {
+        "Keyword": "international intermodal center, huntsville, madison, alabama, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "b8bc5019-7388-4893-af5d-113f6688b9dd"
+    },
+    {
+        "Keyword": "southern me distribution center [departed usps regional facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "f340a056-f56a-4ea3-b513-c43138bfddd6"
+    },
+    {
+        "Keyword": "southern me distribution center [arrived at usps regional facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "f340a056-f56a-4ea3-b513-c43138bfddd6"
+    },
+    {
+        "Keyword": "north rochester, pa, united states",
+        "Port Type": "air_port",
+        "Mapped Port ID": "824b5dab-c079-27a6-3b53-2e6f53e2df6f"
+    },
+    {
+        "Keyword": "bangkok",
+        "Port Type": "air_port",
+        "Mapped Port ID": "add98478-0d3f-4f1b-ecf0-359125a5a621"
+    },
+    {
+        "Keyword": "delhi international cargo terminals and rail infrastructure pvt ltd",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "00956388-71ad-854f-3907-c515fdb2ce00"
+    },
+    {
+        "Keyword": "roxbury crossing, ma 02120 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "c778a2ab-8267-440f-b47f-79afddf6758d"
+    },
+    {
+        "Keyword": "oceanbox container services inc.",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "415ff5d2-7147-4fb6-87bb-a0e8687fe248"
+    },
+    {
+        "Keyword": "transworld cfs (unit of merdian shipping agency pvt. ltd.)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "9819c622-6ba0-4e8a-8f03-d8df536e8b60"
+    },
+    {
+        "Keyword": "almacenes de depositos martainer, s.a.",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "3ec3a022-7275-809f-b037-8bb69f204486"
+    },
+    {
+        "Keyword": "ct1 (klang container terminal-kct)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "908e466a-d7a7-4a39-98a6-56afded2b9bf"
+    },
+    {
+        "Keyword": "swift container services pty ltd",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "92d99ff5-43ba-4cd5-9ad6-aa3b5f5f90ea"
+    },
+    {
+        "Keyword": "palatine, il, united states",
+        "Port Type": "air_port",
+        "Mapped Port ID": "7f8f35ac-d6f2-47e9-ad9b-88aea4d6c7df"
+    },
+    {
+        "Keyword": "cai mep (ba ria vung tau)(cai mep international terminal)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0f1cd481-a372-4bcf-9a19-20dbd8a6088d"
+    },
+    {
+        "Keyword": "contrans logistics pvt.ltd., rajula, gujarat, india",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "7af53c0a-8d41-4d79-8721-96206f9ff34a"
+    },
+    {
+        "Keyword": "las palmas de gran canaria, las palmas, spain",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "8789ca31-75b2-666d-cbca-e70c598b6d34"
+    },
+    {
+        "Keyword": "rangoon",
+        "Port Type": "air_port",
+        "Mapped Port ID": "c12122f4-5bd5-de12-aa34-7d5a4da678b2"
+    },
+    {
+        "Keyword": "pointe des galets, re",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3ba841de-c446-c373-1b9f-0b501f74408c"
+    },
+    {
+        "Keyword": "first container terminal (fct)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "64c00bb8-2586-836e-bfd5-6bcd3e3d2ba4"
+    },
+    {
+        "Keyword": "sanshui sangang containers wharf co., ltd",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8642c42d-a1c0-2e2a-7151-32cb9dcad754"
+    },
+    {
+        "Keyword": "nct-1 new container terminal 1",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "5a2a762f-2b9a-41ab-bdef-d37940654737"
+    },
+    {
+        "Keyword": "seoul",
+        "Port Type": "air_port",
+        "Mapped Port ID": "8edfa1c2-ebfb-3f3d-3399-c5c26ad00d6b"
+    },
+    {
+        "Keyword": "west columbia, sc 29172",
+        "Port Type": "address",
+        "Mapped Port ID": "1782e192-5735-4a75-8aca-ea7bb7e4bc8f"
+    },
+    {
+        "Keyword": "pt.java sarana mitra sejati depot",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "50e3909b-8c83-459f-98f7-b2a349b4758c"
+    },
+    {
+        "Keyword": "null (lim)",
+        "Port Type": "air_port",
+        "Mapped Port ID": "0c762a0f-bb6f-4085-8cba-9795059a73c5"
+    },
+    {
+        "Keyword": "itriv",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a3afc54d-1aed-4e94-ad37-5dc853f56d96"
+    },
+    {
+        "Keyword": "whites creek, tn 37189",
+        "Port Type": "address",
+        "Mapped Port ID": "2ae19c8d-0eff-4e36-a995-c8a44604aec0"
+    },
+    {
+        "Keyword": "waterbury, ct, 06705",
+        "Port Type": "address",
+        "Mapped Port ID": "fae18a60-55ed-488c-b98f-1ddf897aa7cb"
+    },
+    {
+        "Keyword": "brighton, ma, 02135",
+        "Port Type": "address",
+        "Mapped Port ID": "c778a2ab-8267-440f-b47f-79afddf6758d"
+    },
+    {
+        "Keyword": "dongwon global terminal busan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "80595cf1-a59f-2cf7-a29a-622faf40c2f8"
+    },
+    {
+        "Keyword": "appleton, wi, 54911",
+        "Port Type": "address",
+        "Mapped Port ID": "c6b42f46-fd0d-4d19-807d-34dbce4bd8cf"
+    },
+    {
+        "Keyword": "pt.java sarana mitra sejati depot",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c9575f17-1fca-41c3-a6c9-b6866ee6bcc7"
+    },
+    {
+        "Keyword": "allston-allston",
+        "Port Type": "address",
+        "Mapped Port ID": "c778a2ab-8267-440f-b47f-79afddf6758d"
+    },
+    {
+        "Keyword": "all cargo global logistics ltd. - cfs, india",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "9e862257-83fb-39f3-4b9e-94028289e1d3"
+    },
+    {
+        "Keyword": "tiungya depot (new mty yard near sect tml)",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "0fb3efd1-bbdf-4a94-b549-cf77b8a56e7c"
+    },
+    {
+        "Keyword": "dongwon global terminal busan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "80595cf1-a59f-2cf7-a29a-622faf40c2f8"
+    },
+    {
+        "Keyword": "stourton",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a357d004-3db8-4e3b-807f-d4ad75b20150"
+    },
+    {
+        "Keyword": "stourton",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "a357d004-3db8-4e3b-807f-d4ad75b20150"
+    },
+    {
+        "Keyword": "ebernhahn, de",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "7cc9ff15-95e6-4d4e-ac0e-84859d4bbff3"
+    },
+    {
+        "Keyword": "marda\u015f port",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0a19e718-09a4-427b-8df5-bceed75a0fea"
+    },
+    {
+        "Keyword": "marda\u015f port",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "0a19e718-09a4-427b-8df5-bceed75a0fea"
+    },
+    {
+        "Keyword": "oman intl container terminal",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "12b43d1c-92a0-4775-8b45-27eaba55f40a"
+    },
+    {
+        "Keyword": "shenghu investment co,ltd.shunde,foshan(2 session of beijiao port)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8642c42d-a1c0-2e2a-7151-32cb9dcad754"
+    },
+    {
+        "Keyword": "jayanagar pud",
+        "Port Type": "address",
+        "Mapped Port ID": "f8859a00-7edc-49a1-970b-98d9c0ea9943"
+    },
+    {
+        "Keyword": "tlaquepaque, jal",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "96d0bc4a-b112-4d80-a193-fdd8f04ffde3"
+    },
+    {
+        "Keyword": "izmir (aliaga), turkiye",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "d236262e-9b54-4b82-a23c-a5588c65ed2a"
+    },
+    {
+        "Keyword": "tlaquepaque, jal",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "96d0bc4a-b112-4d80-a193-fdd8f04ffde3"
+    },
+    {
+        "Keyword": "chengalpattu - hub",
+        "Port Type": "address",
+        "Mapped Port ID": "a3a6a088-44e5-4d89-85dd-23b1a037d056"
+    },
+    {
+        "Keyword": "hillington, gb",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "6baf6632-b160-4f1b-b14c-337432b862a5"
+    },
+    {
+        "Keyword": "chattogram bd",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5cee9607-704c-43cb-8106-eb5cdf63ac16"
+    },
+    {
+        "Keyword": "lovosice, cz",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "9672453c-a01c-421f-be17-083e08549cdc"
+    },
+    {
+        "Keyword": "lovosice, cz",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "9672453c-a01c-421f-be17-083e08549cdc"
+    },
+    {
+        "Keyword": "inahm",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "cc5572b1-6196-98e9-8896-46c9c356cf94"
+    },
+    {
+        "Keyword": "kril icd/pali, in",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "f2e32904-1d7a-45e9-867b-237e758678f7"
+    },
+    {
+        "Keyword": "kril icd/pali, in",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "f2e32904-1d7a-45e9-867b-237e758678f7"
+    },
+    {
+        "Keyword": "panipat, hr",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a87b081f-3434-4db6-91b6-9ac4711fc3e5"
+    },
+    {
+        "Keyword": "panipat, hr",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "a87b081f-3434-4db6-91b6-9ac4711fc3e5"
+    },
+    {
+        "Keyword": "kw swk",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "bdf95411-6352-4ad0-9991-4ffa348332c0"
+    },
+    {
+        "Keyword": "chalon sur saone",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "dda8a03a-7945-4c2e-988c-bfbe443b4910"
+    },
+    {
+        "Keyword": "rye, nh 03870",
+        "Port Type": "address",
+        "Mapped Port ID": "af8e5626-7fd4-4eae-abf6-a2c8afd8707d"
+    },
+    {
+        "Keyword": "beml nagar",
+        "Port Type": "address",
+        "Mapped Port ID": "4288713b-8b0d-436a-bea9-959dfdc9e150"
+    },
+    {
+        "Keyword": "hutchison ports uaq, umm al qawain, umm al qaywayn, united arab emirates",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "69f7509d-1f28-410e-ba92-8115b8d29376"
+    },
+    {
+        "Keyword": "port klang (pelabuhan klang)",
+        "Port Type": "air_port",
+        "Mapped Port ID": "91e0c11c-59b6-5cc2-f6d7-34e25968bee0"
+    },
+    {
+        "Keyword": "smithdale, ar",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "3b68c53a-663d-4533-838c-d95cdb9ae262"
+    },
+    {
+        "Keyword": "obernburg, de",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "ef6e7a0a-9ffc-43cb-9300-b1b6cb39f5f6"
+    },
+    {
+        "Keyword": "brno",
+        "Port Type": "air_port",
+        "Mapped Port ID": "3c7787d1-5809-4c84-8704-c4d45988d16a"
+    },
+    {
+        "Keyword": "berkel en rodenrijs",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "41e8409c-9eaf-45ca-8855-f93e5e9e877c"
+    },
+    {
+        "Keyword": "marion, ia, us",
+        "Port Type": "air_port",
+        "Mapped Port ID": "5c05ecd2-dce1-4ce5-bb40-9c05598a63c4"
+    },
+    {
+        "Keyword": "bow, nh 03304",
+        "Port Type": "address",
+        "Mapped Port ID": "37e350a7-f9a2-4809-a2d7-b942b33ec2cb"
+    },
+    {
+        "Keyword": "chattogram bd",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "5cee9607-704c-43cb-8106-eb5cdf63ac16"
+    },
+    {
+        "Keyword": "seabird hindustan depot",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "001cec55-5850-42e1-be9e-21b5569bbf69"
+    },
+    {
+        "Keyword": "pointe aux trembles, qc",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "aa4508d0-6ff4-b7bb-1617-6863964eeddb"
+    },
+    {
+        "Keyword": "zhongshan xiaolan port cargo transportation united co., ltd, zhongshan, zhongshan, guangdong, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "44bd20db-8400-b03f-a91d-766fc2459210"
+    },
+    {
+        "Keyword": "betatrans lojistik insaat san. tic. a.s.",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "35d83a1f-a817-4f76-8d1e-e9df8d458747"
+    },
+    {
+        "Keyword": "containerport group,sauget,illinois,united states",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "0493e796-7623-4d11-83d3-6a33cc896228"
+    },
+    {
+        "Keyword": "shrewsbury, ma, united states",
+        "Port Type": "air_port",
+        "Mapped Port ID": "fd02687c-6a76-494b-bc54-c0bb5e95ed05"
+    },
+    {
+        "Keyword": "toyohashi(toyohashi mikawa port container terminal)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d2b8fbd2-7d16-4595-a853-28f710b8e83c"
+    },
+    {
+        "Keyword": "southampton, england, united kingdom",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "fe9a563e-b6eb-4bc4-9ade-f5ce477ab1fa"
+    },
+    {
+        "Keyword": "shekou  container  terminal  ltd, shekou, guangdong, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f0c1d7aa-2cfa-4d73-bbed-e031501df06a"
+    },
+    {
+        "Keyword": "port of stockholm, stockholm, stockholms, sweden",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "a6d42e64-2ac7-4e89-9ae0-72ee080a4cac"
+    },
+    {
+        "Keyword": "santo stefano di magra",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "007fa665-e0b4-4227-879e-f6985dda1a31"
+    },
+    {
+        "Keyword": "shekou  container  terminal  ltd, shekou, guangdong, china",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "f0c1d7aa-2cfa-4d73-bbed-e031501df06a"
+    },
+    {
+        "Keyword": "shibushi( shibushi port shin-wakahama-area international container terminal)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f729ccbc-319c-441e-bf2d-5722df19159e"
+    },
+    {
+        "Keyword": "jiaxing (cn)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "91b1cda7-a1a3-bfff-6583-56da3c33857d"
+    },
+    {
+        "Keyword": "calcutta",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9e862257-83fb-39f3-4b9e-94028289e1d3"
+    },
+    {
+        "Keyword": "rong tan tml",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "8362d332-12f4-4057-6a2d-1e8211849200"
+    },
+    {
+        "Keyword": "sahnewal, punjab, india",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "8f67032a-ecf9-f1eb-82cf-99326fdff484"
+    },
+    {
+        "Keyword": "muc",
+        "Port Type": "air_port",
+        "Mapped Port ID": "982f44dc-f938-b8fb-54d1-385d91e9d149"
+    },
+    {
+        "Keyword": "pointe des galets (re)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3ba841de-c446-c373-1b9f-0b501f74408c"
+    },
+    {
+        "Keyword": "mnl",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "100649ec-6566-0c5f-c79c-a81fdabb4852"
+    },
+    {
+        "Keyword": "cgn",
+        "Port Type": "air_port",
+        "Mapped Port ID": "bc746f2f-109d-fb12-c979-ba7159cf18f4"
+    },
+    {
+        "Keyword": "opo",
+        "Port Type": "air_port",
+        "Mapped Port ID": "d6c30a54-82c4-73af-8b30-72adb0eaf67a"
+    },
+    {
+        "Keyword": "dosdq",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "007fa665-e0b4-4227-879e-f6985dda1a31"
+    },
+    {
+        "Keyword": "calcutta",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "9e862257-83fb-39f3-4b9e-94028289e1d3"
+    },
+    {
+        "Keyword": "tracy, us",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "2710fd4c-cda5-4100-8438-bea333d17522"
+    },
+    {
+        "Keyword": "schimatarion, gr",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "fefd5feb-c3db-4465-8388-c26b11897113"
+    },
+    {
+        "Keyword": "schimatarion, gr",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "fefd5feb-c3db-4465-8388-c26b11897113"
+    },
+    {
+        "Keyword": "englewood, us",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "61de0e6b-c81f-e0b1-efa2-2ba679db19be"
+    },
+    {
+        "Keyword": "englewood, us",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "61de0e6b-c81f-e0b1-efa2-2ba679db19be"
+    },
+    {
+        "Keyword": "jiao xin (cn)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d9b61d41-3f64-4138-b945-94d3c341bd2b"
+    },
+    {
+        "Keyword": "sahnewal, punjab, india",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "8f67032a-ecf9-f1eb-82cf-99326fdff484"
+    },
+    {
+        "Keyword": "ravarino",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "dd3e958d-2014-9e8b-9abf-57f1cd61dbe7"
+    },
+    {
+        "Keyword": "maoming",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1a6b9878-ee6f-4235-a987-e698082d913a"
+    },
+    {
+        "Keyword": "hyd",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "328717dd-0521-db3f-329f-5fe6434c9254"
+    },
+    {
+        "Keyword": "vista, ca (us)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9d950142-3af8-4cc4-b31a-5cf55cb57ca2"
+    },
+    {
+        "Keyword": "seoul international post office",
+        "Port Type": "address",
+        "Mapped Port ID": "a23dd97e-3792-47da-b56e-f8fbce45a41f"
+    },
+    {
+        "Keyword": "porter ranch, ca 91326",
+        "Port Type": "address",
+        "Mapped Port ID": "8e1df821-2fee-4e5f-9012-f02558632a0a"
+    },
+    {
+        "Keyword": "valencia, ca 91355",
+        "Port Type": "address",
+        "Mapped Port ID": "7ecd4b00-848c-4178-8446-aa233d4a943b"
+    },
+    {
+        "Keyword": "valencia, ca 91354",
+        "Port Type": "address",
+        "Mapped Port ID": "7ecd4b00-848c-4178-8446-aa233d4a943b"
+    },
+    {
+        "Keyword": "jiao xin, cn",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "49888ef2-e60b-44e9-b935-302f6d4cfac5"
+    },
+    {
+        "Keyword": "nemport liman isletmeleri ve ozel antrepo nak tic as, aliaga, izmir, turkiye",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "d236262e-9b54-4b82-a23c-a5588c65ed2a"
+    },
+    {
+        "Keyword": "nemport liman isletmeleri ve ozel antrepo nak tic as, aliaga, izmir, turkiye",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d236262e-9b54-4b82-a23c-a5588c65ed2a"
+    },
+    {
+        "Keyword": "sanborn, ny 14132 [arrived shipping partner facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "6d3fbed8-36dd-4143-9fb2-5a06abd3d64b"
+    },
+    {
+        "Keyword": "ssa marine - t18",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "0a5e5cce-5842-147b-c40f-797357dc8806"
+    },
+    {
+        "Keyword": "north richland hills, tx 76180",
+        "Port Type": "address",
+        "Mapped Port ID": "df0a08bc-0980-4acd-9330-569cf6b29dd2"
+    },
+    {
+        "Keyword": "evyap evyap deniz isletmeciligi lojistik",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7b6cb0ff-50ef-2654-4282-a75cc20841eb"
+    },
+    {
+        "Keyword": "costa mesa, ca",
+        "Port Type": "air_port",
+        "Mapped Port ID": "0421dd7d-e1ad-4e9f-a539-7c415727f028"
+    },
+    {
+        "Keyword": "aqaba container terminal \u2013 act",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "745132c2-28a7-472b-804d-d248aab8ed43"
+    },
+    {
+        "Keyword": "antrep",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "28f18263-b309-4a4b-b02d-ff4564f69dda"
+    },
+    {
+        "Keyword": "sanshui new",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "8642c42d-a1c0-2e2a-7151-32cb9dcad754"
+    },
+    {
+        "Keyword": "port klang (pelabuhan klang) my",
+        "Port Type": "air_port",
+        "Mapped Port ID": "91e0c11c-59b6-5cc2-f6d7-34e25968bee0"
+    },
+    {
+        "Keyword": "apodaca",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "3f74939c-6b79-4250-9cb0-5d17beae1e7f"
+    },
+    {
+        "Keyword": "bac ninh, vn",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6ac0f00e-25db-4d9a-a5df-4d0692218445"
+    },
+    {
+        "Keyword": "balingen, bw de",
+        "Port Type": "air_port",
+        "Mapped Port ID": "d8ef92fc-b377-5c73-a0d4-c091709394c9"
+    },
+    {
+        "Keyword": "sarcelles",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "5211012b-dd3d-4d63-a813-d05172d5cbdb"
+    },
+    {
+        "Keyword": "castagnaro",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "d55b0f37-be26-430d-b0b0-814806bda6f7"
+    },
+    {
+        "Keyword": "romulus, mi",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c76719df-97dd-d17e-c557-ccd1c4866f81"
+    },
+    {
+        "Keyword": "eatontown, nj 07724 [departed shipping partner facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "946ee407-f229-49e1-9d90-9a7e5719861f"
+    },
+    {
+        "Keyword": "basra gateway terminal, basrah, , iraq",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "82e75d44-a00b-4f36-6572-f2a4d3f1f545"
+    },
+    {
+        "Keyword": "apodaca",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "3f74939c-6b79-4250-9cb0-5d17beae1e7f"
+    },
+    {
+        "Keyword": "huangshi, 42",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "46155820-612d-5289-ee8a-15181529bef2"
+    },
+    {
+        "Keyword": "north richland hills, tx 76182",
+        "Port Type": "address",
+        "Mapped Port ID": "df0a08bc-0980-4acd-9330-569cf6b29dd2"
+    },
+    {
+        "Keyword": "leghorn,",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "2a18675b-4950-f2a5-ad2d-7a9acf3d7079"
+    },
+    {
+        "Keyword": "(qict) muhammad bin qasim/karachi",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a9e7cef2-c23e-8cb2-950f-679a278ecc92"
+    },
+    {
+        "Keyword": "(qict) muhammad bin qasim/karachi",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a9e7cef2-c23e-8cb2-950f-679a278ecc92"
+    },
+    {
+        "Keyword": "lyg-psa container terminal co., ltd",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "c3360e50-09c4-bf46-c7cb-592858033d22"
+    },
+    {
+        "Keyword": "palu (id)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c243281b-4d0d-4956-9c46-fcfc1aea4120"
+    },
+    {
+        "Keyword": "akron",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "fac60ac7-45cc-453d-9e7b-75be467df3d7"
+    },
+    {
+        "Keyword": "cantoria",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "f61bee93-3670-4acf-9d8a-afa1b3905cdb"
+    },
+    {
+        "Keyword": "cantoria",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "f61bee93-3670-4acf-9d8a-afa1b3905cdb"
+    },
+    {
+        "Keyword": "bruxelles be",
+        "Port Type": "address",
+        "Mapped Port ID": "ff119b52-7cc4-44b0-acc0-0315d654ccbc"
+    },
+    {
+        "Keyword": "krakow",
+        "Port Type": "air_port",
+        "Mapped Port ID": "f2f32f49-7ba6-4ef8-a6bb-1519e97991fd"
+    },
+    {
+        "Keyword": "nabeta cntr terminal (nuct, stevedore : tokaikyowa), japan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7ea607ed-b5ee-7bfb-d8a1-597ee6cce994"
+    },
+    {
+        "Keyword": "co.na.te.co spa, naples, campania, italy",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "557de672-1023-4749-ae7a-16e7fc706ee1"
+    },
+    {
+        "Keyword": "haugesund stevedoring as, haugesund, rogaland, norway",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "6ca82237-8041-4782-b767-643ee654da0d"
+    },
+    {
+        "Keyword": "haugesund stevedoring as, haugesund, rogaland, norway",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "6ca82237-8041-4782-b767-643ee654da0d"
+    },
+    {
+        "Keyword": "chattogram, bd",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5cee9607-704c-43cb-8106-eb5cdf63ac16"
+    },
+    {
+        "Keyword": "chattogram, bd",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "5cee9607-704c-43cb-8106-eb5cdf63ac16"
+    },
+    {
+        "Keyword": "nice",
+        "Port Type": "air_port",
+        "Mapped Port ID": "42cd7631-f5a0-4f0f-80fb-59a20f25ebae"
+    },
+    {
+        "Keyword": "elmswell, gb",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "d6ff98d3-b550-afde-5cb1-b29070f8b493"
+    },
+    {
+        "Keyword": "icd kanech",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "8f67032a-ecf9-f1eb-82cf-99326fdff484"
+    },
+    {
+        "Keyword": "icd kanech",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "8f67032a-ecf9-f1eb-82cf-99326fdff484"
+    },
+    {
+        "Keyword": "escuintla, gt",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "f0fb45cf-652f-9f0e-947a-b7a128c9fbf9"
+    },
+    {
+        "Keyword": "saba",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "2475082f-cac0-4be8-9943-cc0b4a278568"
+    },
+    {
+        "Keyword": "incontrade ltd",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "5cee9607-704c-43cb-8106-eb5cdf63ac16"
+    },
+    {
+        "Keyword": "hutchison terminals",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "77d1e0c6-c5bc-ce8d-92f3-6ea30db8c872"
+    },
+    {
+        "Keyword": "rotterdam (rtm)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "244aae77-528e-499d-b2a3-02c970b4f3a5"
+    },
+    {
+        "Keyword": "rotterdam (rtm)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "244aae77-528e-499d-b2a3-02c970b4f3a5"
+    },
+    {
+        "Keyword": "vashi mini hub",
+        "Port Type": "address",
+        "Mapped Port ID": "c93f2e88-d5b6-406d-9b97-417370aac5de"
+    },
+    {
+        "Keyword": "inmun - mundra",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "2a4b4d39-eb9d-cc1d-f98c-b97be21c3d6c"
+    },
+    {
+        "Keyword": "mundra adani",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "2a4b4d39-eb9d-cc1d-f98c-b97be21c3d6c"
+    },
+    {
+        "Keyword": "\uc778\ucc9c \ud55c\uc9c4\uc2e0\ud56d\ucee8\ud14c\uc774\ub108\ud130\ubbf8\ub110(hjit), incheon",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "30271445-d995-c8b2-4dd8-7d49736e1a7a"
+    },
+    {
+        "Keyword": "el marques",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "67cbc6ad-3de7-40e1-b393-fb3e0e97d870"
+    },
+    {
+        "Keyword": "hamacher logist",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "2ff758cc-620a-4cfe-a3ed-4540deba7ad8"
+    },
+    {
+        "Keyword": "lakadikapool",
+        "Port Type": "address",
+        "Mapped Port ID": "e1ea3b49-57a6-438b-8d3a-28cf462f29bc"
+    },
+    {
+        "Keyword": "rye, nh, 03870",
+        "Port Type": "address",
+        "Mapped Port ID": "af8e5626-7fd4-4eae-abf6-a2c8afd8707d"
+    },
+    {
+        "Keyword": "una, sc 29378",
+        "Port Type": "address",
+        "Mapped Port ID": "fa0fc85c-cac7-4353-9448-324f50bc9845"
+    },
+    {
+        "Keyword": "martainer",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "3ec3a022-7275-809f-b037-8bb69f204486"
+    },
+    {
+        "Keyword": "kobenhavn, dk",
+        "Port Type": "air_port",
+        "Mapped Port ID": "7e2b2edd-aa11-78a7-4260-dc1c401f9eb9"
+    },
+    {
+        "Keyword": "obernburg am main, de",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "226a85c3-5fb3-4b15-b6d1-efff2ad15c1b"
+    },
+    {
+        "Keyword": "thames port",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "fcc8e287-952d-459e-91bf-9a7d9ebb8a30"
+    },
+    {
+        "Keyword": "schoeneck, france",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "3c651c75-c61b-4458-9cc3-c7baaa2939bc"
+    },
+    {
+        "Keyword": "schoeneck, france",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3c651c75-c61b-4458-9cc3-c7baaa2939bc"
+    },
+    {
+        "Keyword": "plum, pa",
+        "Port Type": "address",
+        "Mapped Port ID": "656149e7-7307-41e0-b0d7-6247e153ca5c"
+    },
+    {
+        "Keyword": "gennevilliers, 92",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d96243bf-891a-42d6-a775-f73919452bc8"
+    },
+    {
+        "Keyword": "phmnl",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "415ff5d2-7147-4fb6-87bb-a0e8687fe248"
+    },
+    {
+        "Keyword": "popesti-leordeni",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "dba42469-83a3-d0a9-fc34-edbec7a3b47a"
+    },
+    {
+        "Keyword": "popesti-leordeni",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "dba42469-83a3-d0a9-fc34-edbec7a3b47a"
+    },
+    {
+        "Keyword": "casinalbo",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "557de672-1023-4749-ae7a-16e7fc706ee1"
+    },
+    {
+        "Keyword": "saba",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "2475082f-cac0-4be8-9943-cc0b4a278568"
+    },
+    {
+        "Keyword": "sahathai coastal seaport",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0871f1e3-eb67-41e3-a905-193b8f75ab9a"
+    },
+    {
+        "Keyword": "chawapail, punjab, india",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "8f67032a-ecf9-f1eb-82cf-99326fdff484"
+    },
+    {
+        "Keyword": "thbkk",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "1d0affcc-5435-4b1a-9c51-feab11077fa4"
+    },
+    {
+        "Keyword": "amman",
+        "Port Type": "air_port",
+        "Mapped Port ID": "2b61fb8a-04fe-872d-3700-8bbc154a255e"
+    },
+    {
+        "Keyword": "\ubd80\uc0b0 bpt\uac10\ub9cc(bptg), busan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "80595cf1-a59f-2cf7-a29a-622faf40c2f8"
+    },
+    {
+        "Keyword": "chawapail, punjab, india",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "8f67032a-ecf9-f1eb-82cf-99326fdff484"
+    },
+    {
+        "Keyword": "ybor city package sorting center",
+        "Port Type": "address",
+        "Mapped Port ID": "29ae888c-981f-4e34-8991-25bcd6dd4659"
+    },
+    {
+        "Keyword": "eastern me distribution center",
+        "Port Type": "address",
+        "Mapped Port ID": "f9bd96d0-1716-495e-9771-a7df88c1a5d7"
+    },
+    {
+        "Keyword": "ostrava, cz",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "58c73049-c32a-472f-a083-da6ff08be0e1"
+    },
+    {
+        "Keyword": "snct - sunkwang new container terminal",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "30271445-d995-c8b2-4dd8-7d49736e1a7a"
+    },
+    {
+        "Keyword": "\ubd80\uc0b0 bpt\uac10\ub9cc(bptg), busan",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "80595cf1-a59f-2cf7-a29a-622faf40c2f8"
+    },
+    {
+        "Keyword": "lc tml portuaria de contenedores sa",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "084e8f5f-ac54-602b-e0c8-05a6803c0c07"
+    },
+    {
+        "Keyword": "north richland hills, tx, 76180",
+        "Port Type": "address",
+        "Mapped Port ID": "df0a08bc-0980-4acd-9330-569cf6b29dd2"
+    },
+    {
+        "Keyword": "north richland hills, tx, 76182",
+        "Port Type": "address",
+        "Mapped Port ID": "df0a08bc-0980-4acd-9330-569cf6b29dd2"
+    },
+    {
+        "Keyword": "northridge, ca, 91325",
+        "Port Type": "address",
+        "Mapped Port ID": "8e1df821-2fee-4e5f-9012-f02558632a0a"
+    },
+    {
+        "Keyword": "pointe des galets repdg",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "3ba841de-c446-c373-1b9f-0b501f74408c"
+    },
+    {
+        "Keyword": "vila nova de famalicao, portugal",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "798421c9-fe84-41f5-bc26-c3713dbce7c2"
+    },
+    {
+        "Keyword": "aliso viejo, ca, 92656",
+        "Port Type": "address",
+        "Mapped Port ID": "c4745941-cdc8-40a6-86bd-45e276dcbd87"
+    },
+    {
+        "Keyword": "cai mep - tcit - tan cang cai mep international container terminal",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "0f1cd481-a372-4bcf-9a19-20dbd8a6088d"
+    },
+    {
+        "Keyword": "bothell, wa 98012 [arrived at post office]",
+        "Port Type": "address",
+        "Mapped Port ID": "c45d2eb8-1509-462e-9bee-a31b316eca47"
+    },
+    {
+        "Keyword": "contrans logistics pvt.ltd.,rajula,gujarat,india",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "7af53c0a-8d41-4d79-8721-96206f9ff34a"
+    },
+    {
+        "Keyword": "\ubd80\uc0b0\uc2e0\ud56d\ub2e4\ubaa9\uc801\ud130\ubbf8\ub110(bnmt), busan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "d047f9e0-a657-4b4e-80e3-c479992a1e7e"
+    },
+    {
+        "Keyword": "jamaica, ny, united states",
+        "Port Type": "air_port",
+        "Mapped Port ID": "2f59d0d1-31e7-466b-8f7e-9e3cd1637d1d"
+    },
+    {
+        "Keyword": "apm terminals port elizabeth, new york, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f409348e-facd-c5e0-1749-15eb29bccff8"
+    },
+    {
+        "Keyword": "apm terminals elizabeth, llc, new york, united states",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f409348e-facd-c5e0-1749-15eb29bccff8"
+    },
+    {
+        "Keyword": "\uc778\ucc9c\ud55c\uc9c4\uc2e0\ud56d\ucee8\ud14c\uc774\ub108\ud130\ubbf8\ub110(hjit), incheon",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "30271445-d995-c8b2-4dd8-7d49736e1a7a"
+    },
+    {
+        "Keyword": "napier port thames street depot, napier, hawkes bay, new zealand",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "f329c2aa-b1eb-4317-bdd8-7ca2be220249"
+    },
+    {
+        "Keyword": "chattogram (bd)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "5cee9607-704c-43cb-8106-eb5cdf63ac16"
+    },
+    {
+        "Keyword": "jabel ali",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "eee38b5d-d7d7-455d-9d01-2e829a581f5e"
+    },
+    {
+        "Keyword": "sunkwang newport container terminal",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "30271445-d995-c8b2-4dd8-7d49736e1a7a"
+    },
+    {
+        "Keyword": "shinko terminal wharf no.7",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9e8ec27e-e424-4e8d-ad43-0a4179b2950d"
+    },
+    {
+        "Keyword": "indore",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "15173cce-6cea-4612-829e-ae0bc71731af"
+    },
+    {
+        "Keyword": "dhaka",
+        "Port Type": "air_port",
+        "Mapped Port ID": "f0c8750f-ce9a-4322-8114-0fa02d5c664f"
+    },
+    {
+        "Keyword": "lgw",
+        "Port Type": "air_port",
+        "Mapped Port ID": "74a7771c-ab89-b858-a975-c9087d723590"
+    },
+    {
+        "Keyword": "london gateway",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "066850b1-ad7b-4027-94c2-845feba2a28a"
+    },
+    {
+        "Keyword": "leeds, wyk (gb)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "ea9015b0-cce9-4d19-9285-12d617eec18f"
+    },
+    {
+        "Keyword": "ceska trebova",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "7f66d7ba-9e6a-47aa-8301-2804b0ed7841"
+    },
+    {
+        "Keyword": "bll",
+        "Port Type": "air_port",
+        "Mapped Port ID": "e01dec72-113d-49f4-ac1a-0c6e6a405c97"
+    },
+    {
+        "Keyword": "wuzhou, cn",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "9bbf79f8-fc65-478a-5b2c-b1f0688898e3"
+    },
+    {
+        "Keyword": "gaoyao, cn",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "9bbf79f8-fc65-478a-5b2c-b1f0688898e3"
+    },
+    {
+        "Keyword": "fusignano",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "dd3e958d-2014-9e8b-9abf-57f1cd61dbe7"
+    },
+    {
+        "Keyword": "tll",
+        "Port Type": "air_port",
+        "Mapped Port ID": "3eb2cf84-c4ad-4485-ade1-ebe1a28ff0a8"
+    },
+    {
+        "Keyword": "dyu",
+        "Port Type": "air_port",
+        "Mapped Port ID": "8b7731d7-fef4-49c1-9f1a-84fd494e0708"
+    },
+    {
+        "Keyword": "ziya container terminal",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "a4bd9d16-3d49-f6b5-9e4a-7b5cec1f5579"
+    },
+    {
+        "Keyword": "cali",
+        "Port Type": "air_port",
+        "Mapped Port ID": "5d541616-dd1e-1da9-bde8-5f28d6c6e12e"
+    },
+    {
+        "Keyword": "el prat de llobregat",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "3a409d91-9480-453d-bf1f-4ea11fe9f685"
+    },
+    {
+        "Keyword": "texarkana, us",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "8222fb33-7b1f-46f2-9817-cd9a0ba1974a"
+    },
+    {
+        "Keyword": "texarkana, us",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "8222fb33-7b1f-46f2-9817-cd9a0ba1974a"
+    },
+    {
+        "Keyword": "emog bonded terminal, lagos, nigeria",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "b1aebf00-ec65-0e9f-e1fc-f1af00d1bfb7"
+    },
+    {
+        "Keyword": "hyd hub at aviation",
+        "Port Type": "address",
+        "Mapped Port ID": "e1ea3b49-57a6-438b-8d3a-28cf462f29bc"
+    },
+    {
+        "Keyword": "pusan loading/discharging pier",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "80595cf1-a59f-2cf7-a29a-622faf40c2f8"
+    },
+    {
+        "Keyword": "xhuh (belgaum hub)",
+        "Port Type": "address",
+        "Mapped Port ID": "38080b9f-cf8e-4f3a-9275-4c4af1679f19"
+    },
+    {
+        "Keyword": "etk euro terminal kehl gmbh, kehl, ortenaukreis, baden-wuerttemberg, germany",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "1661f3ed-0bdd-4745-a883-245affc4c2f1"
+    },
+    {
+        "Keyword": "akita container terminal(gaiko futo), akita",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "ad7c8a2b-9669-48cc-86a6-125e39e28c81"
+    },
+    {
+        "Keyword": "saint peters, mo",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "0493e796-7623-4d11-83d3-6a33cc896228"
+    },
+    {
+        "Keyword": "saint peters, mo",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "0493e796-7623-4d11-83d3-6a33cc896228"
+    },
+    {
+        "Keyword": "oki mill site jetty",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7c491ec0-b7f7-fef4-5950-16a1fb2a5088"
+    },
+    {
+        "Keyword": "transcona, mb",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "c42734cb-e54b-7bc9-64f1-7ea0d68202e5"
+    },
+    {
+        "Keyword": "durham, nc 27709 [arrived at usps facility]",
+        "Port Type": "address",
+        "Mapped Port ID": "894bdebc-d007-4555-bd68-fd6e0e8eb6af"
+    },
+    {
+        "Keyword": "patrick stevedore",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "fb4e3874-8c83-a24b-386a-494d12bf0787"
+    },
+    {
+        "Keyword": "laval, qc",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "aa4508d0-6ff4-b7bb-1617-6863964eeddb"
+    },
+    {
+        "Keyword": "dna marine services, india",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "8871bd4c-baa9-4fae-ab97-95ec5afff29a"
+    },
+    {
+        "Keyword": "centralia, wa",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "eaed6c70-c8d2-47ec-a526-cd887234a302"
+    },
+    {
+        "Keyword": "gaosha (cn)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "985527d9-31dd-d5c1-99b0-8be1caa52561"
+    },
+    {
+        "Keyword": "eye",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "b0a0b237-748c-40c1-ba05-32f53051ad22"
+    },
+    {
+        "Keyword": "flemington, nj",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "9d4176d8-0ae1-4f2f-aa50-79a7820e70f6"
+    },
+    {
+        "Keyword": "mutxamel",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "66f076f8-deae-46bf-84b5-3cc3ddc83d68"
+    },
+    {
+        "Keyword": "aguimes, es",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "e4e4a7e7-3138-4fbf-804a-4852e6f4145f"
+    },
+    {
+        "Keyword": "woburn, ma, us",
+        "Port Type": "air_port",
+        "Mapped Port ID": "4d21f746-77df-4189-b1a3-199a903965e3"
+    },
+    {
+        "Keyword": "tuchomerice, czechia",
+        "Port Type": "air_port",
+        "Mapped Port ID": "1a45c7cc-8f5c-9013-ed98-198cc52ba7df"
+    },
+    {
+        "Keyword": "bandar casia my",
+        "Port Type": "address",
+        "Mapped Port ID": "9a79e9e4-6251-4cb1-9048-7db8b047d300"
+    },
+    {
+        "Keyword": "jarry msct [gp ptp]",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "aca07bc7-dba8-fbc6-6c46-caf7e1c48798"
+    },
+    {
+        "Keyword": "chakiat agencies pvt. ltd.,",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "c2a07065-7a0d-9f92-3029-048b0fb49ced"
+    },
+    {
+        "Keyword": "bar (port)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "051e893b-c549-fe69-76f5-6afd138f65b6"
+    },
+    {
+        "Keyword": "newbury park,ca, ca us",
+        "Port Type": "address",
+        "Mapped Port ID": "881a65d3-87b7-47a6-9ff0-9fdb4d948025"
+    },
+    {
+        "Keyword": "icd dhappar",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "f61bee93-3670-4acf-9d8a-afa1b3905cdb"
+    },
+    {
+        "Keyword": "seol kr",
+        "Port Type": "address",
+        "Mapped Port ID": "0289d31d-c0ac-4b55-b9ff-ae67357c242c"
+    },
+    {
+        "Keyword": "\ub3d9\ubd80\ubd80\uc0b0\ud130\ubbf8\ub110, busan",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "80595cf1-a59f-2cf7-a29a-622faf40c2f8"
+    },
+    {
+        "Keyword": "lincolnton, united states",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "50572464-0ec0-4bf5-8ec6-d38ef4b92921"
+    },
+    {
+        "Keyword": "lincolnton, united states",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "50572464-0ec0-4bf5-8ec6-d38ef4b92921"
+    },
+    {
+        "Keyword": "centralia, wa",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "eaed6c70-c8d2-47ec-a526-cd887234a302"
+    },
+    {
+        "Keyword": "taher, dz",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "82b882de-fd4d-406e-9080-83ec6840fb2e"
+    },
+    {
+        "Keyword": "tuolumne, ca",
+        "Port Type": "air_port",
+        "Mapped Port ID": "d17ff10c-95e7-827f-b64a-6f15bb114f3c"
+    },
+    {
+        "Keyword": "lae (pp)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "a627cae5-439d-4ece-a86c-0cc1d5a492f8"
+    },
+    {
+        "Keyword": "xingang(tianjin port second container terminal co.,ltd.)",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "83980fdc-fdd9-e4fa-200b-dd55611264b8"
+    },
+    {
+        "Keyword": "meishan international cntr terminal co.ltd",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "83980fdc-fdd9-e4fa-200b-dd55611264b8"
+    },
+    {
+        "Keyword": "gardena, ca, united states",
+        "Port Type": "air_port",
+        "Mapped Port ID": "2458aec1-4f43-40ac-b6dc-ae2d9f7255d2"
+    },
+    {
+        "Keyword": "hasselt, be",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "5933a4dd-9beb-4b29-9e74-8e336e82d90e"
+    },
+    {
+        "Keyword": "saint joseph, us",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "0493e796-7623-4d11-83d3-6a33cc896228"
+    },
+    {
+        "Keyword": "una, sc, 29378",
+        "Port Type": "address",
+        "Mapped Port ID": "fa0fc85c-cac7-4353-9448-324f50bc9845"
+    },
+    {
+        "Keyword": "khurda",
+        "Port Type": "address",
+        "Mapped Port ID": "6d6089be-3599-48af-9eb0-e00e1a810a46"
+    },
+    {
+        "Keyword": "cosco xiamen container service co., xiamen, fujian, china",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "23ea127c-6422-4d82-9818-5133cb11388e"
+    },
+    {
+        "Keyword": "nansha harbour company, nansha, guangzhou, guangdong, china",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "60f43ad0-e0b9-63c4-3c16-070d52e857d7"
+    },
+    {
+        "Keyword": "nansha harbour company, nansha, guangzhou, guangdong, china",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "60f43ad0-e0b9-63c4-3c16-070d52e857d7"
+    },
+    {
+        "Keyword": "zadbn",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "f106ea67-b12c-c8c0-ef66-91ee024f1390"
+    },
+    {
+        "Keyword": "manla",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "7fdea268-bb2b-6302-ab4f-87c7ad70191f"
+    },
+    {
+        "Keyword": "oldbury, gb",
+        "Port Type": "inland_only",
+        "Mapped Port ID": "cd2af605-56b4-43b6-bdca-95733d21a73d"
+    },
+    {
+        "Keyword": "tzznz",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "99be9a48-fd81-4962-b309-4ccbbef7bb94"
+    },
+    {
+        "Keyword": "hind depo(zircon nsa one)",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "a4bd9d16-3d49-f6b5-9e4a-7b5cec1f5579"
+    },
+    {
+        "Keyword": "san pedro, ca",
+        "Port Type": "sea_port",
+        "Mapped Port ID": "4f864caf-e69c-4fb9-b2fe-6d4cd73fb72c"
+    },
+    {
+        "Keyword": "aydin",
+        "Port Type": "inland_port",
+        "Mapped Port ID": "6787a736-d9b1-43bf-a465-6b0fd1f1ae9e"
+    },
+    {
+        "Keyword": "roxbury crossing, ma, us",
+        "Port Type": "address",
+        "Mapped Port ID": "c778a2ab-8267-440f-b47f-79afddf6758d"
+    }
+]
