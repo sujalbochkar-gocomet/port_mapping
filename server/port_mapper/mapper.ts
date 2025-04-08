@@ -116,10 +116,6 @@ class PortMatcher {
       dangerouslyAllowBrowser: true,
     });
 
-    // this.openai = new OpenAI({
-    //   apiKey: process.env.OPENAI_API_KEY || "",
-    // });
-
   }
 
   
@@ -308,131 +304,7 @@ class PortMatcher {
   }
 
  
-  public wordSearch(inputString: string, portsData: Port[] = this.portsData): CascadingResult[] {
-
-     /**
-   * Performs word-based search with partial matching
-   * @param inputString - Search string
-   * @param portsData - Optional array of ports to search through
-   * @returns Array of word match results
-   */
-
-    if (typeof inputString !== "string" || !inputString.trim()) {
-      return [];
-    }
-
-    const inputWords = this.normalizeString(inputString)
-      .split(/\s+/)
-      .filter(word => !this.ignoredKeywords.has(word));
-
-    if (inputWords.length === 0) {
-      return [];
-    }
-
-    const inputWordsSet = new Set(inputWords);
-    const results: CascadingResult[] = [];
-    const MIN_CONFIDENCE = 50;
-
-    const getNormalizedWords = (value: string | undefined): { words: string[], set: Set<string> } | null => {
-      if (!value) return null;
-
-      const fieldWords = this.normalizeString(value)
-        .split(/\s+/)
-        .filter(word => !this.ignoredKeywords.has(word));
-
-      if (fieldWords.length === 0) return null;
-
-      return {
-        words: fieldWords,
-        set: new Set(fieldWords)
-      };
-    };
-
-    const calculateOverlapScore = (fieldWordsSet: Set<string>): number => {
-      let commonWords = 0;
-      for (const word of inputWordsSet) {
-        if (fieldWordsSet.has(word)) commonWords++;
-      }
-      const totalWords = inputWordsSet.size + fieldWordsSet.size;
-      return totalWords === 0 ? 0 : (2 * commonWords * 100) / totalWords;
-    };
-
-    const calculateOrderScore = (fieldWords: string[]): number => {
-      if (fieldWords.length === 0) return 0;
-
-      const minLength = Math.min(inputWords.length, fieldWords.length);
-      let maxConsecutiveMatches = 0;
-
-      for (let i = 0; i <= fieldWords.length - minLength; i++) {
-        let matches = 0;
-        for (let j = 0; j < minLength; j++) {
-          if (fieldWords[i + j] === inputWords[j]) {
-            matches++;
-          } else {
-            break;
-          }
-        }
-        maxConsecutiveMatches = Math.max(maxConsecutiveMatches, matches);
-      }
-
-      return (maxConsecutiveMatches / minLength) * 100;
-    };
-
-    for (const port of portsData) {
-      let bestMatch = { confidence: 0, matchType: "" };
-
-      for (const key of this.searchableKeys) {
-        const normalized = getNormalizedWords(port[key as keyof Port] as string );
-        if (!normalized) continue;
-
-        const overlapScore = calculateOverlapScore(normalized.set);
-        if (overlapScore < MIN_CONFIDENCE) continue;
-
-        const orderScore = calculateOrderScore(normalized.words);
-        const confidence = (overlapScore * 0.7) + (orderScore * 0.3);
-
-        if (confidence > bestMatch.confidence) {
-          bestMatch = { confidence, matchType: key.toLowerCase().replace(/\s+/g, '_') };
-        }
-      }
-
-      if (bestMatch.confidence > 60) {
-        results.push({
-          port_data: port,
-          confidence_score: parseFloat(bestMatch.confidence.toFixed(2)),
-          match_type: bestMatch.matchType,
-          match_algo_type: "word"
-        });
-        continue;
-      }
-
-      for (const altName of port.other_names || []) {
-        const normalized = getNormalizedWords(altName );
-        if (!normalized) continue;
-
-        const overlapScore = calculateOverlapScore(normalized.set);
-        if (overlapScore < MIN_CONFIDENCE) continue;
-
-        const orderScore = calculateOrderScore(normalized.words);
-        const confidence = (overlapScore * 0.7) + (orderScore * 0.3);
-
-        if (confidence > bestMatch.confidence) {
-          bestMatch = { confidence, matchType: 'other_names' };
-        }
-      }
-
-      if (bestMatch.confidence > MIN_CONFIDENCE) {
-        results.push({
-          port_data: port,
-          confidence_score: parseFloat(bestMatch.confidence.toFixed(2)),
-          match_type: bestMatch.matchType,
-          match_algo_type: "word"
-        });
-      }
-    }
-
-    return results.sort((a, b) => b.confidence_score - a.confidence_score);
-  }
+  // 
 
  
   public async rubyFuzzySearch(inputString: string, portsData: Port[] = this.portsData): Promise<CascadingResult[]> {
@@ -620,15 +492,16 @@ Important:
           const codeMatch = dbPort.code?.toLowerCase() === llmPort.port_code?.toLowerCase();
 
           let locationMatch = false;
+          let distance = 0;
           if (llmPort.latitude && llmPort.longitude &&
               dbPort.lat_lon?.lat && dbPort.lat_lon?.lon) {
-            const distance = calculateDistance(
+            distance = calculateDistance(
               parseFloat(llmPort.latitude),
               parseFloat(llmPort.longitude),
               dbPort.lat_lon.lat,
               dbPort.lat_lon.lon
             );
-            locationMatch = distance <= 100;
+            locationMatch = distance <= 300;
           }
 
           if (nameMatch || codeMatch || locationMatch) {
@@ -637,6 +510,7 @@ Important:
             if (codeMatch) matchTypes.push('code');
             if (locationMatch) matchTypes.push('location');
             (dbPort as any).match_criteria = matchTypes;
+            (dbPort as any).confidenceAdjustment = -(Math.floor(distance / 5));
           }
 
           return nameMatch || codeMatch || locationMatch;
@@ -665,30 +539,9 @@ Important:
         const matchedPorts = findMatchingPort(llmPort);
 
         return matchedPorts ? matchedPorts.map(port => {
-          let confidenceAdjustment = 0;
-          // if (llmPort.latitude && llmPort.longitude &&
-          //     port.lat_lon?.lat && port.lat_lon?.lon) {
-          //   const distance = calculateDistance(
-          //     parseFloat(llmPort.latitude),
-          //     parseFloat(llmPort.longitude),
-          //     port.lat_lon.lat,
-          //     port.lat_lon.lon
-          //   );
-          //   confidenceAdjustment = -(Math.floor(distance / 5));
-          // }
-
-          let multiCriteriaBonus = 0;
-          // const matchCount = ((port as any).match_criteria as string[]).length;
-          // if (matchCount > 1) {
-          //   multiCriteriaBonus = (matchCount - 1) * 5;
-          // }
-
-          let adjustedConfidence = llmPort.confidence_score + confidenceAdjustment + multiCriteriaBonus;
-          adjustedConfidence = Math.max(0, Math.min(100, adjustedConfidence));
-
           return {
             port_data: port,
-            confidence_score: parseFloat(llmPort.confidence_score.toFixed(2)),
+            confidence_score: parseFloat(llmPort.confidence_score.toFixed(2))+(port as any).confidenceAdjustment,
             match_type: `llm:${(port as any).match_criteria.join('+')}`
           };
         }) : [];
@@ -731,43 +584,35 @@ Important:
         }));
       }
 
+      let locationFilteredData = this.filterByLocation(inputString, workingPortsData);
 
-      if(portType=="address"){
-        workingPortsData = this.filterByLocation(inputString, workingPortsData);
-      }
-      if(workingPortsData.length==0){
-        workingPortsData = this.portsData;
+      if(locationFilteredData.length==0){
+        locationFilteredData=workingPortsData;
       }
 
-      console.log("cascading search started",workingPortsData.length);
 
-      // workingPortsData = this.filterByLocation(inputString, workingPortsData);
-      // if(workingPortsData.length==0){
-      //   workingPortsData = this.portsData;
-      // }
+      const rubyResults = await this.rubyFuzzySearch(inputString, locationFilteredData);
 
-      // const wordResults = this.wordSearch(inputString, workingPortsData);if
-      // if (wordResults.length > 0) {
-      //   return wordResults.map(result => ({
-      //     ...result,
-      //     match_algo_type: "word"
-      //   }));
-      // }
-
-      console.log("ruby fuzzy search started");
-      const rubyResults = await this.rubyFuzzySearch(inputString, workingPortsData);
-
-      console.log("ruby fuzzy search ended");
       console.log(rubyResults.length);
       if (rubyResults.length > 0) {
         return rubyResults.map(result => ({
           ...result,
-          match_algo_type: "fuzzy"
+          match_algo_type: "fuzzy_location"
         }));
       }
 
 
+      const rubyResultsNew = await this.rubyFuzzySearch(inputString, workingPortsData);
 
+      console.log("ruby fuzzy search ended");
+      console.log(rubyResultsNew.length);
+      if (rubyResultsNew.length > 0) {    
+        return rubyResultsNew.map(result => ({
+          ...result,
+          match_algo_type: "fuzzy"
+        }));
+      }
+      
 
       return [];
     } catch (error) {
@@ -790,8 +635,8 @@ Important:
       const started=performance.now();
       const cascadingResults = await this.cascadingSearch(keyword, portType);
       const highConfidenceMatches = cascadingResults.filter(result =>
-        result.confidence_score >= 80 &&
-        (result.match_algo_type === "exact" || result.match_algo_type === "word")
+        result.confidence_score >= 80 ||
+        (result.match_algo_type === "exact" )
       );
 
       if (highConfidenceMatches.length > 0) {
@@ -806,8 +651,8 @@ Important:
       const [llmResults, remainingCascadingResults] = await Promise.all([
         this.getLLMResponse(keyword, portType),
         Promise.resolve(cascadingResults.filter(result =>
-          result.confidence_score < 80 ||
-          (result.match_algo_type !== "exact" && result.match_algo_type !== "word")
+          result.confidence_score < 80 &&
+          (result.match_algo_type !== "exact")
         ))
       ]);
 
@@ -860,9 +705,8 @@ Important:
         if (entry.sources.length === 2) {
           finalScore = (
             (entry.llm_score * 0.6) +
-            (entry.cascading_score * 0.4) +
-            10
-          );
+            (entry.cascading_score * 0.4)
+          )
         } else if (entry.sources[0] === 'llm') {
           finalScore = entry.llm_score * 0.9;
         } else {
@@ -898,3 +742,131 @@ Important:
 }
 
 export = PortMatcher;
+
+
+
+// public wordSearch(inputString: string, portsData: Port[] = this.portsData): CascadingResult[] {
+
+  //    /**
+  //  * Performs word-based search with partial matching
+  //  * @param inputString - Search string
+  //  * @param portsData - Optional array of ports to search through
+  //  * @returns Array of word match results
+  //  */
+
+  //   if (typeof inputString !== "string" || !inputString.trim()) {
+  //     return [];
+  //   }
+
+  //   const inputWords = this.normalizeString(inputString)
+  //     .split(/\s+/)
+  //     .filter(word => !this.ignoredKeywords.has(word));
+
+  //   if (inputWords.length === 0) {
+  //     return [];
+  //   }
+
+  //   const inputWordsSet = new Set(inputWords);
+  //   const results: CascadingResult[] = [];
+  //   const MIN_CONFIDENCE = 50;
+
+  //   const getNormalizedWords = (value: string | undefined): { words: string[], set: Set<string> } | null => {
+  //     if (!value) return null;
+
+  //     const fieldWords = this.normalizeString(value)
+  //       .split(/\s+/)
+  //       .filter(word => !this.ignoredKeywords.has(word));
+
+  //     if (fieldWords.length === 0) return null;
+
+  //     return {
+  //       words: fieldWords,
+  //       set: new Set(fieldWords)
+  //     };
+  //   };
+
+  //   const calculateOverlapScore = (fieldWordsSet: Set<string>): number => {
+  //     let commonWords = 0;
+  //     for (const word of inputWordsSet) {
+  //       if (fieldWordsSet.has(word)) commonWords++;
+  //     }
+  //     const totalWords = inputWordsSet.size + fieldWordsSet.size;
+  //     return totalWords === 0 ? 0 : (2 * commonWords * 100) / totalWords;
+  //   };
+
+  //   const calculateOrderScore = (fieldWords: string[]): number => {
+  //     if (fieldWords.length === 0) return 0;
+
+  //     const minLength = Math.min(inputWords.length, fieldWords.length);
+  //     let maxConsecutiveMatches = 0;
+
+  //     for (let i = 0; i <= fieldWords.length - minLength; i++) {
+  //       let matches = 0;
+  //       for (let j = 0; j < minLength; j++) {
+  //         if (fieldWords[i + j] === inputWords[j]) {
+  //           matches++;
+  //         } else {
+  //           break;
+  //         }
+  //       }
+  //       maxConsecutiveMatches = Math.max(maxConsecutiveMatches, matches);
+  //     }
+
+  //     return (maxConsecutiveMatches / minLength) * 100;
+  //   };
+
+  //   for (const port of portsData) {
+  //     let bestMatch = { confidence: 0, matchType: "" };
+
+  //     for (const key of this.searchableKeys) {
+  //       const normalized = getNormalizedWords(port[key as keyof Port] as string );
+  //       if (!normalized) continue;
+
+  //       const overlapScore = calculateOverlapScore(normalized.set);
+  //       if (overlapScore < MIN_CONFIDENCE) continue;
+
+  //       const orderScore = calculateOrderScore(normalized.words);
+  //       const confidence = (overlapScore * 0.7) + (orderScore * 0.3);
+
+  //       if (confidence > bestMatch.confidence) {
+  //         bestMatch = { confidence, matchType: key.toLowerCase().replace(/\s+/g, '_') };
+  //       }
+  //     }
+
+  //     if (bestMatch.confidence > 60) {
+  //       results.push({
+  //         port_data: port,
+  //         confidence_score: parseFloat(bestMatch.confidence.toFixed(2)),
+  //         match_type: bestMatch.matchType,
+  //         match_algo_type: "word"
+  //       });
+  //       continue;
+  //     }
+
+  //     for (const altName of port.other_names || []) {
+  //       const normalized = getNormalizedWords(altName );
+  //       if (!normalized) continue;
+
+  //       const overlapScore = calculateOverlapScore(normalized.set);
+  //       if (overlapScore < MIN_CONFIDENCE) continue;
+
+  //       const orderScore = calculateOrderScore(normalized.words);
+  //       const confidence = (overlapScore * 0.7) + (orderScore * 0.3);
+
+  //       if (confidence > bestMatch.confidence) {
+  //         bestMatch = { confidence, matchType: 'other_names' };
+  //       }
+  //     }
+
+  //     if (bestMatch.confidence > MIN_CONFIDENCE) {
+  //       results.push({
+  //         port_data: port,
+  //         confidence_score: parseFloat(bestMatch.confidence.toFixed(2)),
+  //         match_type: bestMatch.matchType,
+  //         match_algo_type: "word"
+  //       });
+  //     }
+  //   }
+
+  //   return results.sort((a, b) => b.confidence_score - a.confidence_score);
+  // }

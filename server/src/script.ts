@@ -1,4 +1,4 @@
-import { Port, PortType, statusPort } from "./types/types";
+import { Port } from "./types/types";
 import { Request, Response } from "express";
 import cors from "cors";
 const express = require('express');
@@ -249,48 +249,48 @@ app.get("/search-ports", async (req: Request, res: Response) => {
     else results = await portMatcher.aggregatedResults(query, type);
 
     if (results.length === 0) {
-      const tempPort: Partial<Port> = {
-        _id: `temp-${Date.now()}`,
-        id: `temp-${Date.now()}`,
-        name: query,
-        display_name: query,
-        port_type: type as PortType,
-        code: "",
-        other_names: [],
-        city: "",
-        state_name: "",
-        country: "",
-        country_code: "",
-        region: "",
-        lat_lon: { lat: 0, lon: 0 },
-        nearby_ports: JSON.parse("{}"),
-        other_details: JSON.parse("{}"),
-        deleted: true,
-        client_group_id: "",
-        created_at: new Date(),
-        updated_at: new Date(),
-        sort_order: 0,
-        verified: false,
-        sailing_schedule_available: false,
-        item_type: "",
-        master_port: false,
-        address: "",
-        fax_number: "",
-        telephone_number: "",
-        website: "",
-        description: "",
-        seo_code: "",
-        seo_updated: false,
-        is_head_port: false,
-        prefer_inland: false,
-        country_port: false,
-      };
-      const statusPort: statusPort = {
-        port: tempPort as Port,
-        verified: false,
-        match_score: 0,
-      };
-      res.status(200).json([statusPort]);
+      // const tempPort: Partial<Port> = {
+      //   _id: `temp-${Date.now()}`,
+      //   id: `temp-${Date.now()}`,
+      //   name: query,
+      //   display_name: query,
+      //   port_type: type as PortType,
+      //   code: "",
+      //   other_names: [],
+      //   city: "",
+      //   state_name: "",
+      //   country: "",
+      //   country_code: "",
+      //   region: "",
+      //   lat_lon: { lat: 0, lon: 0 },
+      //   nearby_ports: JSON.parse("{}"),
+      //   other_details: JSON.parse("{}"),
+      //   deleted: true,
+      //   client_group_id: "",
+      //   created_at: new Date(),
+      //   updated_at: new Date(),
+      //   sort_order: 0,
+      //   verified: false,
+      //   sailing_schedule_available: false,
+      //   item_type: "",
+      //   master_port: false,
+      //   address: "",
+      //   fax_number: "",
+      //   telephone_number: "",
+      //   website: "",
+      //   description: "",
+      //   seo_code: "",
+      //   seo_updated: false,
+      //   is_head_port: false,
+      //   prefer_inland: false,
+      //   country_port: false,
+      // };
+      // const statusPort: statusPort = {
+      //   port: tempPort as Port,
+      //   verified: false,
+      //   match_score: 0,
+      // };
+      res.status(200).json([]);
       return;
     }
 
@@ -377,87 +377,6 @@ app.get("/search-ports/complete-name", async (req: Request, res: Response) => {
     console.error("Error in complete name search:", error);
     res.status(500).json({
       error: "Failed to perform complete name search",
-      details: error instanceof Error ? error.message : "Unknown error",
-    });
-  }
-});
-
-/**
- * @swagger
- * /search-ports/word:
- *   get:
- *     summary: Search for ports using word-based matching
- *     description: Search for ports using word-based matching algorithm with optional location filtering
- *     parameters:
- *       - in: query
- *         name: q
- *         schema:
- *           type: string
- *         description: Search query
- *       - in: query
- *         name: type
- *         schema:
- *           type: string
- *         description: Port type filter
- *       - in: query
- *         name: use_location_filter
- *         schema:
- *           type: boolean
- *         description: Whether to enable location-based filtering
- *     responses:
- *       200:
- *         description: List of matching ports
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/PortSearchResult'
- *       500:
- *         description: Server error
- */
-app.get("/search-ports/word", async (req: Request, res: Response) => {
-  try {
-    if (!portMatcher) {
-      throw new Error("PortMatcher not initialized");
-    }
-
-    const query = (req.query.q as string)?.toLowerCase() || "";
-    const type = req.query.type as string;
-    const useLocationFilter = req.query.use_location_filter === 'true';
-
-    // Filter ports by type if specified
-    let filteredPorts = [...portMatcher.portsData];
-    if (type) {
-      filteredPorts = filteredPorts.filter(port => port.port_type === type);
-    }
-
-    // Apply location filtering if enabled
-    if (useLocationFilter) {
-      filteredPorts = portMatcher.filterByLocation(query, filteredPorts);
-    }
-
-    // Perform word search
-    const results = portMatcher.wordSearch(query, filteredPorts);
-
-    if (results.length === 0) {
-      res.status(200).json([]);
-      return;
-    }
-
-    const transformedPorts = results.map((result: CascadingResult) => ({
-      port: result.port_data,
-      verified: true,
-      match_score: result.confidence_score,
-      match_type: result.match_type,
-      sources: ['word_search']
-    }));
-
-    res.status(200).json(transformedPorts.slice(0, 10));
-  } catch (error) {
-    console.error("Error in word search:", error);
-    res.status(500).json({
-      error: "Failed to perform word search",
       details: error instanceof Error ? error.message : "Unknown error",
     });
   }
