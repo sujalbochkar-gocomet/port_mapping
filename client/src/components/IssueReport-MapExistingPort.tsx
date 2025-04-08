@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FiSearch, FiMapPin } from "react-icons/fi";
+import { FiSearch, FiMapPin, FiChevronDown } from "react-icons/fi";
 import { Port } from "../types/types";
 import flagIcon from "../assets/flag.svg";
 
@@ -12,13 +12,15 @@ const MapExistingPort = ({ keyword, onPortSelected }: MapExistingPortProps) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<Port[]>([]);
   const [isSearching, setIsSearching] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isSearchDropdownOpen, setIsSearchDropdownOpen] = useState(false);
+  const [isAlternativeNamesOpen, setIsAlternativeNamesOpen] = useState(false);
+  const [selectedPort, setSelectedPort] = useState<Port | null>(null);
 
   useEffect(() => {
     const searchPorts = async () => {
       if (!searchTerm.trim()) {
         setSearchResults([]);
-        setIsDropdownOpen(false);
+        setIsSearchDropdownOpen(false);
         return;
       }
 
@@ -29,7 +31,7 @@ const MapExistingPort = ({ keyword, onPortSelected }: MapExistingPortProps) => {
         );
         const data = await response.json();
         setSearchResults(data);
-        setIsDropdownOpen(true);
+        setIsSearchDropdownOpen(true);
         setIsSearching(false);
       } catch (error) {
         console.error("Error searching ports:", error);
@@ -40,6 +42,12 @@ const MapExistingPort = ({ keyword, onPortSelected }: MapExistingPortProps) => {
     const debounceTimer = setTimeout(searchPorts, 1000);
     return () => clearTimeout(debounceTimer);
   }, [searchTerm]);
+
+  const handlePortSelect = (port: Port) => {
+    setSelectedPort(port);
+    onPortSelected(port.id);
+    setIsSearchDropdownOpen(false);
+  };
 
   return (
     <div className="space-y-6">
@@ -68,16 +76,13 @@ const MapExistingPort = ({ keyword, onPortSelected }: MapExistingPortProps) => {
               </div>
             </div>
 
-            {isDropdownOpen && searchResults.length > 0 && (
+            {isSearchDropdownOpen && searchResults.length > 0 && (
               <div className="absolute z-10 w-full mt-1 bg-white rounded-md shadow-lg max-h-96 overflow-y-auto border border-gray-200">
                 {searchResults.map((port) => (
                   <div
                     key={port.id}
                     className="px-4 py-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-0"
-                    onClick={() => {
-                      onPortSelected(port.id);
-                      setIsDropdownOpen(false);
-                    }}
+                    onClick={() => handlePortSelect(port)}
                   >
                     <div className="flex justify-between items-center">
                       <div className="flex items-center gap-4">
@@ -121,7 +126,7 @@ const MapExistingPort = ({ keyword, onPortSelected }: MapExistingPortProps) => {
                           Port Type: {port.port_type}
                         </div>
                         <div>
-                          <button className="bg-blue-500 text-white px-4 py-1 rounded-md">
+                          <button className="bg-blue-500 text-white cursor-pointer px-4 py-1 rounded-md">
                             Map
                           </button>
                         </div>
@@ -138,6 +143,119 @@ const MapExistingPort = ({ keyword, onPortSelected }: MapExistingPortProps) => {
               </div>
             )}
           </div>
+
+          {selectedPort && (
+            <div className="mt-6 p-6 border border-gray-200 rounded-lg bg-white">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  {selectedPort.country_code ? (
+                    <img
+                      src={`https://flagsapi.com/${selectedPort.country_code.toUpperCase()}/flat/64.png`}
+                      alt={`${selectedPort.country} flag`}
+                      className="w-6 h-4 object-cover rounded-sm shadow-sm"
+                    />
+                  ) : (
+                    <FlagIcon />
+                  )}
+                  <h3 className="text-xl font-medium text-gray-900">
+                    {(() => {
+                      const displaynamearr = selectedPort.display_name
+                        .split(",")
+                        .filter(Boolean);
+                      const displayText = [
+                        displaynamearr.join(", "),
+                        selectedPort.code || "",
+                      ];
+                      return displayText.join(", ");
+                    })()}
+                  </h3>
+                </div>
+
+                <div className="grid grid-cols-2 gap-6 mt-4">
+                  <div>
+                    <div className="text-sm font-medium text-gray-500 mb-1">
+                      Location:
+                    </div>
+                    <div className="text-gray-900">
+                      {[selectedPort.city || "", selectedPort.country || ""]
+                        .filter(Boolean)
+                        .join(", ")}
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="text-sm font-medium text-gray-500 mb-1">
+                      Address:
+                    </div>
+                    <div className="text-gray-900">
+                      {selectedPort.address || "Not available"}
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="text-sm font-medium text-gray-500 mb-1">
+                      Region:
+                    </div>
+                    <div className="text-gray-900">
+                      {selectedPort.region.toUpperCase() || "Not available"}
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="text-sm font-medium text-gray-500 mb-1">
+                      Coordinates:
+                    </div>
+                    <div className="text-gray-900">
+                      {selectedPort.lat_lon
+                        ? `${selectedPort.lat_lon.lat}, ${selectedPort.lat_lon.lon}`
+                        : "Not available"}
+                    </div>
+                  </div>
+                </div>
+
+                {selectedPort.other_names &&
+                  selectedPort.other_names.length > 0 && (
+                    <div className="mt-4">
+                      <div
+                        className="text-sm font-medium text-gray-500 mb-2 flex items-center gap-2 cursor-pointer hover:text-blue-600"
+                        onClick={() =>
+                          setIsAlternativeNamesOpen(!isAlternativeNamesOpen)
+                        }
+                      >
+                        Alternative Names:
+                        <FiChevronDown
+                          className={`w-4 h-4 transition-transform ${
+                            isAlternativeNamesOpen ? "rotate-180" : ""
+                          }`}
+                        />
+                      </div>
+                      {isAlternativeNamesOpen && (
+                        <div className="flex flex-wrap gap-2">
+                          {selectedPort.other_names.map((name, index) => (
+                            <span
+                              key={index}
+                              className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm"
+                            >
+                              {name}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                <div className="mt-6 flex justify-end">
+                  <button
+                    onClick={() => onPortSelected(selectedPort.id)}
+                    className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
+                  >
+                    <FiMapPin className="w-4 h-4" />
+                    Map to This Port
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

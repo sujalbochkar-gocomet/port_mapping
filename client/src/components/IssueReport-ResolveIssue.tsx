@@ -3,7 +3,7 @@ import { useState } from "react";
 import NavBar from "./NavBar";
 import CreateNewPort from "./IssueReport-CreateNewPort";
 import MapExistingPort from "./IssueReport-MapExistingPort";
-import { FiPlus, FiMapPin } from "react-icons/fi";
+import { FiPlus, FiMapPin, FiList } from "react-icons/fi";
 
 interface NewPortData {
   name: string;
@@ -15,13 +15,14 @@ interface NewPortData {
 const IssueReportResolveIssue = () => {
   const { id: issueId } = useParams();
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<"create" | "map">("create");
+  const [activeTab, setActiveTab] = useState<"create" | "map" | "mapped">(
+    "mapped"
+  );
 
   // This would be replaced with actual data from your API
   const issueDetails = {
     keyword: "Port A",
-    mappedPortId: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
-    mappedPortName: "Port Temporary",
+    numberOfQueries: 10,
   };
 
   const handlePortCreated = (portData: NewPortData) => {
@@ -64,22 +65,10 @@ const IssueReportResolveIssue = () => {
                   {issueDetails.keyword}
                 </span>
               </div>
-
               <div className="flex items-center gap-2">
-                <span className="text-base font-medium text-black">
-                  Mapped Port ID:
-                </span>
+                Number of Queries:
                 <span className="text-gray-600 bg-gray-100 px-2 py-1 rounded-lg">
-                  {issueDetails.mappedPortId || "Not mapped yet"}
-                </span>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <span className="text-base font-medium text-black">
-                  Mapped Port Name:
-                </span>
-                <span className="text-gray-600 bg-gray-100 px-2 py-1 rounded-lg">
-                  {issueDetails.mappedPortName || "Not mapped yet"}
+                  {issueDetails.numberOfQueries}
                 </span>
               </div>
             </div>
@@ -87,9 +76,23 @@ const IssueReportResolveIssue = () => {
 
           {/* Action Tabs */}
           <div className="flex justify-center">
-            <div className="w-1/2 flex justify-between border-b border-gray-200">
+            <div className="w-3/4 flex justify-between border-b border-gray-200">
               <button
-                className={`relative w-1/2 py-4 px-6 font-medium flex items-center justify-center gap-2 transition-colors ${
+                className={`relative w-1/3 py-4 px-6 font-medium flex items-center justify-center gap-2 transition-colors ${
+                  activeTab === "mapped"
+                    ? "text-blue-600"
+                    : "text-gray-600 hover:text-gray-800"
+                }`}
+                onClick={() => setActiveTab("mapped")}
+              >
+                <FiList className="w-5 h-5" />
+                Mapped Ports
+                {activeTab === "mapped" && (
+                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600"></div>
+                )}
+              </button>
+              <button
+                className={`relative w-1/3 py-4 px-6 font-medium flex items-center justify-center gap-2 transition-colors ${
                   activeTab === "create"
                     ? "text-blue-600"
                     : "text-gray-600 hover:text-gray-800"
@@ -103,7 +106,7 @@ const IssueReportResolveIssue = () => {
                 )}
               </button>
               <button
-                className={`relative w-1/2 py-4 px-6 font-medium flex items-center justify-center gap-2 transition-colors ${
+                className={`relative w-1/3 py-4 px-6 font-medium flex items-center justify-center gap-2 transition-colors ${
                   activeTab === "map"
                     ? "text-blue-600"
                     : "text-gray-600 hover:text-gray-800"
@@ -120,7 +123,20 @@ const IssueReportResolveIssue = () => {
           </div>
 
           {/* Tab Content */}
-          {activeTab === "create" ? (
+          {activeTab === "mapped" ? (
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+              <div className="flex items-center gap-2 mb-6">
+                <FiList className="w-5 h-5 text-blue-600" />
+                <h2 className="text-lg font-medium text-gray-800">
+                  Mapped Ports for "{issueDetails.keyword}"
+                </h2>
+              </div>
+              {/* Add your mapped ports content here */}
+              <div className="text-gray-500 text-center py-8">
+                No mapped ports found
+              </div>
+            </div>
+          ) : activeTab === "create" ? (
             <CreateNewPort
               keyword={issueDetails.keyword}
               onPortCreated={handlePortCreated}

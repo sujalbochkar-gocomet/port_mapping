@@ -279,7 +279,7 @@ app.get("/issue-search", async (req: Request, res: Response) => {
         { other_names: { has: query } },
       ],
     },
-    take: 100,
+    take: 40,
   });
   res.status(200).json(ports);
 });

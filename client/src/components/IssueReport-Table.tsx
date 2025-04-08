@@ -2,14 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useMemo } from "react";
 import { FiSearch, FiArrowUp, FiArrowDown } from "react-icons/fi";
 
-interface TableRow {
-  id: number;
-  issueId: string;
-  keyword: string;
-  confidenceScore: number;
-  numberOfQueries: number;
-}
-
 type SortField = "keyword" | "confidenceScore" | "numberOfQueries";
 type SortOrder = "asc" | "desc";
 
@@ -17,31 +9,82 @@ const IssueReportTable = () => {
   const [searchKeyword, setSearchKeyword] = useState("");
   const [sortField, setSortField] = useState<SortField>("keyword");
   const [sortOrder, setSortOrder] = useState<SortOrder>("asc");
-  const [filteredData, setFilteredData] = useState<TableRow[]>([]);
+  const [filteredData, setFilteredData] = useState<any[]>([]);
 
   // Sample data - replace with your actual data source
-  const initialData = useMemo<TableRow[]>(
+  const initialData = useMemo<any[]>(
     () => [
       {
         id: 1,
         issueId: "random-issue-id-1",
         keyword: "Port A",
-        confidenceScore: 0.85,
+        confidenceScore: 0.5,
         numberOfQueries: 2,
+        mappedPorts: [
+          {
+            id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
+            name: "Port Temporary",
+            type: "sea_port",
+          },
+          {
+            id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
+            name: "Port Temporary",
+            type: "sea_port",
+          },
+          {
+            id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
+            name: "Port Temporary",
+            type: "sea_port",
+          },
+        ],
       },
       {
         id: 2,
         issueId: "random-issue-id-2",
         keyword: "Port B",
-        confidenceScore: 0.72,
+        confidenceScore: 0.48,
         numberOfQueries: 5,
+        mappedPorts: [
+          {
+            id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
+            name: "Port Temporary",
+            type: "sea_port",
+          },
+          {
+            id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
+            name: "Port Temporary",
+            type: "sea_port",
+          },
+          {
+            id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
+            name: "Port Temporary",
+            type: "sea_port",
+          },
+        ],
       },
       {
         id: 3,
         issueId: "random-issue-id-3",
         keyword: "Port C",
-        confidenceScore: 0.91,
+        confidenceScore: 0.36,
         numberOfQueries: 1,
+        mappedPorts: [
+          {
+            id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
+            name: "Port Temporary",
+            type: "sea_port",
+          },
+          {
+            id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
+            name: "Port Temporary",
+            type: "sea_port",
+          },
+          {
+            id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
+            name: "Port Temporary",
+            type: "sea_port",
+          },
+        ],
       },
     ],
     []
