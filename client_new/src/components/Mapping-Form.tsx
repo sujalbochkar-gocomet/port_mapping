@@ -7,6 +7,46 @@ import airIcon from "../assets/air.svg";
 import seaIcon from "../assets/sea.svg";
 import { toast } from "react-toastify";
 
+export interface Port {
+  _id: string;
+  id: string;
+  code: string;
+  name: string;
+  display_name: string;
+  other_names: string[];
+
+  city: string;
+  state_name: string;
+  country: string;
+  country_code: string;
+  region: string;
+
+  port_type: string
+  lat_lon: { lat: number, lon: number };
+  nearby_ports: JSON | undefined;
+  other_details: JSON | undefined;
+
+  deleted: boolean;
+  client_group_id: string | undefined;
+  created_at: Date;
+  updated_at: Date;
+  sort_order: number;
+  verified: boolean | undefined;
+  sailing_schedule_available: boolean | undefined;
+  item_type: string | undefined;
+  master_port: boolean | undefined;
+  address: string | undefined;
+  fax_number: string | undefined;
+  telephone_number: string | undefined;
+  website: string | undefined;
+  description: string | undefined;
+  seo_code: string | undefined;
+  seo_updated: boolean | undefined;
+  is_head_port: boolean | undefined;
+  prefer_inland: boolean | undefined;
+  country_port: boolean | undefined;
+}
+
 const MappingForm = () => {
   const [shipments, setShipments] = useState<Shipment[]>([]);
   const [carrierType, setCarrierType] = useState<string>("sea_port");
@@ -145,8 +185,51 @@ const MappingForm = () => {
               signal: abortControllerRef.current?.signal,
             }
           );
-          const results = response.data;
+          let results = response.data;
 
+          if (results.length === 0) {
+            const tempPort: Partial<Port> = {
+              _id: `temp-${Date.now()}`,
+              id: `temp-${Date.now()}`,
+              name: term,
+              display_name: term,
+              port_type: portType,
+              code: "",
+              other_names: [],
+              city: "",
+              state_name: "",
+              country: "",
+              country_code: "",
+              region: "",
+              lat_lon: { lat: 0, lon: 0 },
+              nearby_ports: JSON.parse("{}"),
+              other_details: JSON.parse("{}"),
+              deleted: true,
+              client_group_id: "",
+              created_at: new Date(),
+              updated_at: new Date(),
+              sort_order: 0,
+              verified: false,
+              sailing_schedule_available: false,
+              item_type: "",
+              master_port: false,
+              address: "",
+              fax_number: "",
+              telephone_number: "",
+              website: "",
+              description: "",
+              seo_code: "",
+              seo_updated: false,
+              is_head_port: false,
+              prefer_inland: false,
+              country_port: false,
+            };
+            results = [{
+              port: tempPort as Port,
+              verified: false,
+              match_score: 0,
+            }];
+          }
           if (isPol) {
             setPolResults(results);
             setLastPolResults(results);
@@ -293,6 +376,12 @@ const MappingForm = () => {
       toast.error("Please fill in all fields and select valid ports");
       return;
     }
+
+    if (selectedPol.port.id === selectedPod.port.id) {
+      toast.error("POL and POD cannot be the same port. Please select different ports.");
+      return;
+    }
+
     setLoading(true);
     try {
       const response = await axios.post("http://localhost:3000/add-shipment", {
@@ -372,7 +461,7 @@ const MappingForm = () => {
           {selectedPol ? (
             <div className="w-full px-3 py-3 bg-white border border-gray-300 rounded-lg shadow-sm flex justify-between items-center">
               {/* First div: logo and port name */}
-              <div className="flex items-center gap-2 max-w-[80%] min-w-[80%]">
+              <div className="flex items-center gap-2 max-w-[75%] min-w-[75%]">
                 {selectedPol !== null && selectedPol.port?.country_code ? (
                   <img
                     src={`https://flagsapi.com/${selectedPol.port.country_code.toUpperCase()}/flat/64.png`}
@@ -387,8 +476,8 @@ const MappingForm = () => {
                     const displayName =
                       selectedPol.port.display_name || selectedPol.port.name;
 
-                    return displayName.length > 50
-                      ? displayName.substring(0, 50) + "..."
+                    return displayName.length > 45
+                      ? displayName.substring(0, 45) + "..."
                       : displayName;
                   })()}
                 </p>
@@ -477,7 +566,7 @@ const MappingForm = () => {
           {selectedPod ? (
             <div className="w-full px-3 py-3 bg-white border border-gray-300 rounded-lg shadow-sm flex justify-between items-center">
               {/* First div: logo and port name */}
-              <div className="flex items-center gap-2 max-w-[80%] min-w-[80%]">
+              <div className="flex items-center gap-2 max-w-[75%] min-w-[75%]">
                 {selectedPod !== null && selectedPod.port?.country_code ? (
                   <img
                     src={`https://flagsapi.com/${selectedPod.port.country_code.toUpperCase()}/flat/64.png`}
@@ -579,11 +668,10 @@ const MappingForm = () => {
             onClick={addShipment}
             disabled={loading}
             className={`px-5 py-3  font-bold rounded-md transition-colors flex items-center gap-2
-                ${
-                  loading
-                    ? "bg-blue-300 cursor-not-allowed"
-                    : "bg-blue-700 hover:bg-blue-600 text-white"
-                }`}
+                ${loading
+                ? "bg-blue-300 cursor-not-allowed"
+                : "bg-blue-700 hover:bg-blue-600 text-white"
+              }`}
           >
             {loading ? (
               <>
@@ -662,25 +750,22 @@ const ModeSelector = ({
         <button
           key={mode.id}
           onClick={() => onModeSelect(mode.id)}
-          className={`flex-1 flex flex-col items-center justify-center p-4 rounded-lg transition-all duration-200 ${
-            selectedMode === mode.id
+          className={`flex-1 flex flex-col items-center justify-center p-4 rounded-lg transition-all duration-200 ${selectedMode === mode.id
               ? "bg-blue-100 border-2 border-blue-500 shadow-md"
               : "bg-white border-2 border-transparent hover:bg-gray-50"
-          }`}
+            }`}
         >
           <img
             src={mode.icon}
             alt={mode.label}
-            className={`w-8 h-8 mb-2 ${
-              selectedMode === mode.id
+            className={`w-8 h-8 mb-2 ${selectedMode === mode.id
                 ? "[filter:invert(48%)_sepia(79%)_saturate(2476%)_hue-rotate(200deg)_brightness(118%)_contrast(119%)]"
                 : "brightness-0 opacity-50"
-            }`}
+              }`}
           />
           <span
-            className={`text-sm font-semibold ${
-              selectedMode === mode.id ? "text-blue-500" : "text-gray-600"
-            }`}
+            className={`text-sm font-semibold ${selectedMode === mode.id ? "text-blue-500" : "text-gray-600"
+              }`}
           >
             {mode.label}
           </span>

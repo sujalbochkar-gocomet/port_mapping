@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Shipment } from "../types/types";
 import ShipmentBlock from "./Mapping-ShipmentBlock";
-import { toast } from "react-toastify";
 
 const ShipmentList = () => {
   const [shipments, setShipments] = useState<Shipment[]>([]);
@@ -15,7 +14,6 @@ const ShipmentList = () => {
         setShipments(response.data);
       } catch (error) {
         console.error("Error searching ports:", error);
-        toast.error("Failed to search ports");
       } finally {
         setIsLoading(false);
       }

@@ -6,6 +6,7 @@ import connectDB = require('../lib/db');
 import PortModel = require('../models/Port');
 
 
+
 interface PortMatcherResult {
 
   /**
@@ -109,6 +110,8 @@ class PortMatcher {
       "at",
       "by",
       "on",
+      "near",
+      "nearby",
     ]);
 
     this.groq = new Groq({
@@ -178,7 +181,6 @@ class PortMatcher {
 
  
   public filterByLocation(inputString: string, portsData: Port[] = this.portsData): Port[] {
-    let started= performance.now();
     if (typeof inputString !== "string" || !inputString.trim()) {
       return [];
     }
@@ -231,8 +233,6 @@ class PortMatcher {
       }
     }
     
-    let ended= performance.now();
-    console.log(`Time taken: ${ended - started} milliseconds`);
     return results;
   }
 
@@ -303,10 +303,6 @@ class PortMatcher {
     return results.sort((a, b) => b.confidence_score - a.confidence_score);
   }
 
- 
-  // 
-
- 
   public async rubyFuzzySearch(inputString: string, portsData: Port[] = this.portsData): Promise<CascadingResult[]> {
 
      /**
@@ -521,8 +517,6 @@ Important:
 
       const rawResponse = await this.getGroqResponse(keyword, portType);
 
-   
-      
       let parsedResponse;
       try {
         parsedResponse = JSON.parse(rawResponse);
@@ -593,7 +587,6 @@ Important:
 
       const rubyResults = await this.rubyFuzzySearch(inputString, locationFilteredData);
 
-      console.log(rubyResults.length);
       if (rubyResults.length > 0) {
         return rubyResults.map(result => ({
           ...result,
@@ -601,11 +594,13 @@ Important:
         }));
       }
 
+      if(portType=="address"){
+        return [];
+      }
 
       const rubyResultsNew = await this.rubyFuzzySearch(inputString, workingPortsData);
 
-      console.log("ruby fuzzy search ended");
-      console.log(rubyResultsNew.length);
+
       if (rubyResultsNew.length > 0) {    
         return rubyResultsNew.map(result => ({
           ...result,
@@ -621,120 +616,72 @@ Important:
     }
   }
 
-  
-  async aggregatedResults(keyword: string, portType: string | null = null): Promise<PortMatcherResult[]> {
-
-    /**
-   * Aggregates results from multiple search methods
-   * @param keyword - Search keyword
-   * @param portType - Optional port type filter
-   * @returns Promise resolving to array of aggregated results
-   */
-  
+  async aggregatedResults(keyword: string, portType: string | null = null, includeAll: boolean = false): Promise<PortMatcherResult[]> {
     try {
-      const started=performance.now();
-      const cascadingResults = await this.cascadingSearch(keyword, portType);
-      const highConfidenceMatches = cascadingResults.filter(result =>
-        result.confidence_score >= 80 ||
-        (result.match_algo_type === "exact" )
-      );
-
-      if (highConfidenceMatches.length > 0) {
-        return highConfidenceMatches.map(result => ({
-          port_data: result.port_data,
-          confidence_score: result.confidence_score,
-          match_type: result.match_type,
-          sources: ['cascading']
-        }));
-      }
-
-      const [llmResults, remainingCascadingResults] = await Promise.all([
-        this.getLLMResponse(keyword, portType),
-        Promise.resolve(cascadingResults.filter(result =>
-          result.confidence_score < 80 &&
-          (result.match_algo_type !== "exact")
-        ))
+      const started = performance.now();
+      const [cascadingResults, llmResults] = await Promise.all([
+        this.cascadingSearch(keyword, portType),
+        this.getLLMResponse(keyword, portType)
       ]);
 
 
-
-      if (llmResults.length === 0 && remainingCascadingResults.length === 0) {
+      if (llmResults.length === 0 && cascadingResults.length === 0) {
         return [];
       }
 
-      const portMap = new Map<string, {
-        port_data: Port;
-        llm_score: number;
-        cascading_score: number;
-        match_type: string;
-        sources: string[];
-      }>();
+      // Convert CascadingResult to PortMatcherResult
+      const convertedCascadingResults: PortMatcherResult[] = cascadingResults.map(result => ({
+        port_data: result.port_data,
+        confidence_score: result.confidence_score,
+        match_type: result.match_type,
+        sources: ['cascading']
+      }));
 
-      for (const result of llmResults) {
-        const portId = result.port_data.id;
-        portMap.set(portId, {
-          port_data: result.port_data,
-          llm_score: result.confidence_score,
-          cascading_score: 0,
-          match_type: result.match_type,
-          sources: ['llm']
-        });
-      }
+      const convertedLLMResults: PortMatcherResult[] = llmResults.map(result => ({
+        port_data: result.port_data,
+        confidence_score: result.confidence_score,
+        match_type: result.match_type,
+        sources: ['llm']
+      }));
 
-      for (const result of remainingCascadingResults) {
-        const portId = result.port_data.id;
-        if (portMap.has(portId)) {
-          const existingEntry = portMap.get(portId)!;
-          existingEntry.cascading_score = result.confidence_score;
-          existingEntry.sources.push('cascading');
-          existingEntry.match_type = `${existingEntry.match_type}+${result.match_algo_type}`;
-        } else {
-          portMap.set(portId, {
-            port_data: result.port_data,
-            llm_score: 0,
-            cascading_score: result.confidence_score,
-            match_type: `cascading:${result.match_algo_type}`,
-            sources: ['cascading']
-          });
-        }
-      }
-
-      const finalResults: PortMatcherResult[] = Array.from(portMap.values()).map(entry => {
-        let finalScore: number;
-
-        if (entry.sources.length === 2) {
-          finalScore = (
-            (entry.llm_score * 0.6) +
-            (entry.cascading_score * 0.4)
-          )
-        } else if (entry.sources[0] === 'llm') {
-          finalScore = entry.llm_score * 0.9;
-        } else {
-          finalScore = entry.cascading_score * 0.8;
-        }
-
-        finalScore = Math.max(0, Math.min(100, finalScore));
-
-        return {
-          port_data: entry.port_data,
-          confidence_score: parseFloat(finalScore.toFixed(2)),
-          match_type: entry.match_type,
-          sources: entry.sources
-        };
-      });
-
-      const ended=performance.now();
+      const ended = performance.now();
       console.log(`Time taken: ${ended - started} milliseconds`);
-      return finalResults.sort((a, b) => {
-        if(a.confidence_score===b.confidence_score){
+      
+      // Create a Map to track unique ports by ID and combine sources
+      const uniqueResults = new Map<string | number, PortMatcherResult>();
+      
+      // First add cascading results
+      convertedCascadingResults.forEach(result => {
+        uniqueResults.set(result.port_data.id, result);
+      });
+      
+      // Then check if llm results exist in the map and merge them or add new ones
+      convertedLLMResults.forEach(result => {
+        const existingResult = uniqueResults.get(result.port_data.id);
+        if (existingResult) {
+          // If port already exists, combine sources and use the higher confidence score
+          existingResult.sources = [...new Set([...existingResult.sources, ...result.sources])];
+          existingResult.confidence_score = Math.max(existingResult.confidence_score, result.confidence_score);
+        } else {
+          uniqueResults.set(result.port_data.id, result);
+        }
+      });
+      
+      // Convert Map back to array and sort
+      const results = Array.from(uniqueResults.values());
+
+      const threshold = includeAll ? 0 : 55;
+      return results.sort((a, b) => {
+        if(a.confidence_score === b.confidence_score) {
           if (a.port_data.master_port && b.port_data.master_port) {
             return a.port_data.is_head_port ? 1 : -1;
           }
-          return a.port_data.master_port ? 1: -1;
+          return a.port_data.master_port ? 1 : -1;
         }
         return b.confidence_score - a.confidence_score;
-      }).filter((result:PortMatcherResult)=>result.confidence_score>=60).slice(0,10);
-    } catch (error) {
+      }).filter(result => result.confidence_score >= threshold).slice(0, 10);
+
+    } catch(error) {
       console.error("Error in aggregatedResults:", error);
       return [];
     }
@@ -744,129 +691,3 @@ Important:
 export = PortMatcher;
 
 
-
-// public wordSearch(inputString: string, portsData: Port[] = this.portsData): CascadingResult[] {
-
-  //    /**
-  //  * Performs word-based search with partial matching
-  //  * @param inputString - Search string
-  //  * @param portsData - Optional array of ports to search through
-  //  * @returns Array of word match results
-  //  */
-
-  //   if (typeof inputString !== "string" || !inputString.trim()) {
-  //     return [];
-  //   }
-
-  //   const inputWords = this.normalizeString(inputString)
-  //     .split(/\s+/)
-  //     .filter(word => !this.ignoredKeywords.has(word));
-
-  //   if (inputWords.length === 0) {
-  //     return [];
-  //   }
-
-  //   const inputWordsSet = new Set(inputWords);
-  //   const results: CascadingResult[] = [];
-  //   const MIN_CONFIDENCE = 50;
-
-  //   const getNormalizedWords = (value: string | undefined): { words: string[], set: Set<string> } | null => {
-  //     if (!value) return null;
-
-  //     const fieldWords = this.normalizeString(value)
-  //       .split(/\s+/)
-  //       .filter(word => !this.ignoredKeywords.has(word));
-
-  //     if (fieldWords.length === 0) return null;
-
-  //     return {
-  //       words: fieldWords,
-  //       set: new Set(fieldWords)
-  //     };
-  //   };
-
-  //   const calculateOverlapScore = (fieldWordsSet: Set<string>): number => {
-  //     let commonWords = 0;
-  //     for (const word of inputWordsSet) {
-  //       if (fieldWordsSet.has(word)) commonWords++;
-  //     }
-  //     const totalWords = inputWordsSet.size + fieldWordsSet.size;
-  //     return totalWords === 0 ? 0 : (2 * commonWords * 100) / totalWords;
-  //   };
-
-  //   const calculateOrderScore = (fieldWords: string[]): number => {
-  //     if (fieldWords.length === 0) return 0;
-
-  //     const minLength = Math.min(inputWords.length, fieldWords.length);
-  //     let maxConsecutiveMatches = 0;
-
-  //     for (let i = 0; i <= fieldWords.length - minLength; i++) {
-  //       let matches = 0;
-  //       for (let j = 0; j < minLength; j++) {
-  //         if (fieldWords[i + j] === inputWords[j]) {
-  //           matches++;
-  //         } else {
-  //           break;
-  //         }
-  //       }
-  //       maxConsecutiveMatches = Math.max(maxConsecutiveMatches, matches);
-  //     }
-
-  //     return (maxConsecutiveMatches / minLength) * 100;
-  //   };
-
-  //   for (const port of portsData) {
-  //     let bestMatch = { confidence: 0, matchType: "" };
-
-  //     for (const key of this.searchableKeys) {
-  //       const normalized = getNormalizedWords(port[key as keyof Port] as string );
-  //       if (!normalized) continue;
-
-  //       const overlapScore = calculateOverlapScore(normalized.set);
-  //       if (overlapScore < MIN_CONFIDENCE) continue;
-
-  //       const orderScore = calculateOrderScore(normalized.words);
-  //       const confidence = (overlapScore * 0.7) + (orderScore * 0.3);
-
-  //       if (confidence > bestMatch.confidence) {
-  //         bestMatch = { confidence, matchType: key.toLowerCase().replace(/\s+/g, '_') };
-  //       }
-  //     }
-
-  //     if (bestMatch.confidence > 60) {
-  //       results.push({
-  //         port_data: port,
-  //         confidence_score: parseFloat(bestMatch.confidence.toFixed(2)),
-  //         match_type: bestMatch.matchType,
-  //         match_algo_type: "word"
-  //       });
-  //       continue;
-  //     }
-
-  //     for (const altName of port.other_names || []) {
-  //       const normalized = getNormalizedWords(altName );
-  //       if (!normalized) continue;
-
-  //       const overlapScore = calculateOverlapScore(normalized.set);
-  //       if (overlapScore < MIN_CONFIDENCE) continue;
-
-  //       const orderScore = calculateOrderScore(normalized.words);
-  //       const confidence = (overlapScore * 0.7) + (orderScore * 0.3);
-
-  //       if (confidence > bestMatch.confidence) {
-  //         bestMatch = { confidence, matchType: 'other_names' };
-  //       }
-  //     }
-
-  //     if (bestMatch.confidence > MIN_CONFIDENCE) {
-  //       results.push({
-  //         port_data: port,
-  //         confidence_score: parseFloat(bestMatch.confidence.toFixed(2)),
-  //         match_type: bestMatch.matchType,
-  //         match_algo_type: "word"
-  //       });
-  //     }
-  //   }
-
-  //   return results.sort((a, b) => b.confidence_score - a.confidence_score);
-  // }

@@ -1,7 +1,6 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import axios from "axios";
 import { statusPort } from "../types/types";
-import { toast } from "react-toastify";
 import ModeSelector from "./ModeSelector";
 
 const MappingForm = () => {
@@ -12,25 +11,81 @@ const MappingForm = () => {
   const [showOtherNames, setShowOtherNames] = useState<{ [key: string]: boolean }>({});
   const resultsRef = useRef<HTMLDivElement>(null);
 
-  const handleSearch = async () => {
-    if (!searchInput.trim()) {
-      toast.error("Please enter a search term");
+  // Add debounce timer and abort controller refs
+  const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const abortController = useRef<AbortController | null>(null);
+
+  // Debounced search function
+  const debouncedSearch = useCallback((term: string) => {
+    // Clear existing timer
+    if (debounceTimer.current) {
+      clearTimeout(debounceTimer.current);
+    }
+
+    // Abort previous request if it exists
+    if (abortController.current) {
+      abortController.current.abort();
+    }
+
+    if (!term.trim()) {
+      setSearchResults([]);
+      setIsSearching(false);
       return;
     }
 
-    try {
-      setIsSearching(true);
-      // Use the same endpoint for all types including address
-      const response = await axios.get(
-        `http://localhost:3000/search-ports?q=${encodeURIComponent(searchInput)}&type=${carrierType}`
-      );
-      setSearchResults(response.data);
-    } catch (error) {
-      console.error("Error searching:", error);
-      toast.error("Failed to search");
-    } finally {
-      setIsSearching(false);
+    // Set loading state
+    setIsSearching(true);
+
+    // Create new abort controller
+    abortController.current = new AbortController();
+
+    // Set new timer
+    debounceTimer.current = setTimeout(async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/search-ports?q=${encodeURIComponent(term)}&type=${carrierType}`,
+          {
+            signal: abortController.current?.signal,
+          }
+        );
+        const results = response.data;
+        setSearchResults(results);
+      } catch (error) {
+        // Ignore errors from aborted requests
+        if (axios.isCancel(error)) {
+          return;
+        }
+        console.error("Error searching:", error);
+        setSearchResults([]);
+      } finally {
+        setIsSearching(false);
+      }
+    }, 300); // 300ms delay
+  }, [carrierType]);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (debounceTimer.current) {
+        clearTimeout(debounceTimer.current);
+      }
+      if (abortController.current) {
+        abortController.current.abort();
+      }
+    };
+  }, []);
+
+  const handleSearch = async () => {
+    if (!searchInput.trim()) {
+      return;
     }
+    debouncedSearch(searchInput);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearchInput(value);
+    debouncedSearch(value);
   };
 
   // Clear search results when changing carrier type
@@ -51,7 +106,7 @@ const MappingForm = () => {
       {/* Mode Selector Block */}
       <div className="mb-6">
         <label className="block text-lg font-bold text-gray-600 mb-2">
-          Search Type <span className="text-red-500">*</span>
+          Port Type <span className="text-red-500">*</span>
         </label>
         <div className="flex items-center gap-4">
           <ModeSelector
@@ -65,14 +120,14 @@ const MappingForm = () => {
       <div className="flex items-center gap-4">
         <div className="w-full relative">
           <label className="block text-lg font-bold text-gray-600 mb-1">
-            {carrierType === "address" ? "Search Address" : "Search Port"} <span className="text-red-500">*</span>
+            Enter Keyword Here <span className="text-red-500">*</span>
           </label>
           <div className="flex items-center gap-4">
             <div className="flex-1">
               <input
                 type="text"
                 value={searchInput}
-                onChange={(e) => setSearchInput(e.target.value)}
+                onChange={handleInputChange}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter') {
                     handleSearch();
@@ -238,7 +293,9 @@ const MappingForm = () => {
                           onClick={() => toggleOtherNames(port.port._id)}
                           className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-blue-600 hover:text-blue-800 hover:bg-blue-50 transition-colors"
                         >
-                          <span className="font-medium">Show Other Names</span>
+                          <span className="font-medium">
+                            {showOtherNames[port.port._id] ? 'Hide Other Names' : 'Show Other Names'}
+                          </span>
                           <svg
                             className={`w-4 h-4 transition-transform duration-200 ${showOtherNames[port.port._id] ? 'rotate-180' : ''}`}
                             fill="none"
@@ -273,12 +330,16 @@ const MappingForm = () => {
                 {/* Other Names Section */}
                 {showOtherNames[port.port._id] && port.port.other_names.length > 0 && (
                   <div className="mt-4 pt-4 border-t border-gray-100">
-                    <div className="bg-gray-50 rounded-lg p-3">
-                      <div className="flex items-start gap-2">
-                        <span className="text-gray-600 font-medium">Alternative Names:</span>
-                        <span className="text-gray-800">
-                          {port.port.other_names.join(", ")}
-                        </span>
+                    <div className="bg-gray-50 rounded-lg p-4">
+                      <div className="flex flex-wrap gap-2">
+                        {port.port.other_names.map((name, index) => (
+                          <span
+                            key={index}
+                            className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
+                          >
+                            {name}
+                          </span>
+                        ))}
                       </div>
                     </div>
                   </div>

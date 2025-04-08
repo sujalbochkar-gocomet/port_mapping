@@ -249,47 +249,6 @@ app.get("/search-ports", async (req: Request, res: Response) => {
     else results = await portMatcher.aggregatedResults(query, type);
 
     if (results.length === 0) {
-      // const tempPort: Partial<Port> = {
-      //   _id: `temp-${Date.now()}`,
-      //   id: `temp-${Date.now()}`,
-      //   name: query,
-      //   display_name: query,
-      //   port_type: type as PortType,
-      //   code: "",
-      //   other_names: [],
-      //   city: "",
-      //   state_name: "",
-      //   country: "",
-      //   country_code: "",
-      //   region: "",
-      //   lat_lon: { lat: 0, lon: 0 },
-      //   nearby_ports: JSON.parse("{}"),
-      //   other_details: JSON.parse("{}"),
-      //   deleted: true,
-      //   client_group_id: "",
-      //   created_at: new Date(),
-      //   updated_at: new Date(),
-      //   sort_order: 0,
-      //   verified: false,
-      //   sailing_schedule_available: false,
-      //   item_type: "",
-      //   master_port: false,
-      //   address: "",
-      //   fax_number: "",
-      //   telephone_number: "",
-      //   website: "",
-      //   description: "",
-      //   seo_code: "",
-      //   seo_updated: false,
-      //   is_head_port: false,
-      //   prefer_inland: false,
-      //   country_port: false,
-      // };
-      // const statusPort: statusPort = {
-      //   port: tempPort as Port,
-      //   verified: false,
-      //   match_score: 0,
-      // };
       res.status(200).json([]);
       return;
     }
@@ -310,6 +269,93 @@ app.get("/search-ports", async (req: Request, res: Response) => {
       details: error instanceof Error ? error.message : "Unknown error",
     });
   }
+});
+
+
+
+/**
+ * @swagger
+ * /search-ports/all:
+ *   get:
+ *     summary: Search for ports
+ *     description: Search for ports based on query and type
+ *     parameters:
+ *       - in: query
+ *         name: q
+ *         schema:
+ *           type: string
+ *         description: Search query
+ *       - in: query
+ *         name: type
+ *         schema:
+ *           type: string
+ *         description: Port type filter
+ *     responses:
+ *       200:
+ *         description: List of matching ports
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/PortSearchResult'
+ *       500:
+ *         description: Server error
+ */
+app.get("/search-ports/all", async (req: Request, res: Response) => {
+  try {
+    if (!portMatcher) {
+      throw new Error("PortMatcher not initialized");
+    }
+
+    const query = (req.query.q as string)?.toLowerCase() || "";
+    const type = req.query.type as string;
+
+    let results = [];
+    if (type === "all") results = await portMatcher.aggregatedResults(query, null, true);
+    else results = await portMatcher.aggregatedResults(query, type, true);
+
+    if (results.length === 0) {
+      res.status(200).json([]);
+      return;
+    }
+
+    const transformedPorts = results.map((result: PortMatcherResult) => ({
+      port: result.port_data,
+      verified: true,
+      match_score: result.confidence_score,
+      match_type: result.match_type,
+      sources: result.sources
+    }));
+
+    res.status(200).json(transformedPorts.slice(0, 10));
+  } catch (error) {
+    console.error("Error searching ports:", error);
+    res.status(500).json({
+      error: "Failed to search ports",
+      details: error instanceof Error ? error.message : "Unknown error",
+    });
+  }
+});
+
+
+app.get("/issue-search", async (req: Request, res: Response) => {
+  // example link http://localhost:3000/issue-search?q=los
+  const query = (req.query.q as string)?.toLowerCase() || "";
+  const ports = await prisma.port.findMany({
+    where: {
+      OR: [
+        { name: { contains: query, mode: "insensitive" } },
+        { code: { contains: query, mode: "insensitive" } },
+        { display_name: { contains: query, mode: "insensitive" } },
+        { country: { contains: query, mode: "insensitive" } },
+        { city: { contains: query, mode: "insensitive" } },
+        { other_names: { has: query } },
+      ],
+    },
+    take: 40,
+  });
+  res.status(200).json(ports);
 });
 
 /**
@@ -937,6 +983,8 @@ app.get("/search-ports/filter-by-location", async (req: Request, res: Response) 
     });
   }
 });
+
+
 
 // Initialize server
 const startServer = async () => {
