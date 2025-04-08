@@ -4,6 +4,7 @@ import NavBar from "./NavBar";
 import CreateNewPort from "./IssueReport-CreateNewPort";
 import MapExistingPort from "./IssueReport-MapExistingPort";
 import { FiPlus, FiMapPin, FiList } from "react-icons/fi";
+import IssueReportMappedPorts from "./IssueReport-MappedPorts";
 
 interface NewPortData {
   name: string;
@@ -124,18 +125,7 @@ const IssueReportResolveIssue = () => {
 
           {/* Tab Content */}
           {activeTab === "mapped" ? (
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-              <div className="flex items-center gap-2 mb-6">
-                <FiList className="w-5 h-5 text-blue-600" />
-                <h2 className="text-lg font-medium text-gray-800">
-                  Mapped Ports for "{issueDetails.keyword}"
-                </h2>
-              </div>
-              {/* Add your mapped ports content here */}
-              <div className="text-gray-500 text-center py-8">
-                No mapped ports found
-              </div>
-            </div>
+            <IssueReportMappedPorts keyword={issueDetails.keyword} />
           ) : activeTab === "create" ? (
             <CreateNewPort
               keyword={issueDetails.keyword}
