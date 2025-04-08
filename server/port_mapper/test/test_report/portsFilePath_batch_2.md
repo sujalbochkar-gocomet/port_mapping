@@ -1806,6 +1806,7 @@
 - Match Type: cascading:word
 - Sources: cascading
 
+//Fixed Working Fine Now
 
 
 ### ✅ Matched
@@ -1881,6 +1882,8 @@
 - Match Type: cascading:word
 - Sources: cascading
 
+//Fixed Working Fine Now
+
 ### ✅ Matched
 - Keyword: "jea - jebel ali united arab emirates"
 - Mapped To: Jebel Ali
@@ -1939,6 +1942,8 @@
 - Match Type: cascading:word
 - Sources: cascading
 
+//Fixed Working Fine Now
+
 ### ✅ Matched
 - Keyword: "manila north harbour, philippines"
 - Mapped To: Manila North Harbour
@@ -1962,6 +1967,8 @@
 - Match Type: other_names
 - Sources: cascading
 
+?_Duplicate Data
+
 ### ❌ Unmatched
 - Keyword: "dammam sa"
 - Expected: 4e24d0fc-d2c5-4e4d-9753-b1479f339762
@@ -1969,6 +1976,8 @@
 - Time: 2925.04ms
 - Match Type: other_names
 - Sources: cascading
+
+// Dammam sa in other names
 
 ### ✅ Matched
 - Keyword: "jebel ali (aejea)united arab emirates"
@@ -1985,6 +1994,8 @@
 - Port Type: inland_port
 - Expected: e7d5b8c2-06b5-48d7-a41d-829319e37259
 - Time: 6507.80ms
+
+//The port is sea_port
 
 ### ✅ Matched
 - Keyword: "antwerp, belgium, be"
@@ -2039,6 +2050,8 @@
 - Match Type: cascading:word
 - Sources: cascading
 
+//Fixed Working Fine Now
+
 ### ✅ Matched
 - Keyword: "yok - yokohama, japan"
 - Mapped To: Yokohama
@@ -2092,6 +2105,8 @@
 - Match Type: cascading:word
 - Sources: cascading
 
+//Fixed Now
+
 ### ✅ Matched
 - Keyword: "general santos, philippines"
 - Mapped To: General Santos
@@ -2119,6 +2134,8 @@
 - Time: 4509.18ms
 - Match Type: cascading:word
 - Sources: cascading
+
+//Fixed
 
 ### ❌ Unmatched
 - Keyword: "grangemouth, united kingdom"
@@ -2317,6 +2334,8 @@
 - Match Type: other_names
 - Sources: cascading
 
+//Fixed
+
 ### ✅ Matched
 - Keyword: "felixstowe,  united kingdom"
 - Mapped To: Felixstowe
@@ -2409,6 +2428,9 @@
 - Time: 2962.99ms
 - Match Type: cascading:word
 - Sources: cascading
+
+?_Port Type is Wrong
+
 
 ### ❌ Unmatched
 - Keyword: "sheffield, united kingdom"

@@ -1,6 +1,5 @@
 import { Port } from "../src/types/types";
 import { Groq } from 'groq-sdk';
-// import OpenAI from 'openai';
 import { spawn } from 'child_process';
 import { join } from 'path';
 import connectDB = require('../lib/db');
@@ -39,12 +38,12 @@ class PortMatcher {
  * Class for matching ports based on various search algorithms
  */
 
-  private portsData: Port[];
-  private searchableKeys: string[];
-  private locationSearchableKeys: string[];
-  private ignoredKeywords: Set<string>;
-  private groq: Groq;
-  // private openai: OpenAI;
+  public portsData: Port[];
+  public searchableKeys: string[];
+  public locationSearchableKeys: string[];
+  public ignoredKeywords: Set<string>;
+  public groq: Groq;
+
 
   
 
@@ -164,7 +163,7 @@ class PortMatcher {
   }
 
  
-  private normalizeString(str: string | undefined): string {
+  public normalizeString(str: string | undefined): string {
 
      /**
    * Normalizes a string by converting to lowercase and removing special characters
@@ -182,38 +181,67 @@ class PortMatcher {
   }
 
  
-  private filterByLocation(inputString: string, portsData: Port[] = this.portsData): Port[] {
-
-     /**
-   * Filters ports based on location keywords
-   * @param inputString - Location search string
-   * @param portsData - Optional array of ports to search through
-   * @returns Array of ports matching location criteria
-   */
-
+  public filterByLocation(inputString: string, portsData: Port[] = this.portsData): Port[] {
+    let started= performance.now();
     if (typeof inputString !== "string" || !inputString.trim()) {
       return [];
     }
-
-    const locationKeywords = this.normalizeString(inputString)
+  
+    // Normalize input and split into clean keywords - do this once
+    const normalizedInput = this.normalizeString(inputString);
+    const inputKeywords = normalizedInput
       .split(/\s+/)
       .filter(word => !this.ignoredKeywords.has(word));
-
-    return portsData.filter(port => {
-      const locationWords = this.locationSearchableKeys
-        .map(key => this.normalizeString(port[key as keyof Port] as string))
-        .join(' ')
-        .split(/\s+/)
-        .filter(word => word.length > 0);
-
-      return locationKeywords.some(keyword =>
-        locationWords.some(word => word === keyword)
-      );
-    });
+  
+    if (inputKeywords.length === 0) {
+      return [];
+    }
+  
+    // Convert inputKeywords to a Set for faster lookups
+    const inputKeywordSet = new Set(inputKeywords);
+    const results: Port[] = [];
+  
+    // Use for loop instead of forEach for better performance
+    for (let i = 0; i < portsData.length; i++) {
+      const port = portsData[i];
+      
+      // Use for loop with early exit instead of some
+      for (let j = 0; j < this.locationSearchableKeys.length; j++) {
+        const key = this.locationSearchableKeys[j];
+        const fieldValue = port[key as keyof Port];
+        
+        if (typeof fieldValue !== "string") continue;
+  
+        const normalizedField = this.normalizeString(fieldValue);
+        const fieldWords = normalizedField
+          .split(/\s+/)
+          .filter(word => !this.ignoredKeywords.has(word));
+  
+        if (fieldWords.length === 0) continue;
+  
+        // Exactly as in original: Check if all fieldWords are present in inputKeywords
+        let allWordsPresent = true;
+        for (let k = 0; k < fieldWords.length; k++) {
+          if (!inputKeywordSet.has(fieldWords[k])) {
+            allWordsPresent = false;
+            break;
+          }
+        }
+        
+        if (allWordsPresent) {
+          results.push(port);
+          break; // Stop checking other fields for this port
+        }
+      }
+    }
+    
+    let ended= performance.now();
+    console.log(`Time taken: ${ended - started} milliseconds`);
+    return results;
   }
 
   
-  private completeNameSearch(inputString: string, portsData: Port[] = this.portsData): CascadingResult[] {
+  public completeNameSearch(inputString: string, portsData: Port[] = this.portsData): CascadingResult[] {
 
     /**
    * Performs exact name matching search
@@ -236,8 +264,8 @@ class PortMatcher {
       let confidenceScore = 0;
       let weightedScore=0;
       for (const key of this.searchableKeys) {
-        
-  
+
+
         const normalizedField = this.normalizeString(port[key as keyof Port] as string);
 
 
@@ -280,7 +308,7 @@ class PortMatcher {
   }
 
  
-  private wordSearch(inputString: string, portsData: Port[] = this.portsData): CascadingResult[] {
+  public wordSearch(inputString: string, portsData: Port[] = this.portsData): CascadingResult[] {
 
      /**
    * Performs word-based search with partial matching
@@ -334,7 +362,7 @@ class PortMatcher {
 
       const minLength = Math.min(inputWords.length, fieldWords.length);
       let maxConsecutiveMatches = 0;
-      
+
       for (let i = 0; i <= fieldWords.length - minLength; i++) {
         let matches = 0;
         for (let j = 0; j < minLength; j++) {
@@ -407,7 +435,7 @@ class PortMatcher {
   }
 
  
-  private async rubyFuzzySearch(inputString: string, portsData: Port[] = this.portsData): Promise<CascadingResult[]> {
+  public async rubyFuzzySearch(inputString: string, portsData: Port[] = this.portsData): Promise<CascadingResult[]> {
 
      /**
    * Performs fuzzy search using Ruby script
@@ -469,8 +497,8 @@ class PortMatcher {
     });
   }
 
- 
-  private validateLLMResponse(data: any): boolean {
+
+  public validateLLMResponse(data: any): boolean {
 
      /**
    * Validates LLM response format
@@ -501,7 +529,7 @@ class PortMatcher {
   }
 
   
-  private async getGroqResponse(keyword: string, portType: string | null): Promise<string> {
+  public async getGroqResponse(keyword: string, portType: string | null): Promise<string> {
 
     /**
    * Gets response from Groq LLM service
@@ -531,7 +559,7 @@ Important:
          temperature: 0.1,
          max_completion_tokens: 8192,
        });
- 
+
        const content = completion.choices[0].message.content;
        if (!content) {
          throw new Error("No content in response");
@@ -544,7 +572,7 @@ Important:
    }
   
   
-  private async getLLMResponse(keyword: string, portType: string | null = null): Promise<PortMatcherResult[]> {
+  public async getLLMResponse(keyword: string, portType: string | null = null): Promise<PortMatcherResult[]> {
 
     /**
    * Processes LLM response and matches with database ports
@@ -562,9 +590,9 @@ Important:
         const R = 6371;
         const dLat = (lat2 - lat1) * Math.PI / 180;
         const dLon = (lon2 - lon1) * Math.PI / 180;
-        const a = 
+        const a =
           Math.sin(dLat/2) * Math.sin(dLat/2) +
-          Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+          Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
           Math.sin(dLon/2) * Math.sin(dLon/2);
         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         return R * c;
@@ -577,7 +605,7 @@ Important:
         ].filter(Boolean).map(name => name.toLowerCase());
 
         const filteredPorts = portType ? this.portsData.filter(port => port.port_type === portType) : this.portsData;
-        
+
         const matches = filteredPorts.filter(dbPort => {
           const dbNames = [
             dbPort.name,
@@ -585,14 +613,14 @@ Important:
             ...(dbPort.other_names || [])
           ].filter(Boolean).map(name => name.toLowerCase());
 
-          const nameMatch = llmNames.some(llmName => 
+          const nameMatch = llmNames.some(llmName =>
             dbNames.some(dbName => dbName === llmName)
           );
 
           const codeMatch = dbPort.code?.toLowerCase() === llmPort.port_code?.toLowerCase();
 
           let locationMatch = false;
-          if (llmPort.latitude && llmPort.longitude && 
+          if (llmPort.latitude && llmPort.longitude &&
               dbPort.lat_lon?.lat && dbPort.lat_lon?.lon) {
             const distance = calculateDistance(
               parseFloat(llmPort.latitude),
@@ -635,32 +663,32 @@ Important:
 
       const matchedPorts = parsedResponse.ports.flatMap((llmPort: any) => {
         const matchedPorts = findMatchingPort(llmPort);
-        
+
         return matchedPorts ? matchedPorts.map(port => {
           let confidenceAdjustment = 0;
-          if (llmPort.latitude && llmPort.longitude && 
-              port.lat_lon?.lat && port.lat_lon?.lon) {
-            const distance = calculateDistance(
-              parseFloat(llmPort.latitude),
-              parseFloat(llmPort.longitude),
-              port.lat_lon.lat,
-              port.lat_lon.lon
-            );
-            confidenceAdjustment = -(Math.floor(distance / 5));
-          }
+          // if (llmPort.latitude && llmPort.longitude &&
+          //     port.lat_lon?.lat && port.lat_lon?.lon) {
+          //   const distance = calculateDistance(
+          //     parseFloat(llmPort.latitude),
+          //     parseFloat(llmPort.longitude),
+          //     port.lat_lon.lat,
+          //     port.lat_lon.lon
+          //   );
+          //   confidenceAdjustment = -(Math.floor(distance / 5));
+          // }
 
           let multiCriteriaBonus = 0;
-          const matchCount = ((port as any).match_criteria as string[]).length;
-          if (matchCount > 1) {
-            multiCriteriaBonus = (matchCount - 1) * 5;
-          }
+          // const matchCount = ((port as any).match_criteria as string[]).length;
+          // if (matchCount > 1) {
+          //   multiCriteriaBonus = (matchCount - 1) * 5;
+          // }
 
           let adjustedConfidence = llmPort.confidence_score + confidenceAdjustment + multiCriteriaBonus;
           adjustedConfidence = Math.max(0, Math.min(100, adjustedConfidence));
 
           return {
             port_data: port,
-            confidence_score: parseFloat(adjustedConfidence.toFixed(2)),
+            confidence_score: parseFloat(llmPort.confidence_score.toFixed(2)),
             match_type: `llm:${(port as any).match_criteria.join('+')}`
           };
         }) : [];
@@ -674,7 +702,7 @@ Important:
   }
 
   
-  private async cascadingSearch(inputString: string, portType: string | null = null): Promise<CascadingResult[]> {
+  public async cascadingSearch(inputString: string, portType: string | null = null): Promise<CascadingResult[]> {
 
     /**
    * Performs cascading search using multiple algorithms
@@ -703,23 +731,42 @@ Important:
         }));
       }
 
-      workingPortsData = this.filterByLocation(inputString, workingPortsData);
 
-      const wordResults = this.wordSearch(inputString, workingPortsData);
-      if (wordResults.length > 0) {
-        return wordResults.map(result => ({
-          ...result,
-          match_algo_type: "word"
-        }));
+      if(portType=="address"){
+        workingPortsData = this.filterByLocation(inputString, workingPortsData);
+      }
+      if(workingPortsData.length==0){
+        workingPortsData = this.portsData;
       }
 
+      console.log("cascading search started",workingPortsData.length);
+
+      // workingPortsData = this.filterByLocation(inputString, workingPortsData);
+      // if(workingPortsData.length==0){
+      //   workingPortsData = this.portsData;
+      // }
+
+      // const wordResults = this.wordSearch(inputString, workingPortsData);if
+      // if (wordResults.length > 0) {
+      //   return wordResults.map(result => ({
+      //     ...result,
+      //     match_algo_type: "word"
+      //   }));
+      // }
+
+      console.log("ruby fuzzy search started");
       const rubyResults = await this.rubyFuzzySearch(inputString, workingPortsData);
+
+      console.log("ruby fuzzy search ended");
+      console.log(rubyResults.length);
       if (rubyResults.length > 0) {
         return rubyResults.map(result => ({
           ...result,
           match_algo_type: "fuzzy"
         }));
       }
+
+
 
 
       return [];
@@ -740,9 +787,10 @@ Important:
    */
   
     try {
+      const started=performance.now();
       const cascadingResults = await this.cascadingSearch(keyword, portType);
-      const highConfidenceMatches = cascadingResults.filter(result => 
-        result.confidence_score >= 80 && 
+      const highConfidenceMatches = cascadingResults.filter(result =>
+        result.confidence_score >= 80 &&
         (result.match_algo_type === "exact" || result.match_algo_type === "word")
       );
 
@@ -757,8 +805,8 @@ Important:
 
       const [llmResults, remainingCascadingResults] = await Promise.all([
         this.getLLMResponse(keyword, portType),
-        Promise.resolve(cascadingResults.filter(result => 
-          result.confidence_score < 80 || 
+        Promise.resolve(cascadingResults.filter(result =>
+          result.confidence_score < 80 ||
           (result.match_algo_type !== "exact" && result.match_algo_type !== "word")
         ))
       ]);
@@ -831,7 +879,17 @@ Important:
         };
       });
 
-      return finalResults.sort((a, b) => b.confidence_score - a.confidence_score).filter((result:PortMatcherResult)=>result.confidence_score>=60).slice(0,10);
+      const ended=performance.now();
+      console.log(`Time taken: ${ended - started} milliseconds`);
+      return finalResults.sort((a, b) => {
+        if(a.confidence_score===b.confidence_score){
+          if (a.port_data.master_port && b.port_data.master_port) {
+            return a.port_data.is_head_port ? 1 : -1;
+          }
+          return a.port_data.master_port ? 1: -1;
+        }
+        return b.confidence_score - a.confidence_score;
+      }).filter((result:PortMatcherResult)=>result.confidence_score>=60).slice(0,10);
     } catch (error) {
       console.error("Error in aggregatedResults:", error);
       return [];
@@ -839,67 +897,4 @@ Important:
   }
 }
 
-export = PortMatcher; 
-
-
-
-
-  // private async getChatGPTResponse(keyword: string, portType: string | null): Promise<string> {
-
-
-  //   try {
-  //     const query = `User Prompt Format:
-  //                     Input Keyword is ${keyword} and Port Type is ${portType || 'any'}.
-
-  //                     Identify and return an array of multiple valid ports that match the given keyword and port type.
-
-  //                     Ensure the output follows exactly this JSON format:
-
-  //                     [
-  //                       {
-  //                         "name": "<Port Name>",
-  //                         "alternative_names": [
-  //                           "<Alternative Name 1>",
-  //                           "<Alternative Name 2>",
-  //                           "<Alternative Name 3>"
-  //                           ...lot and lots of alternative names
-  //                         ],
-  //                         "port_code": "<Official Port Code>",
-  //                         "latitude": "<Latitude>",
-  //                         "longitude": "<Longitude>",
-  //                         "confidence_score": <Confidence Score between 0 and 100>
-  //                       }
-  //                     ]
-
-  //                     Rules:
-  //                     - Return multiple valid matches whenever possible
-  //                     - return latitude and longitude accurately
-  //                     - Return as many alternative names and commonly used names as possible
-  //                     - Ensure the port name is correct and not a misspelling
-  //                     - Do not return explanations or alternative suggestions if no match is found. Instead, return exactly: []
-  //                     - The confidence_score must be between 0 - 100, reflecting the match accuracy
-  //                     - Strictly follow this JSON structure—any deviation is incorrect`;
-
-  //     const completion = await this.openai.chat.completions.create({
-  //       messages: [
-  //         { role: "system", content: process.env.SYSTEM_PROMPT || "" },
-  //         { role: "user", content: query },
-  //       ],
-  //       model: "gpt-4-turbo-preview",
-  //       response_format: { type: "json_object" },
-  //       temperature: 0.1,
-  //       max_tokens: 4096,
-  //     });
-
-  //     const content = completion.choices[0].message.content;
-  //     if (!content) {
-  //       throw new Error("No content in response");
-  //     }
-
-
-  //     return content;
-  //   } catch (error) {
-  //     console.error("ChatGPTService :: getResponse :: error", error);
-  //     throw error;
-  //   }
-  // }
+export = PortMatcher;

@@ -53,6 +53,33 @@ portSchema.index({ region: 1 });
 portSchema.index({ city: 1 });
 portSchema.index({ state_name: 1 });
 
+// Add compound indexes for location-based searches
+portSchema.index({ 
+  country: 1, 
+  region: 1, 
+  city: 1, 
+  state_name: 1,
+  master_port: 1,
+  is_head_port: 1,
+  sailing_schedule_available: 1
+});
+
+// Add text index for location fields
+portSchema.index({
+  country: 'text',
+  region: 'text',
+  city: 'text',
+  state_name: 'text'
+}, {
+  weights: {
+    country: 10,
+    region: 8,
+    city: 6,
+    state_name: 4
+  },
+  name: 'location_text_index'
+});
+
 const Port = mongoose.model('Port', portSchema);
 
 module.exports = Port; 
