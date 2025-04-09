@@ -1,11 +1,12 @@
+import MappingForm from "../components/Mapping-Form";
 import NavBar from "../components/NavBar";
-import MapInput from "../components/Mapping-Main";
-
 const PortMap = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       <NavBar />
-      <MapInput />
+      <div className="max-w-7xl mx-auto p-8">
+        <MappingForm />
+      </div>
     </div>
   );
 };

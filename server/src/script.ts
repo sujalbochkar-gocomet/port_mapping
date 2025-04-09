@@ -1,93 +1,35 @@
-import { Port, PortType, statusPort } from "./types/types";
 import { Request, Response } from "express";
 import cors from "cors";
-const express = require("express");
-import { prisma } from "./lib/prisma";
-import PortMatcher = require("../port_mapper/mapper");
 import swaggerUi from "swagger-ui-express";
 import swaggerJsdoc from "swagger-jsdoc";
 
-// Swagger configuration
-const swaggerOptions = {
-  definition: {
-    openapi: "3.0.0",
-    info: {
-      title: "Port Mapping API",
-      version: "1.0.0",
-      description: "API for port mapping and shipment management",
-    },
-    servers: [
-      {
-        url: "http://localhost:3000",
-        description: "Development server",
-      },
-    ],
-    components: {
-      schemas: {
-        Port: {
-          type: "object",
-          properties: {
-            _id: { type: "string" },
-            id: { type: "string" },
-            name: { type: "string" },
-            display_name: { type: "string" },
-            port_type: { type: "string" },
-            code: { type: "string" },
-            other_names: { type: "array", items: { type: "string" } },
-            city: { type: "string" },
-            state_name: { type: "string" },
-            country: { type: "string" },
-            country_code: { type: "string" },
-            region: { type: "string" },
-            lat_lon: {
-              type: "object",
-              properties: {
-                lat: { type: "number" },
-                lon: { type: "number" },
-              },
-            },
-          },
-        },
-        PortSearchResult: {
-          type: "object",
-          properties: {
-            port: { $ref: "#/components/schemas/Port" },
-            verified: { type: "boolean" },
-            match_score: { type: "number" },
-            match_type: { type: "string" },
-            sources: { type: "array", items: { type: "string" } },
-          },
-        },
-        Shipment: {
-          type: "object",
-          properties: {
-            id: { type: "string" },
-            carrierType: { type: "string" },
-            pol: { $ref: "#/components/schemas/Port" },
-            pod: { $ref: "#/components/schemas/Port" },
-            createdAt: { type: "string", format: "date-time" },
-            updatedAt: { type: "string", format: "date-time" },
-          },
-        },
-      },
-    },
-  },
-  apis: ["./src/script.ts"], // Path to the API docs
-};
+import { Port } from "./types/types";
+import { prisma } from "./lib/prisma";
+import PortMatcher from "../port_mapper/mapper";
+import swaggerOptions from "./lib/swagger";
 
+const express = require("express");
+const app = express();
+const port = 3000;
+let portMatcher: PortMatcher | null = null;
+let refreshInterval: NodeJS.Timeout | null = null;
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 
+interface CascadingResult {
+  /**
+   * Interface representing a cascading search result
+   */
+  port_data: Port;
+  confidence_score: number;
+  match_type: string;
+  match_algo_type: string;
+}
 interface PortMatcherResult {
   port_data: Port;
   confidence_score: number;
   match_type: string;
   sources: string[];
 }
-
-const app = express();
-const port = 3000;
-let portMatcher: PortMatcher | null = null;
-let refreshInterval: NodeJS.Timeout | null = null;
 
 app.use(cors());
 app.use(express.json());
@@ -130,6 +72,25 @@ const initializePortMatcher = async () => {
     throw error;
   }
 };
+
+
+// Initialize server
+const startServer = async () => {
+  try {
+    await initializePortMatcher();
+    app.listen(port, () => {
+      console.log(`Server is running on http://localhost:${port}`);
+      console.log(
+        `API documentation available at http://localhost:${port}/api-docs`
+      );
+    });
+  } catch (error) {
+    console.error("Failed to start server:", error);
+    process.exit(1);
+  }
+};
+
+startServer();
 
 /**
  * @swagger
@@ -202,48 +163,7 @@ app.get("/search-ports", async (req: Request, res: Response) => {
     else results = await portMatcher.aggregatedResults(query, type);
 
     if (results.length === 0) {
-      const tempPort: Partial<Port> = {
-        _id: `temp-${Date.now()}`,
-        id: `temp-${Date.now()}`,
-        name: query,
-        display_name: query,
-        port_type: type as PortType,
-        code: "",
-        other_names: [],
-        city: "",
-        state_name: "",
-        country: "",
-        country_code: "",
-        region: "",
-        lat_lon: { lat: 0, lon: 0 },
-        nearby_ports: JSON.parse("{}"),
-        other_details: JSON.parse("{}"),
-        deleted: true,
-        client_group_id: "",
-        created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
-        sort_order: 0,
-        verified: false,
-        sailing_schedule_available: false,
-        item_type: "",
-        master_port: false,
-        address: "",
-        fax_number: "",
-        telephone_number: "",
-        website: "",
-        description: "",
-        seo_code: "",
-        seo_updated: false,
-        is_head_port: false,
-        prefer_inland: false,
-        country_port: false,
-      };
-      const statusPort: statusPort = {
-        port: tempPort as Port,
-        verified: false,
-        match_score: 0,
-      };
-      res.status(200).json([statusPort]);
+      res.status(200).json([]);
       return;
     }
 
@@ -255,7 +175,73 @@ app.get("/search-ports", async (req: Request, res: Response) => {
       sources: result.sources,
     }));
 
-    res.status(200).json(transformedPorts);
+    res.status(200).json(transformedPorts.slice(0, 10));
+  } catch (error) {
+    console.error("Error searching ports:", error);
+    res.status(500).json({
+      error: "Failed to search ports",
+      details: error instanceof Error ? error.message : "Unknown error",
+    });
+  }
+});
+
+/**
+ * @swagger
+ * /search-ports/all:
+ *   get:
+ *     summary: Search for ports
+ *     description: Search for ports based on query and type
+ *     parameters:
+ *       - in: query
+ *         name: q
+ *         schema:
+ *           type: string
+ *         description: Search query
+ *       - in: query
+ *         name: type
+ *         schema:
+ *           type: string
+ *         description: Port type filter
+ *     responses:
+ *       200:
+ *         description: List of matching ports
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/PortSearchResult'
+ *       500:
+ *         description: Server error
+ */
+app.get("/search-ports/all", async (req: Request, res: Response) => {
+  try {
+    if (!portMatcher) {
+      throw new Error("PortMatcher not initialized");
+    }
+
+    const query = (req.query.q as string)?.toLowerCase() || "";
+    const type = req.query.type as string;
+
+    let results = [];
+    if (type === "all")
+      results = await portMatcher.aggregatedResults(query, null, true);
+    else results = await portMatcher.aggregatedResults(query, type, true);
+
+    if (results.length === 0) {
+      res.status(200).json([]);
+      return;
+    }
+
+    const transformedPorts = results.map((result: PortMatcherResult) => ({
+      port: result.port_data,
+      verified: true,
+      match_score: result.confidence_score,
+      match_type: result.match_type,
+      sources: result.sources,
+    }));
+
+    res.status(200).json(transformedPorts.slice(0, 10));
   } catch (error) {
     console.error("Error searching ports:", error);
     res.status(500).json({
@@ -268,6 +254,7 @@ app.get("/search-ports", async (req: Request, res: Response) => {
 app.get("/issue-search", async (req: Request, res: Response) => {
   // example link http://localhost:3000/issue-search?q=los
   const query = (req.query.q as string)?.toLowerCase() || "";
+  const type = req.query.type as string;
   const ports = await prisma.port.findMany({
     where: {
       OR: [
@@ -278,11 +265,418 @@ app.get("/issue-search", async (req: Request, res: Response) => {
         { city: { contains: query, mode: "insensitive" } },
         { other_names: { has: query } },
       ],
+      port_type: type,
+      verified: true,
     },
     take: 40,
   });
   res.status(200).json(ports);
 });
+
+/**
+ * @swagger
+ * /search-ports/complete-name:
+ *   get:
+ *     summary: Search for ports using complete name matching
+ *     description: Search for ports using exact name matching algorithm
+ *     parameters:
+ *       - in: query
+ *         name: q
+ *         schema:
+ *           type: string
+ *         description: Search query
+ *       - in: query
+ *         name: type
+ *         schema:
+ *           type: string
+ *         description: Port type filter
+ *     responses:
+ *       200:
+ *         description: List of matching ports
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/PortSearchResult'
+ *       500:
+ *         description: Server error
+ */
+app.get("/search-ports/complete-name", async (req: Request, res: Response) => {
+  try {
+    if (!portMatcher) {
+      throw new Error("PortMatcher not initialized");
+    }
+
+    const query = (req.query.q as string)?.toLowerCase() || "";
+    const type = req.query.type as string;
+
+    // Filter ports by type if specified
+    let filteredPorts = [...portMatcher.portsData];
+    if (type) {
+      filteredPorts = filteredPorts.filter((port) => port.port_type === type);
+    }
+
+    // Perform complete name search
+    const results = portMatcher.completeNameSearch(query, filteredPorts);
+
+    if (results.length === 0) {
+      res.status(200).json([]);
+      return;
+    }
+
+    const transformedPorts = results.map((result: CascadingResult) => ({
+      port: result.port_data,
+      verified: true,
+      match_score: result.confidence_score,
+      match_type: result.match_type,
+      sources: ["complete_name"],
+    }));
+
+    res.status(200).json(transformedPorts.slice(0, 10));
+  } catch (error) {
+    console.error("Error in complete name search:", error);
+    res.status(500).json({
+      error: "Failed to perform complete name search",
+      details: error instanceof Error ? error.message : "Unknown error",
+    });
+  }
+});
+
+/**
+ * @swagger
+ * /search-ports/fuzzy:
+ *   get:
+ *     summary: Search for ports using fuzzy matching
+ *     description: Search for ports using fuzzy matching algorithm with optional location filtering
+ *     parameters:
+ *       - in: query
+ *         name: q
+ *         schema:
+ *           type: string
+ *         description: Search query
+ *       - in: query
+ *         name: type
+ *         schema:
+ *           type: string
+ *         description: Port type filter
+ *       - in: query
+ *         name: use_location_filter
+ *         schema:
+ *           type: boolean
+ *         description: Whether to enable location-based filtering
+ *     responses:
+ *       200:
+ *         description: List of matching ports
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/PortSearchResult'
+ *       500:
+ *         description: Server error
+ */
+app.get("/search-ports/fuzzy", async (req: Request, res: Response) => {
+  try {
+    if (!portMatcher) {
+      throw new Error("PortMatcher not initialized");
+    }
+
+    const query = (req.query.q as string)?.toLowerCase() || "";
+    const type = req.query.type as string;
+    const useLocationFilter = req.query.use_location_filter === "true";
+
+    // Filter ports by type if specified
+    let filteredPorts = [...portMatcher.portsData];
+    if (type) {
+      filteredPorts = filteredPorts.filter((port) => port.port_type === type);
+    }
+
+    // Apply location filtering if enabled
+    if (useLocationFilter) {
+      filteredPorts = portMatcher.filterByLocation(query, filteredPorts);
+    }
+
+    // Perform fuzzy search
+    const results = await portMatcher.rubyFuzzySearch(query, filteredPorts);
+
+    if (results.length === 0) {
+      res.status(200).json([]);
+      return;
+    }
+
+    const transformedPorts = results.map((result: CascadingResult) => ({
+      port: result.port_data,
+      verified: true,
+      match_score: result.confidence_score,
+      match_type: result.match_type,
+      sources: ["fuzzy_search"],
+    }));
+
+    res.status(200).json(transformedPorts.slice(0, 10));
+  } catch (error) {
+    console.error("Error in fuzzy search:", error);
+    res.status(500).json({
+      error: "Failed to perform fuzzy search",
+      details: error instanceof Error ? error.message : "Unknown error",
+    });
+  }
+});
+
+/**
+ * @swagger
+ * /search-ports/llm:
+ *   get:
+ *     summary: Search for ports using LLM-based matching
+ *     description: Search for ports using LLM-based matching algorithm with optional location filtering
+ *     parameters:
+ *       - in: query
+ *         name: q
+ *         schema:
+ *           type: string
+ *         description: Search query
+ *       - in: query
+ *         name: type
+ *         schema:
+ *           type: string
+ *         description: Port type filter
+ *       - in: query
+ *         name: use_location_filter
+ *         schema:
+ *           type: boolean
+ *         description: Whether to enable location-based filtering
+ *     responses:
+ *       200:
+ *         description: List of matching ports
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/PortSearchResult'
+ *       500:
+ *         description: Server error
+ */
+app.get("/search-ports/llm", async (req: Request, res: Response) => {
+  try {
+    if (!portMatcher) {
+      throw new Error("PortMatcher not initialized");
+    }
+
+    const query = (req.query.q as string)?.toLowerCase() || "";
+    const type = req.query.type as string;
+    const useLocationFilter = req.query.use_location_filter === "true";
+
+    // Filter ports by type if specified
+    let filteredPorts = [...portMatcher.portsData];
+    if (type) {
+      filteredPorts = filteredPorts.filter((port) => port.port_type === type);
+    }
+
+    // Apply location filtering if enabled
+    if (useLocationFilter) {
+      filteredPorts = portMatcher.filterByLocation(query, filteredPorts);
+    }
+
+    // Perform LLM search
+    const results = await portMatcher.getLLMResponse(query, type);
+
+    if (results.length === 0) {
+      res.status(200).json([]);
+      return;
+    }
+
+    const transformedPorts = results.map((result: PortMatcherResult) => ({
+      port: result.port_data,
+      verified: true,
+      match_score: result.confidence_score,
+      match_type: result.match_type,
+      sources: result.sources,
+    }));
+
+    console.log("LLM search ended", transformedPorts.length);
+    res.status(200).json(transformedPorts.slice(0, 10));
+  } catch (error) {
+    console.error("Error in LLM search:", error);
+    res.status(500).json({
+      error: "Failed to perform LLM search",
+      details: error instanceof Error ? error.message : "Unknown error",
+    });
+  }
+});
+
+/**
+ * @swagger
+ * /search-ports/cascading-results:
+ *   get:
+ *     summary: Get cascading search results
+ *     description: Get results from all cascading search methods (exact, word, fuzzy) with their respective scores
+ *     parameters:
+ *       - in: query
+ *         name: q
+ *         schema:
+ *           type: string
+ *         description: Search query
+ *       - in: query
+ *         name: type
+ *         schema:
+ *           type: string
+ *         description: Port type filter
+ *     responses:
+ *       200:
+ *         description: List of matching ports with cascading results
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 exact_matches:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/PortSearchResult'
+ *                 word_matches:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/PortSearchResult'
+ *                 fuzzy_matches:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/PortSearchResult'
+ *       500:
+ *         description: Server error
+ */
+app.get(
+  "/search-ports/cascading-results",
+  async (req: Request, res: Response) => {
+    try {
+      if (!portMatcher) {
+        throw new Error("PortMatcher not initialized");
+      }
+
+      const query = (req.query.q as string)?.toLowerCase() || "";
+      const type = req.query.type as string;
+
+      // Filter ports by type if specified
+      let filteredPorts = [...portMatcher.portsData];
+      if (type) {
+        filteredPorts = filteredPorts.filter((port) => port.port_type === type);
+      }
+
+      const results = await portMatcher.cascadingSearch(query, type);
+
+      if (results.length == 0) {
+        res.status(200).json([]);
+        return;
+      }
+
+      const transformedPorts = results.map((result: CascadingResult) => ({
+        port: result.port_data,
+        verified: true,
+        match_score: result.confidence_score,
+        match_type: result.match_type,
+      }));
+
+      res.status(200).json(transformedPorts.slice(0, 10));
+    } catch (error) {
+      console.error("Error getting cascading results:", error);
+      res.status(500).json({
+        error: "Failed to get cascading results",
+        details: error instanceof Error ? error.message : "Unknown error",
+      });
+    }
+  }
+);
+
+/**
+ * @swagger
+ * /search-ports/filter-by-location:
+ *   get:
+ *     summary: Filter ports by location and type
+ *     description: Filter ports based on location string and port type using the PortMatcher's filtering algorithm
+ *     parameters:
+ *       - in: query
+ *         name: q
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Location string to filter by (e.g., "ho chi minh city, vietnam")
+ *       - in: query
+ *         name: type
+ *         schema:
+ *           type: string
+ *         description: Port type to filter by. Use 'all' to include all types
+ *     responses:
+ *       200:
+ *         description: List of matching ports
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/PortSearchResult'
+ *       400:
+ *         description: Bad request - missing required parameters
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: Location query parameter 'q' is required
+ *       500:
+ *         description: Server error
+ */
+app.get( "/search-ports/filter-by-location",async (req: Request, res: Response) => {
+    try {
+      if (!portMatcher) {
+        throw new Error("PortMatcher not initialized");
+      }
+
+      const query = (req.query.q as string)?.toLowerCase() || "";
+      const type = req.query.type as string;
+
+      if (!query) {
+        return res.status(400).json({
+          error: "Location query parameter 'q' is required",
+        });
+      }
+
+      // First filter by type if specified
+      let workingPortsData = [...portMatcher.portsData];
+      if (type && type !== "all") {
+        workingPortsData = workingPortsData.filter(
+          (port) => port.port_type === type
+        );
+      }
+
+      // Then apply location filtering
+      const filteredPorts = portMatcher.filterByLocation(
+        query,
+        workingPortsData
+      );
+
+      if (filteredPorts.length === 0) {
+        return res.status(200).json([]);
+      }
+
+      console.log(filteredPorts.length);
+
+      // Transform the results to match the PortSearchResult schema
+
+      return res.status(200).json(filteredPorts.slice(0, 10));
+    } catch (error) {
+      console.error("Error filtering ports by location:", error);
+      return res.status(500).json({
+        error: "Failed to filter ports by location",
+        details: error instanceof Error ? error.message : "Unknown error",
+      });
+    }
+  }
+);
+
+
 
 /**
  * @swagger
@@ -517,21 +911,3 @@ app.delete("/delete-shipment/:id", async (req: Request, res: Response) => {
     });
   }
 });
-
-// Initialize server
-const startServer = async () => {
-  try {
-    await initializePortMatcher();
-    app.listen(port, () => {
-      console.log(`Server is running on http://localhost:${port}`);
-      console.log(
-        `API documentation available at http://localhost:${port}/api-docs`
-      );
-    });
-  } catch (error) {
-    console.error("Failed to start server:", error);
-    process.exit(1);
-  }
-};
-
-startServer();

@@ -1,6 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import NavBar from "./NavBar";
 import CreateNewPort from "./IssueReport-CreateNewPort";
 import MapExistingPort from "./IssueReport-MapExistingPort";
 import { FiPlus, FiMapPin, FiList } from "react-icons/fi";
@@ -38,7 +37,6 @@ const IssueReportResolveIssue = () => {
 
   return (
     <div>
-      <NavBar />
       <div className="max-w-7xl mx-auto p-8">
         {/* Main Content */}
         <div className="space-y-6">

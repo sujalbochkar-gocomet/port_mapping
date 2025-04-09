@@ -1,11 +1,11 @@
 import "./App.css";
 import { Routes, Route, Navigate } from "react-router-dom";
-import PortSearch from "./pages/PortSearch";
 import PortMap from "./pages/PortMap";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import IssueReportMain from "./components/IssueReport-Main";
-import IssueReportResolveIssue from "./components/IssueReport-ResolveIssue";
+import Shipment from "./pages/PortShipment";
+import IssueDashboard from "./pages/Issue-Dashboard";
+import IssueResolve from "./pages/Issue-Resolve";
 function App() {
   return (
     <div>
@@ -38,14 +38,12 @@ function App() {
         }}
       />
       <Routes>
-        <Route path="/port-map" element={<PortMap />} />
-        <Route path="/port-search" element={<PortSearch />} />
-        <Route path="/admin/issue/dashboard" element={<IssueReportMain />} />
-        <Route
-          path="/admin/issue/resolve/:id"
-          element={<IssueReportResolveIssue />}
-        />
         <Route path="*" element={<Navigate to="/port-map" replace />} />
+
+        <Route path="/port-map" element={<PortMap />} />
+        <Route path="/shipment" element={<Shipment />} />
+        <Route path="/admin/issue/dashboard" element={<IssueDashboard />} />
+        <Route path="/admin/issue/resolve/:id" element={<IssueResolve />} />
       </Routes>
     </div>
   );

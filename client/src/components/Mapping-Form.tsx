@@ -1,356 +1,111 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import axios from "axios";
-import { Shipment, statusPort } from "../types/types";
-import flagIcon from "../assets/flag.svg";
-import landIcon from "../assets/land.svg";
-import airIcon from "../assets/air.svg";
-import seaIcon from "../assets/sea.svg";
-import { toast } from "react-toastify";
+import { statusPort } from "../types/types";
+import ModeSelector from "./Mapping-ModeSelector";
 
 const MappingForm = () => {
-  const [shipments, setShipments] = useState<Shipment[]>([]);
   const [carrierType, setCarrierType] = useState<string>("sea_port");
-  const [loading, setLoading] = useState(false);
-  const [isPolSearching, setIsPolSearching] = useState(false);
-  const [isPodSearching, setIsPodSearching] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
+  const [isSearching, setIsSearching] = useState(false);
+  const [searchResults, setSearchResults] = useState<statusPort[]>([]);
+  const [showOtherNames, setShowOtherNames] = useState<{
+    [key: string]: boolean;
+  }>({});
+  const resultsRef = useRef<HTMLDivElement>(null);
 
-  // Reset states when carrier type changes
-  useEffect(() => {
-    // Reset POL states
-    setPolSearchInput("");
-    setPolResults([]);
-    setLastPolResults([]);
-    setSelectedPol(null);
-    setIsPolDropdownOpen(false);
-
-    // Reset POD states
-    setPodSearchInput("");
-    setPodResults([]);
-    setLastPodResults([]);
-    setSelectedPod(null);
-    setIsPodDropdownOpen(false);
-  }, [carrierType]);
-
-  // Search states for POL
-  const [polSearchInput, setPolSearchInput] = useState("");
-  const [polResults, setPolResults] = useState<statusPort[]>([]);
-  const [lastPolResults, setLastPolResults] = useState<statusPort[]>([]);
-  const [selectedPol, setSelectedPol] = useState<statusPort | null>(null);
-  const [isPolDropdownOpen, setIsPolDropdownOpen] = useState(false);
-  const polDropdownRef = useRef<HTMLDivElement>(null);
-
-  // Search states for POD
-  const [podSearchInput, setPodSearchInput] = useState("");
-  const [podResults, setPodResults] = useState<statusPort[]>([]);
-  const [lastPodResults, setLastPodResults] = useState<statusPort[]>([]);
-  const [selectedPod, setSelectedPod] = useState<statusPort | null>(null);
-  const [isPodDropdownOpen, setIsPodDropdownOpen] = useState(false);
-  const podDropdownRef = useRef<HTMLDivElement>(null);
-  // Add debounce timer refs
-  const polDebounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const podDebounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const polAbortController = useRef<AbortController | null>(null);
-  const podAbortController = useRef<AbortController | null>(null);
-
-  const handlePolSelect = useCallback((port: statusPort) => {
-    setPolSearchInput("");
-    setSelectedPol(port);
-    setPolResults([]);
-    setIsPolDropdownOpen(false);
-  }, []);
-
-  const handlePodSelect = useCallback((port: statusPort) => {
-    setPodSearchInput("");
-    setSelectedPod(port);
-    setPodResults([]);
-    setIsPodDropdownOpen(false);
-  }, []);
-
-  // Auto-select first result function
-  const autoSelectFirstResult = useCallback(
-    (isPol: boolean) => {
-      const results = isPol ? lastPolResults : lastPodResults;
-      const isSearching = isPol ? isPolSearching : isPodSearching;
-      const isDropdownOpen = isPol ? isPolDropdownOpen : isPodDropdownOpen;
-      const selected = isPol ? selectedPol : selectedPod;
-      const handleSelect = isPol ? handlePolSelect : handlePodSelect;
-
-      if (!isSearching && results.length > 0 && !selected && !isDropdownOpen) {
-        handleSelect(results[0]);
-      }
-    },
-    [
-      lastPolResults,
-      lastPodResults,
-      isPolSearching,
-      isPodSearching,
-      isPolDropdownOpen,
-      isPodDropdownOpen,
-      selectedPol,
-      selectedPod,
-      handlePolSelect,
-      handlePodSelect,
-    ]
-  );
+  // Add debounce timer and abort controller refs
+  const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const abortController = useRef<AbortController | null>(null);
 
   // Debounced search function
   const debouncedSearch = useCallback(
-    (term: string, isPol: boolean) => {
+    (term: string) => {
       // Clear existing timer
-      const timerRef = isPol ? polDebounceTimer : podDebounceTimer;
-      if (timerRef.current) {
-        clearTimeout(timerRef.current);
+      if (debounceTimer.current) {
+        clearTimeout(debounceTimer.current);
       }
 
       // Abort previous request if it exists
-      const abortControllerRef = isPol
-        ? polAbortController
-        : podAbortController;
-      if (abortControllerRef.current) {
-        abortControllerRef.current.abort();
+      if (abortController.current) {
+        abortController.current.abort();
       }
 
       if (!term.trim()) {
-        if (isPol) {
-          setPolResults([]);
-          setLastPolResults([]);
-          setIsPolSearching(false);
-        } else {
-          setPodResults([]);
-          setLastPodResults([]);
-          setIsPodSearching(false);
-        }
+        setSearchResults([]);
+        setIsSearching(false);
         return;
       }
 
       // Set loading state
-      if (isPol) {
-        setIsPolSearching(true);
-      } else {
-        setIsPodSearching(true);
-      }
+      setIsSearching(true);
 
-      abortControllerRef.current = new AbortController();
+      // Create new abort controller
+      abortController.current = new AbortController();
 
       // Set new timer
-      timerRef.current = setTimeout(async () => {
+      debounceTimer.current = setTimeout(async () => {
         try {
-          const portType = getPortTypeFromCarrier(carrierType);
           const response = await axios.get(
             `http://localhost:3000/search-ports?q=${encodeURIComponent(
               term
-            )}&type=${portType}`,
+            )}&type=${carrierType}`,
             {
-              signal: abortControllerRef.current?.signal,
+              signal: abortController.current?.signal,
             }
           );
           const results = response.data;
-
-          if (isPol) {
-            setPolResults(results);
-            setLastPolResults(results);
-            setIsPolSearching(false);
-            autoSelectFirstResult(true);
-          } else {
-            setPodResults(results);
-            setLastPodResults(results);
-            setIsPodSearching(false);
-            autoSelectFirstResult(false);
-          }
+          setSearchResults(results);
         } catch (error) {
           // Ignore errors from aborted requests
           if (axios.isCancel(error)) {
             return;
           }
-          console.error("Error fetching ports:", error);
-          if (isPol) {
-            setPolResults([]);
-            setLastPolResults([]);
-            setIsPolSearching(false);
-          } else {
-            setPodResults([]);
-            setLastPodResults([]);
-            setIsPodSearching(false);
-          }
+          console.error("Error searching:", error);
+          setSearchResults([]);
+        } finally {
+          setIsSearching(false);
         }
       }, 300); // 300ms delay
     },
-    [
-      carrierType,
-      isPolDropdownOpen,
-      isPodDropdownOpen,
-      selectedPol,
-      selectedPod,
-    ]
+    [carrierType]
   );
 
   // Cleanup on unmount
   useEffect(() => {
-    // Store current ref values in variables inside effect
-    const polController = polAbortController.current;
-    const podController = podAbortController.current;
-    const polTimer = polDebounceTimer.current;
-    const podTimer = podDebounceTimer.current;
     return () => {
-      if (polController) {
-        polController.abort();
+      if (debounceTimer.current) {
+        clearTimeout(debounceTimer.current);
       }
-      if (podController) {
-        podController.abort();
-      }
-      if (polTimer) {
-        clearTimeout(polTimer);
-      }
-      if (podTimer) {
-        clearTimeout(podTimer);
+      if (abortController.current) {
+        abortController.current.abort();
       }
     };
   }, []);
 
+  const handleSearch = async () => {
+    if (!searchInput.trim()) {
+      return;
+    }
+    debouncedSearch(searchInput);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearchInput(value);
+    debouncedSearch(value);
+  };
+
+  // Clear search results when changing carrier type
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      // Check if click is outside POL input and dropdown
-      if (
-        polDropdownRef.current &&
-        !polDropdownRef.current.contains(event.target as Node)
-      ) {
-        setIsPolDropdownOpen(false);
-        // Only auto-select if no manual selection was made
-        if (polResults.length > 0 && !selectedPol && !isPolDropdownOpen) {
-          handlePolSelect(polResults[0]);
-        }
-      }
+    setSearchResults([]);
+    setSearchInput("");
+  }, [carrierType]);
 
-      // Check if click is outside POD input and dropdown
-      if (
-        podDropdownRef.current &&
-        !podDropdownRef.current.contains(event.target as Node)
-      ) {
-        setIsPodDropdownOpen(false);
-        // Only auto-select if no manual selection was made
-        if (podResults.length > 0 && !selectedPod && !isPodDropdownOpen) {
-          handlePodSelect(podResults[0]);
-        }
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [
-    polResults,
-    podResults,
-    selectedPol,
-    selectedPod,
-    handlePolSelect,
-    handlePodSelect,
-    isPolDropdownOpen,
-    isPodDropdownOpen,
-  ]);
-
-  // Add blur handlers for the inputs
-  const handlePolBlur = () => {
-    // Small delay to allow click events to fire first
-    setTimeout(() => {
-      // Only auto-select if dropdown is closed (meaning no click was made)
-      if (polResults.length > 0 && !selectedPol && !isPolDropdownOpen) {
-        handlePolSelect(polResults[0]);
-      }
-    }, 200);
-  };
-
-  const handlePodBlur = () => {
-    // Small delay to allow click events to fire first
-    setTimeout(() => {
-      // Only auto-select if dropdown is closed (meaning no click was made)
-      if (podResults.length > 0 && !selectedPod && !isPodDropdownOpen) {
-        handlePodSelect(podResults[0]);
-      }
-    }, 200);
-  };
-
-  // Modify the click handlers for dropdown items
-  const handlePolItemClick = (port: statusPort) => {
-    setIsPolDropdownOpen(false);
-    handlePolSelect(port);
-  };
-
-  const handlePodItemClick = (port: statusPort) => {
-    setIsPodDropdownOpen(false);
-    handlePodSelect(port);
-  };
-
-  const addShipment = async () => {
-    if (loading) return;
-
-    // Auto-select first result when adding shipment
-    autoSelectFirstResult(true);
-    autoSelectFirstResult(false);
-
-    if (!selectedPol || !selectedPod) {
-      toast.error("Please fill in all fields and select valid ports");
-      return;
-    }
-
-    if (selectedPol.port.id === selectedPod.port.id) {
-      toast.error("POL and POD cannot be the same port. Please select different ports.");
-      return;
-    }
-
-    setLoading(true);
-    try {
-      const response = await axios.post("http://localhost:3000/add-shipment", {
-        pol: selectedPol,
-        pod: selectedPod,
-        carrierType,
-      });
-
-      // Add success toast
-      toast.success("Shipment added successfully!");
-      window.location.reload();
-      // Update shipments array with the new shipment
-      setShipments([...shipments, response.data]);
-
-      // Reset form
-      setCarrierType("");
-      setSelectedPol(null);
-      setSelectedPod(null);
-      setPolSearchInput("");
-      setPodSearchInput("");
-    } catch (err) {
-      toast.error("Failed to add shipment. Please try again.");
-      console.error("Error adding shipment:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handlePolInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setPolSearchInput(value);
-    setIsPolDropdownOpen(true);
-
-    // Clear any pending debounce timer
-    if (polDebounceTimer.current) {
-      clearTimeout(polDebounceTimer.current);
-    }
-
-    debouncedSearch(value, true);
-  };
-
-  const handlePodInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setPodSearchInput(value);
-    setIsPodDropdownOpen(true);
-
-    // Clear any pending debounce timer
-    if (podDebounceTimer.current) {
-      clearTimeout(podDebounceTimer.current);
-    }
-
-    debouncedSearch(value, false);
+  const toggleOtherNames = (portId: string) => {
+    setShowOtherNames((prev) => ({
+      ...prev,
+      [portId]: !prev[portId],
+    }));
   };
 
   return (
@@ -362,366 +117,286 @@ const MappingForm = () => {
         </label>
         <div className="flex items-center gap-4">
           <ModeSelector
-            selectedMode={carrierType || "all"}
+            selectedMode={carrierType}
             onModeSelect={setCarrierType}
           />
         </div>
       </div>
 
-      {/* POL and POD Block */}
+      {/* Search Block */}
       <div className="flex items-center gap-4">
         <div className="w-full relative">
           <label className="block text-lg font-bold text-gray-600 mb-1">
-            Port of Loading (POL) <span className="text-red-500">*</span>
+            Enter Keyword Here <span className="text-red-500">*</span>
           </label>
-
-          {selectedPol ? (
-            <div className="w-full px-3 py-3 bg-white border border-gray-300 rounded-lg shadow-sm flex justify-between items-center">
-              {/* First div: logo and port name */}
-              <div className="flex items-center gap-2 max-w-[75%] min-w-[75%]">
-                {selectedPol !== null && selectedPol.port?.country_code ? (
-                  <img
-                    src={`https://flagsapi.com/${selectedPol.port.country_code.toUpperCase()}/flat/64.png`}
-                    alt={`${selectedPol.port.country} flag`}
-                    className="w-6 h-4 mr-2 object-cover rounded-sm shadow-sm"
-                  />
-                ) : (
-                  <FlagIcon />
-                )}
-                <p className="text-sm text-gray-800 font-medium">
-                  {(() => {
-                    const displayName =
-                      selectedPol.port.display_name || selectedPol.port.name;
-
-                    return displayName.length > 45
-                      ? displayName.substring(0, 45) + "..."
-                      : displayName;
-                  })()}
-                </p>
-              </div>
-
-              {/* Second div: type and match score */}
-              <div className="text-xs text-gray-500">
-                Type: {checkPortType(selectedPol.port.port_type)}
-              </div>
-
-              {/* Third div: close button */}
-              <div>
-                <button
-                  onClick={() => {
-                    setPolResults([]);
-                    setLastPolResults([]);
-                    setSelectedPol(null);
-                  }}
-                  className="text-gray-500 hover:text-gray-700 ml-2 hover:cursor-pointer"
-                >
-                  ✕
-                </button>
-              </div>
+          <div className="flex items-center gap-4">
+            <div className="flex-1">
+              <input
+                type="text"
+                value={searchInput}
+                onChange={handleInputChange}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleSearch();
+                  }
+                }}
+                placeholder={
+                  carrierType === "address"
+                    ? "Enter address..."
+                    : "Enter port name, city, or code..."
+                }
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
             </div>
-          ) : (
-            <div ref={polDropdownRef} className="relative w-full">
-              <div className="relative">
-                <input
-                  type="text"
-                  value={polSearchInput}
-                  placeholder="Enter POL..."
-                  className="w-full px-3 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pr-10"
-                  onChange={handlePolInputChange}
-                  onClick={() => setIsPolDropdownOpen(true)}
-                  onBlur={handlePolBlur}
-                />
-                {isPolSearching && (
-                  <div className="absolute right-3 top-1/2 -translate-y-1/2">
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-500"></div>
-                  </div>
-                )}
-              </div>
-
-              {/* POL Search Results */}
-              {isPolDropdownOpen &&
-                polSearchInput &&
-                polResults.length > 0 &&
-                !selectedPol && (
-                  <div className="absolute z-10 w-full mt-1 bg-white rounded-md shadow-lg max-h-96 overflow-y-auto border border-gray-200">
-                    {polResults.map((port, index) => (
-                      <div
-                        key={index}
-                        className="px-4 py-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-0"
-                        onClick={() => handlePolItemClick(port)}
-                      >
-                        {port.port?.id?.startsWith("temp-") ? (
-                          <div className="flex justify-between items-center">
-                            <div className="flex items-center gap-2">
-                              <span className="w-6 h-6 flex items-center justify-center bg-gray-200 rounded-full">
-                                <span className="text-xs">+</span>
-                              </span>
-                              <span className="text-sm font-medium">
-                                Create: "{port.port.name}"
-                              </span>
-                            </div>
-                            <div className="text-xs text-gray-500">
-                              Custom Port
-                            </div>
-                          </div>
-                        ) : (
-                          <PortDropdownItem port={port} />
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                )}
-            </div>
-          )}
-        </div>
-
-        <div className="w-full relative">
-          <label className="block text-lg font-bold text-gray-600 mb-1">
-            Port of Discharge (POD) <span className="text-red-500">*</span>
-          </label>
-
-          {selectedPod ? (
-            <div className="w-full px-3 py-3 bg-white border border-gray-300 rounded-lg shadow-sm flex justify-between items-center">
-              {/* First div: logo and port name */}
-              <div className="flex items-center gap-2 max-w-[75%] min-w-[75%]">
-                {selectedPod !== null && selectedPod.port?.country_code ? (
-                  <img
-                    src={`https://flagsapi.com/${selectedPod.port.country_code.toUpperCase()}/flat/64.png`}
-                    alt={`${selectedPod.port.country} flag`}
-                    className="w-6 h-4 object-cover rounded-sm shadow-sm"
-                  />
-                ) : (
-                  <FlagIcon />
-                )}
-                <p className="text-sm text-gray-800 font-medium">
-                  {(() => {
-                    const displayName =
-                      selectedPod.port.display_name || selectedPod.port.name;
-
-                    return displayName.length > 45
-                      ? displayName.substring(0, 45) + "..."
-                      : displayName;
-                  })()}
-                </p>
-              </div>
-
-              {/* Second div: type and match score */}
-              <div className="text-xs text-gray-500">
-                Type: {checkPortType(selectedPod.port.port_type)}
-              </div>
-
-              {/* Third div: close button */}
-              <div>
-                <button
-                  onClick={() => {
-                    setPodResults([]);
-                    setLastPodResults([]);
-                    setSelectedPod(null);
-                  }}
-                  className="text-gray-500 hover:text-gray-700 ml-2 hover:cursor-pointer"
-                >
-                  ✕
-                </button>
-              </div>
-            </div>
-          ) : (
-            <div ref={podDropdownRef} className="relative w-full">
-              <div className="relative">
-                <input
-                  type="text"
-                  value={podSearchInput}
-                  placeholder="Enter POD..."
-                  className="w-full px-3 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pr-10"
-                  onChange={handlePodInputChange}
-                  onClick={() => setIsPodDropdownOpen(true)}
-                  onBlur={handlePodBlur}
-                />
-                {isPodSearching && (
-                  <div className="absolute right-3 top-1/2 -translate-y-1/2">
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-500"></div>
-                  </div>
-                )}
-              </div>
-
-              {/* POD Search Results */}
-              {isPodDropdownOpen &&
-                podSearchInput &&
-                podResults.length > 0 &&
-                !selectedPod && (
-                  <div className="absolute z-10 w-full mt-1 bg-white rounded-md shadow-lg max-h-96 overflow-y-auto border border-gray-200">
-                    {podResults.map((port, index) => (
-                      <div
-                        key={index}
-                        className="px-4 py-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-0"
-                        onClick={() => handlePodItemClick(port)}
-                      >
-                        {port.port?.id?.startsWith("temp-") ? (
-                          <div className="flex justify-between items-center">
-                            <div className="flex items-center gap-2">
-                              <span className="w-6 h-6 flex items-center justify-center bg-gray-200 rounded-full">
-                                <span className="text-xs">+</span>
-                              </span>
-                              <span className="text-sm font-medium">
-                                Create: "{port.port.display_name}"
-                              </span>
-                            </div>
-                            <div className="text-xs text-gray-500">
-                              Custom Port
-                            </div>
-                          </div>
-                        ) : (
-                          <PortDropdownItem port={port} />
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                )}
-            </div>
-          )}
-        </div>
-
-        <div className="text-nowrap self-end">
-          <button
-            onClick={addShipment}
-            disabled={loading}
-            className={`px-5 py-3  font-bold rounded-md transition-colors flex items-center gap-2
-                ${
-                  loading
-                    ? "bg-blue-300 cursor-not-allowed"
-                    : "bg-blue-700 hover:bg-blue-600 text-white"
-                }`}
-          >
-            {loading ? (
-              <>
-                <span className="animate-spin">⌛</span>
-                Adding...
-              </>
-            ) : (
-              <>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 font-bold"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path d="M8.5 2a1 1 0 0 0-1 1v5h-5a1 1 0 0 0 0 2h5v5a1 1 0 0 0 2 0v-5h5a1 1 0 0 0 0-2h-5V3a1 1 0 0 0-1-1z" />
-                </svg>
-                Add Shipment
-              </>
-            )}
-          </button>
+            <button
+              onClick={handleSearch}
+              disabled={isSearching}
+              className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+            >
+              {isSearching ? (
+                <>
+                  <svg
+                    className="animate-spin h-5 w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                  Searching...
+                </>
+              ) : (
+                <>
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    />
+                  </svg>
+                  Search
+                </>
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Add Shipment Button */}
-    </div>
-  );
-};
-const PortDropdownItem = ({ port }: { port: statusPort }) => {
-  return (
-    <div className="flex relative justify-between items-center w-full">
-      <div className="flex items-center gap-3 max-w-[75%]">
-        {port.port?.country_code && port.port?.country_code !== "" ? (
-          <img
-            src={`https://flagsapi.com/${port.port.country_code.toUpperCase()}/flat/64.png`}
-            alt={`${port.port.country} flag`}
-            className="w-6 h-4 object-cover rounded-sm shadow-sm mr-3"
-          />
+      {/* Results Section */}
+      <div ref={resultsRef} className="mt-4">
+        {isSearching ? (
+          <div className="flex flex-col items-center justify-center p-10 bg-gray-50 rounded-lg border border-gray-200">
+            <svg
+              className="animate-spin w-16 h-16 text-blue-500 mb-2"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+            <p className="text-lg font-medium text-gray-600">Searching...</p>
+          </div>
+        ) : searchInput.trim() === "" ? (
+          <div className="flex flex-col items-center justify-center p-10 bg-gray-50 rounded-lg border border-gray-200">
+            <svg
+              className="w-16 h-16 text-gray-400 mb-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              />
+            </svg>
+            <p className="text-lg font-medium text-gray-600">
+              Enter a search term to find ports
+            </p>
+          </div>
+        ) : searchResults.length > 0 ? (
+          <div className="space-y-4">
+            {searchResults.map((port) => (
+              <div
+                key={port.port._id}
+                className="w-full bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all duration-200"
+              >
+                {/* Header Section */}
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-2">
+                      {port.port.country_code && (
+                        <img
+                          src={`https://flagsapi.com/${port.port.country_code.toUpperCase()}/flat/64.png`}
+                          alt={`${port.port.country} flag`}
+                          className="w-8 h-6 object-cover rounded-sm shadow-sm"
+                        />
+                      )}
+                      <h3 className="text-xl font-semibold text-gray-800">
+                        {port.port.name}
+                      </h3>
+                      <span className="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm font-medium border border-gray-200">
+                        {port.port.code}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span
+                      className={`px-3 py-1 rounded-full text-sm font-medium ${
+                        port.verified
+                          ? "bg-green-100 text-green-800 border border-green-200"
+                          : "bg-yellow-100 text-yellow-800 border border-yellow-200"
+                      }`}
+                    >
+                      {port.verified ? "Verified" : "Unverified"}
+                    </span>
+                    <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium border border-blue-200">
+                      Match: {port.match_score.toFixed(1)}%
+                    </span>
+                  </div>
+                </div>
+
+                {/* Details Grid */}
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-2">
+                      <span className="text-gray-500 min-w-24">Location:</span>
+                      <span className="text-gray-800">
+                        {port.port.city}, {port.port.country}
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="text-gray-500 min-w-24">Region:</span>
+                      <span className="text-gray-800">{port.port.region}</span>
+                    </div>
+                    {port.port.other_names.length > 0 && (
+                      <div className="flex items-center justify-between mt-2 pt-2 border-t border-gray-100">
+                        <button
+                          onClick={() => toggleOtherNames(port.port._id)}
+                          className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-blue-600 hover:text-blue-800 hover:bg-blue-50 transition-colors"
+                        >
+                          <span className="font-medium">
+                            {showOtherNames[port.port._id]
+                              ? "Hide Other Names"
+                              : "Show Other Names"}
+                          </span>
+                          <svg
+                            className={`w-4 h-4 transition-transform duration-200 ${
+                              showOtherNames[port.port._id] ? "rotate-180" : ""
+                            }`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M19 9l-7 7-7-7"
+                            />
+                          </svg>
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-2">
+                      <span className="text-gray-500 min-w-24">Address:</span>
+                      <span className="text-gray-800 flex-1">
+                        {port.port.address || "N/A"}
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="text-gray-500 min-w-24">
+                        Coordinates:
+                      </span>
+                      <span className="text-gray-800">
+                        {port.port.lat_lon?.lat && port.port.lat_lon?.lon
+                          ? `${port.port.lat_lon.lat.toFixed(
+                              4
+                            )}, ${port.port.lat_lon.lon.toFixed(4)}`
+                          : "Not available"}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Other Names Section */}
+                {showOtherNames[port.port._id] &&
+                  port.port.other_names.length > 0 && (
+                    <div className="mt-4 pt-4 border-t border-gray-100">
+                      <div className="bg-gray-50 rounded-lg p-4">
+                        <div className="flex flex-wrap gap-2">
+                          {port.port.other_names.map((name, index) => (
+                            <span
+                              key={index}
+                              className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
+                            >
+                              {name}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+              </div>
+            ))}
+          </div>
         ) : (
-          <FlagIcon />
+          <div className="flex flex-col items-center justify-center p-10 bg-gray-50 rounded-lg border border-gray-200">
+            <svg
+              className="w-16 h-16 text-gray-400 mb-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              />
+            </svg>
+            <p className="text-lg font-medium text-gray-600">No ports found</p>
+            <p className="text-sm text-gray-500 mt-1">
+              Try searching with different keywords
+            </p>
+          </div>
         )}
-        <p className="text-sm text-gray-800 font-medium">
-          {port.port.display_name ? port.port.display_name : port.port.name}
-          {/* {port.port.city ? `, ${port.port.city}` : ""}
-          {port.port.country ? `, ${port.port.country}` : ""}
-          {port.port.code ? `, ${port.port.code}` : ""} */}
-        </p>
-      </div>
-      <div>
-        <div className="text-xs text-gray-500">
-          Type: {checkPortType(port.port.port_type)}
-        </div>
       </div>
     </div>
   );
 };
 
 export default MappingForm;
-
-const ModeSelector = ({
-  selectedMode,
-  onModeSelect,
-}: {
-  selectedMode: string;
-  onModeSelect: (mode: string) => void;
-}) => {
-  const modes = [
-    { id: "sea_port", icon: seaIcon, label: "SEA" },
-    { id: "air_port", icon: airIcon, label: "AIR" },
-    { id: "inland_port", icon: landIcon, label: "LAND" },
-    { id: "address", icon: flagIcon, label: "ADDRESS" },
-  ];
-
-  return (
-    <div className="flex gap-2 w-full bg-gray-50 p-2 rounded-lg">
-      {modes.map((mode) => (
-        <button
-          key={mode.id}
-          onClick={() => onModeSelect(mode.id)}
-          className={`flex-1 flex flex-col items-center justify-center p-4 rounded-lg transition-all duration-200 ${
-            selectedMode === mode.id
-              ? "bg-blue-100 border-2 border-blue-500 shadow-md"
-              : "bg-white border-2 border-transparent hover:bg-gray-50"
-          }`}
-        >
-          <img
-            src={mode.icon}
-            alt={mode.label}
-            className={`w-8 h-8 mb-2 ${
-              selectedMode === mode.id
-                ? "[filter:invert(48%)_sepia(79%)_saturate(2476%)_hue-rotate(200deg)_brightness(118%)_contrast(119%)]"
-                : "brightness-0 opacity-50"
-            }`}
-          />
-          <span
-            className={`text-sm font-semibold ${
-              selectedMode === mode.id ? "text-blue-500" : "text-gray-600"
-            }`}
-          >
-            {mode.label}
-          </span>
-        </button>
-      ))}
-    </div>
-  );
-};
-
-const getPortTypeFromCarrier = (carrierType: string): string => {
-  switch (carrierType) {
-    case "sea_port":
-      return "sea_port";
-    case "air_port":
-      return "air_port";
-    case "inland_port":
-      return "inland_port";
-    case "address":
-      return "address";
-    default:
-      return "sea_port"; // Default to sea_port instead of all
-  }
-};
-export const FlagIcon = () => {
-  return (
-    <img
-      src={flagIcon}
-      alt="Default flag"
-      className="w-6 h-6 object-cover rounded-sm shadow-sm mr-3"
-    />
-  );
-};
-const checkPortType = (portType: string) => {
-  if (portType === "sea_port") return "Sea Port";
-  if (portType === "air_port") return "Air Port";
-  if (portType === "inland_port") return "Inland Port";
-  return portType;
-};

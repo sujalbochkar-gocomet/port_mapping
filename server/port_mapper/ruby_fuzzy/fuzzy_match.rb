@@ -14,7 +14,7 @@ ports_data = input['ports_data']
 stop_words = input['stop_words'] || []
 searchable_fields = input['searchable_fields'] || []
 
-confidence_threshold = 0.5
+confidence_threshold = 0.3
 results = []
 
 ports_data.each do |port|

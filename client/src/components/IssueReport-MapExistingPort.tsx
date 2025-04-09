@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FiSearch, FiMapPin, FiChevronDown } from "react-icons/fi";
 import { Port } from "../types/types";
 import flagIcon from "../assets/flag.svg";
@@ -15,6 +15,26 @@ const MapExistingPort = ({ keyword, onPortSelected }: MapExistingPortProps) => {
   const [isSearchDropdownOpen, setIsSearchDropdownOpen] = useState(false);
   const [isAlternativeNamesOpen, setIsAlternativeNamesOpen] = useState(false);
   const [selectedPort, setSelectedPort] = useState<Port | null>(null);
+  const [searchType, setSearchType] = useState("sea");
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node) &&
+        event.target !== inputRef.current
+      ) {
+        setIsSearchDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     const searchPorts = async () => {
@@ -25,23 +45,30 @@ const MapExistingPort = ({ keyword, onPortSelected }: MapExistingPortProps) => {
       }
 
       setIsSearching(true);
+
+      let searchTypeParam = searchType;
+      if (searchType === "sea") searchTypeParam = "sea_port";
+      else if (searchType === "air") searchTypeParam = "air_port";
+      else if (searchType === "land") searchTypeParam = "inland_port";
+      else if (searchType === "address") searchTypeParam = "address";
+
       try {
         const response = await fetch(
-          `http://localhost:3000/issue-search?q=${searchTerm}`
+          `http://localhost:3000/issue-search?q=${searchTerm}&type=${searchTypeParam}`
         );
         const data = await response.json();
         setSearchResults(data);
         setIsSearchDropdownOpen(true);
-        setIsSearching(false);
       } catch (error) {
         console.error("Error searching ports:", error);
+      } finally {
         setIsSearching(false);
       }
     };
 
     const debounceTimer = setTimeout(searchPorts, 1000);
     return () => clearTimeout(debounceTimer);
-  }, [searchTerm]);
+  }, [searchTerm, searchType]);
 
   const handlePortSelect = (port: Port) => {
     setSelectedPort(port);
@@ -57,21 +84,38 @@ const MapExistingPort = ({ keyword, onPortSelected }: MapExistingPortProps) => {
           <h2 className="text-lg font-medium text-gray-800">
             Map "{keyword}" to Existing Port
           </h2>
+          <div className="flex gap-2 ml-auto">
+            {["sea", "air", "land", "address"].map((type) => (
+              <button
+                key={type}
+                className={`px-3 py-1 rounded-md text-sm font-medium border transition-colors ${
+                  searchType === type
+                    ? "bg-blue-100 text-blue-800 border-blue-200"
+                    : "bg-white text-gray-600 border-gray-300 hover:bg-gray-100"
+                }`}
+                onClick={() => setSearchType(type)}
+              >
+                {type.charAt(0).toUpperCase() + type.slice(1)}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="space-y-4">
-          <div className="relative">
+          <div className="relative" ref={dropdownRef}>
             <div className="flex gap-3">
               <div className="relative flex-1">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <FiSearch className="h-5 w-5 text-gray-400" />
                 </div>
                 <input
+                  ref={inputRef}
                   type="text"
                   placeholder="Search by port name, code, or location..."
                   className="block w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
+                  onFocus={() => setIsSearchDropdownOpen(true)}
                 />
               </div>
             </div>
@@ -111,11 +155,7 @@ const MapExistingPort = ({ keyword, onPortSelected }: MapExistingPortProps) => {
                             })()}
                           </div>
                           <div className="text-sm text-gray-500">
-                            {[
-                              port.city || "",
-                              port.state_name || "",
-                              port.country || "",
-                            ]
+                            {[port.city, port.state_name, port.country]
                               .filter(Boolean)
                               .join(", ")}
                           </div>
@@ -177,7 +217,7 @@ const MapExistingPort = ({ keyword, onPortSelected }: MapExistingPortProps) => {
                       Location:
                     </div>
                     <div className="text-gray-900">
-                      {[selectedPort.city || "", selectedPort.country || ""]
+                      {[selectedPort.city, selectedPort.country]
                         .filter(Boolean)
                         .join(", ")}
                     </div>
@@ -197,7 +237,7 @@ const MapExistingPort = ({ keyword, onPortSelected }: MapExistingPortProps) => {
                       Region:
                     </div>
                     <div className="text-gray-900">
-                      {selectedPort.region.toUpperCase() || "Not available"}
+                      {selectedPort.region?.toUpperCase() || "Not available"}
                     </div>
                   </div>
 

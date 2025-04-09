@@ -15,7 +15,7 @@ async function main(): Promise<void> {
         await connectDB();
         console.log("MongoDB connection established successfully");
 
-        const portsFilePath = "ports.json";
+        const portsFilePath = "./tests_json/test61.json";
         const ports: TestPort[] = JSON.parse(await fs.readFile(portsFilePath, "utf-8"));
 
         // Initialize PortMatcher
@@ -64,13 +64,14 @@ async function main(): Promise<void> {
                 currentBatchContent += `- Time: ${timeTaken.toFixed(2)}ms\n\n`;
             } else {
                 unmatchedCount++;
-                console.log(`❌ Unmatched: "${port["Keyword"]}"`);
+                console.log(`❌ Unmatched: "${port["Keyword"]} type ${port["Port Type"]}"`);
                 console.log(`   Expected: ${port["Mapped Port ID"]}`);
                 console.log(`   Got: ${results[0]?.port_data?.id || 'No ID'}`);
                 console.log(`   Time: ${timeTaken.toFixed(2)}ms`);
                 console.log(`   Matched using ${results[0].match_type} and sources are ${results[0].sources.join(', ')}`);
                 currentBatchContent += `### ❌ Unmatched\n`;
                 currentBatchContent += `- Keyword: "${port["Keyword"]}"\n`;
+                currentBatchContent += `- Port Type: ${port["Port Type"]}\n`;
                 currentBatchContent += `- Expected: ${port["Mapped Port ID"]}\n`;
                 currentBatchContent += `- Got: ${results[0]?.port_data?.id || 'No ID'}\n`;
                 currentBatchContent += `- Time: ${timeTaken.toFixed(2)}ms\n`;

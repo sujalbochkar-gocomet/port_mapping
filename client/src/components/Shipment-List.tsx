@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import ShipmentBlock from "./Mapping-ShipmentBlock";
+import ShipmentBlock from "./Shipment-ListBlock";
 import { Shipment } from "../types/types";
 import { toast } from "react-toastify";
 

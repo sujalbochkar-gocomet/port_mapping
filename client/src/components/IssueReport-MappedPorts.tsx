@@ -39,7 +39,7 @@ const IssueReportMappedPorts = ({ keyword }: { keyword: string }) => {
       {
         id: "4",
         portName: "Port of Shanghai",
-        confidenceScore: 0.47,
+        confidenceScore: 0.50,
         region: "Asia",
       },
       {
