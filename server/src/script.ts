@@ -1,138 +1,34 @@
-import { Port } from "./types/types";
 import { Request, Response } from "express";
 import cors from "cors";
-const express = require("express");
-import { prisma } from "./lib/prisma";
-import PortMatcher = require("../port_mapper/mapper");
-import mongoose from "mongoose";
-import connectDB = require("../lib/db");
 import swaggerUi from "swagger-ui-express";
 import swaggerJsdoc from "swagger-jsdoc";
+
+import { Port } from "./types/types";
+import { prisma } from "./lib/prisma";
+import PortMatcher from "../port_mapper/mapper";
+import swaggerOptions from "./lib/swagger";
+
+const express = require("express");
+const app = express();
+const port = 3000;
+let portMatcher: PortMatcher | null = null;
+let refreshInterval: NodeJS.Timeout | null = null;
+const swaggerDocs = swaggerJsdoc(swaggerOptions);
 
 interface CascadingResult {
   /**
    * Interface representing a cascading search result
    */
-
   port_data: Port;
   confidence_score: number;
   match_type: string;
   match_algo_type: string;
 }
-
-// Swagger configuration
-const swaggerOptions = {
-  definition: {
-    openapi: "3.0.0",
-    info: {
-      title: "Port Mapping API",
-      version: "1.0.0",
-      description: "API for port mapping and shipment management",
-    },
-    servers: [
-      {
-        url: "http://localhost:3000",
-        description: "Development server",
-      },
-    ],
-    components: {
-      schemas: {
-        Port: {
-          type: "object",
-          properties: {
-            _id: { type: "string" },
-            id: { type: "string" },
-            name: { type: "string" },
-            display_name: { type: "string" },
-            port_type: { type: "string" },
-            code: { type: "string" },
-            other_names: { type: "array", items: { type: "string" } },
-            city: { type: "string" },
-            state_name: { type: "string" },
-            country: { type: "string" },
-            country_code: { type: "string" },
-            region: { type: "string" },
-            lat_lon: {
-              type: "object",
-              properties: {
-                lat: { type: "number" },
-                lon: { type: "number" },
-              },
-            },
-          },
-        },
-        PortSearchResult: {
-          type: "object",
-          properties: {
-            port: { $ref: "#/components/schemas/Port" },
-            verified: { type: "boolean" },
-            match_score: { type: "number" },
-            match_type: { type: "string" },
-            sources: { type: "array", items: { type: "string" } },
-          },
-        },
-        Shipment: {
-          type: "object",
-          properties: {
-            id: { type: "string" },
-            carrierType: { type: "string" },
-            pol: { $ref: "#/components/schemas/Port" },
-            pod: { $ref: "#/components/schemas/Port" },
-            createdAt: { type: "string", format: "date-time" },
-            updatedAt: { type: "string", format: "date-time" },
-          },
-        },
-      },
-    },
-  },
-  apis: ["./src/script.ts"], // Path to the API docs
-};
-
-const swaggerDocs = swaggerJsdoc(swaggerOptions);
-
 interface PortMatcherResult {
   port_data: Port;
   confidence_score: number;
   match_type: string;
   sources: string[];
-}
-
-const app = express();
-const port = 3000;
-let portMatcher: PortMatcher | null = null;
-let isReconnecting = false;
-let refreshInterval: NodeJS.Timeout | null = null;
-
-// MongoDB connection monitoring
-mongoose.connection.on("disconnected", () => {
-  if (!isReconnecting) {
-    reconnectMongoDB();
-  }
-});
-
-mongoose.connection.on("error", (err) => {
-  console.error("MongoDB connection error:", err);
-  if (!isReconnecting) {
-    reconnectMongoDB();
-  }
-});
-
-async function reconnectMongoDB() {
-  if (isReconnecting) return;
-
-  isReconnecting = true;
-
-  try {
-    await mongoose.disconnect();
-    await connectDB();
-
-    // Reinitialize PortMatcher with fresh data
-    await initializePortMatcher();
-  } catch (error) {
-    console.error("Failed to reconnect to MongoDB:", error);
-  } finally {
-    isReconnecting = false;
-  }
 }
 
 app.use(cors());
@@ -176,6 +72,25 @@ const initializePortMatcher = async () => {
     throw error;
   }
 };
+
+
+// Initialize server
+const startServer = async () => {
+  try {
+    await initializePortMatcher();
+    app.listen(port, () => {
+      console.log(`Server is running on http://localhost:${port}`);
+      console.log(
+        `API documentation available at http://localhost:${port}/api-docs`
+      );
+    });
+  } catch (error) {
+    console.error("Failed to start server:", error);
+    process.exit(1);
+  }
+};
+
+startServer();
 
 /**
  * @swagger
@@ -675,6 +590,96 @@ app.get(
 
 /**
  * @swagger
+ * /search-ports/filter-by-location:
+ *   get:
+ *     summary: Filter ports by location and type
+ *     description: Filter ports based on location string and port type using the PortMatcher's filtering algorithm
+ *     parameters:
+ *       - in: query
+ *         name: q
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Location string to filter by (e.g., "ho chi minh city, vietnam")
+ *       - in: query
+ *         name: type
+ *         schema:
+ *           type: string
+ *         description: Port type to filter by. Use 'all' to include all types
+ *     responses:
+ *       200:
+ *         description: List of matching ports
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/PortSearchResult'
+ *       400:
+ *         description: Bad request - missing required parameters
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: Location query parameter 'q' is required
+ *       500:
+ *         description: Server error
+ */
+app.get( "/search-ports/filter-by-location",async (req: Request, res: Response) => {
+    try {
+      if (!portMatcher) {
+        throw new Error("PortMatcher not initialized");
+      }
+
+      const query = (req.query.q as string)?.toLowerCase() || "";
+      const type = req.query.type as string;
+
+      if (!query) {
+        return res.status(400).json({
+          error: "Location query parameter 'q' is required",
+        });
+      }
+
+      // First filter by type if specified
+      let workingPortsData = [...portMatcher.portsData];
+      if (type && type !== "all") {
+        workingPortsData = workingPortsData.filter(
+          (port) => port.port_type === type
+        );
+      }
+
+      // Then apply location filtering
+      const filteredPorts = portMatcher.filterByLocation(
+        query,
+        workingPortsData
+      );
+
+      if (filteredPorts.length === 0) {
+        return res.status(200).json([]);
+      }
+
+      console.log(filteredPorts.length);
+
+      // Transform the results to match the PortSearchResult schema
+
+      return res.status(200).json(filteredPorts.slice(0, 10));
+    } catch (error) {
+      console.error("Error filtering ports by location:", error);
+      return res.status(500).json({
+        error: "Failed to filter ports by location",
+        details: error instanceof Error ? error.message : "Unknown error",
+      });
+    }
+  }
+);
+
+
+
+/**
+ * @swagger
  * /add-shipment:
  *   post:
  *     summary: Add a new shipment
@@ -904,111 +909,3 @@ app.delete("/delete-shipment/:id", async (req: Request, res: Response) => {
     });
   }
 });
-
-/**
- * @swagger
- * /search-ports/filter-by-location:
- *   get:
- *     summary: Filter ports by location and type
- *     description: Filter ports based on location string and port type using the PortMatcher's filtering algorithm
- *     parameters:
- *       - in: query
- *         name: q
- *         required: true
- *         schema:
- *           type: string
- *         description: Location string to filter by (e.g., "ho chi minh city, vietnam")
- *       - in: query
- *         name: type
- *         schema:
- *           type: string
- *         description: Port type to filter by. Use 'all' to include all types
- *     responses:
- *       200:
- *         description: List of matching ports
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/PortSearchResult'
- *       400:
- *         description: Bad request - missing required parameters
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 error:
- *                   type: string
- *                   example: Location query parameter 'q' is required
- *       500:
- *         description: Server error
- */
-app.get(
-  "/search-ports/filter-by-location",
-  async (req: Request, res: Response) => {
-    try {
-      if (!portMatcher) {
-        throw new Error("PortMatcher not initialized");
-      }
-
-      const query = (req.query.q as string)?.toLowerCase() || "";
-      const type = req.query.type as string;
-
-      if (!query) {
-        return res.status(400).json({
-          error: "Location query parameter 'q' is required",
-        });
-      }
-
-      // First filter by type if specified
-      let workingPortsData = [...portMatcher.portsData];
-      if (type && type !== "all") {
-        workingPortsData = workingPortsData.filter(
-          (port) => port.port_type === type
-        );
-      }
-
-      // Then apply location filtering
-      const filteredPorts = portMatcher.filterByLocation(
-        query,
-        workingPortsData
-      );
-
-      if (filteredPorts.length === 0) {
-        return res.status(200).json([]);
-      }
-
-      console.log(filteredPorts.length);
-
-      // Transform the results to match the PortSearchResult schema
-
-      return res.status(200).json(filteredPorts.slice(0, 10));
-    } catch (error) {
-      console.error("Error filtering ports by location:", error);
-      return res.status(500).json({
-        error: "Failed to filter ports by location",
-        details: error instanceof Error ? error.message : "Unknown error",
-      });
-    }
-  }
-);
-
-// Initialize server
-const startServer = async () => {
-  try {
-    await initializePortMatcher();
-    app.listen(port, () => {
-      console.log(`Server is running on http://localhost:${port}`);
-      console.log(
-        `API documentation available at http://localhost:${port}/api-docs`
-      );
-    });
-  } catch (error) {
-    console.error("Failed to start server:", error);
-    process.exit(1);
-  }
-};
-
-startServer();
