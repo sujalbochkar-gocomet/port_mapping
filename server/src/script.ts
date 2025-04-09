@@ -351,6 +351,7 @@ app.get("/issue-search", async (req: Request, res: Response) => {
         { other_names: { has: query } },
       ],
       port_type: type,
+      verified: true,
     },
     take: 40,
   });

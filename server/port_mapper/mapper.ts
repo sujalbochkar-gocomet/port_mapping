@@ -46,7 +46,7 @@ class PortMatcher {
   public groq: Groq;
 
 
-  
+
 
   constructor(portsData: Port[]) {
 
@@ -121,7 +121,7 @@ class PortMatcher {
 
   }
 
-  
+
   static async loadPortsData(): Promise<Port[]> {
 
     /**
@@ -143,14 +143,14 @@ class PortMatcher {
     }
   }
 
- 
+
   public async refreshData(): Promise<void> {
 
-     /**
-   * Refreshes the port data by reloading from MongoDB
-   * @returns Promise that resolves when data is refreshed
-   * @throws Error if data refresh fails
-   */
+    /**
+  * Refreshes the port data by reloading from MongoDB
+  * @returns Promise that resolves when data is refreshed
+  * @throws Error if data refresh fails
+  */
 
     try {
       const freshData = await PortMatcher.loadPortsData();
@@ -161,14 +161,14 @@ class PortMatcher {
     }
   }
 
- 
+
   public normalizeString(str: string | undefined): string {
 
-     /**
-   * Normalizes a string by converting to lowercase and removing special characters
-   * @param str - String to normalize
-   * @returns Normalized string
-   */
+    /**
+  * Normalizes a string by converting to lowercase and removing special characters
+  * @param str - String to normalize
+  * @returns Normalized string
+  */
 
     return (
       str
@@ -179,44 +179,44 @@ class PortMatcher {
     );
   }
 
- 
+
   public filterByLocation(inputString: string, portsData: Port[] = this.portsData): Port[] {
     if (typeof inputString !== "string" || !inputString.trim()) {
       return [];
     }
-  
+
     // Normalize input and split into clean keywords - do this once
     const normalizedInput = this.normalizeString(inputString);
     const inputKeywords = normalizedInput
       .split(/\s+/)
       .filter(word => !this.ignoredKeywords.has(word));
-  
+
     if (inputKeywords.length === 0) {
       return [];
     }
-  
+
     // Convert inputKeywords to a Set for faster lookups
     const inputKeywordSet = new Set(inputKeywords);
     const results: Port[] = [];
-  
+
     // Use for loop instead of forEach for better performance
     for (let i = 0; i < portsData.length; i++) {
       const port = portsData[i];
-      
+
       // Use for loop with early exit instead of some
       for (let j = 0; j < this.locationSearchableKeys.length; j++) {
         const key = this.locationSearchableKeys[j];
         const fieldValue = port[key as keyof Port];
-        
+
         if (typeof fieldValue !== "string") continue;
-  
+
         const normalizedField = this.normalizeString(fieldValue);
         const fieldWords = normalizedField
           .split(/\s+/)
           .filter(word => !this.ignoredKeywords.has(word));
-  
+
         if (fieldWords.length === 0) continue;
-  
+
         // Exactly as in original: Check if all fieldWords are present in inputKeywords
         let allWordsPresent = true;
         for (let k = 0; k < fieldWords.length; k++) {
@@ -225,18 +225,18 @@ class PortMatcher {
             break;
           }
         }
-        
+
         if (allWordsPresent) {
           results.push(port);
           break; // Stop checking other fields for this port
         }
       }
     }
-    
+
     return results;
   }
 
-  
+
   public completeNameSearch(inputString: string, portsData: Port[] = this.portsData): CascadingResult[] {
 
     /**
@@ -258,17 +258,17 @@ class PortMatcher {
       let matchType = "";
       let matched = false;
       let confidenceScore = 0;
-      let weightedScore=0;
+      let weightedScore = 0;
       for (const key of this.searchableKeys) {
 
 
         const normalizedField = this.normalizeString(port[key as keyof Port] as string);
 
 
-        if(key=="name" || key=="display_name"){
-          weightedScore=100
-        }else if(key=="code"){
-          weightedScore=99
+        if (key == "name" || key == "display_name") {
+          weightedScore = 100
+        } else if (key == "code") {
+          weightedScore = 99
         }
 
 
@@ -303,14 +303,145 @@ class PortMatcher {
     return results.sort((a, b) => b.confidence_score - a.confidence_score);
   }
 
+  private wordSearch(
+    inputString: string,
+    portsData: Port[] = this.portsData
+  ): CascadingResult[] {
+    if (typeof inputString !== "string" || !inputString.trim()) {
+      return [];
+    }
+
+    const inputWords = this.normalizeString(inputString)
+      .split(/\s+/)
+      .filter((word) => !this.ignoredKeywords.has(word));
+
+    if (inputWords.length === 0) {
+      return [];
+    }
+
+    const inputWordsSet = new Set(inputWords);
+    const results: CascadingResult[] = [];
+    const MIN_CONFIDENCE = 60;
+
+    const getNormalizedWords = (
+      value: string | undefined
+    ): { words: string[]; set: Set<string> } | null => {
+      if (!value) return null;
+
+      const fieldWords = this.normalizeString(value)
+        .split(/\s+/)
+        .filter((word) => !this.ignoredKeywords.has(word));
+
+      if (fieldWords.length === 0) return null;
+
+      return {
+        words: fieldWords,
+        set: new Set(fieldWords),
+      };
+    };
+
+    const calculateOverlapScore = (fieldWordsSet: Set<string>): number => {
+      let commonWords = 0;
+      for (const word of inputWordsSet) {
+        if (fieldWordsSet.has(word)) commonWords++;
+      }
+      const totalWords = inputWordsSet.size + fieldWordsSet.size;
+      return totalWords === 0 ? 0 : (2 * commonWords * 100) / totalWords;
+    };
+
+    const calculateOrderScore = (fieldWords: string[]): number => {
+      if (fieldWords.length === 0) return 0;
+
+      const minLength = Math.min(inputWords.length, fieldWords.length);
+      let maxConsecutiveMatches = 0;
+
+      for (let i = 0; i <= fieldWords.length - minLength; i++) {
+        let matches = 0;
+        for (let j = 0; j < minLength; j++) {
+          if (fieldWords[i + j] === inputWords[j]) {
+            matches++;
+          } else {
+            break;
+          }
+        }
+        maxConsecutiveMatches = Math.max(maxConsecutiveMatches, matches);
+      }
+
+      return (maxConsecutiveMatches / minLength) * 100;
+    };
+
+    for (const port of portsData) {
+      let bestMatch = { confidence: 0, matchType: "" };
+
+      for (const key of this.searchableKeys) {
+        const normalized = getNormalizedWords(
+          port[key as keyof Port] as string
+        );
+        if (!normalized) continue;
+
+        const overlapScore = calculateOverlapScore(normalized.set);
+        if (overlapScore < MIN_CONFIDENCE) continue;
+
+        const orderScore = calculateOrderScore(normalized.words);
+        const confidence = overlapScore * 0.8 + orderScore * 0.2;
+
+        if (confidence > bestMatch.confidence) {
+          bestMatch = {
+            confidence,
+            matchType: key.toLowerCase().replace(/\s+/g, "_"),
+          };
+        }
+      }
+
+      if (bestMatch.confidence > 60) {
+        results.push({
+          port_data: port,
+          confidence_score: parseFloat(bestMatch.confidence.toFixed(2)),
+          match_type: bestMatch.matchType,
+          match_algo_type: "word",
+        });
+        continue;
+      }
+
+      for (const altName of port.other_names || []) {
+        const normalized = getNormalizedWords(altName);
+        if (!normalized) continue;
+
+        const overlapScore = calculateOverlapScore(normalized.set);
+        if (overlapScore < MIN_CONFIDENCE) continue;
+
+        const orderScore = calculateOrderScore(normalized.words);
+        const confidence = overlapScore * 0.8 + orderScore * 0.2;
+
+        if (confidence > bestMatch.confidence) {
+          bestMatch = { confidence, matchType: "other_names" };
+        }
+      }
+
+      if (bestMatch.confidence > MIN_CONFIDENCE) {
+        results.push({
+          port_data: port,
+          confidence_score: parseFloat(bestMatch.confidence.toFixed(2)),
+          match_type: bestMatch.matchType,
+          match_algo_type: "word",
+        });
+      }
+    }
+
+    return results.sort((a, b) => b.confidence_score - a.confidence_score);
+  }
+
+
+
+
   public async rubyFuzzySearch(inputString: string, portsData: Port[] = this.portsData): Promise<CascadingResult[]> {
 
-     /**
-   * Performs fuzzy search using Ruby script
-   * @param inputString - Search string
-   * @param portsData - Optional array of ports to search through
-   * @returns Promise resolving to array of fuzzy match results
-   */
+    /**
+  * Performs fuzzy search using Ruby script
+  * @param inputString - Search string
+  * @param portsData - Optional array of ports to search through
+  * @returns Promise resolving to array of fuzzy match results
+  */
 
     if (typeof inputString !== "string" || !inputString.trim()) {
       return [];
@@ -368,11 +499,11 @@ class PortMatcher {
 
   public validateLLMResponse(data: any): boolean {
 
-     /**
-   * Validates LLM response format
-   * @param data - Response data to validate
-   * @returns Boolean indicating if response is valid
-   */
+    /**
+  * Validates LLM response format
+  * @param data - Response data to validate
+  * @returns Boolean indicating if response is valid
+  */
 
     if (!data || typeof data !== 'object' || !Array.isArray(data.ports)) {
       return false;
@@ -396,7 +527,7 @@ class PortMatcher {
     return true;
   }
 
-  
+
   public async getGroqResponse(keyword: string, portType: string | null): Promise<string> {
 
     /**
@@ -406,40 +537,40 @@ class PortMatcher {
    * @returns Promise resolving to LLM response string
    */
 
-     try {
-       const query = `Input Keyword is ${keyword} and Port Type is ${portType || 'any'}.
+    try {
+      const query = `Input Keyword is ${keyword} and Port Type is ${portType || 'any'}.
 
 
 Important:
 - Strictly follow the JSON structure—any deviation is incorrect`;
 
-     
- 
-       const completion = await this.groq.chat.completions.create({
-         messages: [
-           { role: "system", content: process.env.SYSTEM_PROMPT || "" },
-           { role: "user", content: query },
-         ],
-         model: "llama3-70b-8192",
-         response_format: {
-           type: "json_object",
-         },
-         temperature: 0.1,
-         max_completion_tokens: 8192,
-       });
 
-       const content = completion.choices[0].message.content;
-       if (!content) {
-         throw new Error("No content in response");
-       }
-       return content;
-     } catch (error) {
-       console.error("GroqService :: getResponse :: error", error);
-       throw error;
-     }
-   }
-  
-  
+
+      const completion = await this.groq.chat.completions.create({
+        messages: [
+          { role: "system", content: process.env.SYSTEM_PROMPT || "" },
+          { role: "user", content: query },
+        ],
+        model: "llama3-70b-8192",
+        response_format: {
+          type: "json_object",
+        },
+        temperature: 0.1,
+        max_completion_tokens: 8192,
+      });
+
+      const content = completion.choices[0].message.content;
+      if (!content) {
+        throw new Error("No content in response");
+      }
+      return content;
+    } catch (error) {
+      console.error("GroqService :: getResponse :: error", error);
+      throw error;
+    }
+  }
+
+
   public async getLLMResponse(keyword: string, portType: string | null = null): Promise<PortMatcherResult[]> {
 
     /**
@@ -459,10 +590,10 @@ Important:
         const dLat = (lat2 - lat1) * Math.PI / 180;
         const dLon = (lon2 - lon1) * Math.PI / 180;
         const a =
-          Math.sin(dLat/2) * Math.sin(dLat/2) +
+          Math.sin(dLat / 2) * Math.sin(dLat / 2) +
           Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-          Math.sin(dLon/2) * Math.sin(dLon/2);
-        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+          Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         return R * c;
       };
 
@@ -485,12 +616,15 @@ Important:
             dbNames.some(dbName => dbName === llmName)
           );
 
-          const codeMatch = dbPort.code?.toLowerCase() === llmPort.port_code?.toLowerCase();
+          let codeMatch = false;
+          if(dbPort.code && llmPort.port_code && dbPort.code.trim()!="" && llmPort.port_code.trim()!=""){
+            codeMatch = dbPort.code?.toLowerCase() === llmPort.port_code?.toLowerCase();
+          }
 
           let locationMatch = false;
           let distance = 0;
           if (llmPort.latitude && llmPort.longitude &&
-              dbPort.lat_lon?.lat && dbPort.lat_lon?.lon) {
+            dbPort.lat_lon?.lat && dbPort.lat_lon?.lon) {
             distance = calculateDistance(
               parseFloat(llmPort.latitude),
               parseFloat(llmPort.longitude),
@@ -535,7 +669,7 @@ Important:
         return matchedPorts ? matchedPorts.map(port => {
           return {
             port_data: port,
-            confidence_score: parseFloat(llmPort.confidence_score.toFixed(2))+(port as any).confidenceAdjustment,
+            confidence_score: parseFloat(llmPort.confidence_score.toFixed(2)) + (port as any).confidenceAdjustment,
             match_type: `llm:${(port as any).match_criteria.join('+')}`
           };
         }) : [];
@@ -548,7 +682,7 @@ Important:
     }
   }
 
-  
+
   public async cascadingSearch(inputString: string, portType: string | null = null): Promise<CascadingResult[]> {
 
     /**
@@ -580,34 +714,41 @@ Important:
 
       let locationFilteredData = this.filterByLocation(inputString, workingPortsData);
 
-      if(locationFilteredData.length==0){
-        locationFilteredData=workingPortsData;
+      if (locationFilteredData.length == 0) {
+        locationFilteredData = workingPortsData;
       }
 
 
-      const rubyResults = await this.rubyFuzzySearch(inputString, locationFilteredData);
+      if (portType == "address") {
+        const wordSearchResultsNew = this.wordSearch(inputString, workingPortsData);
 
-      if (rubyResults.length > 0) {
-        return rubyResults.map(result => ({
-          ...result,
-          match_algo_type: "fuzzy_location"
-        }));
+
+        if (wordSearchResultsNew.length > 0) {
+            return wordSearchResultsNew.map(result => ({
+            ...result,
+            match_algo_type: "word"
+          }));
+        }
+      } else {
+        const rubyResults = await this.rubyFuzzySearch(inputString, locationFilteredData);
+
+        if (rubyResults.length > 0) {
+          return rubyResults.map(result => ({
+            ...result,
+            match_algo_type: "fuzzy_location"
+          }));
+        }
+
+        const rubyResultsNew = await this.rubyFuzzySearch(inputString, workingPortsData);
+
+
+        if (rubyResultsNew.length > 0) {
+          return rubyResultsNew.map(result => ({
+            ...result,
+            match_algo_type: "fuzzy"
+          }));
+        }
       }
-
-      if(portType=="address"){
-        return [];
-      }
-
-      const rubyResultsNew = await this.rubyFuzzySearch(inputString, workingPortsData);
-
-
-      if (rubyResultsNew.length > 0) {    
-        return rubyResultsNew.map(result => ({
-          ...result,
-          match_algo_type: "fuzzy"
-        }));
-      }
-      
 
       return [];
     } catch (error) {
@@ -646,15 +787,15 @@ Important:
 
       const ended = performance.now();
       console.log(`Time taken: ${ended - started} milliseconds`);
-      
+
       // Create a Map to track unique ports by ID and combine sources
       const uniqueResults = new Map<string | number, PortMatcherResult>();
-      
+
       // First add cascading results
       convertedCascadingResults.forEach(result => {
         uniqueResults.set(result.port_data.id, result);
       });
-      
+
       // Then check if llm results exist in the map and merge them or add new ones
       convertedLLMResults.forEach(result => {
         const existingResult = uniqueResults.get(result.port_data.id);
@@ -666,13 +807,13 @@ Important:
           uniqueResults.set(result.port_data.id, result);
         }
       });
-      
+
       // Convert Map back to array and sort
       const results = Array.from(uniqueResults.values());
 
       const threshold = includeAll ? 0 : 55;
       return results.sort((a, b) => {
-        if(a.confidence_score === b.confidence_score) {
+        if (a.confidence_score === b.confidence_score) {
           if (a.port_data.master_port && b.port_data.master_port) {
             return a.port_data.is_head_port ? 1 : -1;
           }
@@ -681,7 +822,7 @@ Important:
         return b.confidence_score - a.confidence_score;
       }).filter(result => result.confidence_score >= threshold).slice(0, 10);
 
-    } catch(error) {
+    } catch (error) {
       console.error("Error in aggregatedResults:", error);
       return [];
     }
