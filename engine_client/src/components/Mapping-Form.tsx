@@ -8,7 +8,9 @@ const MappingForm = () => {
   const [searchInput, setSearchInput] = useState("");
   const [isSearching, setIsSearching] = useState(false);
   const [searchResults, setSearchResults] = useState<statusPort[]>([]);
-  const [showOtherNames, setShowOtherNames] = useState<{ [key: string]: boolean }>({});
+  const [showOtherNames, setShowOtherNames] = useState<{
+    [key: string]: boolean;
+  }>({});
   const resultsRef = useRef<HTMLDivElement>(null);
 
   // Add debounce timer and abort controller refs
@@ -16,52 +18,57 @@ const MappingForm = () => {
   const abortController = useRef<AbortController | null>(null);
 
   // Debounced search function
-  const debouncedSearch = useCallback((term: string) => {
-    // Clear existing timer
-    if (debounceTimer.current) {
-      clearTimeout(debounceTimer.current);
-    }
-
-    // Abort previous request if it exists
-    if (abortController.current) {
-      abortController.current.abort();
-    }
-
-    if (!term.trim()) {
-      setSearchResults([]);
-      setIsSearching(false);
-      return;
-    }
-
-    // Set loading state
-    setIsSearching(true);
-
-    // Create new abort controller
-    abortController.current = new AbortController();
-
-    // Set new timer
-    debounceTimer.current = setTimeout(async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:3000/search-ports?q=${encodeURIComponent(term)}&type=${carrierType}`,
-          {
-            signal: abortController.current?.signal,
-          }
-        );
-        const results = response.data;
-        setSearchResults(results);
-      } catch (error) {
-        // Ignore errors from aborted requests
-        if (axios.isCancel(error)) {
-          return;
-        }
-        console.error("Error searching:", error);
-        setSearchResults([]);
-      } finally {
-        setIsSearching(false);
+  const debouncedSearch = useCallback(
+    (term: string) => {
+      // Clear existing timer
+      if (debounceTimer.current) {
+        clearTimeout(debounceTimer.current);
       }
-    }, 300); // 300ms delay
-  }, [carrierType]);
+
+      // Abort previous request if it exists
+      if (abortController.current) {
+        abortController.current.abort();
+      }
+
+      if (!term.trim()) {
+        setSearchResults([]);
+        setIsSearching(false);
+        return;
+      }
+
+      // Set loading state
+      setIsSearching(true);
+
+      // Create new abort controller
+      abortController.current = new AbortController();
+
+      // Set new timer
+      debounceTimer.current = setTimeout(async () => {
+        try {
+          const response = await axios.get(
+            `http://localhost:3000/search-ports?q=${encodeURIComponent(
+              term
+            )}&type=${carrierType}`,
+            {
+              signal: abortController.current?.signal,
+            }
+          );
+          const results = response.data;
+          setSearchResults(results);
+        } catch (error) {
+          // Ignore errors from aborted requests
+          if (axios.isCancel(error)) {
+            return;
+          }
+          console.error("Error searching:", error);
+          setSearchResults([]);
+        } finally {
+          setIsSearching(false);
+        }
+      }, 300); // 300ms delay
+    },
+    [carrierType]
+  );
 
   // Cleanup on unmount
   useEffect(() => {
@@ -95,9 +102,9 @@ const MappingForm = () => {
   }, [carrierType]);
 
   const toggleOtherNames = (portId: string) => {
-    setShowOtherNames(prev => ({
+    setShowOtherNames((prev) => ({
       ...prev,
-      [portId]: !prev[portId]
+      [portId]: !prev[portId],
     }));
   };
 
@@ -129,11 +136,15 @@ const MappingForm = () => {
                 value={searchInput}
                 onChange={handleInputChange}
                 onKeyDown={(e) => {
-                  if (e.key === 'Enter') {
+                  if (e.key === "Enter") {
                     handleSearch();
                   }
                 }}
-                placeholder={carrierType === "address" ? "Enter address..." : "Enter port name, city, or code..."}
+                placeholder={
+                  carrierType === "address"
+                    ? "Enter address..."
+                    : "Enter port name, city, or code..."
+                }
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
@@ -213,9 +224,7 @@ const MappingForm = () => {
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
               ></path>
             </svg>
-            <p className="text-lg font-medium text-gray-600">
-              Searching...
-            </p>
+            <p className="text-lg font-medium text-gray-600">Searching...</p>
           </div>
         ) : searchInput.trim() === "" ? (
           <div className="flex flex-col items-center justify-center p-10 bg-gray-50 rounded-lg border border-gray-200">
@@ -263,12 +272,14 @@ const MappingForm = () => {
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                      port.verified 
-                        ? 'bg-green-100 text-green-800 border border-green-200' 
-                        : 'bg-yellow-100 text-yellow-800 border border-yellow-200'
-                    }`}>
-                      {port.verified ? 'Verified' : 'Unverified'}
+                    <span
+                      className={`px-3 py-1 rounded-full text-sm font-medium ${
+                        port.verified
+                          ? "bg-green-100 text-green-800 border border-green-200"
+                          : "bg-yellow-100 text-yellow-800 border border-yellow-200"
+                      }`}
+                    >
+                      {port.verified ? "Verified" : "Unverified"}
                     </span>
                     <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium border border-blue-200">
                       Match: {port.match_score.toFixed(1)}%
@@ -281,7 +292,9 @@ const MappingForm = () => {
                   <div className="space-y-3">
                     <div className="flex items-start gap-2">
                       <span className="text-gray-500 min-w-24">Location:</span>
-                      <span className="text-gray-800">{port.port.city}, {port.port.country}</span>
+                      <span className="text-gray-800">
+                        {port.port.city}, {port.port.country}
+                      </span>
                     </div>
                     <div className="flex items-start gap-2">
                       <span className="text-gray-500 min-w-24">Region:</span>
@@ -294,10 +307,14 @@ const MappingForm = () => {
                           className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-blue-600 hover:text-blue-800 hover:bg-blue-50 transition-colors"
                         >
                           <span className="font-medium">
-                            {showOtherNames[port.port._id] ? 'Hide Other Names' : 'Show Other Names'}
+                            {showOtherNames[port.port._id]
+                              ? "Hide Other Names"
+                              : "Show Other Names"}
                           </span>
                           <svg
-                            className={`w-4 h-4 transition-transform duration-200 ${showOtherNames[port.port._id] ? 'rotate-180' : ''}`}
+                            className={`w-4 h-4 transition-transform duration-200 ${
+                              showOtherNames[port.port._id] ? "rotate-180" : ""
+                            }`}
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -316,34 +333,43 @@ const MappingForm = () => {
                   <div className="space-y-3">
                     <div className="flex items-start gap-2">
                       <span className="text-gray-500 min-w-24">Address:</span>
-                      <span className="text-gray-800 flex-1">{port.port.address || 'N/A'}</span>
+                      <span className="text-gray-800 flex-1">
+                        {port.port.address || "N/A"}
+                      </span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <span className="text-gray-500 min-w-24">Coordinates:</span>
+                      <span className="text-gray-500 min-w-24">
+                        Coordinates:
+                      </span>
                       <span className="text-gray-800">
-                        {port.port.lat_lon.lat.toFixed(4)}, {port.port.lat_lon.lon.toFixed(4)}
+                        {port.port.lat_lon?.lat && port.port.lat_lon?.lon
+                          ? `${port.port.lat_lon.lat.toFixed(
+                              4
+                            )}, ${port.port.lat_lon.lon.toFixed(4)}`
+                          : "Not available"}
                       </span>
                     </div>
                   </div>
                 </div>
 
                 {/* Other Names Section */}
-                {showOtherNames[port.port._id] && port.port.other_names.length > 0 && (
-                  <div className="mt-4 pt-4 border-t border-gray-100">
-                    <div className="bg-gray-50 rounded-lg p-4">
-                      <div className="flex flex-wrap gap-2">
-                        {port.port.other_names.map((name, index) => (
-                          <span
-                            key={index}
-                            className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
-                          >
-                            {name}
-                          </span>
-                        ))}
+                {showOtherNames[port.port._id] &&
+                  port.port.other_names.length > 0 && (
+                    <div className="mt-4 pt-4 border-t border-gray-100">
+                      <div className="bg-gray-50 rounded-lg p-4">
+                        <div className="flex flex-wrap gap-2">
+                          {port.port.other_names.map((name, index) => (
+                            <span
+                              key={index}
+                              className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
+                            >
+                              {name}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )}
+                  )}
               </div>
             ))}
           </div>
@@ -362,12 +388,10 @@ const MappingForm = () => {
                 d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
               />
             </svg>
-            <p className="text-lg font-medium text-gray-600">
-              No ports found
-            </p>
+            <p className="text-lg font-medium text-gray-600">No ports found</p>
             <p className="text-sm text-gray-500 mt-1">
               Try searching with different keywords
-            </p>
+        </p>
           </div>
         )}
       </div>
