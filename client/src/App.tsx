@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Shipment from "./pages/PortShipment";
 import IssueDashboard from "./pages/Issue-Dashboard";
 import IssueResolve from "./pages/Issue-Resolve";
+import DataReport from "./pages/Data-Report";
 function App() {
   return (
     <div>
@@ -44,6 +45,7 @@ function App() {
         <Route path="/shipment" element={<Shipment />} />
         <Route path="/admin/issue/dashboard" element={<IssueDashboard />} />
         <Route path="/admin/issue/resolve/:id" element={<IssueResolve />} />
+        <Route path="/admin/data-report" element={<DataReport />} />
       </Routes>
     </div>
   );
