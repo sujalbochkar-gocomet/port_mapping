@@ -1,7 +1,24 @@
 import { useState, useEffect, useRef } from "react";
-import { FiSearch, FiMapPin, FiChevronDown } from "react-icons/fi";
 import { Port } from "../types/types";
 import flagIcon from "../assets/flag.svg";
+import {
+  Input,
+  Button,
+  Card,
+  Space,
+  Typography,
+  Tag,
+  Flex,
+  Radio,
+  Spin,
+} from "antd";
+import {
+  SearchOutlined,
+  EnvironmentOutlined,
+  DownOutlined,
+} from "@ant-design/icons";
+
+const { Title, Text } = Typography;
 
 interface MapExistingPortProps {
   keyword: string;
@@ -17,14 +34,12 @@ const MapExistingPort = ({ keyword, onPortSelected }: MapExistingPortProps) => {
   const [selectedPort, setSelectedPort] = useState<Port | null>(null);
   const [searchType, setSearchType] = useState("sea");
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
         dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node) &&
-        event.target !== inputRef.current
+        !dropdownRef.current.contains(event.target as Node)
       ) {
         setIsSearchDropdownOpen(false);
       }
@@ -77,70 +92,103 @@ const MapExistingPort = ({ keyword, onPortSelected }: MapExistingPortProps) => {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-        <div className="flex items-center gap-2 mb-6">
-          <FiMapPin className="w-5 h-5 text-blue-600" />
-          <h2 className="text-lg font-medium text-gray-800">
+    <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+      <Card
+        style={{
+          borderRadius: 12,
+          boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
+          border: "1px solid #F3F4F6",
+        }}
+      >
+        <Flex align="center" gap="small" style={{ marginBottom: 24 }}>
+          <EnvironmentOutlined style={{ color: "#1677ff", fontSize: 18 }} />
+          <Title level={5} style={{ margin: 0, color: "#4B5563" }}>
             Map "{keyword}" to Existing Port
-          </h2>
-          <div className="flex gap-2 ml-auto">
-            {["sea", "air", "land", "address"].map((type) => (
-              <button
-                key={type}
-                className={`px-3 py-1 rounded-md text-sm font-medium border transition-colors ${
-                  searchType === type
-                    ? "bg-blue-100 text-blue-800 border-blue-200"
-                    : "bg-white text-gray-600 border-gray-300 hover:bg-gray-100"
-                }`}
-                onClick={() => setSearchType(type)}
-              >
-                {type.charAt(0).toUpperCase() + type.slice(1)}
-              </button>
-            ))}
+          </Title>
+          <div style={{ marginLeft: "auto" }}>
+            <Radio.Group
+              value={searchType}
+              onChange={(e) => setSearchType(e.target.value)}
+              buttonStyle="solid"
+              size="small"
+              style={{ borderRadius: 8 }}
+            >
+              {["sea", "air", "land", "address"].map((type) => (
+                <Radio.Button
+                  key={type}
+                  value={type}
+                  style={{
+                    borderRadius: 6,
+                    margin: "0 2px",
+                    textTransform: "capitalize",
+                  }}
+                >
+                  {type}
+                </Radio.Button>
+              ))}
+            </Radio.Group>
           </div>
-        </div>
+        </Flex>
 
-        <div className="space-y-4">
-          <div className="relative" ref={dropdownRef}>
-            <div className="flex gap-3">
-              <div className="relative flex-1">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <FiSearch className="h-5 w-5 text-gray-400" />
-                </div>
-                <input
-                  ref={inputRef}
-                  type="text"
-                  placeholder="Search by port name, code, or location..."
-                  className="block w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  onFocus={() => setIsSearchDropdownOpen(true)}
-                />
-              </div>
-            </div>
+        <Space direction="vertical" style={{ width: "100%" }} size="large">
+          <div ref={dropdownRef} style={{ position: "relative" }}>
+            <Input
+              placeholder="Search by port name, code, or location..."
+              prefix={<SearchOutlined style={{ color: "#d9d9d9" }} />}
+              size="large"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onFocus={() => setIsSearchDropdownOpen(true)}
+              style={{ width: "100%", background: "transparent" }}
+              suffix={isSearching ? <Spin size="small" /> : null}
+            />
 
             {isSearchDropdownOpen && searchResults.length > 0 && (
-              <div className="absolute z-10 w-full mt-1 bg-white rounded-md shadow-lg max-h-96 overflow-y-auto border border-gray-200">
+              <div
+                style={{
+                  position: "absolute",
+                  width: "100%",
+                  zIndex: 10,
+                  marginTop: 4,
+                  backgroundColor: "white",
+                  borderRadius: 8,
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                  border: "1px solid #E5E7EB",
+                  maxHeight: 384,
+                  overflowY: "auto",
+                }}
+              >
                 {searchResults.map((port) => (
                   <div
                     key={port.id}
-                    className="px-4 py-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-0"
+                    style={{
+                      padding: "12px 16px",
+                      borderBottom: "1px solid #F3F4F6",
+                      cursor: "pointer",
+                      transition: "background-color 0.2s",
+                      backgroundColor: "white",
+                    }}
                     onClick={() => handlePortSelect(port)}
                   >
-                    <div className="flex justify-between items-center">
-                      <div className="flex items-center gap-4">
+                    <Flex justify="space-between" align="center">
+                      <Flex align="center" gap="middle">
                         {port.country_code ? (
                           <img
                             src={`https://flagsapi.com/${port.country_code.toUpperCase()}/flat/64.png`}
                             alt={`${port.country} flag`}
-                            className="w-6 h-4 object-cover rounded-sm shadow-sm"
+                            style={{
+                              width: 24,
+                              height: 16,
+                              objectFit: "cover",
+                              borderRadius: 4,
+                              boxShadow: "0 1px 2px rgba(0,0,0,0.05)",
+                            }}
                           />
                         ) : (
                           <FlagIcon />
                         )}
                         <div>
-                          <div className="font-medium text-gray-900">
+                          <Text strong style={{ color: "#1f2937" }}>
                             {(() => {
                               const displaynamearr = port.display_name
                                 .split(",")
@@ -153,51 +201,61 @@ const MapExistingPort = ({ keyword, onPortSelected }: MapExistingPortProps) => {
                                 .join(", ");
                               return displayText;
                             })()}
-                          </div>
-                          <div className="text-sm text-gray-500">
-                            {[port.city, port.state_name, port.country]
-                              .filter(Boolean)
-                              .join(", ")}
+                          </Text>
+                          <div>
+                            <Text type="secondary" style={{ fontSize: 14 }}>
+                              {[port.city, port.state_name, port.country]
+                                .filter(Boolean)
+                                .join(", ")}
+                            </Text>
                           </div>
                         </div>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <div className="text-sm text-gray-500">
+                      </Flex>
+                      <Flex align="center" gap="middle">
+                        <Text type="secondary" style={{ fontSize: 14 }}>
                           Port Type: {port.port_type}
-                        </div>
-                        <div>
-                          <button className="bg-blue-500 text-white cursor-pointer px-4 py-1 rounded-md">
-                            Map
-                          </button>
-                        </div>
-                      </div>
-                    </div>
+                        </Text>
+                        <Button type="primary" size="small">
+                          Map
+                        </Button>
+                      </Flex>
+                    </Flex>
                   </div>
                 ))}
-              </div>
-            )}
-
-            {isSearching && (
-              <div className="absolute inset-y-0 right-0 flex items-center pr-3">
-                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
               </div>
             )}
           </div>
 
           {selectedPort && (
-            <div className="mt-6 p-6 border border-gray-200 rounded-lg bg-white">
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
+            <Card
+              style={{
+                marginTop: 24,
+                borderRadius: 8,
+                border: "1px solid #E5E7EB",
+              }}
+            >
+              <Space
+                direction="vertical"
+                size="large"
+                style={{ width: "100%" }}
+              >
+                <Flex align="center" gap="small">
                   {selectedPort.country_code ? (
                     <img
                       src={`https://flagsapi.com/${selectedPort.country_code.toUpperCase()}/flat/64.png`}
                       alt={`${selectedPort.country} flag`}
-                      className="w-6 h-4 object-cover rounded-sm shadow-sm"
+                      style={{
+                        width: 24,
+                        height: 16,
+                        objectFit: "cover",
+                        borderRadius: 4,
+                        boxShadow: "0 1px 2px rgba(0,0,0,0.05)",
+                      }}
                     />
                   ) : (
                     <FlagIcon />
                   )}
-                  <h3 className="text-xl font-medium text-gray-900">
+                  <Title level={4} style={{ margin: 0 }}>
                     {(() => {
                       const displaynamearr = selectedPort.display_name
                         .split(",")
@@ -208,96 +266,149 @@ const MapExistingPort = ({ keyword, onPortSelected }: MapExistingPortProps) => {
                       ];
                       return displayText.join(", ");
                     })()}
-                  </h3>
-                </div>
+                  </Title>
+                </Flex>
 
-                <div className="grid grid-cols-2 gap-6 mt-4">
-                  <div>
-                    <div className="text-sm font-medium text-gray-500 mb-1">
+                <Flex wrap="wrap" gap="large" style={{ marginTop: 16 }}>
+                  <div style={{ minWidth: 200, flex: 1 }}>
+                    <Text
+                      type="secondary"
+                      style={{
+                        fontSize: 14,
+                        display: "block",
+                        marginBottom: 4,
+                      }}
+                    >
                       Location:
-                    </div>
-                    <div className="text-gray-900">
+                    </Text>
+                    <Text>
                       {[selectedPort.city, selectedPort.country]
                         .filter(Boolean)
                         .join(", ")}
-                    </div>
+                    </Text>
                   </div>
 
-                  <div>
-                    <div className="text-sm font-medium text-gray-500 mb-1">
+                  <div style={{ minWidth: 200, flex: 1 }}>
+                    <Text
+                      type="secondary"
+                      style={{
+                        fontSize: 14,
+                        display: "block",
+                        marginBottom: 4,
+                      }}
+                    >
                       Address:
-                    </div>
-                    <div className="text-gray-900">
-                      {selectedPort.address || "Not available"}
-                    </div>
+                    </Text>
+                    <Text>{selectedPort.address || "Not available"}</Text>
                   </div>
 
-                  <div>
-                    <div className="text-sm font-medium text-gray-500 mb-1">
+                  <div style={{ minWidth: 200, flex: 1 }}>
+                    <Text
+                      type="secondary"
+                      style={{
+                        fontSize: 14,
+                        display: "block",
+                        marginBottom: 4,
+                      }}
+                    >
                       Region:
-                    </div>
-                    <div className="text-gray-900">
+                    </Text>
+                    <Text>
                       {selectedPort.region?.toUpperCase() || "Not available"}
-                    </div>
+                    </Text>
                   </div>
 
-                  <div>
-                    <div className="text-sm font-medium text-gray-500 mb-1">
+                  <div style={{ minWidth: 200, flex: 1 }}>
+                    <Text
+                      type="secondary"
+                      style={{
+                        fontSize: 14,
+                        display: "block",
+                        marginBottom: 4,
+                      }}
+                    >
                       Coordinates:
-                    </div>
-                    <div className="text-gray-900">
+                    </Text>
+                    <Text>
                       {selectedPort.lat_lon
                         ? `${selectedPort.lat_lon.lat}, ${selectedPort.lat_lon.lon}`
                         : "Not available"}
-                    </div>
+                    </Text>
                   </div>
-                </div>
+                </Flex>
 
                 {selectedPort.other_names &&
                   selectedPort.other_names.length > 0 && (
-                    <div className="mt-4">
-                      <div
-                        className="text-sm font-medium text-gray-500 mb-2 flex items-center gap-2 cursor-pointer hover:text-blue-600"
+                    <div style={{ marginTop: 16 }}>
+                      <Flex
+                        align="center"
+                        gap="small"
                         onClick={() =>
                           setIsAlternativeNamesOpen(!isAlternativeNamesOpen)
                         }
+                        style={{ cursor: "pointer" }}
                       >
-                        Alternative Names:
-                        <FiChevronDown
-                          className={`w-4 h-4 transition-transform ${
-                            isAlternativeNamesOpen ? "rotate-180" : ""
-                          }`}
+                        <Text type="secondary" style={{ fontSize: 14 }}>
+                          Alternative Names:
+                        </Text>
+                        <DownOutlined
+                          style={{
+                            fontSize: 12,
+                            transition: "transform 0.3s",
+                            transform: isAlternativeNamesOpen
+                              ? "rotate(180deg)"
+                              : "rotate(0)",
+                          }}
                         />
-                      </div>
+                      </Flex>
+
                       {isAlternativeNamesOpen && (
-                        <div className="flex flex-wrap gap-2">
+                        <div
+                          style={{
+                            display: "flex",
+                            flexWrap: "wrap",
+                            gap: 8,
+                            marginTop: 8,
+                          }}
+                        >
                           {selectedPort.other_names.map((name, index) => (
-                            <span
+                            <Tag
                               key={index}
-                              className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm"
+                              color="blue"
+                              style={{ margin: 0, borderRadius: 16 }}
                             >
                               {name}
-                            </span>
+                            </Tag>
                           ))}
                         </div>
                       )}
                     </div>
                   )}
 
-                <div className="mt-6 flex justify-end">
-                  <button
+                <div
+                  style={{
+                    marginTop: 24,
+                    display: "flex",
+                    justifyContent: "flex-end",
+                  }}
+                >
+                  <Button
+                    type="primary"
+                    icon={<EnvironmentOutlined />}
                     onClick={() => onPortSelected(selectedPort.id)}
-                    className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
+                    style={{
+                      borderRadius: 8,
+                      boxShadow: "0 2px 0 rgba(0,0,0,0.02)",
+                    }}
                   >
-                    <FiMapPin className="w-4 h-4" />
                     Map to This Port
-                  </button>
+                  </Button>
                 </div>
-              </div>
-            </div>
+              </Space>
+            </Card>
           )}
-        </div>
-      </div>
+        </Space>
+      </Card>
     </div>
   );
 };
@@ -307,7 +418,13 @@ export const FlagIcon = () => {
     <img
       src={flagIcon}
       alt="Default flag"
-      className="w-6 h-6 object-cover rounded-sm shadow-sm"
+      style={{
+        width: 24,
+        height: 16,
+        objectFit: "cover",
+        borderRadius: 4,
+        boxShadow: "0 1px 2px rgba(0,0,0,0.05)",
+      }}
     />
   );
 };

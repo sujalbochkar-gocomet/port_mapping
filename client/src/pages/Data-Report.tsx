@@ -1,10 +1,10 @@
 import NavBar from "../components/NavBar";
-import DataReportMain from "../components/DataReport-Main";
+import { Button } from "antd";
 const DataReport = () => {
   return (
     <div>
       <NavBar />
-      <DataReportMain />
+      <Button type="primary">Click me</Button>
     </div>
   );
 };

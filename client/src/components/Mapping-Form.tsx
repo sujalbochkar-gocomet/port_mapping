@@ -2,6 +2,24 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import axios from "axios";
 import { statusPort } from "../types/types";
 import ModeSelector from "./Mapping-ModeSelector";
+import {
+  Input,
+  Button,
+  Card,
+  Typography,
+  Spin,
+  Tag,
+  Empty,
+  Space,
+  Flex,
+} from "antd";
+import {
+  SearchOutlined,
+  FileTextOutlined,
+  DownOutlined,
+} from "@ant-design/icons";
+
+const { Title, Text } = Typography;
 
 const MappingForm = () => {
   const [carrierType, setCarrierType] = useState<string>("sea_port");
@@ -102,6 +120,7 @@ const MappingForm = () => {
   }, [carrierType]);
 
   const toggleOtherNames = (portId: string) => {
+    console.log("Toggling for port ID:", portId); // Debugging line
     setShowOtherNames((prev) => ({
       ...prev,
       [portId]: !prev[portId],
@@ -111,288 +130,304 @@ const MappingForm = () => {
   return (
     <div>
       {/* Mode Selector Block */}
-      <div className="mb-6">
-        <label className="block text-lg font-bold text-gray-600 mb-2">
-          Port Type <span className="text-red-500">*</span>
-        </label>
-        <div className="flex items-center gap-4">
+      <div style={{ marginBottom: 24 }}>
+        <Title
+          level={5}
+          style={{ fontWeight: "bold", marginBottom: 8, color: "#4B5563" }}
+        >
+          Port Type <Text type="danger">*</Text>
+        </Title>
+        <Flex align="center" gap="middle">
           <ModeSelector
             selectedMode={carrierType}
             onModeSelect={setCarrierType}
           />
-        </div>
+        </Flex>
       </div>
 
       {/* Search Block */}
-      <div className="flex items-center gap-4">
-        <div className="w-full relative">
-          <label className="block text-lg font-bold text-gray-600 mb-1">
-            Enter Keyword Here <span className="text-red-500">*</span>
-          </label>
-          <div className="flex items-center gap-4">
-            <div className="flex-1">
-              <input
-                type="text"
+      <Flex align="center" gap="middle">
+        <div style={{ width: "100%", position: "relative" }}>
+          <Title
+            level={5}
+            style={{ fontWeight: "bold", marginBottom: 4, color: "#4B5563" }}
+          >
+            Enter Keyword Here <Text type="danger">*</Text>
+          </Title>
+          <Flex align="center" gap="middle">
+            <div style={{ flex: 1 }}>
+              <Input
                 value={searchInput}
                 onChange={handleInputChange}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    handleSearch();
-                  }
-                }}
+                onPressEnter={handleSearch}
                 placeholder={
                   carrierType === "address"
                     ? "Enter address..."
                     : "Enter port name, city, or code..."
                 }
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                size="large"
+                style={{ width: "100%" }}
               />
             </div>
-            <button
+            <Button
+              type="primary"
               onClick={handleSearch}
               disabled={isSearching}
-              className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+              icon={<SearchOutlined />}
+              loading={isSearching}
+              size="large"
             >
-              {isSearching ? (
-                <>
-                  <svg
-                    className="animate-spin h-5 w-5 text-white"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    ></circle>
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    ></path>
-                  </svg>
-                  Searching...
-                </>
-              ) : (
-                <>
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    />
-                  </svg>
-                  Search
-                </>
-              )}
-            </button>
-          </div>
+              Search
+            </Button>
+          </Flex>
         </div>
-      </div>
+      </Flex>
 
       {/* Results Section */}
-      <div ref={resultsRef} className="mt-4">
+      <div ref={resultsRef} style={{ marginTop: 16 }}>
         {isSearching ? (
-          <div className="flex flex-col items-center justify-center p-10 bg-gray-50 rounded-lg border border-gray-200">
-            <svg
-              className="animate-spin w-16 h-16 text-blue-500 mb-2"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
+          <Card
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: 40,
+              textAlign: "center",
+              backgroundColor: "#F9FAFB",
+            }}
+          >
+            <Spin size="large" />
+            <Text
+              style={{
+                display: "block",
+                marginTop: 16,
+                fontSize: 16,
+                fontWeight: 500,
+                color: "#4B5563",
+              }}
             >
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              ></circle>
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-              ></path>
-            </svg>
-            <p className="text-lg font-medium text-gray-600">Searching...</p>
-          </div>
+              Searching...
+            </Text>
+          </Card>
         ) : searchInput.trim() === "" ? (
-          <div className="flex flex-col items-center justify-center p-10 bg-gray-50 rounded-lg border border-gray-200">
-            <svg
-              className="w-16 h-16 text-gray-400 mb-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          <Card
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: 40,
+              textAlign: "center",
+              backgroundColor: "#F9FAFB",
+            }}
+          >
+            <FileTextOutlined style={{ fontSize: 64, color: "#9CA3AF" }} />
+            <Text
+              style={{
+                display: "block",
+                marginTop: 16,
+                fontSize: 16,
+                fontWeight: 500,
+                color: "#4B5563",
+              }}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.5}
-                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-              />
-            </svg>
-            <p className="text-lg font-medium text-gray-600">
               Enter a search term to find ports
-            </p>
-          </div>
+            </Text>
+          </Card>
         ) : searchResults.length > 0 ? (
-          <div className="space-y-4">
+          <Space direction="vertical" size="middle" style={{ width: "100%" }}>
             {searchResults.map((port) => (
-              <div
-                key={port.port._id}
-                className="w-full bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-all duration-200"
+              <Card
+                key={port.port.id}
+                style={{
+                  width: "100%",
+                  borderRadius: 12,
+                  border: "1px solid #F3F4F6",
+                }}
+                styles={{ body: { padding: 24 } }}
+                hoverable
               >
                 {/* Header Section */}
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-2">
+                <Flex
+                  justify="space-between"
+                  align="flex-start"
+                  style={{ marginBottom: 16 }}
+                >
+                  <Flex align="center" gap="small">
+                    <Flex align="center" gap="small">
                       {port.port.country_code && (
                         <img
                           src={`https://flagsapi.com/${port.port.country_code.toUpperCase()}/flat/64.png`}
                           alt={`${port.port.country} flag`}
-                          className="w-8 h-6 object-cover rounded-sm shadow-sm"
+                          style={{
+                            width: 32,
+                            height: 24,
+                            objectFit: "cover",
+                            borderRadius: 4,
+                            boxShadow: "0 1px 2px rgba(0,0,0,0.05)",
+                          }}
                         />
                       )}
-                      <h3 className="text-xl font-semibold text-gray-800">
+                      <Title level={4} style={{ margin: 0 }}>
                         {port.port.name}
-                      </h3>
-                      <span className="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm font-medium border border-gray-200">
+                      </Title>
+                      <Tag
+                        style={{
+                          margin: 0,
+                          backgroundColor: "#F3F4F6",
+                          color: "#4B5563",
+                          border: "1px solid #E5E7EB",
+                        }}
+                      >
                         {port.port.code}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span
-                      className={`px-3 py-1 rounded-full text-sm font-medium ${
-                        port.verified
-                          ? "bg-green-100 text-green-800 border border-green-200"
-                          : "bg-yellow-100 text-yellow-800 border border-yellow-200"
-                      }`}
-                    >
+                      </Tag>
+                    </Flex>
+                  </Flex>
+                  <Flex align="center" gap="small">
+                    <Tag color={port.verified ? "success" : "warning"}>
                       {port.verified ? "Verified" : "Unverified"}
-                    </span>
-                    <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium border border-blue-200">
+                    </Tag>
+                    <Tag color="blue">
                       Match: {port.match_score.toFixed(1)}%
-                    </span>
-                  </div>
-                </div>
+                    </Tag>
+                  </Flex>
+                </Flex>
 
                 {/* Details Grid */}
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-2">
-                      <span className="text-gray-500 min-w-24">Location:</span>
-                      <span className="text-gray-800">
-                        {port.port.city}, {port.port.country}
-                      </span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-gray-500 min-w-24">Region:</span>
-                      <span className="text-gray-800">{port.port.region}</span>
-                    </div>
-                    {port.port.other_names.length > 0 && (
-                      <div className="flex items-center justify-between mt-2 pt-2 border-t border-gray-100">
-                        <button
-                          onClick={() => toggleOtherNames(port.port._id)}
-                          className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-blue-600 hover:text-blue-800 hover:bg-blue-50 transition-colors"
+                <Flex gap="large" style={{ flexWrap: "wrap" }}>
+                  <div style={{ flex: 1, minWidth: 250 }}>
+                    <Space
+                      direction="vertical"
+                      size="small"
+                      style={{ width: "100%" }}
+                    >
+                      <Flex gap="small">
+                        <Text type="secondary" style={{ minWidth: 96 }}>
+                          Location:
+                        </Text>
+                        <Text>
+                          {port.port.city ? `${port.port.city},` : ""}{" "}
+                          {port.port.country}
+                        </Text>
+                      </Flex>
+                      <Flex gap="small">
+                        <Text type="secondary" style={{ minWidth: 96 }}>
+                          Region:
+                        </Text>
+                        <Text>{port.port.region.toUpperCase()}</Text>
+                      </Flex>
+                      {port.port.other_names.length > 0 && (
+                        <div
+                          style={{
+                            marginTop: 8,
+                            paddingTop: 8,
+                            borderTop: "1px solid #F3F4F6",
+                          }}
                         >
-                          <span className="font-medium">
-                            {showOtherNames[port.port._id]
-                              ? "Hide Other Names"
-                              : "Show Other Names"}
-                          </span>
-                          <svg
-                            className={`w-4 h-4 transition-transform duration-200 ${
-                              showOtherNames[port.port._id] ? "rotate-180" : ""
-                            }`}
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
+                          <Button
+                            type="link"
+                            onClick={() => toggleOtherNames(port.port.id)}
+                            style={{ padding: "6px 12px", height: "auto" }}
+                            icon={
+                              <DownOutlined
+                                rotate={showOtherNames[port.port.id] ? 180 : 0}
+                              />
+                            }
                           >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M19 9l-7 7-7-7"
-                            />
-                          </svg>
-                        </button>
-                      </div>
-                    )}
+                            {showOtherNames[port.port.id]
+                              ? `Hide Other Names`
+                              : "Show Other Names"}
+                          </Button>
+                        </div>
+                      )}
+                    </Space>
                   </div>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-2">
-                      <span className="text-gray-500 min-w-24">Address:</span>
-                      <span className="text-gray-800 flex-1">
-                        {port.port.address || "N/A"}
-                      </span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-gray-500 min-w-24">
-                        Coordinates:
-                      </span>
-                      <span className="text-gray-800">
-                        {port.port.lat_lon?.lat && port.port.lat_lon?.lon
-                          ? `${port.port.lat_lon.lat.toFixed(
-                              4
-                            )}, ${port.port.lat_lon.lon.toFixed(4)}`
-                          : "Not available"}
-                      </span>
-                    </div>
+                  <div style={{ flex: 1, minWidth: 250 }}>
+                    <Space
+                      direction="vertical"
+                      size="small"
+                      style={{ width: "100%" }}
+                    >
+                      <Flex gap="small">
+                        <Text type="secondary" style={{ minWidth: 96 }}>
+                          Address:
+                        </Text>
+                        <Text style={{ flex: 1 }}>
+                          {port.port.address || "N/A"}
+                        </Text>
+                      </Flex>
+                      <Flex gap="small">
+                        <Text type="secondary" style={{ minWidth: 96 }}>
+                          Coordinates:
+                        </Text>
+                        <Text>
+                          {port.port.lat_lon?.lat && port.port.lat_lon?.lon
+                            ? `${port.port.lat_lon.lat.toFixed(
+                                4
+                              )}, ${port.port.lat_lon.lon.toFixed(4)}`
+                            : "Not available"}
+                        </Text>
+                      </Flex>
+                    </Space>
                   </div>
-                </div>
+                </Flex>
 
                 {/* Other Names Section */}
-                {showOtherNames[port.port._id] &&
+                {showOtherNames[port.port.id] &&
                   port.port.other_names.length > 0 && (
-                    <div className="mt-4 pt-4 border-t border-gray-100">
-                      <div className="bg-gray-50 rounded-lg p-4">
-                        <div className="flex flex-wrap gap-2">
+                    <div
+                      style={{
+                        marginTop: 16,
+                        paddingTop: 16,
+                        borderTop: "1px solid #F3F4F6",
+                      }}
+                    >
+                      <div
+                        style={{
+                          backgroundColor: "#F9FAFB",
+                          borderRadius: 8,
+                          padding: 16,
+                        }}
+                      >
+                        <Flex gap="small" wrap="wrap">
                           {port.port.other_names.map((name, index) => (
-                            <span
-                              key={index}
-                              className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
-                            >
+                            <Tag key={index} color="blue">
                               {name}
-                            </span>
+                            </Tag>
                           ))}
-                        </div>
+                        </Flex>
                       </div>
                     </div>
                   )}
-              </div>
+              </Card>
             ))}
-          </div>
+          </Space>
         ) : (
-          <div className="flex flex-col items-center justify-center p-10 bg-gray-50 rounded-lg border border-gray-200">
-            <svg
-              className="w-16 h-16 text-gray-400 mb-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.5}
-                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-              />
-            </svg>
-            <p className="text-lg font-medium text-gray-600">No ports found</p>
-            <p className="text-sm text-gray-500 mt-1">
-              Try searching with different keywords
-            </p>
-          </div>
+          <Card
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: 40,
+              textAlign: "center",
+              backgroundColor: "#F9FAFB",
+            }}
+          >
+            <Empty
+              image={Empty.PRESENTED_IMAGE_SIMPLE}
+              description={
+                <Space direction="vertical" size={4}>
+                  <Text
+                    style={{ fontSize: 16, fontWeight: 500, color: "#4B5563" }}
+                  >
+                    No ports found
+                  </Text>
+                  <Text type="secondary">
+                    Try searching with different keywords
+                  </Text>
+                </Space>
+              }
+            />
+          </Card>
         )}
       </div>
     </div>

@@ -1,3 +1,4 @@
+import { Radio, Flex, theme } from "antd";
 import landIcon from "../assets/land.svg";
 import airIcon from "../assets/air.svg";
 import seaIcon from "../assets/sea.svg";
@@ -9,6 +10,8 @@ interface ModeSelectorProps {
 }
 
 const ModeSelector = ({ selectedMode, onModeSelect }: ModeSelectorProps) => {
+  const { token } = theme.useToken();
+
   const modes = [
     { id: "sea_port", icon: seaIcon, label: "SEA" },
     { id: "air_port", icon: airIcon, label: "AIR" },
@@ -17,36 +20,68 @@ const ModeSelector = ({ selectedMode, onModeSelect }: ModeSelectorProps) => {
   ];
 
   return (
-    <div className="flex gap-2 w-full bg-gray-50 p-2 rounded-lg">
+    <Radio.Group
+      value={selectedMode}
+      onChange={(e) => onModeSelect(e.target.value)}
+      style={{
+        display: "flex",
+        width: "100%",
+        padding: 8,
+        borderRadius: 8,
+        backgroundColor: "#f9fafb",
+      }}
+    >
       {modes.map((mode) => (
-        <button
+        <Radio.Button
           key={mode.id}
-          onClick={() => onModeSelect(mode.id)}
-          className={`flex-1 flex flex-col items-center justify-center p-4 rounded-lg transition-all duration-200 ${
-            selectedMode === mode.id
-              ? "bg-blue-100 border-2 border-blue-500 shadow-md"
-              : "bg-white border-2 border-transparent hover:bg-gray-50"
-          }`}
+          value={mode.id}
+          style={{
+            flex: 1,
+            height: "auto",
+            padding: 16,
+            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            borderRadius: 8,
+            margin: "0 4px",
+            borderColor:
+              selectedMode === mode.id ? token.colorPrimary : "transparent",
+            backgroundColor: selectedMode === mode.id ? "#e6f4ff" : "white",
+            boxShadow:
+              selectedMode === mode.id ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
+            borderWidth: selectedMode === mode.id ? 2 : 2,
+          }}
         >
-          <img
-            src={mode.icon}
-            alt={mode.label}
-            className={`w-8 h-8 mb-2 ${
-              selectedMode === mode.id
-                ? "[filter:invert(48%)_sepia(79%)_saturate(2476%)_hue-rotate(200deg)_brightness(118%)_contrast(119%)]"
-                : "brightness-0 opacity-50"
-            }`}
-          />
-          <span
-            className={`text-sm font-semibold ${
-              selectedMode === mode.id ? "text-blue-500" : "text-gray-600"
-            }`}
-          >
-            {mode.label}
-          </span>
-        </button>
+          <Flex vertical align="center" justify="center">
+            <img
+              src={mode.icon}
+              alt={mode.label}
+              style={{
+                width: 32,
+                height: 32,
+                marginBottom: 8,
+                filter:
+                  selectedMode === mode.id
+                    ? "invert(48%) sepia(79%) saturate(2476%) hue-rotate(200deg) brightness(118%) contrast(119%)"
+                    : "brightness(0) opacity(0.5)",
+              }}
+            />
+            <span
+              style={{
+                fontSize: 14,
+                fontWeight: 600,
+                color:
+                  selectedMode === mode.id ? token.colorPrimary : "#4B5563",
+              }}
+            >
+              {mode.label}
+            </span>
+          </Flex>
+        </Radio.Button>
       ))}
-    </div>
+    </Radio.Group>
   );
 };
 

@@ -2,8 +2,16 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import CreateNewPort from "./IssueReport-CreateNewPort";
 import MapExistingPort from "./IssueReport-MapExistingPort";
-import { FiPlus, FiMapPin, FiList } from "react-icons/fi";
 import IssueReportMappedPorts from "./IssueReport-MappedPorts";
+import { Typography, Button, Card, Space, Flex, Tabs, Tag } from "antd";
+import {
+  PlusOutlined,
+  EnvironmentOutlined,
+  UnorderedListOutlined,
+  ArrowLeftOutlined,
+} from "@ant-design/icons";
+
+const { Title, Text } = Typography;
 
 interface NewPortData {
   name: string;
@@ -35,108 +43,130 @@ const IssueReportResolveIssue = () => {
     console.log("Port selected:", portId);
   };
 
+  const items = [
+    {
+      key: "mapped",
+      label: (
+        <Flex align="center" gap="small">
+          <UnorderedListOutlined />
+          <span>Mapped Ports</span>
+        </Flex>
+      ),
+      children: <IssueReportMappedPorts keyword={issueDetails.keyword} />,
+    },
+    {
+      key: "create",
+      label: (
+        <Flex align="center" gap="small">
+          <PlusOutlined />
+          <span>Create New Port</span>
+        </Flex>
+      ),
+      children: (
+        <CreateNewPort
+          keyword={issueDetails.keyword}
+          onPortCreated={handlePortCreated}
+        />
+      ),
+    },
+    {
+      key: "map",
+      label: (
+        <Flex align="center" gap="small">
+          <EnvironmentOutlined />
+          <span>Map to Existing Port</span>
+        </Flex>
+      ),
+      children: (
+        <MapExistingPort
+          keyword={issueDetails.keyword}
+          onPortSelected={handlePortSelected}
+        />
+      ),
+    },
+  ];
+
   return (
-    <div>
-      <div className="max-w-7xl mx-auto p-8">
-        {/* Main Content */}
-        <div className="space-y-6">
-          {/* Header */}
-          <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-semibold text-gray-800">
-              Issue ID: {issueId}
-            </h1>
-            <button
-              onClick={() => navigate("/admin/issue/dashboard")}
-              className="px-4 py-2 text-gray-600 hover:text-gray-800 flex items-center gap-2 cursor-pointer"
-            >
-              <span>←</span> Back to Issues
-            </button>
-          </div>
+    <div style={{ maxWidth: 1280, margin: "0 auto", padding: 32 }}>
+      {/* Main Content */}
+      <Space direction="vertical" size="large" style={{ width: "100%" }}>
+        {/* Header */}
+        <Flex justify="space-between" align="center">
+          <Title
+            level={3}
+            style={{ margin: 0, color: "#4B5563", fontWeight: 600 }}
+          >
+            Issue ID: {issueId}
+          </Title>
+          <Button
+            type="text"
+            icon={<ArrowLeftOutlined />}
+            onClick={() => navigate("/admin/issue/dashboard")}
+          >
+            Back to Issues
+          </Button>
+        </Flex>
 
-          {/* Issue Details Card */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-            <div className="flex items-center justify-center gap-8">
-              <div className="flex items-center gap-2">
-                <span className="text-base font-medium text-black">
-                  Keyword:
-                </span>
-                <span className="text-gray-600 bg-gray-100 px-2 py-1 rounded-lg">
-                  {issueDetails.keyword}
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                Number of Queries:
-                <span className="text-gray-600 bg-gray-100 px-2 py-1 rounded-lg">
-                  {issueDetails.numberOfQueries}
-                </span>
-              </div>
-            </div>
-          </div>
+        {/* Issue Details Card */}
+        <Card
+          style={{
+            borderRadius: 12,
+            boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
+            border: "1px solid #F3F4F6",
+          }}
+        >
+          <Flex justify="center" align="center" gap="large">
+            <Flex align="center" gap="small">
+              <Text strong>Keyword:</Text>
+              <Tag
+                style={{
+                  backgroundColor: "#F3F4F6",
+                  color: "#4B5563",
+                  border: "1px solid #E5E7EB",
+                  fontSize: 14,
+                  padding: "2px 8px",
+                }}
+              >
+                {issueDetails.keyword}
+              </Tag>
+            </Flex>
+            <Flex align="center" gap="small">
+              <Text strong>Number of Queries:</Text>
+              <Tag
+                style={{
+                  backgroundColor: "#F3F4F6",
+                  color: "#4B5563",
+                  border: "1px solid #E5E7EB",
+                  fontSize: 14,
+                  padding: "2px 8px",
+                }}
+              >
+                {issueDetails.numberOfQueries}
+              </Tag>
+            </Flex>
+          </Flex>
+        </Card>
 
-          {/* Action Tabs */}
-          <div className="flex justify-center">
-            <div className="w-3/4 flex justify-between border-b border-gray-200">
-              <button
-                className={`relative w-1/3 py-4 px-6 font-medium flex items-center justify-center gap-2 transition-colors ${
-                  activeTab === "mapped"
-                    ? "text-blue-600"
-                    : "text-gray-600 hover:text-gray-800"
-                }`}
-                onClick={() => setActiveTab("mapped")}
-              >
-                <FiList className="w-5 h-5" />
-                Mapped Ports
-                {activeTab === "mapped" && (
-                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600"></div>
-                )}
-              </button>
-              <button
-                className={`relative w-1/3 py-4 px-6 font-medium flex items-center justify-center gap-2 transition-colors ${
-                  activeTab === "create"
-                    ? "text-blue-600"
-                    : "text-gray-600 hover:text-gray-800"
-                }`}
-                onClick={() => setActiveTab("create")}
-              >
-                <FiPlus className="w-5 h-5" />
-                Create New Port
-                {activeTab === "create" && (
-                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600"></div>
-                )}
-              </button>
-              <button
-                className={`relative w-1/3 py-4 px-6 font-medium flex items-center justify-center gap-2 transition-colors ${
-                  activeTab === "map"
-                    ? "text-blue-600"
-                    : "text-gray-600 hover:text-gray-800"
-                }`}
-                onClick={() => setActiveTab("map")}
-              >
-                <FiMapPin className="w-5 h-5" />
-                Map to Existing Port
-                {activeTab === "map" && (
-                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600"></div>
-                )}
-              </button>
-            </div>
-          </div>
-
-          {/* Tab Content */}
-          {activeTab === "mapped" ? (
-            <IssueReportMappedPorts keyword={issueDetails.keyword} />
-          ) : activeTab === "create" ? (
-            <CreateNewPort
-              keyword={issueDetails.keyword}
-              onPortCreated={handlePortCreated}
+        {/* Tabs */}
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <div style={{ width: "75%" }}>
+            <Tabs
+              activeKey={activeTab}
+              onChange={(key) =>
+                setActiveTab(key as "create" | "map" | "mapped")
+              }
+              items={items}
+              size="large"
+              centered
+              tabBarStyle={{
+                fontWeight: 500,
+                borderBottom: "1px solid #E5E7EB",
+                marginBottom: 24,
+              }}
             />
-          ) : (
-            <MapExistingPort
-              keyword={issueDetails.keyword}
-              onPortSelected={handlePortSelected}
-            />
-          )}
+          </div>
         </div>
-      </div>
+      </Space>
     </div>
   );
 };
