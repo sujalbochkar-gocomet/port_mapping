@@ -1,0 +1,107 @@
+# Server Docker Setup Instructions
+
+This document explains how to set up and run just the server component using Docker.
+
+## Prerequisites
+
+- Docker and Docker Compose installed on your machine
+- Node.js and npm (for local development)
+- Git (to clone the repository)
+
+## File Structure
+
+```
+port_mapping/
+├── client/                    # React client application (not dockerized)
+├── server/                    # Node.js server application
+│   ├── .env                   # Server environment variables
+│   ├── port_mapper/
+│   │   └── ruby_fuzzy/        # Ruby integration
+│   │       └── Gemfile        # Ruby dependencies
+│   └── ...
+├── docker/
+│   ├── server.Dockerfile      # Production Dockerfile for server
+│   └── server.Dockerfile.dev  # Development Dockerfile for server
+├── docker-compose.yml         # Production Docker Compose configuration
+├── docker-compose.dev.yml     # Development Docker Compose configuration
+└── server/.dockerignore       # Files to exclude from Docker
+```
+
+## Development Environment Setup
+
+1. Make sure your server environment file is set up correctly:
+   - `server/.env` should include your MongoDB Atlas connection string and other environment variables
+
+2. Create the Docker directory:
+   ```bash
+   mkdir -p docker
+   ```
+
+3. Create the Docker files:
+   - Copy `server.Dockerfile.dev` to `docker/server.Dockerfile.dev`
+   - Copy `docker-compose.dev.yml` to the project root
+   - Copy `.dockerignore` to the `server/` directory
+
+4. Build and start the container for development:
+   ```bash
+   docker-compose -f docker-compose.dev.yml up --build
+   ```
+
+5. Access your server:
+   - Backend API: http://localhost:3000
+
+## Production Setup
+
+For production deployment:
+
+1. Create production Docker files:
+   - Copy `server.Dockerfile` to `docker/server.Dockerfile`
+   - Copy `docker-compose.yml` to the project root
+
+2. Build and start the container for production:
+   ```bash
+   docker-compose up --build
+   ```
+
+3. Access your production server:
+   - Backend API: http://localhost:3000
+
+## CORS Configuration
+
+Since you're hosting the client separately, make sure your server has proper CORS configuration:
+
+```javascript
+// In your server code (e.g., src/script.ts)
+import cors from 'cors';
+
+// ...
+
+app.use(cors({
+  origin: process.env.CLIENT_URL || 'http://your-client-url.com',
+  credentials: true
+}));
+```
+
+Add `CLIENT_URL` to your server `.env` file with the URL where your client will be hosted.
+
+## Memory Considerations
+
+The server is configured with increased memory allocation (`--max-old-space-size=4096`) to prevent JavaScript stack space issues, as specified in your requirements.
+
+## Ruby Integration
+
+The server container includes both Node.js and Ruby to support the fuzzy matching integration. The Ruby dependencies are installed from your Gemfile in the `ruby_fuzzy` directory.
+
+## Troubleshooting
+
+If you encounter issues:
+
+1. Check that your .env file is in the correct location
+2. Verify that the MongoDB Atlas connection string is correct
+3. Ensure Ruby dependencies are correctly specified in the Gemfile
+4. Check container logs:
+   ```bash
+   docker-compose logs server
+   ```
+
+5. If you encounter memory issues with the server, you can increase the `--max-old-space-size` value in the Dockerfile.

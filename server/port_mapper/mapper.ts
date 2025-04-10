@@ -374,7 +374,7 @@ class PortMatcher {
         }
       }
 
-      if (bestMatch.confidence > 60) {
+      if (bestMatch.confidence > 30) {
         results.push({
           port_data: port,
           confidence_score: parseFloat(bestMatch.confidence.toFixed(2)),
