@@ -3,10 +3,11 @@ import cors from "cors";
 import swaggerUi from "swagger-ui-express";
 import swaggerJsdoc from "swagger-jsdoc";
 
-import { Port } from "./types/types";
+import { CascadingResult,PortMatcherResult} from "./types/types";
 import { prisma } from "./lib/prisma";
 import PortMatcher from "../port_mapper/mapper";
 import swaggerOptions from "./lib/swagger";
+import { MemoryMonitor } from "./utils/memory-monitor";
 
 const express = require("express");
 const app = express();
@@ -15,21 +16,6 @@ let portMatcher: PortMatcher | null = null;
 let refreshInterval: NodeJS.Timeout | null = null;
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 
-interface CascadingResult {
-  /**
-   * Interface representing a cascading search result
-   */
-  port_data: Port;
-  confidence_score: number;
-  match_type: string;
-  match_algo_type: string;
-}
-interface PortMatcherResult {
-  port_data: Port;
-  confidence_score: number;
-  match_type: string;
-  sources: string[];
-}
 
 app.use(cors());
 app.use(express.json());
@@ -57,8 +43,7 @@ async function refreshPortData() {
 // Modify the initializePortMatcher function to set up the refresh interval
 const initializePortMatcher = async () => {
   try {
-    const portsData = await PortMatcher.loadPortsData();
-    portMatcher = new PortMatcher(portsData);
+    portMatcher = await PortMatcher.getInstance();
 
     // Clear any existing refresh interval
     if (refreshInterval) {
@@ -83,6 +68,12 @@ const startServer = async () => {
       console.log(
         `API documentation available at http://localhost:${port}/api-docs`
       );
+      
+      // Start memory monitoring (check every 1 minute)
+      MemoryMonitor.startMonitoring(20000);
+      
+      // Log initial memory state
+      MemoryMonitor.logMemoryUsage('Server Start');
     });
   } catch (error) {
     console.error("Failed to start server:", error);
@@ -506,6 +497,69 @@ app.get("/search-ports/llm", async (req: Request, res: Response) => {
   }
 });
 
+
+/**
+ * @swagger
+ * /search-ports/llm-raw:
+ *   get:
+ *     summary: Groq LLM Response
+ *     description: Get response from Groq LLM
+ *     parameters:
+ *       - in: query
+ *         name: q
+ *         schema:
+ *           type: string
+ *         description: Search query
+ *       - in: query
+ *         name: type
+ *         schema:
+ *           type: string
+ *         description: Port type filter
+ *     responses:
+ *       200:
+ *         description: List of matching ports
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/PortSearchResult'
+ *       500:
+ *         description: Server error
+ */
+
+app.get("/search-ports/llm-raw", async (req: Request, res: Response) => {
+  try {
+    if (!portMatcher) {
+      throw new Error("PortMatcher not initialized");
+    }
+
+    const query = (req.query.q as string)?.toLowerCase() || "";
+    const type = req.query.type as string;
+
+    // Get raw LLM response
+    const rawResponse = await portMatcher.getGroqResponse(query, type);
+  
+      // Parse and validate the response
+      const jsonResponse = JSON.parse(rawResponse);
+      const isValid = portMatcher.validateLLMResponse(jsonResponse);
+      
+      if (!isValid) {
+        throw new Error('Invalid LLM response format');
+      }
+      
+      res.status(200).json(jsonResponse);
+    } catch (error) {
+    console.error("Error in LLM search:", error);
+    res.status(500).json({
+      error: "Failed to perform LLM search",
+      details: error instanceof Error ? error.message : "Unknown error",
+    });
+  }
+});
+
+
+
 /**
  * @swagger
  * /search-ports/cascading-results:
@@ -909,3 +963,7 @@ app.delete("/delete-shipment/:id", async (req: Request, res: Response) => {
     });
   }
 });
+
+
+
+
