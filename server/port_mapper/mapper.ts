@@ -1,52 +1,26 @@
-import { Port } from "../src/types/types";
+import { Port, CascadingResult, PortMatcherResult } from "../src/types/types";
 import { Groq } from "groq-sdk";
 import { spawn } from "child_process";
 import { join } from "path";
 import prisma from "../src/lib/prisma";
 
-interface PortMatcherResult {
-  /**
-   * Interface representing a port matching result
-   */
-  port_data: Port;
-  confidence_score: number;
-  match_type: string;
-  sources: string[];
-}
-
-interface CascadingResult {
-  /**
-   * Interface representing a cascading search result
-   */
-
-  port_data: Port;
-  confidence_score: number;
-  match_type: string;
-  match_algo_type: string;
-}
 
 class PortMatcher {
   /**
    * Class for matching ports based on various search algorithms
    */
-  public portsData: Port[];
+  public portsData: Port[] = [];
   public searchableKeys: string[];
   public locationSearchableKeys: string[];
   public ignoredKeywords: Set<string>;
   public groq: Groq;
+  private static instance: PortMatcher | null = null;
 
-  constructor(portsData: Port[]) {
+  private constructor() {
     /**
      * Creates a new PortMatcher instance
-     * @param portsData - Array of port data to search through
-     * @throws Error if portsData is empty or not an array
+     * Private constructor to enforce singleton pattern
      */
-
-    if (!Array.isArray(portsData) || portsData.length === 0) {
-      throw new Error("Ports data must be a non-empty array");
-    }
-
-    this.portsData = portsData;
     this.searchableKeys = ["name", "code", "display_name"];
     this.locationSearchableKeys = ["country", "region", "city", "state_name"];
     this.ignoredKeywords = new Set([
@@ -106,19 +80,34 @@ class PortMatcher {
     });
   }
 
-  static async loadPortsData(): Promise<Port[]> {
+  private static async loadPortsData(): Promise<Port[]> {
     /**
      * Loads port data from MongoDB
      * @returns Promise resolving to an array of Port objects
      * @throws Error if database connection or query fails
      */
-
     try {
       const allPorts = await prisma.port.findMany({
         where: {
           deleted: false,
           verified: true,
         },
+        select: {
+          id: true,
+          name: true,
+          display_name: true,
+          city:true,
+          country:true,
+          country_code:true,
+          code:true,
+          port_type:true,
+          region:true,
+          lat_lon:true,
+          other_names:true,
+          state_name:true,
+          master_port:true,
+          is_head_port:true,
+        }
       });
       return allPorts as unknown as Port[];
     } catch (error) {
@@ -133,15 +122,27 @@ class PortMatcher {
      * @returns Promise that resolves when data is refreshed
      * @throws Error if data refresh fails
      */
-
     try {
-      const freshData = await PortMatcher.loadPortsData();
-      this.portsData = freshData;
+      this.portsData = await PortMatcher.loadPortsData();
     } catch (error) {
       console.error("Error refreshing port data:", error);
       throw error;
     }
   }
+
+  public static async getInstance(): Promise<PortMatcher> {
+    if (!PortMatcher.instance) {
+      PortMatcher.instance = new PortMatcher();
+      await PortMatcher.instance.refreshData();
+    }
+    return PortMatcher.instance;
+  }
+
+  public getPortsData(): Port[] {
+    return this.portsData;
+  }
+
+  
 
   public normalizeString(str: string | undefined): string {
     /**
@@ -252,6 +253,8 @@ class PortMatcher {
         } else if (key == "code") {
           weightedScore = 99;
         }
+
+        
 
         if (normalizedField && normalizedField == normalizedInput) {
           matchType = `_${key.toLowerCase().replace(/\s+/g, "_")}`;
@@ -527,10 +530,20 @@ class PortMatcher {
      * @returns Promise resolving to LLM response string
      */
 
+
+    let port_type="";
+    if(portType=="air_port"){
+      port_type="airport";
+    }else if(portType=="sea_port"){
+      port_type="seaport";
+    }else if(portType=="inland_port"){
+      port_type="inlandport";
+    }else{
+      port_type="address";
+    }
+
     try {
-      const query = `Input Keyword is ${keyword} and Port Type is ${
-        portType || "any"
-      }.
+      const query = `Input Keyword is ${keyword} and Type is ${port_type}.
 
 
 Important:
@@ -739,6 +752,7 @@ Important:
         }));
       }
 
+
       let locationFilteredData = this.filterByLocation(
         inputString,
         workingPortsData
@@ -879,3 +893,6 @@ Important:
 }
 
 export = PortMatcher;
+
+
+
