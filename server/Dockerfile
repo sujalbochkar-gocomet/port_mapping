@@ -4,15 +4,21 @@
     # Set working directory
     WORKDIR /app
     
-    # Copy package files and install dependencies
+    # Copy package files
     COPY package*.json tsconfig.json ./
+    COPY prisma ./prisma/
+    
+    # Install dependencies
     RUN npm install
+    
+    # Generate Prisma Client
+    RUN npx prisma generate
     
     # Copy the rest of the app
     COPY . .
     
     # Compile TypeScript to JavaScript
-    RUN npm run build   # This assumes you have a build script like "tsc"
+    RUN npm run build
     
     # ----------- Final Stage -----------
     FROM node:18
@@ -30,7 +36,13 @@
     # Copy only the compiled JS and necessary files from build
     COPY --from=build /app/dist ./dist
     COPY --from=build /app/package*.json ./
+    COPY --from=build /app/node_modules ./node_modules
+    COPY --from=build /app/prisma ./prisma
+    
     RUN npm install --omit=dev
+    
+    # Generate Prisma Client in final stage
+    RUN npx prisma generate
     
     # Copy Ruby files and install dependencies
     COPY --from=build /app/port_mapper/ruby_fuzzy ./port_mapper/ruby_fuzzy
@@ -44,5 +56,4 @@
     EXPOSE 3000
     
     # Run compiled JS with Node
-    CMD ["node", "dist/script.js"]
-    
+    CMD ["node", "dist/src/script.js"]

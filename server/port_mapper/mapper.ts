@@ -130,21 +130,15 @@ class PortMatcher {
     }
   }
 
-   static async getInstance(): Promise<PortMatcher> {
+  static async getInstance(): Promise<PortMatcher> {
     if (!PortMatcher.instance) {
       PortMatcher.instance = new PortMatcher();
       await PortMatcher.instance.refreshData();
     }
     return PortMatcher.instance;
-  }
+  }  
 
-   getPortsData(): Port[] {
-    return this.portsData;
-  }
-
-  
-
-   normalizeString(str: string | undefined): string {
+  normalizeString(str: string | undefined): string {
     /**
      * Normalizes a string by converting to lowercase and removing special characters
      * @param str - String to normalize

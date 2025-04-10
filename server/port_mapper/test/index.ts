@@ -1,6 +1,5 @@
 import PortMatcher = require("../mapper");
 import { promises as fs } from 'fs';
-import connectDB = require('../../lib/db');
 
 interface TestPort {
     Keyword: string;
@@ -10,18 +9,12 @@ interface TestPort {
 
 async function main(): Promise<void> {
     try {
-        // First connect to MongoDB
-        console.log("Connecting to MongoDB...");
-        await connectDB();
-        console.log("MongoDB connection established successfully");
-
         const portsFilePath = "./tests_json/test61.json";
         const ports: TestPort[] = JSON.parse(await fs.readFile(portsFilePath, "utf-8"));
 
         // Initialize PortMatcher
         console.log("Initializing PortMatcher...");
-        const portsData = await PortMatcher.loadPortsData();
-        const portMatcher = new PortMatcher(portsData);
+        const portMatcher = await PortMatcher.getInstance();
         console.log("PortMatcher initialized successfully");
 
         let matchedCount = 0;
