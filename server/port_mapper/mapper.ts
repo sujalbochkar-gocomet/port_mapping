@@ -9,17 +9,17 @@ class PortMatcher {
   /**
    * Class for matching ports based on various search algorithms
    */
-  public portsData: Port[] = [];
-  public searchableKeys: string[];
-  public locationSearchableKeys: string[];
-  public ignoredKeywords: Set<string>;
-  public groq: Groq;
-  private static instance: PortMatcher | null = null;
+   portsData: Port[] = [];
+   searchableKeys: string[];
+   locationSearchableKeys: string[];
+   ignoredKeywords: Set<string>;
+   groq: Groq;
+   static instance: PortMatcher | null = null;
 
-  private constructor() {
+   constructor() {
     /**
      * Creates a new PortMatcher instance
-     * Private constructor to enforce singleton pattern
+     *  constructor to enforce singleton pattern
      */
     this.searchableKeys = ["name", "code", "display_name"];
     this.locationSearchableKeys = ["country", "region", "city", "state_name"];
@@ -80,7 +80,7 @@ class PortMatcher {
     });
   }
 
-  private static async loadPortsData(): Promise<Port[]> {
+  static async loadPortsData(): Promise<Port[]> {
     /**
      * Loads port data from MongoDB
      * @returns Promise resolving to an array of Port objects
@@ -116,7 +116,7 @@ class PortMatcher {
     }
   }
 
-  public async refreshData(): Promise<void> {
+  async refreshData(): Promise<void> {
     /**
      * Refreshes the port data by reloading from MongoDB
      * @returns Promise that resolves when data is refreshed
@@ -130,7 +130,7 @@ class PortMatcher {
     }
   }
 
-  public static async getInstance(): Promise<PortMatcher> {
+   static async getInstance(): Promise<PortMatcher> {
     if (!PortMatcher.instance) {
       PortMatcher.instance = new PortMatcher();
       await PortMatcher.instance.refreshData();
@@ -138,13 +138,13 @@ class PortMatcher {
     return PortMatcher.instance;
   }
 
-  public getPortsData(): Port[] {
+   getPortsData(): Port[] {
     return this.portsData;
   }
 
   
 
-  public normalizeString(str: string | undefined): string {
+   normalizeString(str: string | undefined): string {
     /**
      * Normalizes a string by converting to lowercase and removing special characters
      * @param str - String to normalize
@@ -160,7 +160,7 @@ class PortMatcher {
     );
   }
 
-  public filterByLocation(
+   filterByLocation(
     inputString: string,
     portsData: Port[] = this.portsData
   ): Port[] {
@@ -219,7 +219,7 @@ class PortMatcher {
     return results;
   }
 
-  public completeNameSearch(
+   completeNameSearch(
     inputString: string,
     portsData: Port[] = this.portsData
   ): CascadingResult[] {
@@ -287,7 +287,7 @@ class PortMatcher {
     return results.sort((a, b) => b.confidence_score - a.confidence_score);
   }
 
-  private wordSearch(
+   wordSearch(
     inputString: string,
     portsData: Port[] = this.portsData
   ): CascadingResult[] {
@@ -415,7 +415,7 @@ class PortMatcher {
     return results.sort((a, b) => b.confidence_score - a.confidence_score);
   }
 
-  public async rubyFuzzySearch(
+   async rubyFuzzySearch(
     inputString: string,
     portsData: Port[] = this.portsData
   ): Promise<CascadingResult[]> {
@@ -485,7 +485,7 @@ class PortMatcher {
     });
   }
 
-  public validateLLMResponse(data: any): boolean {
+   validateLLMResponse(data: any): boolean {
     /**
      * Validates LLM response format
      * @param data - Response data to validate
@@ -519,7 +519,7 @@ class PortMatcher {
     return true;
   }
 
-  public async getGroqResponse(
+   async getGroqResponse(
     keyword: string,
     portType: string | null
   ): Promise<string> {
@@ -573,7 +573,7 @@ Important:
     }
   }
 
-  public async getLLMResponse(
+   async getLLMResponse(
     keyword: string,
     portType: string | null = null
   ): Promise<PortMatcherResult[]> {
@@ -713,7 +713,7 @@ Important:
     }
   }
 
-  public async cascadingSearch(
+   async cascadingSearch(
     inputString: string,
     portType: string | null = null
   ): Promise<CascadingResult[]> {
