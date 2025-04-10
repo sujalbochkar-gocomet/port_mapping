@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MappingForm from "./Shipment-Form";
+import ShipmentForm from "./Shipment-Form";
 import ShipmentList from "./Shipment-List";
 import ShipmentFilters from "./Shipment-filters";
 
@@ -12,7 +12,7 @@ const ShipmentsMain = () => {
 
   return (
     <div className="p-4 max-w-7xl mx-auto">
-      <MappingForm />
+      <ShipmentForm />
       <div className="mt-8 border-t border-gray-200 pt-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6">
           <div className="text-2xl font-bold text-gray-600 mb-4 sm:mb-0">
