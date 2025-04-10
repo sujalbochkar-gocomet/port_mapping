@@ -62,3 +62,20 @@ export interface MappedPort {
   match_type: string;
   sources: string[];
 }
+
+
+export interface CascadingResult {
+  /**
+   * Interface representing a cascading search result
+   */
+  port_data: Port;
+  confidence_score: number;
+  match_type: string;
+  match_algo_type: string;
+}
+export interface PortMatcherResult {
+  port_data: Port;
+  confidence_score: number;
+  match_type: string;
+  sources: string[];
+}

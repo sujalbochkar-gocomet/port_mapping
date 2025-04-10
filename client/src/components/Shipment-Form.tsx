@@ -7,7 +7,7 @@ import airIcon from "../assets/air.svg";
 import seaIcon from "../assets/sea.svg";
 import { toast } from "react-toastify";
 
-const MappingForm = () => {
+const ShipmentForm = () => {
   const [shipments, setShipments] = useState<Shipment[]>([]);
   const [carrierType, setCarrierType] = useState<string>("sea_port");
   const [loading, setLoading] = useState(false);
@@ -659,7 +659,7 @@ const PortDropdownItem = ({ port }: { port: statusPort }) => {
   );
 };
 
-export default MappingForm;
+export default ShipmentForm;
 
 const ModeSelector = ({
   selectedMode,

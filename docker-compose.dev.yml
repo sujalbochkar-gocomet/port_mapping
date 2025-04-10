@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: ../docker/server_dev.Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+      - /app/port_mapper/ruby_fuzzy/.bundle
+      - ./server/.env:/app/.env
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - MONGODB_URL=${MONGODB_URL}
+      - DATABASE_URL=${DATABASE_URL}
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - SYSTEM_PROMPT=${SYSTEM_PROMPT}
+    restart: unless-stopped
