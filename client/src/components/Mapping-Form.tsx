@@ -13,11 +13,7 @@ import {
   Space,
   Flex,
 } from "antd";
-import {
-  SearchOutlined,
-  FileTextOutlined,
-  DownOutlined,
-} from "@ant-design/icons";
+import { SearchOutlined, DownOutlined } from "@ant-design/icons";
 
 const { Title, Text } = Typography;
 
@@ -220,18 +216,23 @@ const MappingForm = () => {
               backgroundColor: "#F9FAFB",
             }}
           >
-            <FileTextOutlined style={{ fontSize: 64, color: "#9CA3AF" }} />
-            <Text
-              style={{
-                display: "block",
-                marginTop: 16,
-                fontSize: 16,
-                fontWeight: 500,
-                color: "#4B5563",
-              }}
-            >
-              Enter a search term to find ports
-            </Text>
+            <Empty
+              image={Empty.PRESENTED_IMAGE_SIMPLE}
+              description={
+                <Text
+                  style={{
+                    display: "block",
+                    marginTop: 16,
+                    fontSize: 16,
+                    fontWeight: 500,
+                    color: "#4B5563",
+                  }}
+                >
+                  Enter a search term to find ports
+                </Text>
+              }
+              style={{ fontSize: 64, color: "#9CA3AF" }}
+            />
           </Card>
         ) : searchResults.length > 0 ? (
           <Space direction="vertical" size="middle" style={{ width: "100%" }}>
@@ -419,7 +420,7 @@ const MappingForm = () => {
                   <Text
                     style={{ fontSize: 16, fontWeight: 500, color: "#4B5563" }}
                   >
-                    No ports found
+                    No matching ports found for your search
                   </Text>
                   <Text type="secondary">
                     Try searching with different keywords
