@@ -1,87 +1,120 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useMemo } from "react";
-import { FiSearch, FiArrowUp, FiArrowDown } from "react-icons/fi";
+import {
+  Input,
+  Button,
+  Table,
+  Typography,
+  Card,
+  Empty,
+  Space,
+  Tag,
+  Flex,
+} from "antd";
+import {
+  SearchOutlined,
+  ArrowUpOutlined,
+  ArrowDownOutlined,
+} from "@ant-design/icons";
+import type { ColumnType } from "antd/es/table";
+
+const { Title, Text } = Typography;
 
 type SortField = "keyword" | "confidenceScore" | "numberOfQueries";
 type SortOrder = "asc" | "desc";
+
+interface MappedPort {
+  id: string;
+  name: string;
+  type: string;
+}
+
+interface DataItem {
+  id: number;
+  issueId: string;
+  keyword: string;
+  confidenceScore: number;
+  numberOfQueries: number;
+  mappedPorts: MappedPort[];
+}
 
 const IssueReportTable = () => {
   const [searchKeyword, setSearchKeyword] = useState("");
   const [sortField, setSortField] = useState<SortField>("keyword");
   const [sortOrder, setSortOrder] = useState<SortOrder>("asc");
-  const [filteredData, setFilteredData] = useState<any[]>([]);
+  const [filteredData, setFilteredData] = useState<DataItem[]>([]);
 
   // Sample data - replace with your actual data source
-  const initialData = useMemo<any[]>(
+  const initialData = useMemo<DataItem[]>(
     () => [
       {
         id: 1,
-        issueId: "random-issue-id-1",
-        keyword: "Port A",
+        issueId: "i1",
+        keyword: "Port Klang",
         confidenceScore: 0.5,
         numberOfQueries: 2,
         mappedPorts: [
           {
             id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
-            name: "Port Temporary",
+            name: "Port Klang West",
             type: "sea_port",
           },
           {
             id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
-            name: "Port Temporary",
+            name: "Port Klang East",
             type: "sea_port",
           },
           {
             id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
-            name: "Port Temporary",
+            name: "Port Klang South",
             type: "sea_port",
           },
         ],
       },
       {
         id: 2,
-        issueId: "random-issue-id-2",
-        keyword: "Port B",
+        issueId: "i2",
+        keyword: "Port Chennai",
         confidenceScore: 0.48,
         numberOfQueries: 5,
         mappedPorts: [
           {
             id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
-            name: "Port Temporary",
+            name: "Chennai wesite",
             type: "sea_port",
           },
           {
             id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
-            name: "Port Temporary",
+            name: "Chennai East",
             type: "sea_port",
           },
           {
             id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
-            name: "Port Temporary",
+            name: "Chennai South",
             type: "sea_port",
           },
         ],
       },
       {
         id: 3,
-        issueId: "random-issue-id-3",
-        keyword: "Port C",
+        issueId: "i3",
+        keyword: "Port Mumbai",
         confidenceScore: 0.36,
         numberOfQueries: 1,
         mappedPorts: [
           {
             id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
-            name: "Port Temporary",
+            name: "Mumbai West",
             type: "sea_port",
           },
           {
             id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
-            name: "Port Temporary",
+            name: "Mundra East",
             type: "sea_port",
           },
           {
             id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
-            name: "Port Temporary",
+            name: "Mundra South",
             type: "sea_port",
           },
         ],
@@ -93,7 +126,6 @@ const IssueReportTable = () => {
   // Search and filter logic
   useEffect(() => {
     let result = [...initialData];
-
     if (searchKeyword) {
       result = result.filter(
         (row) =>
@@ -102,12 +134,10 @@ const IssueReportTable = () => {
           row.numberOfQueries.toString().includes(searchKeyword)
       );
     }
-
     result.sort((a, b) => {
       if (sortField === "confidenceScore" || sortField === "numberOfQueries") {
         const aValue = a[sortField];
         const bValue = b[sortField];
-
         if (sortOrder === "asc") {
           return aValue > bValue ? 1 : -1;
         } else {
@@ -142,140 +172,223 @@ const IssueReportTable = () => {
   const getSortIcon = (field: SortField) => {
     if (sortField !== field) return null;
     return sortOrder === "asc" ? (
-      <FiArrowUp className="w-4 h-4 ml-1" />
+      <ArrowUpOutlined style={{ fontSize: 12, marginLeft: 4 }} />
     ) : (
-      <FiArrowDown className="w-4 h-4 ml-1" />
+      <ArrowDownOutlined style={{ fontSize: 12, marginLeft: 4 }} />
     );
   };
 
+  // Define table columns
+  const columns: ColumnType<DataItem>[] = [
+    {
+      title: "S.No",
+      dataIndex: "index",
+      key: "index",
+      width: "5%",
+      render: (_: unknown, __: DataItem, index: number) => index + 1,
+    },
+    {
+      title: (
+        <div
+          onClick={() => handleSort("keyword")}
+          style={{ cursor: "pointer", display: "flex", alignItems: "center" }}
+        >
+          Keyword {getSortIcon("keyword")}
+        </div>
+      ),
+      dataIndex: "keyword",
+      key: "keyword",
+      sorter: false,
+      sortDirections: [],
+      render: (text: string) => (
+        <Text style={{ fontWeight: 500, color: "#1f2937" }}>{text}</Text>
+      ),
+    },
+    {
+      title: (
+        <div
+          onClick={() => handleSort("confidenceScore")}
+          style={{ cursor: "pointer", display: "flex", alignItems: "center" }}
+        >
+          Confidence Score {getSortIcon("confidenceScore")}
+        </div>
+      ),
+      dataIndex: "confidenceScore",
+      key: "confidenceScore",
+      width: "17%",
+      sorter: false,
+      sortDirections: [],
+      render: (score: number) => (
+        <Tag
+          color="error"
+          style={{
+            padding: "4px 16px",
+            borderRadius: "16px",
+            fontSize: "14px",
+            fontWeight: 500,
+          }}
+        >
+          {(score * 100).toFixed(1)}%
+        </Tag>
+      ),
+      align: "center",
+    },
+    {
+      title: (
+        <div
+          onClick={() => handleSort("numberOfQueries")}
+          style={{ cursor: "pointer", display: "flex", alignItems: "center" }}
+        >
+          No of Queries {getSortIcon("numberOfQueries")}
+        </div>
+      ),
+      dataIndex: "numberOfQueries",
+      key: "numberOfQueries",
+      width: "15%",
+      sorter: false,
+      sortDirections: [],
+      align: "center",
+    },
+    {
+      title: "Action",
+      key: "action",
+      width: "20%",
+      render: (record: DataItem) => (
+        <Button
+          type="primary"
+          onClick={() =>
+            navigate(`/admin/issue/resolve/${record.issueId}`, {
+              state: { record },
+            })
+          }
+          style={{
+            borderRadius: "8px",
+            boxShadow: "0 2px 0 rgba(0,0,0,0.02)",
+            height: "auto",
+            padding: "8px 16px",
+          }}
+        >
+          Resolve Issue
+        </Button>
+      ),
+      align: "center",
+    },
+  ];
+
   return (
-    <div className="max-w-7xl mx-auto p-8 space-y-8">
+    <div style={{ maxWidth: 1280, margin: "0 auto", padding: 32 }}>
       {/* Header Section */}
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-semibold text-gray-800">
+      <div
+        style={{
+          marginBottom: 24,
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Title
+          level={3}
+          style={{ margin: 0, color: "#4B5563", fontWeight: 600 }}
+        >
           Port Mapping Issues
-        </h1>
+        </Title>
       </div>
 
       {/* Search Section */}
-      <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 space-y-4">
-        <div className="flex justify-between items-center gap-6">
-          <div className="flex-1 flex gap-4">
-            <div className="flex-1 relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <FiSearch className="h-5 w-5 text-gray-400" />
-              </div>
-              <input
-                type="text"
-                placeholder="Search by keyword or confidence score..."
-                className="block w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-gray-900 placeholder-gray-400"
-                value={searchKeyword}
-                onChange={(e) => setSearchKeyword(e.target.value)}
-              />
-            </div>
-            <button className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2 font-medium shadow-sm">
-              <FiSearch className="w-4 h-4" />
-              Search
-            </button>
-          </div>
+
+      <Flex align="center" gap="middle" style={{ marginBottom: 24 }}>
+        <div style={{ flex: 1 }}>
+          <Input
+            placeholder="Search by keyword or confidence score..."
+            value={searchKeyword}
+            onChange={(e) => setSearchKeyword(e.target.value)}
+            style={{ width: "100%", background: "transparent" }}
+            prefix={<SearchOutlined style={{ color: "#d9d9d9" }} />}
+            size="large"
+          />
         </div>
-      </div>
+        <Button
+          type="primary"
+          icon={<SearchOutlined />}
+          size="large"
+          style={{
+            borderRadius: "8px",
+            boxShadow: "0 2px 0 rgba(0,0,0,0.02)",
+            height: "auto",
+            padding: "8px 16px",
+          }}
+        >
+          Search
+        </Button>
+      </Flex>
 
       {/* Table Section */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse table-fixed">
-            <colgroup>
-              <col className="w-[5%]" /> {/* S.No */}
-              <col className="" /> {/* Keyword */}
-              <col className="w-[17%]" /> {/* Confidence Score */}
-              <col className="w-[15%]" /> {/* Number of Queries */}
-              <col className="w-[20%]" /> {/* Action */}
-            </colgroup>
-            <thead>
-              <tr className="bg-gray-50 border-b border-gray-100">
-                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                  S.No
-                </th>
-                {(
-                  [
-                    "keyword",
-                    "confidenceScore",
-                    "numberOfQueries",
-                  ] as SortField[]
-                ).map((field) => (
-                  <th
-                    key={field}
-                    className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors"
-                    onClick={() => handleSort(field)}
+      <Card
+        style={{
+          borderRadius: 12,
+          boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
+          border: "1px solid #F3F4F6",
+          overflow: "hidden",
+        }}
+        bodyStyle={{ padding: 0 }}
+      >
+        <Table
+          dataSource={filteredData}
+          columns={columns}
+          rowKey="id"
+          pagination={false}
+          style={{ width: "100%" }}
+          rowClassName={() => "ant-table-row-custom"}
+          className="custom-table"
+          locale={{
+            emptyText: filteredData.length === 0 && (
+              <Empty
+                image={Empty.PRESENTED_IMAGE_SIMPLE}
+                description={
+                  <Space
+                    direction="vertical"
+                    size={8}
+                    style={{ marginTop: 16 }}
                   >
-                    <div className="flex items-center gap-1">
-                      {field === "confidenceScore"
-                        ? "Confidence Score"
-                        : field === "numberOfQueries"
-                        ? "No of Queries"
-                        : field.charAt(0).toUpperCase() + field.slice(1)}
-                      {getSortIcon(field)}
-                    </div>
-                  </th>
-                ))}
-                <th className="px-6 py-4 text-xs text-left font-semibold text-gray-500 uppercase tracking-wider">
-                  Action
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-100">
-              {filteredData.map((row, index) => (
-                <tr
-                  key={row.id}
-                  className="hover:bg-gray-50 transition-colors group"
-                >
-                  <td className="px-6 py-4 text-sm text-gray-500 truncate">
-                    {index + 1}
-                  </td>
-                  <td className="px-6 py-4 text-sm text-gray-900 font-medium truncate">
-                    {row.keyword}
-                  </td>
-                  <td className="px-12 py-4 text-sm text-gray-600 truncate ">
-                    <span className="bg-red-100 text-red-700 rounded-4xl px-4 py-1">
-                      {(row.confidenceScore * 100).toFixed(1)}%
-                    </span>
-                  </td>
-                  <td className="px-16 py-4 text-sm text-gray-600 truncate ">
-                    {row.numberOfQueries}
-                  </td>
-                  <td className="px-6 py-4 text-sm">
-                    <button
-                      className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2 opacity-90 cursor-pointer group-hover:opacity-100"
-                      onClick={() =>
-                        navigate(`/admin/issue/resolve/${row.issueId}`)
-                      }
+                    <Text strong style={{ fontSize: 16, color: "#4B5563" }}>
+                      No results found
+                    </Text>
+                    <Text
+                      type="secondary"
+                      style={{ maxWidth: 400, margin: "0 auto" }}
                     >
-                      Resolve Issue
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
+                      No matching ports found for your search. Try adjusting
+                      your search terms or filters.
+                    </Text>
+                  </Space>
+                }
+                style={{ margin: "64px 0" }}
+              />
+            ),
+          }}
+        />
+      </Card>
 
-      {/* No Results Message */}
-      {filteredData.length === 0 && (
-        <div className="text-center py-12 bg-white rounded-xl border border-gray-100 shadow-sm">
-          <div className="flex flex-col items-center gap-3">
-            <FiSearch className="w-12 h-12 text-gray-300" />
-            <h3 className="text-lg font-medium text-gray-900">
-              No results found
-            </h3>
-            <p className="text-gray-500 max-w-md">
-              No matching ports found for your search. Try adjusting your search
-              terms or filters.
-            </p>
-          </div>
-        </div>
-      )}
+      <style>
+        {`
+        .custom-table .ant-table-thead > tr > th {
+          background-color: #F9FAFB;
+          color: #6B7280;
+          font-weight: 500;
+          border-bottom: 1px solid #E5E7EB;
+          padding: 16px;
+        }
+
+        .ant-table-row-custom:hover > td {
+          background-color: #F9FAFB !important;
+        }
+
+        .ant-table-row-custom > td {
+          padding: 16px;
+          border-bottom: 1px solid #F3F4F6;
+        }
+        `}
+      </style>
     </div>
   );
 };
