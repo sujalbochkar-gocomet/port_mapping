@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import CreateNewPort from "./IssueReport-CreateNewPort";
 import MapExistingPort from "./IssueReport-MapExistingPort";
@@ -20,18 +20,39 @@ interface NewPortData {
   type: "sea_port" | "inland_port" | "air_port" | "address";
 }
 
+interface DataItem {
+  id: number;
+  issueId: string;
+  keyword: string;
+  confidenceScore: number;
+  numberOfQueries: number;
+  mappedPorts: Array<{
+    id: string;
+    name: string;
+    type: string;
+  }>;
+}
+
 const IssueReportResolveIssue = () => {
   const { id: issueId } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState<"create" | "map" | "mapped">(
     "mapped"
   );
 
-  // This would be replaced with actual data from your API
-  const issueDetails = {
+  // Get the issue details from location state or use fallback values
+  const recordData = location.state?.record as DataItem;
+
+  const issueDetails = recordData || {
     keyword: "Port A",
     numberOfQueries: 10,
   };
+
+  // Add debugging
+  console.log("Location state:", location.state);
+  console.log("Record data:", recordData);
+  console.log("Mapped ports:", recordData?.mappedPorts);
 
   const handlePortCreated = (portData: NewPortData) => {
     // TODO: Implement port creation logic
@@ -52,7 +73,12 @@ const IssueReportResolveIssue = () => {
           <span>Mapped Ports</span>
         </Flex>
       ),
-      children: <IssueReportMappedPorts keyword={issueDetails.keyword} />,
+      children: (
+        <IssueReportMappedPorts
+          keyword={issueDetails.keyword}
+          mappedPorts={recordData?.mappedPorts}
+        />
+      ),
     },
     {
       key: "create",
@@ -87,7 +113,7 @@ const IssueReportResolveIssue = () => {
   ];
 
   return (
-    <div style={{ maxWidth: 1280, margin: "0 auto", padding: 32 }}>
+    <div style={{ maxWidth: 1400, margin: "0 auto", padding: 32 }}>
       {/* Main Content */}
       <Space direction="vertical" size="large" style={{ width: "100%" }}>
         {/* Header */}
@@ -144,28 +170,39 @@ const IssueReportResolveIssue = () => {
                 {issueDetails.numberOfQueries}
               </Tag>
             </Flex>
+            {recordData?.confidenceScore && (
+              <Flex align="center" gap="small">
+                <Text strong>Confidence Score:</Text>
+                <Tag
+                  color="error"
+                  style={{
+                    padding: "2px 8px",
+                    borderRadius: "16px",
+                    fontSize: "14px",
+                    fontWeight: 500,
+                  }}
+                >
+                  {(recordData.confidenceScore * 100).toFixed(1)}%
+                </Tag>
+              </Flex>
+            )}
           </Flex>
         </Card>
 
         {/* Tabs */}
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <div style={{ width: "75%" }}>
-            <Tabs
-              activeKey={activeTab}
-              onChange={(key) =>
-                setActiveTab(key as "create" | "map" | "mapped")
-              }
-              items={items}
-              size="large"
-              centered
-              tabBarStyle={{
-                fontWeight: 500,
-                borderBottom: "1px solid #E5E7EB",
-                marginBottom: 24,
-              }}
-            />
-          </div>
-        </div>
+        <Tabs
+          activeKey={activeTab}
+          onChange={(key) => setActiveTab(key as "create" | "map" | "mapped")}
+          items={items}
+          size="large"
+          centered
+          tabBarStyle={{
+            fontWeight: 500,
+            borderBottom: "1px solid #E5E7EB",
+            marginBottom: 24,
+          }}
+          style={{ width: "100%" }}
+        />
       </Space>
     </div>
   );

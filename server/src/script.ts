@@ -3,7 +3,7 @@ import cors from "cors";
 import swaggerUi from "swagger-ui-express";
 import swaggerJsdoc from "swagger-jsdoc";
 
-import { CascadingResult,PortMatcherResult} from "./types/types";
+import { CascadingResult, PortMatcherResult } from "./types/types";
 import { prisma } from "./lib/prisma";
 import PortMatcher from "../port_mapper/mapper";
 import swaggerOptions from "./lib/swagger";
@@ -15,7 +15,6 @@ const port = 3000;
 let portMatcher: PortMatcher | null = null;
 let refreshInterval: NodeJS.Timeout | null = null;
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
-
 
 app.use(cors());
 app.use(express.json());
@@ -58,7 +57,6 @@ const initializePortMatcher = async () => {
   }
 };
 
-
 // Initialize server
 const startServer = async () => {
   try {
@@ -68,12 +66,10 @@ const startServer = async () => {
       console.log(
         `API documentation available at http://localhost:${port}/api-docs`
       );
-      
       // Start memory monitoring (check every 1 minute)
       MemoryMonitor.startMonitoring(20000);
-      
       // Log initial memory state
-      MemoryMonitor.logMemoryUsage('Server Start');
+      MemoryMonitor.logMemoryUsage("Server Start");
     });
   } catch (error) {
     console.error("Failed to start server:", error);
@@ -497,7 +493,6 @@ app.get("/search-ports/llm", async (req: Request, res: Response) => {
   }
 });
 
-
 /**
  * @swagger
  * /search-ports/llm-raw:
@@ -539,17 +534,17 @@ app.get("/search-ports/llm-raw", async (req: Request, res: Response) => {
 
     // Get raw LLM response
     const rawResponse = await portMatcher.getGroqResponse(query, type);
-  
-      // Parse and validate the response
-      const jsonResponse = JSON.parse(rawResponse);
-      const isValid = portMatcher.validateLLMResponse(jsonResponse);
-      
-      if (!isValid) {
-        throw new Error('Invalid LLM response format');
-      }
-      
-      res.status(200).json(jsonResponse);
-    } catch (error) {
+
+    // Parse and validate the response
+    const jsonResponse = JSON.parse(rawResponse);
+    const isValid = portMatcher.validateLLMResponse(jsonResponse);
+
+    if (!isValid) {
+      throw new Error("Invalid LLM response format");
+    }
+
+    res.status(200).json(jsonResponse);
+  } catch (error) {
     console.error("Error in LLM search:", error);
     res.status(500).json({
       error: "Failed to perform LLM search",
@@ -557,8 +552,6 @@ app.get("/search-ports/llm-raw", async (req: Request, res: Response) => {
     });
   }
 });
-
-
 
 /**
  * @swagger
@@ -682,7 +675,9 @@ app.get(
  *       500:
  *         description: Server error
  */
-app.get( "/search-ports/filter-by-location",async (req: Request, res: Response) => {
+app.get(
+  "/search-ports/filter-by-location",
+  async (req: Request, res: Response) => {
     try {
       if (!portMatcher) {
         throw new Error("PortMatcher not initialized");
@@ -729,8 +724,6 @@ app.get( "/search-ports/filter-by-location",async (req: Request, res: Response) 
     }
   }
 );
-
-
 
 /**
  * @swagger
@@ -965,7 +958,3 @@ app.delete("/delete-shipment/:id", async (req: Request, res: Response) => {
     });
   }
 });
-
-
-
-

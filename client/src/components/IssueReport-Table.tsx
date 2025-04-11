@@ -49,72 +49,72 @@ const IssueReportTable = () => {
     () => [
       {
         id: 1,
-        issueId: "random-issue-id-1",
-        keyword: "Port A",
+        issueId: "i1",
+        keyword: "Port Klang",
         confidenceScore: 0.5,
         numberOfQueries: 2,
         mappedPorts: [
           {
             id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
-            name: "Port Temporary",
+            name: "Port Klang West",
             type: "sea_port",
           },
           {
             id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
-            name: "Port Temporary",
+            name: "Port Klang East",
             type: "sea_port",
           },
           {
             id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
-            name: "Port Temporary",
+            name: "Port Klang South",
             type: "sea_port",
           },
         ],
       },
       {
         id: 2,
-        issueId: "random-issue-id-2",
-        keyword: "Port B",
+        issueId: "i2",
+        keyword: "Port Chennai",
         confidenceScore: 0.48,
         numberOfQueries: 5,
         mappedPorts: [
           {
             id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
-            name: "Port Temporary",
+            name: "Chennai wesite",
             type: "sea_port",
           },
           {
             id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
-            name: "Port Temporary",
+            name: "Chennai East",
             type: "sea_port",
           },
           {
             id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
-            name: "Port Temporary",
+            name: "Chennai South",
             type: "sea_port",
           },
         ],
       },
       {
         id: 3,
-        issueId: "random-issue-id-3",
-        keyword: "Port C",
+        issueId: "i3",
+        keyword: "Port Mumbai",
         confidenceScore: 0.36,
         numberOfQueries: 1,
         mappedPorts: [
           {
             id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
-            name: "Port Temporary",
+            name: "Mumbai West",
             type: "sea_port",
           },
           {
             id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
-            name: "Port Temporary",
+            name: "Mundra East",
             type: "sea_port",
           },
           {
             id: "bea5ef8c-111f-4b46-b5fd-0581dce08da0",
-            name: "Port Temporary",
+            name: "Mundra South",
             type: "sea_port",
           },
         ],
@@ -256,7 +256,11 @@ const IssueReportTable = () => {
       render: (record: DataItem) => (
         <Button
           type="primary"
-          onClick={() => navigate(`/admin/issue/resolve/${record.issueId}`)}
+          onClick={() =>
+            navigate(`/admin/issue/resolve/${record.issueId}`, {
+              state: { record },
+            })
+          }
           style={{
             borderRadius: "8px",
             boxShadow: "0 2px 0 rgba(0,0,0,0.02)",

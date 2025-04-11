@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { Table, Typography, Card, Tag } from "antd";
+import { Table, Typography, Card, Tag, Empty, Space } from "antd";
 import { ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons";
 import type { ColumnsType } from "antd/es/table";
 
@@ -8,20 +8,46 @@ const { Title, Text } = Typography;
 type SortField = "portName" | "confidenceScore" | "region";
 type SortOrder = "asc" | "desc";
 
-interface MappedPort {
+interface TablePort {
   id: string;
   portName: string;
   confidenceScore: number;
   region: string;
 }
 
-const IssueReportMappedPorts = ({ keyword }: { keyword: string }) => {
+interface Props {
+  keyword: string;
+  mappedPorts?: Array<{
+    id: string;
+    name: string;
+    type: string;
+  }>;
+}
+
+const IssueReportMappedPorts = ({ keyword, mappedPorts }: Props) => {
   const [sortField, setSortField] = useState<SortField>("portName");
   const [sortOrder, setSortOrder] = useState<SortOrder>("asc");
 
-  // Sample data - replace with your actual data source
-  const mappedPorts = useMemo<MappedPort[]>(
-    () => [
+  // Transform passed mappedPorts to the format expected by this component
+  const tablePorts = useMemo<TablePort[]>(() => {
+    if (mappedPorts && mappedPorts.length > 0) {
+      return mappedPorts.map((port) => ({
+        id: port.id,
+        portName: port.name,
+        confidenceScore: Math.random() * 0.5 + 0.3, // Random score between 0.3 and 0.8 as sample
+        region:
+          port.type === "sea_port"
+            ? "Sea"
+            : port.type === "air_port"
+            ? "Air"
+            : port.type === "inland_port"
+            ? "Land"
+            : "Other",
+      }));
+    }
+
+    // Fallback to sample data if no mapped ports are provided
+    return [
       {
         id: "1",
         portName: "Port of Singapore",
@@ -52,12 +78,11 @@ const IssueReportMappedPorts = ({ keyword }: { keyword: string }) => {
         confidenceScore: 0.35,
         region: "Europe",
       },
-    ],
-    []
-  );
+    ];
+  }, [mappedPorts]);
 
   const sortedPorts = useMemo(() => {
-    return [...mappedPorts].sort((a, b) => {
+    return [...tablePorts].sort((a, b) => {
       const aValue = a[sortField];
       const bValue = b[sortField];
 
@@ -70,7 +95,7 @@ const IssueReportMappedPorts = ({ keyword }: { keyword: string }) => {
       const comparison = String(aValue).localeCompare(String(bValue));
       return sortOrder === "asc" ? comparison : -comparison;
     });
-  }, [mappedPorts, sortField, sortOrder]);
+  }, [tablePorts, sortField, sortOrder]);
 
   const handleSort = (field: SortField) => {
     if (sortField === field) {
@@ -90,7 +115,7 @@ const IssueReportMappedPorts = ({ keyword }: { keyword: string }) => {
     );
   };
 
-  const columns: ColumnsType<MappedPort> = [
+  const columns: ColumnsType<TablePort> = [
     {
       title: (
         <div
@@ -124,17 +149,21 @@ const IssueReportMappedPorts = ({ keyword }: { keyword: string }) => {
       sorter: false,
       sortDirections: [],
       render: (score: number) => (
-        <Tag
-          color="error"
-          style={{
-            padding: "4px 16px",
-            borderRadius: "16px",
-            fontSize: "14px",
-            fontWeight: 500,
-          }}
-        >
-          {(score * 100).toFixed(1)}%
-        </Tag>
+        <div style={{ textAlign: "left" }}>
+          <Tag
+            color="error"
+            style={{
+              padding: "4px 16px",
+              borderRadius: "16px",
+              fontSize: "14px",
+              fontWeight: 500,
+              textAlign: "left",
+              display: "inline-block",
+            }}
+          >
+            {(score * 100).toFixed(1)}%
+          </Tag>
+        </div>
       ),
       align: "center",
     },
@@ -175,6 +204,31 @@ const IssueReportMappedPorts = ({ keyword }: { keyword: string }) => {
           pagination={false}
           className="custom-table"
           rowClassName={() => "ant-table-row-custom"}
+          locale={{
+            emptyText: sortedPorts.length === 0 && (
+              <Empty
+                image={Empty.PRESENTED_IMAGE_SIMPLE}
+                description={
+                  <Space
+                    direction="vertical"
+                    size={8}
+                    style={{ marginTop: 16 }}
+                  >
+                    <Text strong style={{ fontSize: 16, color: "#4B5563" }}>
+                      No mapped ports
+                    </Text>
+                    <Text
+                      type="secondary"
+                      style={{ maxWidth: 400, margin: "0 auto" }}
+                    >
+                      No ports have been mapped to this keyword yet.
+                    </Text>
+                  </Space>
+                }
+                style={{ margin: "64px 0" }}
+              />
+            ),
+          }}
         />
       </Card>
 
