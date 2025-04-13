@@ -504,7 +504,13 @@ class PortMatcher {
         !port.hasOwnProperty("confidence_score") ||
         typeof port.confidence_score !== "number" ||
         port.confidence_score < 0 ||
-        port.confidence_score > 100
+        port.confidence_score > 100||
+        !port.hasOwnProperty("country_code") ||
+        typeof port.country_code !== "string"||
+        !port.hasOwnProperty("latitude") ||
+        typeof port.latitude !== "string"||
+        !port.hasOwnProperty("longitude") ||
+        typeof port.longitude !== "string"
       ) {
         return false;
       }
@@ -649,7 +655,7 @@ Important:
               dbPort.lat_lon.lat,
               dbPort.lat_lon.lon
             );
-            locationMatch = distance <= 300;
+            locationMatch = distance <= 300 && dbPort.country_code.trim().toLowerCase()==llmPort.country_code.trim().toLowerCase();
           }
 
           if (nameMatch || codeMatch || locationMatch) {
