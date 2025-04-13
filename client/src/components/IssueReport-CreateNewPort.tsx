@@ -1,6 +1,23 @@
 import { useState } from "react";
-import { FiPlus, FiX } from "react-icons/fi";
 import { toast } from "react-toastify";
+import {
+  Card,
+  Form,
+  Input,
+  Select,
+  Button,
+  Checkbox,
+  Typography,
+  Tag,
+  Flex,
+  Row,
+  Col,
+} from "antd";
+import { PlusOutlined } from "@ant-design/icons";
+
+const { Title, Text } = Typography;
+const { TextArea } = Input;
+const { Option } = Select;
 
 interface NewPortData {
   name: string;
@@ -111,9 +128,21 @@ const CreateNewPort = ({ keyword, onPortCreated }: CreateNewPortProps) => {
     });
   };
 
-  const handleCreatePort = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSelectChange = (value: string, name: string) => {
+    setNewPortData({
+      ...newPortData,
+      [name]: value,
+    });
+  };
 
+  const handleCheckboxChange = (name: string, checked: boolean) => {
+    setNewPortData({
+      ...newPortData,
+      [name]: checked,
+    });
+  };
+
+  const handleCreatePort = async () => {
     if (!newPortData.name.trim()) {
       toast.error("Port Name is required");
       return;
@@ -143,340 +172,349 @@ const CreateNewPort = ({ keyword, onPortCreated }: CreateNewPortProps) => {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-      <div className="flex items-center gap-2 mb-6">
-        <h2 className="text-lg font-medium text-gray-800">
+    <Card
+      style={{
+        borderRadius: 12,
+        boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
+        border: "1px solid #F3F4F6",
+      }}
+    >
+      <Flex align="center" gap="small" style={{ marginBottom: 24 }}>
+        <Title level={5} style={{ margin: 0, color: "#4B5563" }}>
           Create New Port for "{keyword}"
-        </h2>
-        <FiPlus className="w-5 h-5 text-blue-600" />
-      </div>
+        </Title>
+        <PlusOutlined style={{ color: "#1677ff", fontSize: 18 }} />
+      </Flex>
 
-      <form onSubmit={handleCreatePort} className="space-y-6">
+      <Form layout="vertical" onFinish={handleCreatePort}>
         {/* Basic Information */}
-        <div>
-          <h3 className="text-sm font-medium text-gray-700 mb-4">
+        <div style={{ marginBottom: 24 }}>
+          <Text
+            strong
+            style={{
+              fontSize: 14,
+              color: "#4B5563",
+              display: "block",
+              marginBottom: 16,
+            }}
+          >
             Basic Information
-          </h3>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
-                Port Name *
-              </label>
-              <input
-                type="text"
-                name="name"
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                value={newPortData.name}
-                onChange={handleInputChange}
-                placeholder="Enter port name"
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
-                Port Code *
-              </label>
-              <input
-                type="text"
-                name="code"
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                value={newPortData.code}
-                onChange={handleInputChange}
-                placeholder="Enter port code"
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
-                Display Name
-              </label>
-              <input
-                type="text"
-                name="display_name"
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                value={newPortData.display_name}
-                onChange={handleInputChange}
-                placeholder="Enter display name"
-              />
-            </div>
-            <div className="space-y-2 col-span-2">
-              <label className="block text-sm font-medium text-gray-700">
-                Other Names
-              </label>
-              <div className="space-y-2">
-                <input
-                  type="text"
+          </Text>
+          <Row gutter={16}>
+            <Col span={12}>
+              <Form.Item
+                label="Port Name"
+                required
+                style={{ marginBottom: 16 }}
+              >
+                <Input
+                  name="name"
+                  value={newPortData.name}
+                  onChange={handleInputChange}
+                  placeholder="Enter port name"
+                />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item
+                label="Port Code"
+                required
+                style={{ marginBottom: 16 }}
+              >
+                <Input
+                  name="code"
+                  value={newPortData.code}
+                  onChange={handleInputChange}
+                  placeholder="Enter port code"
+                />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item label="Display Name" style={{ marginBottom: 16 }}>
+                <Input
+                  name="display_name"
+                  value={newPortData.display_name}
+                  onChange={handleInputChange}
+                  placeholder="Enter display name"
+                />
+              </Form.Item>
+            </Col>
+            <Col span={24}>
+              <Form.Item label="Other Names" style={{ marginBottom: 16 }}>
+                <Input
                   value={otherNameInput}
                   onChange={(e) => setOtherNameInput(e.target.value)}
                   onKeyDown={handleAddOtherName}
-                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
                   placeholder="Type and press Enter to add other names"
                 />
-                <div className="flex flex-wrap gap-2 mt-2">
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: 8,
+                    marginTop: 8,
+                  }}
+                >
                   {newPortData.other_names?.map((name, index) => (
-                    <div
+                    <Tag
                       key={index}
-                      className="flex items-center gap-1 bg-blue-50 text-blue-700 px-2 py-1 rounded-lg"
+                      color="blue"
+                      closable
+                      onClose={() => handleRemoveOtherName(index)}
+                      style={{ margin: 0, borderRadius: 4 }}
                     >
-                      <span className="text-sm">{name}</span>
-                      <button
-                        type="button"
-                        onClick={() => handleRemoveOtherName(index)}
-                        className="text-blue-500 hover:text-blue-700"
-                      >
-                        <FiX className="w-4 h-4" />
-                      </button>
-                    </div>
+                      {name}
+                    </Tag>
                   ))}
                 </div>
-              </div>
-            </div>
-          </div>
+              </Form.Item>
+            </Col>
+          </Row>
         </div>
 
         {/* Location Information */}
-        <div>
-          <h3 className="text-sm font-medium text-gray-700 mb-4">
+        <div style={{ marginBottom: 24 }}>
+          <Text
+            strong
+            style={{
+              fontSize: 14,
+              color: "#4B5563",
+              display: "block",
+              marginBottom: 16,
+            }}
+          >
             Location Details
-          </h3>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
-                Country *
-              </label>
-              <input
-                type="text"
-                name="country"
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                value={newPortData.country}
-                onChange={handleInputChange}
-                placeholder="Enter country"
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
-                Country Code
-              </label>
-              <input
-                type="text"
-                name="country_code"
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                value={newPortData.country_code}
-                onChange={handleInputChange}
-                placeholder="Enter country code"
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
-                City
-              </label>
-              <input
-                type="text"
-                name="city"
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                value={newPortData.city}
-                onChange={handleInputChange}
-                placeholder="Enter city"
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
-                State/Province
-              </label>
-              <input
-                type="text"
-                name="state_name"
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                value={newPortData.state_name}
-                onChange={handleInputChange}
-                placeholder="Enter state/province"
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
-                Region
-              </label>
-              <input
-                type="text"
-                name="region"
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                value={newPortData.region}
-                onChange={handleInputChange}
-                placeholder="Enter region"
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
-                Address
-              </label>
-              <input
-                type="text"
-                name="address"
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                value={newPortData.address}
-                onChange={handleInputChange}
-                placeholder="Enter address"
-              />
-            </div>
-          </div>
+          </Text>
+          <Row gutter={16}>
+            <Col span={12}>
+              <Form.Item label="Country" required style={{ marginBottom: 16 }}>
+                <Input
+                  name="country"
+                  value={newPortData.country}
+                  onChange={handleInputChange}
+                  placeholder="Enter country"
+                />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item label="Country Code" style={{ marginBottom: 16 }}>
+                <Input
+                  name="country_code"
+                  value={newPortData.country_code}
+                  onChange={handleInputChange}
+                  placeholder="Enter country code"
+                />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item label="City" style={{ marginBottom: 16 }}>
+                <Input
+                  name="city"
+                  value={newPortData.city}
+                  onChange={handleInputChange}
+                  placeholder="Enter city"
+                />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item label="State/Province" style={{ marginBottom: 16 }}>
+                <Input
+                  name="state_name"
+                  value={newPortData.state_name}
+                  onChange={handleInputChange}
+                  placeholder="Enter state/province"
+                />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item label="Region" style={{ marginBottom: 16 }}>
+                <Input
+                  name="region"
+                  value={newPortData.region}
+                  onChange={handleInputChange}
+                  placeholder="Enter region"
+                />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item label="Address" style={{ marginBottom: 16 }}>
+                <Input
+                  name="address"
+                  value={newPortData.address}
+                  onChange={handleInputChange}
+                  placeholder="Enter address"
+                />
+              </Form.Item>
+            </Col>
+          </Row>
         </div>
 
         {/* Port Details */}
-        <div>
-          <h3 className="text-sm font-medium text-gray-700 mb-4">
+        <div style={{ marginBottom: 24 }}>
+          <Text
+            strong
+            style={{
+              fontSize: 14,
+              color: "#4B5563",
+              display: "block",
+              marginBottom: 16,
+            }}
+          >
             Port Details
-          </h3>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
-                Port Type *
-              </label>
-              <select
-                name="type"
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                value={newPortData.type}
-                onChange={handleInputChange}
+          </Text>
+          <Row gutter={16}>
+            <Col span={12}>
+              <Form.Item
+                label="Port Type"
+                required
+                style={{ marginBottom: 16 }}
               >
-                <option value="sea_port">Sea Port</option>
-                <option value="inland_port">Inland Port</option>
-                <option value="air_port">Air Port</option>
-                <option value="address">Address</option>
-              </select>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">
-                  Latitude
-                </label>
-                <input
+                <Select
+                  value={newPortData.type}
+                  onChange={(value) => handleSelectChange(value, "type")}
+                  style={{ width: "100%" }}
+                >
+                  <Option value="sea_port">Sea Port</Option>
+                  <Option value="inland_port">Inland Port</Option>
+                  <Option value="air_port">Air Port</Option>
+                  <Option value="address">Address</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col span={6}>
+              <Form.Item label="Latitude" style={{ marginBottom: 16 }}>
+                <Input
                   type="number"
                   name="latitude"
                   step="0.000001"
-                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
                   value={newPortData.lat_lon?.latitude}
                   onChange={handleInputChange}
                   placeholder="Enter latitude"
                 />
-              </div>
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">
-                  Longitude
-                </label>
-                <input
+              </Form.Item>
+            </Col>
+            <Col span={6}>
+              <Form.Item label="Longitude" style={{ marginBottom: 16 }}>
+                <Input
                   type="number"
                   name="longitude"
                   step="0.000001"
-                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
                   value={newPortData.lat_lon?.longitude}
                   onChange={handleInputChange}
                   placeholder="Enter longitude"
                 />
-              </div>
-            </div>
-          </div>
+              </Form.Item>
+            </Col>
+          </Row>
         </div>
 
         {/* Contact Information */}
-        <div>
-          <h3 className="text-sm font-medium text-gray-700 mb-4">
+        <div style={{ marginBottom: 24 }}>
+          <Text
+            strong
+            style={{
+              fontSize: 14,
+              color: "#4B5563",
+              display: "block",
+              marginBottom: 16,
+            }}
+          >
             Contact Information
-          </h3>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
-                Telephone
-              </label>
-              <input
-                type="tel"
-                name="telephone_number"
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                value={newPortData.telephone_number}
-                onChange={handleInputChange}
-                placeholder="Enter telephone number"
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
-                Fax
-              </label>
-              <input
-                type="tel"
-                name="fax_number"
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                value={newPortData.fax_number}
-                onChange={handleInputChange}
-                placeholder="Enter fax number"
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
-                Website
-              </label>
-              <input
-                type="url"
-                name="website"
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                value={newPortData.website}
-                onChange={handleInputChange}
-                placeholder="Enter website URL"
-              />
-            </div>
-          </div>
+          </Text>
+          <Row gutter={16}>
+            <Col span={12}>
+              <Form.Item label="Telephone" style={{ marginBottom: 16 }}>
+                <Input
+                  name="telephone_number"
+                  value={newPortData.telephone_number}
+                  onChange={handleInputChange}
+                  placeholder="Enter telephone number"
+                />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item label="Fax" style={{ marginBottom: 16 }}>
+                <Input
+                  name="fax_number"
+                  value={newPortData.fax_number}
+                  onChange={handleInputChange}
+                  placeholder="Enter fax number"
+                />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item label="Website" style={{ marginBottom: 16 }}>
+                <Input
+                  name="website"
+                  value={newPortData.website}
+                  onChange={handleInputChange}
+                  placeholder="Enter website URL"
+                />
+              </Form.Item>
+            </Col>
+          </Row>
         </div>
 
         {/* Additional Information */}
-        <div>
-          <h3 className="text-sm font-medium text-gray-700 mb-4">
+        <div style={{ marginBottom: 24 }}>
+          <Text
+            strong
+            style={{
+              fontSize: 14,
+              color: "#4B5563",
+              display: "block",
+              marginBottom: 16,
+            }}
+          >
             Additional Information
-          </h3>
-          <div className="space-y-4">
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
-                Description
-              </label>
-              <textarea
-                name="description"
-                rows={3}
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                value={newPortData.description}
-                onChange={handleInputChange}
-                placeholder="Enter port description"
-              />
-            </div>
-            <div className="flex gap-6">
-              <label className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  name="is_head_port"
-                  checked={newPortData.is_head_port}
-                  onChange={handleInputChange}
-                  className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
-                />
-                <span className="text-sm text-gray-700">Head Port</span>
-              </label>
-              <label className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  name="master_port"
-                  checked={newPortData.master_port}
-                  onChange={handleInputChange}
-                  className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
-                />
-                <span className="text-sm text-gray-700">Master Port</span>
-              </label>
-            </div>
-          </div>
+          </Text>
+          <Form.Item label="Description" style={{ marginBottom: 16 }}>
+            <TextArea
+              rows={3}
+              name="description"
+              value={newPortData.description}
+              onChange={handleInputChange}
+              placeholder="Enter port description"
+            />
+          </Form.Item>
+          <Flex gap="large">
+            <Checkbox
+              checked={newPortData.is_head_port}
+              onChange={(e) =>
+                handleCheckboxChange("is_head_port", e.target.checked)
+              }
+            >
+              <Text style={{ fontSize: 14 }}>Head Port</Text>
+            </Checkbox>
+            <Checkbox
+              checked={newPortData.master_port}
+              onChange={(e) =>
+                handleCheckboxChange("master_port", e.target.checked)
+              }
+            >
+              <Text style={{ fontSize: 14 }}>Master Port</Text>
+            </Checkbox>
+          </Flex>
         </div>
 
-        <div className="flex justify-end pt-4">
-          <button
-            type="submit"
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2 font-medium"
+        <div
+          style={{ display: "flex", justifyContent: "flex-end", marginTop: 24 }}
+        >
+          <Button
+            type="primary"
+            htmlType="submit"
+            icon={<PlusOutlined />}
+            size="large"
+            style={{
+              borderRadius: 8,
+              boxShadow: "0 2px 0 rgba(0,0,0,0.02)",
+            }}
           >
-            <FiPlus className="w-4 h-4" />
             Create Port
-          </button>
+          </Button>
         </div>
-      </form>
-    </div>
+      </Form>
+    </Card>
   );
 };
 

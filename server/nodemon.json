@@ -1,5 +1,5 @@
 {
-  "watch": ["src"],
+  "watch": ["src", "port_mapper"],
   "ext": ".ts,.js",
   "ignore": [],
   "exec": "ts-node ./src/script.ts"
