@@ -73,7 +73,7 @@ const ShipmentBlock = (shipment: Shipment) => {
     try {
       setIsDeleting(true);
       await axios.delete(
-        `${process.env.BACKEND_URL}/delete-shipment/${shipment.id}`
+        `${import.meta.env.VITE_BACKEND_URL}/delete-shipment/${shipment.id}`
       );
       toast.success("Shipment deleted successfully", {
         onClose: () => {

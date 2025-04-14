@@ -60,15 +60,21 @@ const MappingForm = () => {
       debounceTimer.current = setTimeout(async () => {
         try {
           const response = await axios.get(
-            `${process.env.BACKEND_URL}/search-ports?q=${encodeURIComponent(
-              term
-            )}&type=${carrierType}`,
+            `${
+              import.meta.env.VITE_BACKEND_URL
+            }/search-ports?q=${encodeURIComponent(term)}&type=${carrierType}`,
             {
               signal: abortController.current?.signal,
             }
           );
           const results = response.data;
-          setSearchResults(results);
+          // Ensure results is an array before setting state
+          if (Array.isArray(results)) {
+            setSearchResults(results);
+          } else {
+            console.error("Invalid response format:", results);
+            setSearchResults([]);
+          }
         } catch (error) {
           // Ignore errors from aborted requests
           if (axios.isCancel(error)) {
@@ -234,7 +240,7 @@ const MappingForm = () => {
               style={{ fontSize: 64, color: "#9CA3AF" }}
             />
           </Card>
-        ) : searchResults.length > 0 ? (
+        ) : Array.isArray(searchResults) && searchResults.length > 0 ? (
           <Space direction="vertical" size="middle" style={{ width: "100%" }}>
             {searchResults.map((port) => (
               <Card

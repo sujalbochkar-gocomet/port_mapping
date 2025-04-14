@@ -138,9 +138,9 @@ const ShipmentForm = () => {
         try {
           const portType = getPortTypeFromCarrier(carrierType);
           const response = await axios.get(
-            `${process.env.BACKEND_URL}/search-ports?q=${encodeURIComponent(
-              term
-            )}&type=${portType}`,
+            `${
+              import.meta.env.VITE_BACKEND_URL
+            }/search-ports?q=${encodeURIComponent(term)}&type=${portType}`,
             {
               signal: abortControllerRef.current?.signal,
             }
@@ -315,7 +315,7 @@ const ShipmentForm = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        `${process.env.BACKEND_URL}/add-shipment`,
+        `${process.env.VITE_BACKEND_URL}/add-shipment`,
         {
           pol: selectedPol,
           pod: selectedPod,

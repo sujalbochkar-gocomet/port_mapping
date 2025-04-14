@@ -9,7 +9,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: `${process.env.BACKEND_URL}`,
+        url: `${process.env.VITE_BACKEND_URL}`,
         description: "Development server",
       },
     ],
