@@ -40,7 +40,6 @@ function App() {
       />
       <Routes>
         <Route path="*" element={<Navigate to="/port-map" replace />} />
-
         <Route path="/port-map" element={<PortMap />} />
         <Route path="/shipment" element={<Shipment />} />
         <Route path="/admin/issue/dashboard" element={<IssueDashboard />} />

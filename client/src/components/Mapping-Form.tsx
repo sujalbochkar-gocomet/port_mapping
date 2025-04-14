@@ -238,7 +238,7 @@ const MappingForm = () => {
               style={{ fontSize: 64, color: "#9CA3AF" }}
             />
           </Card>
-        ) : searchResults.length > 0 ? (
+        ) : Array.isArray(searchResults) && searchResults.length > 0 ? (
           <Space direction="vertical" size="middle" style={{ width: "100%" }}>
             {searchResults.map((port) => (
               <Card
