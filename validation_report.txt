@@ -1,0 +1,833 @@
+
+Port Type:
+Total unique port types: 4
+port_type
+address        158735
+sea_port         9309
+air_port         2458
+inland_port       490
+
+Deleted:
+Total unique deleted: 1
+deleted
+False    170992
+
+Region:
+Total unique regions: 10
+region
+eu                         75961
+na                         32739
+south_america_caribbean    16464
+south_east_asia            15674
+africa                     10491
+aus_nz                      7001
+far_east                    4268
+middle_east                 2109
+mediterranean                760
+central_asia                 702
+
+Verified:
+Total unique verified: 2
+verified
+True     166521
+False      4471
+
+Is Head Port:
+Total unique is_head_port: 2
+is_head_port
+True     170990
+False         2
+
+Prefer Inland:
+Total unique prefer_inland: 2
+prefer_inland
+False    170974
+True         18
+
+Master Port:
+Total unique master_port: 2
+master_port
+False    8807
+True     3879
+
+Port Verification Status:
+Total unique verified: 2
+verified
+True     166521
+False      4471
+
+Port Types:
+Total unique port types: 4
+port_type
+address        158735
+sea_port         9309
+air_port         2458
+inland_port       490
+
+Port Identifiers:
+Missing port codes: 163,028
+Missing port names: 3,414
+
+Port Status:
+is_head_port
+True     170990
+False         2
+Master ports: 3,879
+Inland ports: 18
+
+Country:
+Total unique countries: 327
+country
+United States                           29877
+Italy                                   10168
+Mexico                                   9421
+France                                   9121
+Romania                                  8127
+Germany                                  7434
+Spain                                    6950
+Philippines                              6603
+Brazil                                   5763
+Russia                                   5697
+India                                    4459
+Australia                                4319
+United Kingdom                           3871
+Poland                                   3189
+Austria                                  2403
+Japan                                    2175
+Netherlands                              2073
+Ukraine                                  1849
+China                                    1537
+Switzerland                              1518
+Turkey                                   1480
+Czech Republic                           1379
+Portugal                                 1374
+Canada                                   1337
+Thailand                                 1277
+Greece                                   1231
+Colombia                                 1152
+Iran                                     1130
+Hungary                                  1112
+Indonesia                                1086
+Argentina                                1014
+Sweden                                   1003
+Norway                                    980
+USA                                       860
+Jamaica                                   857
+Croatia                                   777
+Belgium                                   626
+Panama                                    626
+Saudi Arabia                              596
+Honduras                                  562
+Bulgaria                                  535
+Vietnam                                   515
+Denmark                                   513
+Peru                                      512
+Saint Lucia                               485
+Ireland                                   475
+Pakistan                                  472
+Finland                                   454
+Nigeria                                   449
+Chile                                     408
+Guatemala                                 392
+UK                                        362
+South Korea                               357
+Yemen                                     355
+Serbia                                    351
+South Africa                              347
+Belarus                                   341
+Slovenia                                  328
+Algeria                                   320
+Tanzania                                  315
+Armenia                                   312
+Kazakhstan                                268
+Morocco                                   252
+Malaysia                                  251
+Bolivia                                   236
+Slovakia                                  233
+Bosnia and Herzegovina                    232
+Dominican Republic                        227
+Cuba                                      223
+Estonia                                   213
+New Zealand                               209
+Macedonia                                 203
+Egypt                                     192
+Azerbaijan                                185
+Venezuela                                 179
+Costa Rica                                177
+Uruguay                                   174
+Nicaragua                                 168
+Israel                                    166
+Sri Lanka                                 156
+Tunisia                                   156
+Syria                                     149
+Bangladesh                                149
+Cameroon                                  149
+Ethiopia                                  148
+Luxembourg                                148
+Paraguay                                  146
+Uzbekistan                                141
+Iceland                                   141
+Latvia                                    140
+Albania                                   139
+Haiti                                     139
+Lithuania                                 136
+Ecuador                                   130
+Ghana                                     130
+Kenya                                     120
+Georgia                                   120
+Zimbabwe                                  116
+Cambodia                                  114
+Cyprus                                    111
+El Salvador                               108
+Gambia The                                104
+Papua new Guinea                          101
+Mauritius                                 101
+Afghanistan                                99
+Sierra Leone                               97
+Burkina Faso                               96
+Uganda                                     96
+Iraq                                       95
+North Korea                                93
+Comoros                                    92
+Jordan                                     88
+Cote D'Ivoire (Ivory Coast)                85
+Myanmar                                    85
+Micronesia                                 84
+Senegal                                    81
+Laos                                       80
+Sudan                                      79
+Botswana                                   79
+Malta                                      79
+Moldova                                    77
+United Arab Emirates                       76
+Zambia                                     75
+Angola                                     73
+Libya                                      73
+Tajikistan                                 73
+Niger                                      72
+Taiwan                                     70
+Democratic Republic of the Congo           69
+Malawi                                     68
+Guinea                                     61
+Nepal                                      60
+Somalia                                    56
+Kyrgyzstan                                 56
+Namibia                                    55
+Mozambique                                 53
+Mali                                       51
+East Timor                                 50
+Central African Republic                   47
+Mauritania                                 44
+Oman                                       44
+Montenegro                                 43
+Kiribati                                   42
+Chad                                       42
+Gabon                                      41
+Benin                                      40
+Mongolia                                   40
+Turkmenistan                               38
+Lebanon                                    36
+Kuwait                                     36
+Swaziland                                  34
+Equatorial Guinea                          33
+Congo                                      29
+Liberia                                    27
+Togo                                       27
+Belize                                     26
+Bhutan                                     26
+Maldives                                   26
+Cape Verde                                 25
+Puerto Rico                                25
+Trinidad And Tobago                        25
+Qatar                                      24
+Bahamas                                    24
+Papua New Guinea                           24
+Dominica                                   23
+Faroe Islands                              22
+Suriname                                   22
+Guyana                                     22
+Madagascar                                 22
+Fiji                                       22
+The Bahamas                                21
+Palau                                      21
+Samoa                                      21
+Burundi                                    21
+Solomon Islands                            20
+Virgin Islands (US)                        20
+Fiji Islands                               20
+Hong Kong                                  20
+Antarctica                                 19
+Bahrain                                    19
+Lesotho                                    17
+Marshall Islands                           17
+Guadeloupe                                 17
+Eritrea                                    16
+Rwanda                                     16
+Djibouti                                   16
+Trinidad & Tobago                          15
+Brunei                                     15
+Slovak Republic                            15
+Guinea-Bissau                              15
+Vanuatu                                    14
+Tonga                                      14
+Grenada                                    14
+Barbados                                   13
+Liechtenstein                              13
+Saint Kitts And Nevis                      13
+Seychelles                                 13
+French Polynesia                           13
+Tuvalu                                     12
+New Caledonia                              12
+US Virgin Islands                          12
+Andorra                                    12
+British Virgin Islands                     11
+San Marino                                 11
+Singapore                                  11
+Nauru                                      10
+Antigua And Barbuda                         9
+Saint Vincent And The Grenadines            9
+Bonaire, Sint Eustatius and Saba            8
+Cook Islands                                8
+Cape Verde Islands                          8
+French Guiana                               8
+Bosnia Herzegovina                          6
+Martinique                                  6
+Bermuda                                     6
+Greenland                                   6
+Antigua & Barbuda                           6
+Saint Vincent Grenadines                    6
+Ivory Coast                                 6
+SWEDEN                                      6
+Aruba                                       6
+Turks & Caicos Islands                      6
+Cayman Islands                              6
+Guinea - Bissau                             5
+Wallis & Futuna                             5
+Anguilla                                    5
+Mayotte                                     5
+St. Kitts                                   5
+Sao Tome and Principe                       5
+St. Helena                                  5
+Sao Tome & Principe                         4
+Macao                                       4
+Niue                                        4
+Monaco                                      4
+Gambia                                      4
+Saint Martin                                4
+Isle of Man                                 4
+Bonaire, St.Eustatius and Saba              4
+Montserrat                                  4
+Guernsey                                    3
+VIETNAM                                     3
+Guam                                        3
+Falkland Islands                            3
+Reunion                                     3
+Gibraltar                                   3
+Tokelau                                     3
+PAPUA NEW GUINEA                            3
+Curacao                                     3
+Installations in Intl Waters                2
+Sint Maarten                                2
+BANGLADESH                                  2
+THBKK                                       2
+American Samoa                              2
+Timor-Leste                                 2
+St Pierre Miquelon                          2
+WEST INDIES                                 2
+ISRAEL                                      2
+CUBA                                        2
+FIJI                                        2
+UKRAINE                                     2
+Norfolk Islands                             2
+Northern Mariana Islands                    2
+Republic of the Congo                       1
+Russian Fed.                                1
+DA17 6AB.                                   1
+CALABAR                                     1
+South Sudan                                 1
+Beliz                                       1
+DOMINICAN REP.                              1
+Saint Berthelemy                            1
+VALVAD                                      1
+Jakarta                                     1
+SVO2                                        1
+persian gulf                                1
+Peru.                                       1
+INNSA1                                      1
+PHL                                         1
+HCMC                                        1
+IVORY COAST                                 1
+LAO PDR                                     1
+AZERBAIJAN                                  1
+Christmas Is                                1
+Egp                                         1
+MYPKL                                       1
+SWAZILAND                                   1
+The Democratic Republic of the Congo        1
+SULTANATE OF OMAN)                          1
+Bissau                                      1
+NICARAGUA                                   1
+DOMINICAN REPUBLIC                          1
+BCN                                         1
+canada                                      1
+CAPE VERDE                                  1
+Burundi.                                    1
+SAUDI ARABIA                                1
+Pitcairn Island                             1
+(Johannesburg & Cape Town)                  1
+MYPKG NORTH PORT                            1
+Brazil.                                     1
+Rawanda.                                    1
+PHILIPPINES)                                1
+JEDDAH                                      1
+Bosnia & Herzegovina                        1
+VENEZUELA                                   1
+RUSSIA                                      1
+DASRATH                                     1
+(ASIA WORD PORT)                            1
+SULTANATE OF OMAN                           1
+BELIZ                                       1
+MONGOLIA                                    1
+RGN                                         1
+CARACAS                                     1
+MCT                                         1
+CO 80467                                    1
+VCP                                         1
+Montreal                                    1
+BRAZIL                                      1
+COSTA RICA                                  1
+Poland.                                     1
+IRAQ                                        1
+Tbilisi                                     1
+MMRGN                                       1
+BOMte                                       1
+UAE                                         1
+MNLph                                       1
+FRANCE.                                     1
+MALAYSIA                                    1
+
+Country Code:
+Total unique countries: 422
+country_code
+US    29880
+IT     9948
+MX     9330
+FR     8894
+RO     8081
+DE     7101
+ES     6692
+PH     6520
+BR     5643
+RU     5547
+IN     4247
+AU     4152
+GB     3873
+PL     3126
+AT     2363
+UA     1804
+JP     1673
+NL     1655
+CH     1506
+CZ     1356
+TR     1349
+PT     1313
+CN     1296
+TH     1240
+CO     1123
+IR     1090
+CA     1080
+HU     1074
+GR     1025
+AR      963
+ID      905
+us      857
+JM      840
+SE      800
+NO      669
+HR      664
+PA      600
+SA      563
+BE      550
+HN      545
+BG      504
+jp      502
+PE      483
+LC      480
+VN      467
+PK      458
+DK      429
+NG      425
+nl      422
+FI      402
+GT      382
+IE      373
+gb      360
+CL      346
+YE      342
+RS      334
+de      333
+BY      329
+ZA      314
+no      311
+SI      311
+KR      309
+AM      308
+TZ      299
+DZ      293
+KZ      260
+es      258
+ca      258
+cn      241
+SK      233
+BA      232
+BO      228
+fr      227
+MA      224
+it      220
+in      212
+se      209
+DO      207
+gr      206
+MK      197
+MY      193
+CU      188
+id      181
+AZ      178
+au      167
+EE      162
+NZ      159
+CR      159
+EG      157
+NI      155
+UY      155
+ru      151
+IL      150
+LK      147
+LU      145
+ET      144
+SY      142
+BD      141
+PY      140
+CM      139
+UZ      135
+VE      135
+TN      134
+tr      131
+AL      130
+LT      129
+LV      125
+HT      124
+GH      121
+br      121
+EC      115
+hr      113
+GE      112
+KE      110
+ZW      109
+KH      106
+GM      104
+ie      102
+PG      101
+SV      100
+MU       98
+CY       95
+BF       92
+AF       92
+UG       91
+mx       91
+SL       90
+KM       88
+CI       85
+dk       84
+ph       83
+IQ       82
+JO       82
+FM       81
+KP       80
+LA       76
+be       76
+BW       75
+MM       74
+IS       74
+SN       73
+MD       72
+SD       71
+ZM       71
+TJ       70
+NE       70
+CD       69
+MT       68
+is       67
+pl       63
+cl       62
+pt       61
+MW       61
+my       59
+NP       55
+GN       54
+KG       53
+fi       52
+ar       51
+vn       51
+ee       51
+LY       51
+nz       50
+TL       50
+AO       49
+kr       48
+ML       47
+ua       47
+SO       46
+ro       46
+ve       45
+CF       43
+TD       41
+TW       40
+ir       40
+at       40
+MR       39
+AE       39
+MN       38
+MZ       38
+KI       38
+hu       38
+cu       37
+th       37
+ae       37
+BJ       36
+eg       35
+sa       34
+SZ       34
+ME       34
+za       33
+bg       31
+tw       30
+TM       30
+co       29
+pe       29
+GA       28
+ma       28
+OM       28
+pg       27
+dz       27
+LB       26
+pa       26
+pr       25
+TT       25
+KW       25
+BT       24
+CV       24
+ng       24
+fj       24
+ao       24
+GQ       24
+bs       23
+cz       23
+TG       22
+fo       22
+ly       22
+BS       22
+tn       22
+MV       21
+do       21
+WS       20
+FJ       20
+hk       20
+VI       20
+uy       19
+cr       19
+LR       18
+il       18
+CG       17
+gp       17
+si       17
+mh       17
+BI       17
+rs       17
+jm       17
+hn       17
+DM       17
+tz       16
+PW       16
+om       16
+cy       16
+QA       15
+sk       15
+ec       15
+lv       15
+tt       15
+mz       15
+ht       15
+GY       14
+ni       14
+pk       14
+GW       14
+iq       14
+BZ       13
+KN       13
+cg       13
+ga       13
+pf       13
+SR       13
+ye       13
+bz       13
+sb       13
+kp       13
+DJ       12
+by       12
+ch       12
+RW       12
+nc       12
+mg       12
+vi       12
+LS       12
+kw       11
+vg       11
+ER       11
+LI       11
+mt       11
+so       10
+cm       10
+ke       10
+bd       10
+gt       10
+bh       10
+cv       10
+MG       10
+lb       10
+AD       10
+SM        9
+gq        9
+gh        9
+me        9
+al        9
+AG        9
+TV        9
+qa        9
+lr        9
+BN        9
+lk        9
+sg        9
+VC        9
+BH        9
+sr        9
+BQ        8
+ge        8
+sn        8
+kh        8
+TO        8
+bo        8
+sv        8
+sd        8
+aw        8
+GD        8
+gf        8
+tm        8
+kz        8
+ck        8
+az        8
+gy        8
+SC        8
+sl        7
+gn        7
+vu        7
+BB        7
+lt        7
+gw        7
+mw        7
+af        7
+ba        7
+mn        7
+NR        7
+na        7
+zw        7
+sy        7
+VU        7
+SB        7
+gd        6
+bm        6
+mq        6
+dm        6
+ky        6
+bb        6
+jo        6
+uz        6
+py        6
+to        6
+bn        6
+vc        6
+ag        6
+ci        6
+mk        6
+gl        6
+tc        6
+ug        5
+md        5
+ls        5
+mm        5
+tg        5
+lc        5
+sh        5
+mr        5
+kn        5
+wf        5
+yt        5
+sc        5
+ai        5
+pw        5
+er        5
+ST        5
+mv        5
+np        5
+st        4
+bf        4
+mc        4
+rw        4
+ki        4
+km        4
+ml        4
+am        4
+bj        4
+bi        4
+dj        4
+nu        4
+cf        4
+mf        4
+gm        4
+bw        4
+mo        4
+zm        4
+et        4
+la        4
+ms        4
+kg        3
+nr        3
+tv        3
+gu        3
+fk        3
+gi        3
+re        3
+mu        3
+fm        3
+lu        3
+gg        3
+tj        3
+mp        2
+SG        2
+bt        2
+ne        2
+ad        2
+li        2
+sx        2
+tl        2
+sm        2
+nf        2
+as        2
+an        1
+bl        1
+sz        1
+pn        1
+td        1
+cd        1
+ws        1
+SS        1
