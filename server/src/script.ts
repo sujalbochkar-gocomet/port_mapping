@@ -16,7 +16,21 @@ let portMatcher: PortMatcher | null = null;
 let refreshInterval: NodeJS.Timeout | null = null;
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 
-app.use(cors());
+// Configure CORS
+const corsOptions = {
+  origin: '*', // Your client's origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'ngrok-skip-browser-warning'],
+  credentials: true,
+  preflightContinue: false,
+  optionsSuccessStatus: 204
+};
+
+app.use(cors(corsOptions));
+
+// Handle preflight requests
+app.options('*', cors(corsOptions));
+
 app.use(express.json());
 
 // Serve Swagger UI

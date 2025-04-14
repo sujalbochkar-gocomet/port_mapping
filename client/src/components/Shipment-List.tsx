@@ -17,9 +17,14 @@ const ShipmentList = ({ filterType, sortOrder }: ShipmentListProps) => {
     const fetchShipments = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(
-          `${process.env.BACKEND_URL}/get-shipments?type=${filterType}&order=${sortOrder}`
-        );
+          const response = await axios.get(
+            `${import.meta.env.VITE_BACKEND_URL}/get-shipments?type=${filterType}&order=${sortOrder}`,
+            {
+              headers: {
+                'ngrok-skip-browser-warning': 'true'
+              }
+            }
+          );
         setShipments(response.data || []);
       } catch (err) {
         toast.error("Failed to fetch shipments");

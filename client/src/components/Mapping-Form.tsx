@@ -60,14 +60,18 @@ const MappingForm = () => {
       debounceTimer.current = setTimeout(async () => {
         try {
           const response = await axios.get(
-            `${process.env.BACKEND_URL}/search-ports?q=${encodeURIComponent(
+            `${import.meta.env.VITE_BACKEND_URL}/search-ports?q=${encodeURIComponent(
               term
             )}&type=${carrierType}`,
             {
               signal: abortController.current?.signal,
+              headers: {
+                'ngrok-skip-browser-warning': 'true'
+              }
             }
           );
           const results = response.data;
+          console.log(results);
           setSearchResults(results);
         } catch (error) {
           // Ignore errors from aborted requests
