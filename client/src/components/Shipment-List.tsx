@@ -18,7 +18,7 @@ const ShipmentList = ({ filterType, sortOrder }: ShipmentListProps) => {
       try {
         setLoading(true);
         const response = await axios.get(
-          `http://localhost:3000/get-shipments?type=${filterType}&order=${sortOrder}`
+          `${process.env.BACKEND_URL}/get-shipments?type=${filterType}&order=${sortOrder}`
         );
         setShipments(response.data || []);
       } catch (err) {

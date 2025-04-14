@@ -60,7 +60,7 @@ const MappingForm = () => {
       debounceTimer.current = setTimeout(async () => {
         try {
           const response = await axios.get(
-            `http://localhost:3000/search-ports?q=${encodeURIComponent(
+            `${process.env.BACKEND_URL}/search-ports?q=${encodeURIComponent(
               term
             )}&type=${carrierType}`,
             {

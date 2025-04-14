@@ -138,7 +138,7 @@ const ShipmentForm = () => {
         try {
           const portType = getPortTypeFromCarrier(carrierType);
           const response = await axios.get(
-            `http://localhost:3000/search-ports?q=${encodeURIComponent(
+            `${process.env.BACKEND_URL}/search-ports?q=${encodeURIComponent(
               term
             )}&type=${portType}`,
             {
@@ -314,11 +314,14 @@ const ShipmentForm = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:3000/add-shipment", {
-        pol: selectedPol,
-        pod: selectedPod,
-        carrierType,
-      });
+      const response = await axios.post(
+        `${process.env.BACKEND_URL}/add-shipment`,
+        {
+          pol: selectedPol,
+          pod: selectedPod,
+          carrierType,
+        }
+      );
 
       // Add success toast
       toast.success("Shipment added successfully!");

@@ -69,7 +69,7 @@ const MapExistingPort = ({ keyword, onPortSelected }: MapExistingPortProps) => {
 
       try {
         const response = await fetch(
-          `http://localhost:3000/issue-search?q=${searchTerm}&type=${searchTypeParam}`
+          `${process.env.BACKEND_URL}/issue-search?q=${searchTerm}&type=${searchTypeParam}`
         );
         const data = await response.json();
         setSearchResults(data);
