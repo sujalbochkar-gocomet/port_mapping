@@ -17,6 +17,28 @@ import { SearchOutlined, DownOutlined } from "@ant-design/icons";
 
 const { Title, Text } = Typography;
 
+interface PortResult {
+  port: {
+    id: string;
+    name: string;
+    display_name: string;
+    city: string;
+    country: string;
+    country_code: string;
+    code: string;
+    port_type: string;
+    region: string;
+    lat_lon?: {
+      lat: number;
+      lon: number;
+    };
+    other_names: string[];
+    verified: boolean;
+  };
+  confidence: number;
+  matchingLayer: string;
+}
+
 const MappingForm = () => {
   const [carrierType, setCarrierType] = useState<string>("sea_port");
   const [searchInput, setSearchInput] = useState("");
@@ -59,18 +81,28 @@ const MappingForm = () => {
       // Set new timer
       debounceTimer.current = setTimeout(async () => {
         try {
-          const response = await axios.get(
-            `${import.meta.env.VITE_BACKEND_URL}/search-ports?q=${encodeURIComponent(
-              term
-            )}&type=${carrierType}`,
+          const response = await axios.post(
+            `${import.meta.env.VITE_BACKEND_URL}/ports/search`,
+            {
+              keyword: term,
+              type: carrierType,
+            },
             {
               signal: abortController.current?.signal,
               headers: {
-                'ngrok-skip-browser-warning': 'true'
-              }
+                accept: "application/json",
+                "X-API-Key": import.meta.env.VITE_API_KEY,
+                "Content-Type": "application/json",
+              },
             }
           );
-          const results = response.data;
+          const results = response.data.data.results.map(
+            (result: PortResult) => ({
+              port: result.port,
+              confidence: result.confidence,
+              matchingLayer: result.matchingLayer,
+            })
+          );
           console.log(results);
           setSearchResults(results);
         } catch (error) {
@@ -240,9 +272,9 @@ const MappingForm = () => {
           </Card>
         ) : Array.isArray(searchResults) && searchResults.length > 0 ? (
           <Space direction="vertical" size="middle" style={{ width: "100%" }}>
-            {searchResults.map((port) => (
+            {searchResults.map((result) => (
               <Card
-                key={port.port.id}
+                key={result.port.id}
                 style={{
                   width: "100%",
                   borderRadius: 12,
@@ -259,10 +291,10 @@ const MappingForm = () => {
                 >
                   <Flex align="center" gap="small">
                     <Flex align="center" gap="small">
-                      {port.port.country_code && (
+                      {result.port.country_code && (
                         <img
-                          src={`https://flagsapi.com/${port.port.country_code.toUpperCase()}/flat/64.png`}
-                          alt={`${port.port.country} flag`}
+                          src={`https://flagsapi.com/${result.port.country_code.toUpperCase()}/flat/64.png`}
+                          alt={`${result.port.country} flag`}
                           style={{
                             width: 32,
                             height: 24,
@@ -273,7 +305,7 @@ const MappingForm = () => {
                         />
                       )}
                       <Title level={4} style={{ margin: 0 }}>
-                        {port.port.name}
+                        {result.port.name}
                       </Title>
                       <Tag
                         style={{
@@ -283,16 +315,16 @@ const MappingForm = () => {
                           border: "1px solid #E5E7EB",
                         }}
                       >
-                        {port.port.code}
+                        {result.port.code}
                       </Tag>
                     </Flex>
                   </Flex>
                   <Flex align="center" gap="small">
-                    <Tag color={port.verified ? "success" : "warning"}>
-                      {port.verified ? "Verified" : "Unverified"}
+                    <Tag color={result.port.verified ? "success" : "warning"}>
+                      {result.port.verified ? "Verified" : "Unverified"}
                     </Tag>
                     <Tag color="blue">
-                      Match: {port.match_score.toFixed(1)}%
+                      Match: {result.confidence.toFixed(1)}%
                     </Tag>
                   </Flex>
                 </Flex>
@@ -310,17 +342,17 @@ const MappingForm = () => {
                           Location:
                         </Text>
                         <Text>
-                          {port.port.city ? `${port.port.city},` : ""}{" "}
-                          {port.port.country}
+                          {result.port.city ? `${result.port.city},` : ""}{" "}
+                          {result.port.country}
                         </Text>
                       </Flex>
                       <Flex gap="small">
                         <Text type="secondary" style={{ minWidth: 96 }}>
                           Region:
                         </Text>
-                        <Text>{port.port.region.toUpperCase()}</Text>
+                        <Text>{result.port.region.toUpperCase()}</Text>
                       </Flex>
-                      {port.port.other_names.length > 0 && (
+                      {result.port.other_names.length > 0 && (
                         <div
                           style={{
                             marginTop: 8,
@@ -330,15 +362,17 @@ const MappingForm = () => {
                         >
                           <Button
                             type="link"
-                            onClick={() => toggleOtherNames(port.port.id)}
+                            onClick={() => toggleOtherNames(result.port.id)}
                             style={{ padding: "6px 12px", height: "auto" }}
                             icon={
                               <DownOutlined
-                                rotate={showOtherNames[port.port.id] ? 180 : 0}
+                                rotate={
+                                  showOtherNames[result.port.id] ? 180 : 0
+                                }
                               />
                             }
                           >
-                            {showOtherNames[port.port.id]
+                            {showOtherNames[result.port.id]
                               ? `Hide Other Names`
                               : "Show Other Names"}
                           </Button>
@@ -357,7 +391,7 @@ const MappingForm = () => {
                           Address:
                         </Text>
                         <Text style={{ flex: 1 }}>
-                          {port.port.address || "N/A"}
+                          {result.port.address || "N/A"}
                         </Text>
                       </Flex>
                       <Flex gap="small">
@@ -365,10 +399,10 @@ const MappingForm = () => {
                           Coordinates:
                         </Text>
                         <Text>
-                          {port.port.lat_lon?.lat && port.port.lat_lon?.lon
-                            ? `${port.port.lat_lon.lat.toFixed(
+                          {result.port.lat_lon?.lat && result.port.lat_lon?.lon
+                            ? `${result.port.lat_lon.lat.toFixed(
                                 4
-                              )}, ${port.port.lat_lon.lon.toFixed(4)}`
+                              )}, ${result.port.lat_lon.lon.toFixed(4)}`
                             : "Not available"}
                         </Text>
                       </Flex>
@@ -377,8 +411,8 @@ const MappingForm = () => {
                 </Flex>
 
                 {/* Other Names Section */}
-                {showOtherNames[port.port.id] &&
-                  port.port.other_names.length > 0 && (
+                {showOtherNames[result.port.id] &&
+                  result.port.other_names.length > 0 && (
                     <div
                       style={{
                         marginTop: 16,
@@ -394,7 +428,7 @@ const MappingForm = () => {
                         }}
                       >
                         <Flex gap="small" wrap="wrap">
-                          {port.port.other_names.map((name, index) => (
+                          {result.port.other_names.map((name, index) => (
                             <Tag key={index} color="blue">
                               {name}
                             </Tag>

@@ -134,9 +134,31 @@ export interface Shipment {
 }
 
 export interface statusPort {
-  port: Port;
-  verified: boolean;
-  match_score: number;
+  port: {
+    id: string;
+    name: string;
+    display_name: string;
+    city: string;
+    country: string;
+    country_code: string;
+    code: string;
+    port_type: string;
+    region: string;
+    lat_lon?: {
+      lat: number;
+      lon: number;
+    };
+    other_names: string[];
+    verified: boolean;
+    address?: string;
+    state_name?: string;
+    telephone_number?: string;
+    fax_number?: string;
+    website?: string;
+    description?: string;
+  };
+  confidence: number;
+  matchingLayer: string;
 }
 
 export interface PortDisplayData {
